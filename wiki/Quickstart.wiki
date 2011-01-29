@@ -1,0 +1,17 @@
+#summary Quckstart guide.
+#labels Featured,Phase-Deploy
+
+= Introduction =
+
+The following steps should get you up and running.
+
+
+= Details =
+
+  # Copy cmf.jar to your WEB-INF/lib directory.
+  # Make sure it is in your ide's classpath
+  # Include this in your html declaration:
+    {{{
+             xmlns:cmf="http://tralfamadore.net/cmf"
+    }}}
+  # You can access the administration panel at http://yoursite/yourwebroot/cmf/admin/index.jsf
