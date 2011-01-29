@@ -47,7 +47,7 @@ function doTheThing(xhr) {
         CKEDITOR.instances.ckCode.destroy();
         CKEDITOR.on('instanceCreated', function(e) {
             var editor = e.editor;
-            var css = $("#hiddenStyles").html();
+            var css = $("#hiddenStyles").text();
             editor.addCss(css);
         });
         CKEDITOR.replace('ckCode');
@@ -102,7 +102,7 @@ function updateEditorAndResetDirty(xhr) {
     if(xhr.status == "begin") {
         var editor = CKEDITOR.instances.ckCode;
         var data = editor.getData();
-        $("#ckCode").html(data);
+        $("#ckCode").text(data);
     } else {
         CKEDITOR.instances.ckCode.resetDirty();
     }
@@ -112,19 +112,19 @@ function updateEditorAndResetDirty(xhr) {
 //noinspection JSUnusedGlobalSymbols
 function updateField(editor) {
     var data = editor.getData();
-    $("#ckCode").html(data);
+    $("#ckCode").text(data);
 }
 
 //noinspection JSUnusedGlobalSymbols
 function updateEditor() {
     var editor = CKEDITOR.instances.ckCode;
     var data = editor.getData();
-    $("#ckCode").html(data);
+    $("#ckCode").text(data);
 }
 
 function updateStyleEditor() {
     var data = cssEditor.getCode();
-    $("#cssEditor").html(data);
+    $("#cssEditor").text(data);
 }
 
 //noinspection JSUnusedGlobalSymbols
@@ -275,7 +275,7 @@ function addArticleStyle() {
 //})();
 
 $(document).ready(function() {
-    var css = $("#hiddenStyles").html();
+    var css = $("#hiddenStyles").text();
     CKEDITOR.on('instanceCreated', function(e) {
         var editor = e.editor;
         editor.addCss(css);
