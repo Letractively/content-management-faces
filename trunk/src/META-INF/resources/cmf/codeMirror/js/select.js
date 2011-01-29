@@ -506,7 +506,12 @@ var select = {};
       selection.addRange(range);
     }
     function selectionRange() {
-      var selection = window.getSelection();
+      var selection;
+	  try {
+		selection = window.getSelection();
+	  } catch(err) {
+		// ignore
+	  }
       if (!selection || selection.rangeCount == 0)
         return false;
       else
