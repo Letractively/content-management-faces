@@ -37,7 +37,7 @@ import java.io.IOException;
  */
 @FacesRenderer(rendererType = "Content", componentFamily = "javax.faces.Output")
 public class ContentRenderer extends Renderer {
-    protected ContentManager contentManager = TestContentManager.getInstance();
+    protected final ContentManager contentManager = TestContentManager.getInstance();
     private String content;
 
     @Override

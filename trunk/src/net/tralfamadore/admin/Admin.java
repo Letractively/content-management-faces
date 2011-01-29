@@ -250,7 +250,7 @@ public class Admin {
         styleScriptEditor.getStyles().getChildren().add(newStyle);
     }
 
-    public HtmlCommandButton createStyleButton(Style style) {
+    private HtmlCommandButton createStyleButton(Style style) {
         FacesContext context = FacesContext.getCurrentInstance();
         HtmlCommandButton button = new HtmlCommandButton();
         AjaxBehavior ajaxBehavior = new AjaxBehavior();

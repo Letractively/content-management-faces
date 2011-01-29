@@ -145,7 +145,7 @@ public class TreeRenderer extends Renderer {
         child.encodeEnd(context);
     }
 
-    public UITreeNode getUITreeNodeByType(UIComponent tree, String type) {
+    protected UITreeNode getUITreeNodeByType(UIComponent tree, String type) {
         if(nodes == null) {
             nodes = new HashMap<String,UITreeNode>();
             for(UIComponent child : tree.getChildren()) {

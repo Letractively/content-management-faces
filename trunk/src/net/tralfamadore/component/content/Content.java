@@ -39,7 +39,7 @@ import java.util.List;
 @FacesComponent(value = "Content")
 @ListenerFor(systemEventClass = PostAddToViewEvent.class)
 public class Content extends HtmlOutputText {
-    protected ContentManager contentManager = TestContentManager.getInstance();
+    protected final ContentManager contentManager = TestContentManager.getInstance();
 
     protected enum PropertyKeys {
         namespace,
@@ -47,7 +47,7 @@ public class Content extends HtmlOutputText {
     }
 
     public Content() {
-        if(!((TestContentManager)contentManager).initted)
+        if(!((TestContentManager)contentManager).initialized)
             ((TestContentManager)contentManager).init();
     }
 

@@ -33,7 +33,7 @@ import java.util.List;
  * Time: 3:03 PM
  */
 public class TreeModel implements Serializable {
-    private TreeNode root = new NamespaceTreeNode(null, Namespace.createFromString("root"));
+    private final TreeNode root = new NamespaceTreeNode(null, Namespace.createFromString("root"));
 
     public ContentTreeNode findContentNode(Namespace namespace, String name, TreeNode rootNode) {
         for(TreeNode n : rootNode.getChildren()) {

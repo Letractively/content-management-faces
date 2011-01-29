@@ -43,7 +43,6 @@ function showSlowly(id) {
 
 function doTheThing(xhr) {
     if(xhr.status == "success") {
-        var content = $("#ckCode").val();
         CKEDITOR.instances.ckCode.destroy();
         CKEDITOR.on('instanceCreated', function(e) {
             var editor = e.editor;
@@ -81,7 +80,6 @@ function addCssToEditor() {
     var content = $("#cssEditor").val();
     cssEditor.setCode(content);
     CKEDITOR.instances.ckCode.addCss(content);
-    var mode = CKEDITOR.instances.ckCode.mode;
 //    CKEDITOR.instances.ckCode.setMode('source');
     CKEDITOR.instances.ckCode.setMode('wysiwyg');
 }
@@ -240,7 +238,7 @@ function handleNodeClick(args) {
 function addNode(name) {
     var val = $("#" + name);
     var n = val.attr('value');
-    new YAHOO.widget.HTMLNode('<b>' + n + '</b>', lastHighlightedNode, true);
+    new YAHOO.widget.HTMLNode('<strong>' + n + '</strong>', lastHighlightedNode, true);
     lastHighlightedNode.expand();
     lastHighlightedNode.showChildren();
     lastHighlightedNode.refresh();
@@ -260,20 +258,6 @@ function addArticleStyle() {
     $("#theStyles").append(' <button onclick="showCssEditor(); return false;" class="styleBubble" title="net.tralfamadore.site.page1.articleStyles"> <span style="padding-left: 5px; padding-right: 5px;">articleStyles</span> </button>');
 }
 
-//(function() {
-//    var treeInit = function() {
-//        tree1 = new YAHOO.widget.TreeView("theTree");
-//        tree1.singleNodeHighlight = true;
-//        tree1.subscribe('clickEvent',handleNodeClick);
-//        tree1.expandAll();
-//        tree1.render();
-//    };
-//
-//    Add an onDOMReady handler to build the tree when the document is ready
-//    YAHOO.util.Event.onDOMReady(treeInit);
-//
-//})();
-
 $(document).ready(function() {
     var css = $("#hiddenStyles").text();
     CKEDITOR.on('instanceCreated', function(e) {
@@ -290,14 +274,5 @@ $(document).ready(function() {
         reindentOnLoad: true,
         lineNumbers: true
     });
-
-//    scriptEditor = CodeMirror.fromTextArea('scriptEditor', {
-//        height: "307px",
-//        parserfile: ["tokenizejavascript.js", "parsejavascript.js"],
-//        stylesheet: "../codeMirror/css/jscolors.css",
-//        path: "../codeMirror/js/",
-//        reindentOnLoad: true,
-//        lineNumbers: true
-//    });
 });
 

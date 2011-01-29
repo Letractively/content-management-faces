@@ -23,7 +23,6 @@ import net.tralfamadore.cmf.*;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.event.ActionEvent;
 import java.io.Serializable;
 import java.util.List;
 
@@ -46,10 +45,6 @@ public class Tree implements Serializable {
         createTreeModel();
     }
 
-
-    public void testTree(ActionEvent event) {
-        render();
-    }
 
     public void createTreeModel() {
         ContentManager contentManager = TestContentManager.getInstance();
@@ -74,62 +69,6 @@ public class Tree implements Serializable {
         for(Script script : scripts) {
             treeModel.addNode(script);
         }
-    }
-
-    public void render() {
-        StringBuffer b = printNode(treeModel.root(), new StringBuffer(), 0);
-        System.out.println("\n" + b.toString());
-    }
-
-    private StringBuffer printNode(TreeNode node, StringBuffer buf, int depth) {
-        for(int i = 0; i < depth; i++)
-            buf.append("\t");
-        buf.append(node.getText());
-        buf.append(" (");
-        buf.append(node.getClass().getSimpleName().toLowerCase().replaceAll("treenode", ""));
-        buf.append(")\n");
-        for(TreeNode n : node.getChildren())
-            printNode(n, buf, depth + 1);
-
-        return buf;
-    }
-
-    public String getTreeHtml() {
-        StringBuffer buf = new StringBuffer();
-        buf.append("<div id=\"tree\"><ul>");
-        for(TreeNode n : treeModel.root().getChildren()) {
-            renderHtml(n, buf);
-        }
-        buf.append("</ul></div>");
-        return buf.toString();
-    }
-
-    private StringBuffer renderHtml(TreeNode node, StringBuffer buf) {
-        buf.append("<li>");
-        renderNode(node, buf);
-        if(!node.getChildren().isEmpty())
-            buf.append("<ul>");
-        for(TreeNode n : node.getChildren())
-            renderHtml(n, buf);
-        if(!node.getChildren().isEmpty())
-            buf.append("</ul>");
-        buf.append("</li>");
-
-        return buf;
-    }
-
-    private void renderNode(TreeNode node, StringBuffer buf) {
-        buf.append("<span>");
-        buf.append(node.getText());
-        if(node instanceof ContentTreeNode)
-            buf.append(" (content)");
-        else if(node instanceof NamespaceTreeNode)
-            buf.append(" (namespace)");
-        else if(node instanceof ScriptTreeNode)
-            buf.append(" (script)");
-        else if(node instanceof StyleTreeNode)
-            buf.append(" (style)");
-        buf.append("</span>");
     }
 
     public TreeModel getTreeModel() {

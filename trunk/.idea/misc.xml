@@ -8,6 +8,11 @@
   </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="javax.faces.bean.ManagedBean" />
+      <item index="1" class="java.lang.String" itemvalue="javax.faces.component.FacesComponent" />
+      <item index="2" class="java.lang.String" itemvalue="javax.faces.render.FacesRenderer" />
+    </list>
   </component>
   <component name="IdProvider" IDEtalkID="1E75B87E9021200AA8ED5FD2390268F3" />
   <component name="JUnitClassTemplateConfiguration">

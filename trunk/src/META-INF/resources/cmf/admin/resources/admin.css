@@ -68,14 +68,13 @@
 .header {
     color: #f3f8ff;
     -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(rgba(0,0,0,0.9)), to(rgba(0,0,0,0.6)));
+    -moz-mask-image: -moz-gradient(linear, left top, right top, from(rgba(0,0,0,0.9)), to(rgba(0,0,0,0.6)));
 }
 
 .headerWord {
     display: inline-block;
     font: 32px/54px 'QuicksandBold', Arial, sans-serif;
     font-weight: bold;
-    /*-moz-text-fill-color: -moz-linear-gradient(100% 100% 180deg, #f3f8ff, #8cafff);*/
-    /*-webkit-text-fill-color: -webkit-gradient(linear, left top, right top, from(#f3f8ff), to(#accfff));*/
 }
 
 .headerWord:first-letter {
@@ -122,10 +121,9 @@ body {
 .styleBubble {
     padding: 4px;
     background-color: #accfff;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 25px;
+    border-radius: 25px 15px 25px 15px;
+    -moz-border-radius: 25px 15px 25px 15px;
+    -webkit-border-radius: 25px 15px 25px 15px;
 }
 
 .theButton {

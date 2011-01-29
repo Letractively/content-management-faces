@@ -27,13 +27,13 @@ import java.util.*;
  * Time: 6:26 PM
  */
 public class TestContentManager implements ContentManager {
-    List<Namespace> namespaces = new Vector<Namespace>();
-    List<Content> contentList = new Vector<Content>();
-    List<Script> scripts = new Vector<Script>();
-    List<Style> styles = new Vector<Style>();
-    Map<String,List<Style>> styleToContent = new HashMap<String, List<Style>>();
-    Map<Content,List<Script>> scriptToContent = new HashMap<Content, List<Script>>();
-    public boolean initted = false;
+    private final List<Namespace> namespaces = new Vector<Namespace>();
+    private final List<Content> contentList = new Vector<Content>();
+    private final List<Script> scripts = new Vector<Script>();
+    private final List<Style> styles = new Vector<Style>();
+    private final Map<String,List<Style>> styleToContent = new HashMap<String, List<Style>>();
+    private final Map<Content,List<Script>> scriptToContent = new HashMap<Content, List<Script>>();
+    public boolean initialized = false;
 
     private static class SingletonHolder {
         public static final TestContentManager instance = new TestContentManager();
@@ -46,45 +46,7 @@ public class TestContentManager implements ContentManager {
     private TestContentManager() { }
 
     public void init() {
-        /*
-        Namespace namespace = Namespace.createFromString("net.tralfamadore.site");
-        saveNamespace(namespace);
-        namespace = new Namespace(namespace, "page1");
-        saveNamespace(namespace);
-        saveNamespace(new Namespace(namespace.getParent(), "page2"));
-
-        Content content = new Content();
-        content.setNamespace(namespace);
-        content.setName("header");
-        content.setContent("<p class=\"header\">Header</p>");
-        saveContent(content);
-        content = new Content();
-        content.setNamespace(namespace);
-        content.setName("article");
-        content.setContent("<div class=\"article\" onmouseover=\"darken();\" onmouseout=\"lighten();\">"
-                + "<p>Blah blab blah</p></div>");
-        saveContent(content);
-
-        Style style = new Style();
-        style.setNamespace(namespace);
-        style.setName("articleStyles");
-        style.setStyle(".header { font-size: 20pt; font-weight: bold; } "
-                + ".article { font-size: 12pt; } "
-                + ".articleDark { background-color: #777777 } ");
-        saveStyle(style);
-        associateWithContent(loadContent(namespace, "header"), style);
-        associateWithContent(loadContent(namespace, "article"), style);
-
-        Script script = new Script();
-        script.setNamespace(namespace);
-        script.setName("articleScripts");
-        script.setScript(" function darken() { $(\".article\").addClass(\"articleDark\"); }"
-                + " function lighten() { $(\".article\").removeClass(\"articleDark\"); }");
-        saveScript(script);
-        associateWithContent(loadContent(namespace, "article"), script);
-        */
-
-        initted = true;
+        initialized = true;
     }
 
 

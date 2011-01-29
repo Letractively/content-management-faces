@@ -185,7 +185,7 @@ var XqueryParser = Editor.Parser = (function() {
                     return iter;
                 };
 
-            },
+            }
 
         };
 
