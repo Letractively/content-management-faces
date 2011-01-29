@@ -13,9 +13,9 @@ import java.io.IOException;
  * Date: 1/18/11
  * Time: 2:30 AM
  */
-public class EditorTest extends ServletTestCase {
+public class ContentTest extends ServletTestCase {
     public static Test suite() {
-        return new TestSuite(EditorTest.class);
+        return new TestSuite(ContentTest.class);
     }
 
 
@@ -23,6 +23,6 @@ public class EditorTest extends ServletTestCase {
         JSFSession session = new JSFSession("/contentTest.jsf");
         JSFServerSession serverSession = session.getJSFServerSession();
 
-        assertEquals("/editorTest.xhtml", serverSession.getCurrentViewID());
+        assertEquals("/contentTest.xhtml", serverSession.getCurrentViewID());
     }
 }
