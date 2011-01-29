@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:cmf="http://tralfamadore.net/cmf/admin"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+<ui:composition>
+    <cmf:tree id="theTree" value="#{tree.treeModel}" var="node">
+        <!-- namespace node -->
+        <cmf:treeNode type="namespace">
+            <h:outputText value="#{node.namespace.nodeName}" styleClass="namespaceNode"/>
+            <span style="display: none">
+                <h:commandButton image="images/folder_add.png" actionListener="#{admin.selectNamespace}"
+                                 styleClass="treeButton">
+                    <f:param name="namespace" value="#{node.namespace}"/>
+                    <f:ajax render="in namespace" onevent="hideEditorAndShowNamespace()"/>
+                </h:commandButton>
+                <h:commandButton image="images/folder_delete.png" styleClass="treeButton"
+                                 actionListener="#{admin.deleteNamespace}"
+                                 rendered="#{empty node.children ? true : false}">
+                    <f:param name="namespace" value="#{node.namespace}"/>
+                    <f:ajax render="theTree"/>
+                </h:commandButton>
+                <h:commandButton image="images/document_add.png" actionListener="#{admin.selectNamespace}"
+                                 styleClass="treeButton">
+                    <f:param name="namespace" value="#{node.namespace}"/>
+                    <f:ajax render="content contentNamespace" onevent="hideEditorAndShowContent"/>
+                </h:commandButton>
+                <h:commandButton image="images/file_add.png" styleClass="treeButton"
+                                 actionListener="#{admin.selectNamespace}">
+                    <f:param name="namespace" value="#{node.namespace}"/>
+                    <f:ajax render="content contentNamespace" onevent="hideEditorAndShowStyle"/>
+                </h:commandButton>
+            </span>
+        </cmf:treeNode>
+        <!-- content node -->
+        <cmf:treeNode type="content">
+            <h:outputText value="#{node.content.name}" styleClass="contentNode"/>
+            <span style="display: none">
+                <h:commandButton image="images/document_edit.png" styleClass="treeButton"
+                                 actionListener="#{admin.updateEditorContent}">
+                    <f:param name="name" value="#{node.content.name}"/>
+                    <f:param name="namespace" value="#{node.content.namespace}"/>
+                    <f:ajax render="ckCode hiddenStyles" onevent="doTheThing"/>
+                </h:commandButton>
+                <h:commandButton image="images/document_delete.png" styleClass="treeButton"
+                                 actionListener="#{admin.deleteContent}">
+                    <f:param name="name" value="#{node.content.name}"/>
+                    <f:param name="namespace" value="#{node.content.namespace}"/>
+                    <f:ajax render="ckCode theTree" onevent="hideEditor"/>
+                </h:commandButton>
+            </span>
+        </cmf:treeNode>
+        <!-- style node -->
+        <cmf:treeNode type="style">
+            <h:outputText value="#{node.style.name}" styleClass="styleNode"/>
+            <span style="display: none">
+                <h:commandButton image="images/file_edit.png" styleClass="treeButton"
+                                 actionListener="#{admin.updateStyleEditor}">
+                    <f:param name="name" value="#{node.style.name}"/>
+                    <f:param name="namespace" value="#{node.style.namespace}"/>
+                    <f:ajax render="cssEditor" onevent="doTheStyleThing"/>
+                </h:commandButton>
+                <h:commandButton image="images/file_delete.png" styleClass="treeButton"
+                                 actionListener="#{admin.deleteStyle}">
+                    <f:param name="name" value="#{node.style.name}"/>
+                    <f:param name="namespace" value="#{node.style.namespace}"/>
+                    <f:ajax render="cssEditor theTree" onevent="showEditorAndHideNamespace"/>
+                </h:commandButton>
+                <h:commandButton image="images/direction_right.png" styleClass="treeButton"
+                                 actionListener="#{admin.associateStyle}">
+                    <f:param name="name" value="#{node.style.name}"/>
+                    <f:param name="namespace" value="#{node.style.namespace}"/>
+                    <f:ajax render="stylePanel cssEditor ckCode hiddenStyles" onevent="doTheThing"/>
+                </h:commandButton>
+            </span>
+        </cmf:treeNode>
+    </cmf:tree>
+</ui:composition>
+</html>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jsfunit">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/jsfunit" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/jsfunit" recursive="false" />
+  </library>
+</component>

@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="cmf:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/cmf</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="cmf/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="cmf" />
+          <element id="dir-copy" path="$PROJECT_DIR$/out/test/cmf" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="jsfunit" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

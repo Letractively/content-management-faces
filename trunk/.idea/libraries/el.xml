@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="el">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/el/el-impl-2.1.2-b04.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/el/javax.el.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

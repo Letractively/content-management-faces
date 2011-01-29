@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:cmf="http://tralfamadore.net/cmf/admin"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>Tree test</title>
+    <link rel="stylesheet" type="text/css"
+          href="http://yui.yahooapis.com/2.8.2r1/build/treeview/assets/skins/sam/treeview.css"/>
+    <script type="text/javascript"
+            src="http://yui.yahooapis.com/2.8.2r1/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.8.2r1/build/treeview/treeview-min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="http://yui.yahooapis.com/2.8.2r1/build/button/assets/skins/sam/button.css" />
+    <link rel="stylesheet" type="text/css" href="http://http://developer.yahoo.com/yui/assets/dpSyntaxHighlighter.css"/>
+    <style type="text/css">
+        .ygtv-edit-TaskNode  {	width: 190px;}
+        .ygtv-edit-TaskNode .ygtvcancel, .ygtv-edit-TextNode .ygtvok  {	border:none;}
+        .ygtv-edit-TaskNode .ygtv-button-container { float: right;}
+        .ygtv-edit-TaskNode .ygtv-input  input{	width: 140px;}
+        .whitebg {
+            background-color:white;
+        }
+        .ygtv-highlight1 {
+            background: #6495ed;
+        }
+        .theScript {
+            background: #8b0000;
+        }
+    </style>
+</h:head>
+<h:body>
+    <f:view contentType="text/html">
+        <h:form>
+
+            <h:outputText value="#{tree.treeHtml}" escape="false"/>
+
+            <script type="text/javascript">
+                //anonymous function wraps the remainder of the logic:
+                var tree1;
+
+                (function() {
+                    var treeInit = function() {
+                        tree1 = new YAHOO.widget.TreeView("tree");
+                        tree1.singleNodeHighlight = true;
+                        tree1.subscribe('clickEvent',tree1.onEventToggleHighlight);
+                        tree1.expandAll();
+                        tree1.render();
+                    };
+
+                    //Add an onDOMReady handler to build the tree when the document is ready
+                    YAHOO.util.Event.onDOMReady(treeInit);
+
+                })();
+
+                function addNode() {
+                    var node = tree1.getHighlightedNode();
+                    if(node == null)
+                        node = tree1.getRoot();
+                    var theNode = new YAHOO.widget.HTMLNode("New node", node, true);
+                    node.expand();
+                    node.showChildren();
+                    node.refresh();
+                }
+
+                function removeNode() {
+                    var node = tree1.getHighlightedNode();
+                    var parentNode = node.parent;
+                    if(node == null)
+                        return;
+                    tree1.removeNode(node, true)
+                    parentNode.expand();
+                    parentNode.refresh();
+                }
+            </script>
+            <button onclick="addNode(); return false;">Add Node</button>
+            <button onclick="removeNode(); return false;">Remove Node</button>
+            <h:commandButton value="Test Tree" actionListener="#{tree.testTree}"/>
+
+            <cmf:tree value="#{tree.treeModel}" var="node">
+                <cmf:treeNode type="namespace">
+                    <h:outputText value="#{node.namespace.nodeName} (ns)"/>
+                </cmf:treeNode>
+                <cmf:treeNode type="content">
+                    <h:outputText value="#{node.content.name} (c)"/>
+                    <h:commandButton value="Edit" actionListener="#{admin.updateEditorContent}">
+                        <f:param name="node" value="${node.content.content}"/>
+                        <f:ajax render="editor"/>
+                    </h:commandButton>
+                </cmf:treeNode>
+                <cmf:treeNode type="script" styleClass="theScript">
+                    <h:outputText value="#{node.script.name} (sc)"/>
+                </cmf:treeNode>
+                <cmf:treeNode type="style">
+                    <h:outputText value="#{node.style.name} (st)"/>
+                </cmf:treeNode>
+            </cmf:tree>
+            <h:inputTextarea id="editor" value="#{admin.editor.value}"/>
+        </h:form>
+    </f:view>
+</h:body>
+</html>

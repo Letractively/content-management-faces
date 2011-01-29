@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>Content Management Faces</title>
+    <link rel="stylesheet" type="text/css"
+          href="http://yui.yahooapis.com/2.8.2r1/build/treeview/assets/skins/sam/treeview.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="http://yui.yahooapis.com/2.8.2r1/build/button/assets/skins/sam/button.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/admin.css"/>
+    <script type="text/javascript"
+            src="http://yui.yahooapis.com/2.8.2r1/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.8.2r1/build/treeview/treeview-min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="../codeMirror/js/codemirror.js"></script>
+    <script type="text/javascript" src="resources/admin.js"></script>
+</h:head>
+<h:body>
+    <f:view contentType="text/html">
+        <h:form prependId="false">
+            <table style="width: 100%; border-spacing: 10px;">
+                <tr>
+                    <!-- Title -->
+                    <td colspan="2" style="text-align: center; padding: 10px;" class="tableCell">
+                        <div class="header">
+                            <div class="headerWord">Content</div>
+                            <div class="headerWord">Management</div>
+                            <div class="headerWord">Faces</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- Left pane -->
+                    <td class="tableCell leftPane">
+                        <h:commandButton class="thePathButton" actionListener="#{admin.selectNamespace}"
+                            image="images/folder_add.png" alt="add folder" style="padding: 6px 7px 10px;">
+                            <f:ajax render="in namespace" onevent="hideEditorAndShowNamespace()"/>
+                        </h:commandButton>
+
+                        <!-- Tree -->
+                        <ui:include src="tree.xhtml"/>
+                    </td>
+
+                    <!-- Right pane -->
+                    <td class="tableCell rightPane">
+
+                        <!-- Html Editor -->
+                        <ui:include src="htmlEditor.xhtml"/>
+
+                        <!-- Namespace -->
+                        <ui:include src="addNamespace.xhtml"/>
+
+                        <!-- Content -->
+                        <ui:include src="addContent.xhtml"/>
+
+                        <!-- Style -->
+                        <ui:include src="addStyle.xhtml"/>
+
+                        <!-- Css Editor -->
+                        <ui:include src="cssEditor.xhtml"/>
+
+                        <h:outputText id="hiddenStyles" value="#{editor.hiddenStyles}" style="display: none"/>
+                    </td>
+                    <!-- end Right pane -->
+                </tr>
+            </table>
+        </h:form>
+    </f:view>
+</h:body>
+</html>
