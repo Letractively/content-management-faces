@@ -14,4 +14,7 @@ The following steps should get you up and running.
     {{{
              xmlns:cmf="http://tralfamadore.net/cmf"
     }}}
-  # You can access the administration panel at http://yoursite/yourwebroot/cmf/admin/index.jsf
+  # You can access the administration panel at 
+    {{{
+      http://yoursite.com/yourwebroot/cmf/admin/index.jsf
+    }}}
