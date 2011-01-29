@@ -18,3 +18,5 @@ The following steps should get you up and running.
     {{{
       http://yoursite.com/yourwebroot/cmf/admin/index.jsf
     }}}
+
+*Note:* You will need to deploy this in a server that supports the servlet 3.0 spec such as tomcat7, glassfish3, or the newer jboss application servers.
