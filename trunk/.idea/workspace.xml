@@ -20,491 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="d252fcb5-7c5d-4bdd-bb3d-8158cf0997cd" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/adapters/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/_bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/ajax.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/ckeditor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/ckeditor_base.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/ckeditor_basic.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/command.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/commanddefinition.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dataprocessor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/comment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/document.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/documentfragment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/domobject.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/element.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/elementpath.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/event.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/node.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/nodelist.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/range.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/rangelist.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/text.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/walker.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom/window.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dtd.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/editor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/editor_basic.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/env.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/event.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/eventInfo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/focusmanager.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/htmlparser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/htmlparser/basicwriter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/htmlparser/cdata.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/htmlparser/comment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/htmlparser/element.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/htmlparser/filter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/htmlparser/fragment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/htmlparser/text.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/lang.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/loader.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/plugindefinition.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/plugins.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/resourcemanager.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/scriptloader.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/skins.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/themes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/tools.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/ui.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/xml.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/_languages.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/_translationstatus.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/af.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/ar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/bg.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/bn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/bs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/cs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/cy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/da.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/de.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/el.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/en-au.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/en-ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/en-gb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/en.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/eo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/es.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/et.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/eu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/fa.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/fi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/fo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/fr-ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/fr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/gl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/gu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/he.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/hi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/hr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/hu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/is.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/it.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/ja.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/km.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/ko.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/lt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/lv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/mn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/ms.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/nb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/nl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/no.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/pl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/pt-br.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/pt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/ro.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/ru.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/sk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/sl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/sr-latn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/sr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/sv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/th.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/tr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/uk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/vi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/zh-cn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang/zh.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/a11yhelp/dialogs/a11yhelp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/a11yhelp/lang/en.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/a11yhelp/lang/he.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/a11yhelp/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/about/dialogs/about.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/about/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/adobeair/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/autogrow/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/basicstyles/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/bidi/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/blockquote/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/button/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/clipboard/dialogs/paste.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/clipboard/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/colorbutton/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/colordialog/dialogs/colordialog.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/colordialog/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/contextmenu/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/dialog/dialogDefinition.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/dialog/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/dialogadvtab/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/dialogui/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/div/dialogs/div.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/div/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/domiterator/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/editingblock/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/elementspath/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/enterkey/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/entities/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/fakeobjects/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/filebrowser/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/find/dialogs/find.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/find/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/flash/dialogs/flash.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/flash/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/floatpanel/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/font/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/format/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms/dialogs/button.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms/dialogs/checkbox.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms/dialogs/form.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms/dialogs/hiddenfield.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms/dialogs/radio.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms/dialogs/select.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms/dialogs/textarea.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms/dialogs/textfield.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/horizontalrule/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/htmldataprocessor/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/htmlwriter/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/iframe/dialogs/iframe.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/iframe/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/iframedialog/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/image/dialogs/image.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/image/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/indent/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/justify/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/keystrokes/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/link/dialogs/anchor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/link/dialogs/link.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/link/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/list/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/listblock/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/liststyle/dialogs/liststyle.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/liststyle/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/maximize/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/menu/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/menubutton/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/newpage/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/pagebreak/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/panel/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/panelbutton/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/pastefromword/filter/default.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/pastefromword/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/pastetext/dialogs/pastetext.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/pastetext/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/placeholder/dialogs/placeholder.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/placeholder/lang/en.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/placeholder/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/popup/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/preview/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/print/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/removeformat/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/resize/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/richcombo/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/save/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/scayt/dialogs/options.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/scayt/dialogs/toolbar.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/scayt/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/selection/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showborders/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/dialogs/smiley.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/sourcearea/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/specialchar/dialogs/specialchar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/specialchar/lang/en.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/specialchar/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/styles/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/styles/styles/default.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/stylescombo/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/tab/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/table/dialogs/table.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/table/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/tableresize/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/tabletools/dialogs/tableCell.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/tabletools/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/templates/dialogs/templates.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/templates/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/templates/templates/default.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/toolbar/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/dialogs/uicolor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/lang/en.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/lang/he.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/yui/assets/yui.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/yui/yui.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/undo/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/wsc/dialogs/ciframe.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/wsc/dialogs/tmpFrameset.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/wsc/dialogs/wsc.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/wsc/dialogs/wsc.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/wsc/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/wysiwygarea/plugin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/dialog.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/editor.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/elementspath.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/icons.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/mainui.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/menu.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/panel.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/presets.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/reset.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/richcombo.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/skin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/templates.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/toolbar.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/dialog.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/editor.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/elementspath.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/icons.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/mainui.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/menu.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/panel.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/presets.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/reset.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/richcombo.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/skin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/templates.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/toolbar.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/dialog.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/editor.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/elementspath.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/icons.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/mainui.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/menu.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/panel.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/presets.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/reset.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/richcombo.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/skin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/templates.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/toolbar.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/themes/default/theme.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/adapters" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/dom" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core/htmlparser" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/core" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/lang" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/a11yhelp/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/a11yhelp/lang" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/a11yhelp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/about/dialogs/logo_ckeditor.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/about/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/about" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/adobeair" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/autogrow" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/basicstyles" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/bidi" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/blockquote" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/button" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/clipboard/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/clipboard" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/colorbutton" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/colordialog/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/colordialog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/contextmenu" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/dialog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/dialogadvtab" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/dialogui" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/div/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/div" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/domiterator" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/editingblock" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/elementspath" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/enterkey" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/entities" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/fakeobjects" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/filebrowser" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/find/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/find" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/flash/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/flash/images/placeholder.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/flash/images" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/flash" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/floatpanel" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/font" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/format" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms/images/hiddenfield.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms/images" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/forms" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/horizontalrule" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/htmldataprocessor" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/htmlwriter" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/iframe/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/iframe/images/placeholder.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/iframe/images" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/iframe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/iframedialog" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/image/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/image" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/indent" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/justify" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/keystrokes" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/link/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/link/images/anchor.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/link/images" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/link" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/list" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/listblock" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/liststyle/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/liststyle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/maximize" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/menu" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/menubutton" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/newpage" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/pagebreak/images/pagebreak.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/pagebreak/images" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/pagebreak" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/panel" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/panelbutton" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/pastefromword/filter" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/pastefromword" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/pastetext/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/pastetext" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/placeholder/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/placeholder/lang" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/placeholder/placeholder.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/placeholder" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/popup" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/preview" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/print" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/removeformat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/resize" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/richcombo" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/save" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/scayt/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/scayt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/selection" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/images/block_address.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/images/block_blockquote.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/images/block_div.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/images/block_h1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/images/block_h2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/images/block_h3.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/images/block_h4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/images/block_h5.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/images/block_h6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/images/block_p.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/images/block_pre.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks/images" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showblocks" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/showborders" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/angel_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/angry_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/broken_heart.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/confused_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/cry_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/devil_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/embaressed_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/envelope.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/heart.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/kiss.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/lightbulb.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/omg_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/regular_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/sad_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/shades_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/teeth_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/thumbs_down.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/thumbs_up.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/tounge_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/whatchutalkingabout_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images/wink_smile.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley/images" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/smiley" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/sourcearea" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/specialchar/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/specialchar/lang" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/specialchar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/styles/styles" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/styles" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/stylescombo" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/tab" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/table/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/table" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/tableresize" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/tabletools/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/tabletools" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/templates/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/templates/templates/images/template1.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/templates/templates/images/template2.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/templates/templates/images/template3.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/templates/templates/images" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/templates/templates" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/templates" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/toolbar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/lang" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/uicolor.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/yui/assets/hue_bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/yui/assets/hue_thumb.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/yui/assets/picker_mask.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/yui/assets/picker_thumb.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/yui/assets" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor/yui" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/uicolor" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/undo" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/wsc/dialogs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/wsc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins/wysiwygarea" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/plugins" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/icons.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/icons_rtl.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/images/dialog_sides.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/images/dialog_sides.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/images/dialog_sides_rtl.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/images/mini.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/images/noimage.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/images/sprites.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/images/sprites_ie6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/images/toolbar_start.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama/images" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/kama" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/icons.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/icons_rtl.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/images/dialog_sides.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/images/dialog_sides.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/images/dialog_sides_rtl.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/images/mini.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/images/noimage.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/images/sprites.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/images/sprites_ie6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003/images" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/office2003" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/icons.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/icons_rtl.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/images/dialog_sides.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/images/dialog_sides.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/images/dialog_sides_rtl.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/images/mini.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/images/noimage.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/images/sprites.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/images/sprites_ie6.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/images/toolbar_start.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2/images" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins/v2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/skins" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/themes/default" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source/themes" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/_source" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/button.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/jquery-1.4.4.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/treeview-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/treeview.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/yahoo-dom-event.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/index.xhtml" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/index.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/component/tree/TreeRenderer.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/component/tree/TreeRenderer.java" />
     </list>
     <ignored path="cmf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -589,7 +112,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jquery.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="jquery.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/ckeditor/adapters/jquery.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -598,18 +121,106 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.xhtml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ContentRenderer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/content/ContentRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/admin.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="216" column="0" selection-start="6198" selection-end="6198" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contentTest.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/contentTest.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Namespace.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContentManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/ContentManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tree.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/tree/Tree.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TreeRenderer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/tree/TreeRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="yahoo-dom-event.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/yahoo-dom-event.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.xhtml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/index.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="0" selection-start="1377" selection-end="1377" vertical-scroll-proportion="-0.5714286">
+            <state line="34" column="0" selection-start="1617" selection-end="1617" vertical-scroll-proportion="0.29101285">
               <folding>
-                <marker date="1296273697000" expanded="true" signature="3131:3153" placeholder="{...}" />
-                <marker date="1296273697000" expanded="true" signature="3131:3153" placeholder="{...}" />
-                <marker date="1296273697000" expanded="true" signature="3131:3153" placeholder="{...}" />
-                <marker date="1296273697000" expanded="true" signature="4108:4121" placeholder="{...}" />
-                <marker date="1296273697000" expanded="true" signature="4128:4141" placeholder="{...}" />
-                <marker date="1296273697000" expanded="true" signature="4128:4141" placeholder="{...}" />
+                <marker date="1296286150000" expanded="true" signature="2622:2644" placeholder="{...}" />
+                <marker date="1296286150000" expanded="true" signature="2622:2644" placeholder="{...}" />
+                <marker date="1296286150000" expanded="true" signature="3619:3632" placeholder="{...}" />
+                <marker date="1296286150000" expanded="true" signature="3619:3632" placeholder="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestContentManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/TestContentManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="148" column="0" selection-start="5120" selection-end="5120" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Admin.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/Admin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="60" column="0" selection-start="1870" selection-end="1870" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -639,22 +250,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/component/tree/TreeRenderer.java" />
-        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/index.html" />
-        <option value="$PROJECT_DIR$/src/META-INF/web-fragment.xml" />
-        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf.admin.tags.xml" />
-        <option value="$PROJECT_DIR$/src/META-INF/cmf.admin.taglib.xml" />
-        <option value="$PROJECT_DIR$/src/META-INF/cmf.taglib.xml" />
-        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/tree.xhtml" />
-        <option value="$PROJECT_DIR$/web/treeAndEditorTest.xhtml" />
-        <option value="$PROJECT_DIR$/web/full/tree.xhtml" />
         <option value="$PROJECT_DIR$/web/treeTest.xhtml" />
         <option value="$PROJECT_DIR$/web/editorTest.xhtml" />
         <option value="$PROJECT_DIR$/test/net/tralfamadore/page/test/EditorTest.java" />
         <option value="$PROJECT_DIR$/test/net/tralfamadore/page/test/ContentTest.java" />
-        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/index.xhtml" />
         <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/addNamespace.xhtml" />
         <option value="$PROJECT_DIR$/test/net/tralfamadore/page/ContentTest.java" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/component/content/ContentRenderer.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/admin.js" />
+        <option value="$PROJECT_DIR$/web/contentTest.xhtml" />
+        <option value="$PROJECT_DIR$/cmf.xml" />
+        <option value="$PROJECT_DIR$/module_cmf.xml" />
+        <option value="$PROJECT_DIR$/cmf.properties" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/component/tree/Tree.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/yahoo-dom-event.js" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/component/tree/TreeRenderer.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/index.xhtml" />
       </list>
     </option>
   </component>
@@ -756,21 +367,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cmf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="content-management-faces" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -782,29 +379,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cmf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemId" value="component" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="net" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tralfamadore" />
+              <option name="myItemId" value="tree" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -819,6 +398,100 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tralfamadore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="contentList" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tralfamadore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tralfamadore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tralfamadore" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -892,7 +565,41 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ckeditor" />
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -903,7 +610,7 @@
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="248" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="240" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="55" />
     <property name="project.structure.proportion" value="0.15" />
@@ -923,6 +630,7 @@
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth0" value="207" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth4" value="1006" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth3" value="207" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -1305,7 +1013,7 @@
     </configuration>
     <configuration default="false" name="Glassfish" type="GlassfishConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="Glassfish 3.0.1">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/cmf/contentTest.jsf" />
-      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="cmf:war exploded">
           <settings />
@@ -1422,11 +1130,31 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1200" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32962963" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32962963" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962963" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1436,13 +1164,13 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962963" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962963" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962963" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18011758" sideWeight="0.6703704" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19508284" sideWeight="0.6703704" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19508284" sideWeight="0.6703704" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32222223" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1452,7 +1180,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
@@ -1464,9 +1192,9 @@
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="get rid of ckeditor samples directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bug where html was being un-escaped when saved" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
-    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -1493,6 +1221,7 @@
     <MESSAGE value="select.js in codeMirror was causing a problem with htmlunit" />
     <MESSAGE value="added some ids and cleaned up some test code" />
     <MESSAGE value="get rid of ckeditor samples directory" />
+    <MESSAGE value="fixed bug where html was being un-escaped when saved" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1536,55 +1265,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/ContentTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/Editor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/NamespaceTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/ScriptTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/StyleScriptEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/StyleTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/Tree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="1997" selection-end="1997" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/full/admin.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="0" selection-start="411" selection-end="411" vertical-scroll-proportion="-0.5714286">
@@ -1595,28 +1275,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/tree/TreeRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/tree.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/contentTest.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
           <folding />
@@ -1632,23 +1291,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/index.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="1377" selection-end="1377" vertical-scroll-proportion="-0.5714286">
-          <folding>
-            <marker date="1296273697000" expanded="true" signature="3131:3153" placeholder="{...}" />
-            <marker date="1296273697000" expanded="true" signature="3131:3153" placeholder="{...}" />
-            <marker date="1296273697000" expanded="true" signature="3131:3153" placeholder="{...}" />
-            <marker date="1296273697000" expanded="true" signature="4108:4121" placeholder="{...}" />
-            <marker date="1296273697000" expanded="true" signature="4128:4141" placeholder="{...}" />
-            <marker date="1296273697000" expanded="true" signature="4128:4141" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/page/ContentTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="0" selection-start="1870" selection-end="1870" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/TestContentManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="0" selection-start="5120" selection-end="5120" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1657,6 +1316,74 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/content/ContentRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="216" column="0" selection-start="6198" selection-end="6198" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/contentTest.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/ContentManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/tree/Tree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/tree/TreeRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/yahoo-dom-event.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/index.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="1617" selection-end="1617" vertical-scroll-proportion="0.29101285">
+          <folding>
+            <marker date="1296286150000" expanded="true" signature="2622:2644" placeholder="{...}" />
+            <marker date="1296286150000" expanded="true" signature="2622:2644" placeholder="{...}" />
+            <marker date="1296286150000" expanded="true" signature="3619:3632" placeholder="{...}" />
+            <marker date="1296286150000" expanded="true" signature="3619:3632" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

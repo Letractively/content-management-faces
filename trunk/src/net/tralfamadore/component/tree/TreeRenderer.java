@@ -22,6 +22,8 @@ package net.tralfamadore.component.tree;
 import net.tralfamadore.admin.TreeModel;
 import net.tralfamadore.admin.TreeNode;
 
+import javax.faces.application.ResourceDependencies;
+import javax.faces.application.ResourceDependency;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
@@ -38,6 +40,12 @@ import java.util.Map;
  * Time: 2:55 PM
  */
 @FacesRenderer(rendererType = "Tree", componentFamily = "javax.faces.Output")
+@ResourceDependencies( {
+        @ResourceDependency(library = "cmf/admin/resources", name = "button.css", target = "head"),
+        @ResourceDependency(library = "cmf/admin/resources", name = "yahoo-dom-event.js", target = "head"),
+        @ResourceDependency(library = "cmf/admin/resources", name = "treeview-min.js", target = "head"),
+        @ResourceDependency(library = "cmf/admin/resources", name = "treeview.css", target = "head")
+})
 public class TreeRenderer extends Renderer {
     private Map<String,UITreeNode> nodes;
 

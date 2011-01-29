@@ -27,18 +27,11 @@
       xml:lang="en" lang="en">
 <h:head>
     <title>Content Management Faces</title>
-    <link rel="stylesheet" type="text/css"
-          href="http://yui.yahooapis.com/2.8.2r1/build/treeview/assets/skins/sam/treeview.css"/>
-    <link rel="stylesheet" type="text/css"
-          href="http://yui.yahooapis.com/2.8.2r1/build/button/assets/skins/sam/button.css"/>
-    <link rel="stylesheet" type="text/css" href="resources/admin.css"/>
-    <script type="text/javascript"
-            src="http://yui.yahooapis.com/2.8.2r1/build/yahoo-dom-event/yahoo-dom-event.js"></script>
-    <script type="text/javascript" src="http://yui.yahooapis.com/2.8.2r1/build/treeview/treeview-min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <h:outputStylesheet library="cmf/admin/resources" name="admin.css" />
+    <h:outputScript library="cmf/admin/resources" name="jquery-1.4.4.min.js" />
+    <h:outputScript library="cmf/admin/resources" name="admin.js" />
     <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="../codeMirror/js/codemirror.js"></script>
-    <script type="text/javascript" src="resources/admin.js"></script>
 </h:head>
 <h:body>
     <f:view contentType="text/html">
@@ -57,8 +50,9 @@
                 <tr>
                     <!-- Left pane -->
                     <td class="tableCell leftPane">
-                        <h:commandButton id="emptyPathButton" class="thePathButton" actionListener="#{admin.selectNamespace}"
-                            image="images/folder_add.png" alt="add folder" style="padding: 6px 7px 10px;">
+                        <h:commandButton id="emptyPathButton" actionListener="#{admin.selectNamespace}"
+                                         class="thePathButton" image="images/folder_add.png" alt="add folder"
+                                         style="padding: 6px 7px 10px;">
                             <f:ajax render="in namespace" onevent="hideEditorAndShowNamespace()"/>
                         </h:commandButton>
 
