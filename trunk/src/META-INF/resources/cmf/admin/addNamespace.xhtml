@@ -34,7 +34,8 @@
                 <h:outputText id="namespace" for="in" style="padding-right: 0; margin-right:0;"
                               value="#{admin.tree.selectedNamespaceString}"/>
                 <h:inputText id="in" value="#{admin.tree.newNamespace}"/>
-                <h:commandButton styleClass="theButton" value="Submit" actionListener="#{admin.addNamespace}">
+                <h:commandButton styleClass="theButton" value="Submit" actionListener="#{admin.addNamespace}"
+                                 id="submitNamespace">
                     <f:ajax execute="in" render="theTree"/>
                 </h:commandButton>
             </div>

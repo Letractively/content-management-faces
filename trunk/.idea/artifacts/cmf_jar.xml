@@ -11,7 +11,9 @@
       </element>
       <element id="file-copy" path="$PROJECT_DIR$/LICENSE" />
       <element id="directory" name="src">
-        <element id="dir-copy" path="$PROJECT_DIR$/src" />
+        <element id="directory" name="net">
+          <element id="dir-copy" path="$PROJECT_DIR$/src/net" />
+        </element>
       </element>
     </root>
   </artifact>

@@ -57,7 +57,7 @@
                 <tr>
                     <!-- Left pane -->
                     <td class="tableCell leftPane">
-                        <h:commandButton class="thePathButton" actionListener="#{admin.selectNamespace}"
+                        <h:commandButton id="emptyPathButton" class="thePathButton" actionListener="#{admin.selectNamespace}"
                             image="images/folder_add.png" alt="add folder" style="padding: 6px 7px 10px;">
                             <f:ajax render="in namespace" onevent="hideEditorAndShowNamespace()"/>
                         </h:commandButton>
