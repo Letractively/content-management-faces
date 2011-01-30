@@ -39,6 +39,7 @@ public class EntityManagerProviderFactory {
 
     private EntityManagerProviderFactory() { }
 
+
     @SuppressWarnings({"unchecked"})
     public EntityManagerProvider get() {
         if(entityManagerProvider == null) {
