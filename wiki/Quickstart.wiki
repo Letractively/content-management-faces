@@ -17,6 +17,7 @@ The following steps should get you up and running.
   # You can now use the content tag in your pages like this:
     {{{
       <cmf:content namespace="com.somesite" name="contentName"/>
+    }}}
   # You can access the administration panel at 
     {{{
       http://yoursite.com/yourwebroot/cmf/admin/index.jsf
