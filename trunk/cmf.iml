@@ -17,6 +17,16 @@
         <configuration />
       </facet>
     </facet>
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <setting name="provider-name" value="TopLink" />
+        <datasource-mapping>
+          <factory-entry name="cmf" value="ee2f781f-f524-4304-a581-394f5cc210ba" />
+        </datasource-mapping>
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="true">
     <exclude-output />
@@ -38,6 +48,9 @@
       </library>
     </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="el" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="jpa" level="project" />
+    <orderEntry type="library" name="Java EE 6" level="project" />
+    <orderEntry type="library" name="postgres" level="project" />
   </component>
 </module>
 

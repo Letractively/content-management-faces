@@ -20,12 +20,15 @@
 package net.tralfamadore.admin;
 
 import net.tralfamadore.cmf.*;
+import net.tralfamadore.persistence.EntityManagerProviderFactory;
+import net.tralfamadore.persistence.Test;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.persistence.EntityManager;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -313,5 +316,14 @@ public class Admin {
         currentStyleNode = tree.getTreeModel().findStyleNode(Namespace.createFromString(namespace),
                 name, tree.getTreeModel().root());
         styleScriptEditor.setValue(currentStyleNode.getStyle().getStyle());
+    }
+
+    @SuppressWarnings({"unchecked"})
+    public void testEntityManager(ActionEvent e) {
+        EntityManager em = EntityManagerProviderFactory.getInstance().get().get();
+        List<Test> tests = (List<Test>) em.createQuery("select t from Test t").getResultList();
+        for(Test test : tests) {
+            System.out.println(test.getValue());
+        }
     }
 }

@@ -14,6 +14,19 @@
       <item index="2" class="java.lang.String" itemvalue="javax.faces.render.FacesRenderer" />
     </list>
   </component>
+  <component name="FacetAutodetectingManager">
+    <autodetection-disabled>
+      <facet-type id="javaeeApplication">
+        <modules>
+          <module name="cmf">
+            <files>
+              <file url="file://$PROJECT_DIR$/web/ckeditor/_samples/adobeair/application.xml" />
+            </files>
+          </module>
+        </modules>
+      </facet-type>
+    </autodetection-disabled>
+  </component>
   <component name="IdProvider" IDEtalkID="1E75B87E9021200AA8ED5FD2390268F3" />
   <component name="JUnitClassTemplateConfiguration">
     <option name="DONT_SHOW_TEMPLATE_DIALOG_IF_ONLY_ONE_TEMPLATE" value="false" />

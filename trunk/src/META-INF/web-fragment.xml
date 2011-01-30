@@ -30,4 +30,8 @@
         <servlet-name>CMFJSFUnit Faces Servlet</servlet-name>
         <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
+
+    <listener>
+        <listener-class>net.tralfamadore.persistence.JpaShutdownListener</listener-class>
+    </listener>
 </web-fragment>

@@ -36,4 +36,8 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+    <context-param>
+        <param-name>com.google.code.content-management-faces.EntityManagerFactoryProvider</param-name>
+        <param-value>net.tralfamadore.persistence.TestEntityManagerProvider</param-value>
+    </context-param>
 </web-app>
