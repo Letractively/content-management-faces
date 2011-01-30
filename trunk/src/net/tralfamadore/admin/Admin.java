@@ -21,38 +21,49 @@ package net.tralfamadore.admin;
 
 import net.tralfamadore.cmf.*;
 
-import javax.el.MethodExpression;
-import javax.faces.FacesException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.component.behavior.AjaxBehavior;
-import javax.faces.component.html.HtmlCommandButton;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.faces.event.MethodExpressionActionListener;
-import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
  * User: billreh
  * Date: 1/19/11
  * Time: 1:33 AM
+ *
+ * The main backing bean used for the admin page (META-INF/resources/admin/index.xhtml and the pages it includes.
  */
 @ManagedBean
 @SessionScoped
+@SuppressWarnings({"UnusedParameters"})
 public class Admin {
+    /** bean used to hold information about the tree */
     @ManagedProperty(value = "#{tree}")
     private Tree tree;
+
+    /** bean used to hold information about the editor */
     @ManagedProperty(value = "#{editor}")
     private Editor editor;
+
+    /** bean used to hold information about the style editor */
     @ManagedProperty(value = "#{styleScriptEditor}")
     private StyleScriptEditor styleScriptEditor;
+
+    /** the currently selected content node */
     private ContentTreeNode currentNode;
+
+    /** the currently selected style node */
     private StyleTreeNode currentStyleNode;
 
+    /** the content manager */
+    private final ContentManager contentManager = TestContentManager.getInstance();
+
+
+    /* getters and setters */
 
     public Editor getEditor() {
         return editor;
@@ -78,15 +89,27 @@ public class Admin {
         this.tree = tree;
     }
 
+
+    /* action listeners */
+
+    /**
+     * Action listener that saves the editor content.
+     *
+     * @param e event info
+     */
     public void saveEditorContent(ActionEvent e) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
         String value = (String)requestMap.get("ckCode");
         currentNode.getContent().setContent(value);
-        ContentManager contentManager = TestContentManager.getInstance();
         contentManager.saveContent(currentNode.getContent());
     }
 
+    /**
+     * Action listener that updates the editor content from the currently selected tree node.
+     *
+     * @param e event info
+     */
     public void updateEditorContent(ActionEvent e) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
@@ -96,12 +119,16 @@ public class Admin {
             Namespace ns = Namespace.createFromString(namespace);
             currentNode = tree.getTreeModel().findContentNode(ns, name, tree.getTreeModel().root());
             editor.setValue(currentNode.getContent().getContent());
-            editor.clearHiddenStyles();
 
             addStylesForEditor();
         }
     }
 
+    /**
+     * Action listener that deletes the currently selected content.
+     *
+     * @param e event info
+     */
     public void deleteContent(ActionEvent e) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
@@ -109,13 +136,17 @@ public class Admin {
         String namespace = (String) requestMap.get("namespace");
 
         if(namespace != null) {
-            ContentManager contentManager = TestContentManager.getInstance();
             Content content = contentManager.loadContent(Namespace.createFromString(namespace), name);
             contentManager.deleteContent(content);
             tree.createTreeModel();
         }
     }
 
+    /**
+     * Action listener to save namespace.
+     *
+     * @param e event info
+     */
     public void addNamespace(ActionEvent e) {
         Namespace namespace;
         String parentNamespace = tree.getSelectedNamespaceString();
@@ -125,13 +156,16 @@ public class Admin {
         else
             namespace = Namespace.createFromString(tree.getSelectedNamespaceString() + tree.getNewNamespace());
 
-        ContentManager contentManager = TestContentManager.getInstance();
         contentManager.saveNamespace(namespace);
         tree.createTreeModel();
         tree.setNewNamespace(null);
     }
 
-
+    /**
+     * Action listener called to update fields before the one of the save namespace/content/style panel are shown.
+     *
+     * @param e event info
+     */
     public void selectNamespace(ActionEvent e) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
@@ -139,17 +173,26 @@ public class Admin {
         tree.setSelectedNamespace(value == null || value.isEmpty() ? null : Namespace.createFromString(value));
     }
 
+    /**
+     * Action listener to delete namespace.
+     *
+     * @param e event info
+     */
     public void deleteNamespace(ActionEvent e) {
         selectNamespace(e);
 
         if(tree.getSelectedNamespace() == null)
             return;
 
-        ContentManager contentManager = TestContentManager.getInstance();
         contentManager.deleteNamespace(tree.getSelectedNamespace());
         tree.createTreeModel();
     }
 
+    /**
+     * Action listener to save content.
+     *
+     * @param e event info
+     */
     public void newContent(ActionEvent e) {
         Content content = new Content();
         Date now = new Date();
@@ -157,22 +200,30 @@ public class Admin {
         content.setDateModified(now);
         content.setNamespace(tree.getSelectedNamespace());
         content.setName(tree.getNewContentName());
-        ContentManager contentManager = TestContentManager.getInstance();
         contentManager.saveContent(content);
         tree.createTreeModel();
         tree.setNewContentName(null);
     }
 
+    /**
+     * Action listener to save content.
+     *
+     * @param e event info
+     */
     public void newStyle(ActionEvent e) {
         Style style= new Style();
         style.setNamespace(tree.getSelectedNamespace());
         style.setName(tree.getNewStyleName());
-        ContentManager contentManager = TestContentManager.getInstance();
         contentManager.saveStyle(style);
         tree.createTreeModel();
-        tree.setNewContentName(null);
+        tree.setNewStyleName(null);
     }
 
+    /**
+     * Action listener called to update the style editor before it is shown.
+     *
+     * @param e event info
+     */
     public void updateStyleEditor(ActionEvent e) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
@@ -185,15 +236,24 @@ public class Admin {
         }
     }
 
+    /**
+     * Action listener to save style editor content.
+     *
+     * @param e event info
+     */
     public void saveStyleEditor(ActionEvent e) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
         String value = (String)requestMap.get("cssEditor");
         currentStyleNode.getStyle().setStyle(value);
-        ContentManager contentManager = TestContentManager.getInstance();
         contentManager.saveStyle(currentStyleNode.getStyle());
     }
 
+    /**
+     * Action listener to delete a style.
+     *
+     * @param e event info
+     */
     public void deleteStyle(ActionEvent e) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
@@ -201,13 +261,18 @@ public class Admin {
         String namespace = (String) requestMap.get("namespace");
 
         if(namespace != null) {
-            ContentManager contentManager = TestContentManager.getInstance();
             Style style = contentManager.loadStyle(Namespace.createFromString(namespace), name);
             contentManager.deleteStyle(style);
             tree.createTreeModel();
+            addStylesForEditor();
         }
     }
 
+    /**
+     * Action listener to associate a style with content.
+     *
+     * @param e event info
+     */
     public void associateStyle(ActionEvent e) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
@@ -215,68 +280,38 @@ public class Admin {
         String namespace = (String) requestMap.get("namespace");
 
         if(namespace != null) {
-            ContentManager contentManager = TestContentManager.getInstance();
             Style style = contentManager.loadStyle(Namespace.createFromString(namespace), name);
             Content content = currentNode.getContent();
             contentManager.associateWithContent(content, style);
-            HtmlCommandButton newStyle = createStyleButton(style);
-            newStyle.setTransient(true);
-            addStyle(newStyle);
             styleScriptEditor.setValue(style.getStyle());
 
             addStylesForEditor();
         }
     }
 
+
+    /* helper methods */
+
     private void addStylesForEditor() {
-        TestContentManager contentManager = TestContentManager.getInstance();
-        editor.clearHiddenStyles();
+        List<Style> styles = editor.getStyles();
+        styles.clear();
+        editor.clearCurrentStyles();
         for(Style style : contentManager.loadStylesForContent(currentNode.getContent())) {
-            editor.addHiddenStyle(style.getStyle());
-        }
-    }
-
-    private void addStyle(HtmlCommandButton newStyle) {
-        boolean found = false;
-        for(UIComponent c : styleScriptEditor.getStyles().getChildren()) {
-            if(c.getId().equals(newStyle.getId())) {
-                found = true;
-                break;
-            }
+            editor.addCurrentStyle(style.getStyle());
+            styles.add(style);
         }
 
-        if(!found)
-            styleScriptEditor.getStyles().getChildren().add(newStyle);
-        styleScriptEditor.getStyles().getChildren().add(newStyle);
+
     }
 
-    private HtmlCommandButton createStyleButton(Style style) {
-        FacesContext context = FacesContext.getCurrentInstance();
-        HtmlCommandButton button = new HtmlCommandButton();
-        AjaxBehavior ajaxBehavior = new AjaxBehavior();
-        MethodExpression methodExpression = context.getApplication().getExpressionFactory().createMethodExpression(
-                context.getELContext(), "#{admin.loadStyleEditor}", null, new Class[] { ActionEvent.class });
-
-        button.setValue(style.getName());
-        button.setStyleClass("styleBubble");
-        button.setId(style.getNamespace().getFullName().replaceAll("\\.", "_") + "-" + style.getName());
-        button.addActionListener(new MethodExpressionActionListener(methodExpression));
-        ajaxBehavior.setRender(Arrays.asList("cssEditor", "stylePanel", "hiddenStyles"));
-        ajaxBehavior.setOnevent("doTheStyleThing2");
-        button.addClientBehavior("action", ajaxBehavior);
-
-        return button;
-    }
-
-    @SuppressWarnings({"unchecked"})
     public void loadStyleEditor(ActionEvent e) {
-        String id = e.getComponent().getId();
-        String[] namespaceAndName = id.split("-");
-        if(namespaceAndName == null || namespaceAndName.length != 2)
-            throw new FacesException("cannot determine style from id [" + id + "]");
+        FacesContext context = FacesContext.getCurrentInstance();
+        Map requestMap = context.getExternalContext().getRequestParameterMap();
+        String name = (String) requestMap.get("name");
+        String namespace = (String) requestMap.get("namespace");
 
-        Namespace ns = Namespace.createFromString(namespaceAndName[0].replaceAll("_", "."));
-        currentStyleNode = tree.getTreeModel().findStyleNode(ns, namespaceAndName[1], tree.getTreeModel().root());
+        currentStyleNode = tree.getTreeModel().findStyleNode(Namespace.createFromString(namespace),
+                name, tree.getTreeModel().root());
         styleScriptEditor.setValue(currentStyleNode.getStyle().getStyle());
     }
 }

@@ -31,37 +31,42 @@ var cssEditor;
 var lastHighlightedNodeElement;
 var lastHighlightedNode;
 
-//noinspection JSUnusedGlobalSymbols
-function hideSlowly(id) {
-    $("#" + id).fadeOut('slow');
-}
-
-//noinspection JSUnusedGlobalSymbols
-function showSlowly(id) {
-    $("#" + id).fadeIn('slow');
-}
 
 function doTheThing(xhr) {
     if(xhr.status == "success") {
         CKEDITOR.instances.ckCode.destroy();
         CKEDITOR.on('instanceCreated', function(e) {
             var editor = e.editor;
-            var css = $("#hiddenStyles").text();
+            var css = $("#currentStyles").text();
             editor.addCss(css);
         });
         CKEDITOR.replace('ckCode');
         CKEDITOR.instances.ckCode.resetDirty();
-        CKEDITOR.instances.ckCode.focus();
         showEditorAndHideNamespace();
+        CKEDITOR.instances.ckCode.focus();
     }
 }
+
+function updateEditorPostStyleDrop() {
+    CKEDITOR.instances.ckCode.destroy();
+    CKEDITOR.on('instanceCreated', function(e) {
+        var editor = e.editor;
+        var css = $("#currentStyles").text();
+        editor.addCss(css);
+    });
+    CKEDITOR.replace('ckCode');
+    CKEDITOR.instances.ckCode.resetDirty();
+    showEditorAndHideNamespace();
+    CKEDITOR.instances.ckCode.focus();
+}
+
 function hideOriginalStyle() {
     $("#cssEditor").hide();
 }
 
 function doTheStyleThing() {
     var content = $("#cssEditor").val();
-    cssEditor.setCode(content);
+    getCssEditor().setCode(content);
     showCssEditor();
     $("#cssEditor").hide();
 }
@@ -83,6 +88,7 @@ function addCssToEditor() {
 //    CKEDITOR.instances.ckCode.setMode('source');
     CKEDITOR.instances.ckCode.setMode('wysiwyg');
 }
+
 
 //noinspection JSUnusedGlobalSymbols
 function checkTheDirty() {
@@ -113,7 +119,6 @@ function updateField(editor) {
     $("#ckCode").text(data);
 }
 
-//noinspection JSUnusedGlobalSymbols
 function updateEditor() {
     var editor = CKEDITOR.instances.ckCode;
     var data = editor.getData();
@@ -121,31 +126,13 @@ function updateEditor() {
 }
 
 function updateStyleEditor() {
-    var data = cssEditor.getCode();
+    var data = getCssEditor().getCode();
     $("#cssEditor").text(data);
 }
 
 //noinspection JSUnusedGlobalSymbols
 function resetDirty() {
     CKEDITOR.instances.ckCode.resetDirty();
-}
-
-function insertHeader() {
-    showEditor();
-    CKEDITOR.instances.ckCode.setData("<h1>Header</h1>");
-    $("#addNamespace").css("display", "none");
-    $("#addNamespace").css("display", "none");
-    $("#addScriptEditor").css("display", "none");
-    $("#addCssEditor").css("display", "none");
-    $("#addContent").css("display", "none");
-}
-function insertArticle() {
-    showEditor();
-    CKEDITOR.instances.ckCode.setData("<p>Article about stuff...</p>");
-    $("#addNamespace").css("display", "none");
-    $("#addScriptEditor").css("display", "none");
-    $("#addCssEditor").css("display", "none");
-    $("#addContent").css("display", "none");
 }
 
 function hideEditor() {
@@ -158,6 +145,7 @@ function showEditor() {
     $("#cke_ckCode").css("display", "block");
     $("#styles").css("display", "block");
     $("#submit").css("display", "inline");
+    $("#cke_ckCode").css("display", "block");
 }
 
 function hideEditorAndShowNamespace() {
@@ -170,7 +158,6 @@ function hideEditorAndShowNamespace() {
     $("#in").focus();
 }
 
-//noinspection JSUnusedGlobalSymbols
 function hideEditorAndShowStyle() {
     hideEditor();
     $("#addNamespace").css("display", "none");
@@ -191,7 +178,6 @@ function hideEditorAndShowContent() {
     $("#content").focus();
 }
 
-//noinspection JSUnusedGlobalSymbols
 function showEditorAndHideNamespace() {
     showEditor();
     $("#addNamespace").css("display", "none");
@@ -208,9 +194,10 @@ function showCssEditor() {
     $("#addScriptEditor").css("display", "none");
     $("#addCssEditor").css("display", "block");
     $("#addStyle").css("display", "none");
-    cssEditor.focus();
+    getCssEditor().focus();
 }
 
+//noinspection JSUnusedGlobalSymbols
 function showJsEditor() {
     hideEditor();
     $("#addNamespace").css("display", "none");
@@ -221,6 +208,7 @@ function showJsEditor() {
     scriptEditor.setCode("function blah(arg) {\n  alert(arg);\n}");
 }
 
+//noinspection JSUnusedGlobalSymbols
 function handleNodeClick(args) {
     var el = args.event.target.nextElementSibling;
 
@@ -235,31 +223,22 @@ function handleNodeClick(args) {
     return tree1.onEventToggleHighlight(args);
 }
 
-function addNode(name) {
-    var val = $("#" + name);
-    var n = val.attr('value');
-    new YAHOO.widget.HTMLNode('<strong>' + n + '</strong>', lastHighlightedNode, true);
-    lastHighlightedNode.expand();
-    lastHighlightedNode.showChildren();
-    lastHighlightedNode.refresh();
-}
-
-function removeNode() {
-    var node = tree1.getHighlightedNode();
-    var parentNode = node.parent;
-    if(node == null)
-        return;
-    tree1.removeNode(node, true);
-    parentNode.expand();
-    parentNode.refresh();
-}
-
-function addArticleStyle() {
-    $("#theStyles").append(' <button onclick="showCssEditor(); return false;" class="styleBubble" title="net.tralfamadore.site.page1.articleStyles"> <span style="padding-left: 5px; padding-right: 5px;">articleStyles</span> </button>');
+function getCssEditor() {
+    if(cssEditor == null) {
+        cssEditor = CodeMirror.fromTextArea('cssEditor', {
+            height: "307px",
+            parserfile: "parsecss.js",
+            stylesheet: "../codeMirror/css/csscolors.css",
+            path: "../codeMirror/js/",
+            reindentOnLoad: true,
+            lineNumbers: true
+        });
+    }
+    return cssEditor;
 }
 
 $(document).ready(function() {
-    var css = $("#hiddenStyles").text();
+    var css = $("#currentStyles").text();
     CKEDITOR.on('instanceCreated', function(e) {
         var editor = e.editor;
         editor.addCss(css);
@@ -275,4 +254,3 @@ $(document).ready(function() {
         lineNumbers: true
     });
 });
-

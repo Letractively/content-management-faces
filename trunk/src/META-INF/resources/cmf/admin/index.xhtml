@@ -35,7 +35,7 @@
 </h:head>
 <h:body>
     <f:view contentType="text/html">
-        <h:form prependId="false">
+        <h:form prependId="false" id="theForm">
             <table style="width: 100%; border-spacing: 10px;">
                 <tr>
                     <!-- Title -->
@@ -78,7 +78,7 @@
                         <!-- Css Editor -->
                         <ui:include src="cssEditor.xhtml"/>
 
-                        <h:outputText id="hiddenStyles" value="#{editor.hiddenStyles}" style="display: none"/>
+                        <h:outputText id="currentStyles" value="#{editor.currentStyles}" style="display: none"/>
                     </td>
                 </tr>
             </table>

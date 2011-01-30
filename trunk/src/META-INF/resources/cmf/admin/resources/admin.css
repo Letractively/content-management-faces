@@ -120,7 +120,8 @@ body {
 
 .styleBubble {
     padding: 4px;
-    background-color: #accfff;
+    color: #4e0c0c;
+    border-color: #4e0c0c;
     border-radius: 25px 15px 25px 15px;
     -moz-border-radius: 25px 15px 25px 15px;
     -webkit-border-radius: 25px 15px 25px 15px;

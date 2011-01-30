@@ -30,14 +30,29 @@ import java.util.List;
  * User: billreh
  * Date: 1/20/11
  * Time: 4:14 AM
+ *
+ * This managed bean is a backing bean for the admin page and is also used by the {@link Admin} managed bean.  It
+ * holds the model for the tree (the list of namespaces, content, styles, etc).
  */
 @ManagedBean
 @SessionScoped
 public class Tree implements Serializable {
+    /** the content manager */
+    private final ContentManager contentManager = TestContentManager.getInstance();
+
+    /** the tree model, representing all of our content */
     private TreeModel treeModel = new TreeModel();
+
+    /** the currently selected namespace */
     private Namespace selectedNamespace;
+
+    /** namespace to be added */
     private String newNamespace;
+
+    /** name of content to be added */
     private String newContentName;
+
+    /** name of style to be added */
     private String newStyleName;
 
 
@@ -46,30 +61,7 @@ public class Tree implements Serializable {
     }
 
 
-    public void createTreeModel() {
-        ContentManager contentManager = TestContentManager.getInstance();
-        ((TestContentManager)contentManager).init();
-        List<Namespace> namespaces = contentManager.loadAllNamespaces();
-        treeModel = new TreeModel();
-        for(Namespace namespace : namespaces) {
-            treeModel.addNode(namespace);
-        }
-
-        List<Content> contentList = contentManager.loadAllContent();
-        for(Content content : contentList) {
-            treeModel.addNode(content);
-        }
-
-        List<Style> styles = contentManager.loadAllStyles();
-        for(Style style : styles) {
-            treeModel.addNode(style);
-        }
-
-        List<Script> scripts = contentManager.loadAllScripts();
-        for(Script script : scripts) {
-            treeModel.addNode(script);
-        }
-    }
+    /* getters and setters */
 
     public TreeModel getTreeModel() {
         return treeModel;
@@ -77,18 +69,6 @@ public class Tree implements Serializable {
 
     public void setTreeModel(TreeModel treeModel) {
         this.treeModel = treeModel;
-    }
-
-    public Namespace getSelectedNamespace() {
-        return selectedNamespace;
-    }
-
-    public String getSelectedNamespaceString() {
-        return selectedNamespace == null ? null : selectedNamespace.getFullName() + '.';
-    }
-
-    public void setSelectedNamespace(Namespace selectedNamespace) {
-        this.selectedNamespace = selectedNamespace;
     }
 
     public String getNewNamespace() {
@@ -113,5 +93,49 @@ public class Tree implements Serializable {
 
     public void setNewStyleName(String newStyleName) {
         this.newStyleName = newStyleName;
+    }
+
+    public Namespace getSelectedNamespace() {
+        return selectedNamespace;
+    }
+
+    public void setSelectedNamespace(Namespace selectedNamespace) {
+        this.selectedNamespace = selectedNamespace;
+    }
+
+    /**
+     * Virtual getter to return the namespace with a '.' at the end of it.
+     *
+     * @return The namespace with a '.' at the end of it.
+     */
+    public String getSelectedNamespaceString() {
+        return selectedNamespace == null ? null : selectedNamespace.getFullName() + '.';
+    }
+
+    /**
+     * Creates the tree model for the tree component from information gotten from the content manager.  Used internally
+     * and by other components to "re-render" the model when it is updated.
+     */
+    public void createTreeModel() {
+        List<Namespace> namespaces = contentManager.loadAllNamespaces();
+        treeModel = new TreeModel();
+        for(Namespace namespace : namespaces) {
+            treeModel.addNode(namespace);
+        }
+
+        List<Content> contentList = contentManager.loadAllContent();
+        for(Content content : contentList) {
+            treeModel.addNode(content);
+        }
+
+        List<Style> styles = contentManager.loadAllStyles();
+        for(Style style : styles) {
+            treeModel.addNode(style);
+        }
+
+        List<Script> scripts = contentManager.loadAllScripts();
+        for(Script script : scripts) {
+            treeModel.addNode(script);
+        }
     }
 }

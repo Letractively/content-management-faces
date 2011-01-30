@@ -19,21 +19,35 @@
 
 package net.tralfamadore.admin;
 
+import net.tralfamadore.cmf.Style;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * User: billreh
  * Date: 1/18/11
  * Time: 2:28 AM
+ *
+ * This managed bean is a backing bean for the admin page and is also used by the {@link Admin} managed bean.  It
+ * represents the current contents of the editor and the styles associated with it.
  */
 @ManagedBean
 @SessionScoped
 public class Editor implements Serializable {
+    /** the content value in the editor */
     private String value;
-    private String hiddenStyles;
 
+    /** styles that the current content in the editor is using */
+    private String currentStyles;
+
+    private List<Style> styles = new Vector<Style>();
+
+
+    /* getters and setters */
 
     public String getValue() {
         return value;
@@ -43,19 +57,35 @@ public class Editor implements Serializable {
         this.value = value;
     }
 
-    public void addHiddenStyle(String style) {
-        hiddenStyles = hiddenStyles + " " + style;
+    public String getCurrentStyles() {
+        return currentStyles;
     }
 
-    public void clearHiddenStyles() {
-        hiddenStyles = "";
+    public void setCurrentStyles(String currentStyles) {
+        this.currentStyles = currentStyles;
     }
 
-    public String getHiddenStyles() {
-        return hiddenStyles;
+    public List<Style> getStyles() {
+        return styles;
     }
 
-    public void setHiddenStyles(String hiddenStyles) {
-        this.hiddenStyles = hiddenStyles;
+    public void setStyles(List<Style> styles) {
+        this.styles = styles;
+    }
+
+    /**
+     * Clear the list of styles.
+     */
+    public void clearCurrentStyles() {
+        currentStyles = "";
+    }
+
+    /**
+     * Add a style to the list of current styles.
+     *
+     * @param style the css to add.
+     */
+    public void addCurrentStyle(String style) {
+        currentStyles = currentStyles + " " + style;
     }
 }

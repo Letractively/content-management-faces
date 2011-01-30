@@ -245,11 +245,4 @@ public class TestContentManagerTest {
         assertTrue(contentManager.loadStylesForContent(content).contains(style));
         assertFalse(contentManager.loadStylesForContent(content).contains(newStyle));
     }
-
-    @Test
-    public void testInit() {
-        ContentManager contentManager = TestContentManager.getInstance();
-        ((TestContentManager)contentManager).init();
-        contentManager.loadNamespace(new Namespace("net"));
-    }
 }

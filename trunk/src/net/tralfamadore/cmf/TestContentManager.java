@@ -25,36 +25,57 @@ import java.util.*;
  * User: billreh
  * Date: 1/19/11
  * Time: 6:26 PM
+ *
+ * A test implementation of the {@link ContentManager} interface which keeps all content in memory.
  */
 public class TestContentManager implements ContentManager {
+    /** list of all namespaces */
     private final List<Namespace> namespaces = new Vector<Namespace>();
-    private final List<Content> contentList = new Vector<Content>();
-    private final List<Script> scripts = new Vector<Script>();
-    private final List<Style> styles = new Vector<Style>();
-    private final Map<String,List<Style>> styleToContent = new HashMap<String, List<Style>>();
-    private final Map<Content,List<Script>> scriptToContent = new HashMap<Content, List<Script>>();
-    public boolean initialized = false;
 
+    /** list of all content */
+    private final List<Content> contentList = new Vector<Content>();
+
+    /** list of all scripts */
+    private final List<Script> scripts = new Vector<Script>();
+
+    /** list of all styles */
+    private final List<Style> styles = new Vector<Style>();
+
+    /** mapping of content namespace with content name appended to list of styles for that content */
+    private final Map<String,List<Style>> styleToContent = new HashMap<String, List<Style>>();
+    /** mapping of content namespace with content name appended to list of styles for that content */
+    private final Map<Content,List<Script>> scriptToContent = new HashMap<Content, List<Script>>();
+
+
+    /**
+     * A private class to hold our single instance.
+     */
     private static class SingletonHolder {
         public static final TestContentManager instance = new TestContentManager();
     }
 
+    /**
+     * Called to get a reference to the singleton instance.
+     *
+     * @return the instance.
+     */
     public static TestContentManager getInstance() {
         return SingletonHolder.instance;
     }
 
     private TestContentManager() { }
 
-    public void init() {
-        initialized = true;
-    }
-
-
+    /**
+     * @see ContentManager#loadAllNamespaces()
+     */
     @Override
     public List<Namespace> loadAllNamespaces() {
         return namespaces;
     }
 
+    /**
+     * @see ContentManager#loadNamespace(Namespace)
+     */
     @Override
     public List<Namespace> loadNamespace(Namespace namespace) {
         List<Namespace> namespacesForNamespace = new Vector<Namespace>();
@@ -79,12 +100,18 @@ public class TestContentManager implements ContentManager {
         return namespacesForNamespace;
     }
 
+    /**
+     * @see ContentManager#saveNamespace(Namespace)
+     */
     @Override
     public void saveNamespace(Namespace namespace) {
         if(!namespaces.contains(namespace))
             namespaces.add(namespace);
     }
 
+    /**
+     * @see ContentManager#deleteNamespace(Namespace)
+     */
     @Override
     public void deleteNamespace(Namespace namespace) {
         List<Content> found = loadContent(namespace);
@@ -103,11 +130,17 @@ public class TestContentManager implements ContentManager {
         }
     }
 
+    /**
+     * @see ContentManager#loadAllContent()
+     */
     @Override
     public List<Content> loadAllContent() {
         return contentList;
     }
 
+    /**
+     * @see ContentManager#loadContent(Namespace)
+     */
     @Override
     public List<Content> loadContent(Namespace namespace) {
         List<Content> contentForNamespace = new Vector<Content>();
@@ -119,6 +152,9 @@ public class TestContentManager implements ContentManager {
         return contentForNamespace;
     }
 
+    /**
+     * @see ContentManager#loadContent(Namespace, String)
+     */
     @Override
     public Content loadContent(Namespace namespace, String name) {
         for(Content content : contentList)
@@ -128,6 +164,9 @@ public class TestContentManager implements ContentManager {
         return null;
     }
 
+    /**
+     * @see ContentManager#saveContent(Content)
+     */
     @Override
     public void saveContent(Content content) {
         for(Content c : contentList) {
@@ -140,6 +179,9 @@ public class TestContentManager implements ContentManager {
         contentList.add(content);
     }
 
+    /**
+     * @see ContentManager#deleteContent(Content)
+     */
     @Override
     public void deleteContent(Content content) {
         Iterator<Content> it = contentList.iterator();
@@ -153,11 +195,17 @@ public class TestContentManager implements ContentManager {
         }
     }
 
+    /**
+     * @see ContentManager#loadAllScripts()
+     */
     @Override
     public List<Script> loadAllScripts() {
         return scripts;
     }
 
+    /**
+     * @see ContentManager#loadScript(Namespace)
+     */
     @Override
     public List<Script> loadScript(Namespace namespace) {
         List<Script> scriptsForNamespace = new Vector<Script>();
@@ -169,6 +217,9 @@ public class TestContentManager implements ContentManager {
         return scriptsForNamespace;
     }
 
+    /**
+     * @see ContentManager#loadScript(Namespace, String)
+     */
     @Override
     public Script loadScript(Namespace namespace, String name) {
         for(Script script : scripts)
@@ -178,6 +229,9 @@ public class TestContentManager implements ContentManager {
         return null;
     }
 
+    /**
+     * @see ContentManager#saveScript(Script)
+     */
     @Override
     public void saveScript(Script script) {
         for(Script s : scripts) {
@@ -190,6 +244,9 @@ public class TestContentManager implements ContentManager {
         scripts.add(script);
     }
 
+    /**
+     * @see ContentManager#deleteScript(Script)
+     */
     @Override
     public void deleteScript(Script script) {
         Iterator<Script> it = scripts.iterator();
@@ -203,11 +260,17 @@ public class TestContentManager implements ContentManager {
         }
     }
 
+    /**
+     * @see ContentManager#loadAllStyles()
+     */
     @Override
     public List<Style> loadAllStyles() {
         return styles;
     }
 
+    /**
+     * @see ContentManager#loadStyle(Namespace)
+     */
     @Override
     public List<Style> loadStyle(Namespace namespace) {
         List<Style> stylesForNamespace = new Vector<Style>();
@@ -219,6 +282,9 @@ public class TestContentManager implements ContentManager {
         return stylesForNamespace;
     }
 
+    /**
+     * @see ContentManager#loadStyle(Namespace, String)
+     */
     @Override
     public Style loadStyle(Namespace namespace, String name) {
         for(Style style : styles)
@@ -228,6 +294,9 @@ public class TestContentManager implements ContentManager {
         return null;
     }
 
+    /**
+     * @see ContentManager#saveStyle(Style)
+     */
     @Override
     public void saveStyle(Style style) {
         for(Style s : styles) {
@@ -240,6 +309,9 @@ public class TestContentManager implements ContentManager {
         styles.add(style);
     }
 
+    /**
+     * @see ContentManager#deleteStyle(Style)
+     */
     @Override
     public void deleteStyle(Style style) {
         Iterator<Style> it = styles.iterator();
@@ -248,11 +320,26 @@ public class TestContentManager implements ContentManager {
             Style c = it.next();
             if(c.getNamespace().equals(style.getNamespace()) && c.getName().equals(style.getName())) {
                 styles.remove(style);
-                return;
+                break;
+            }
+        }
+
+        for(Map.Entry<String, List<Style>> entry : this.styleToContent.entrySet()) {
+            it = entry.getValue().iterator();
+            //noinspection WhileLoopReplaceableByForEach
+            while(it.hasNext()) {
+                Style c = it.next();
+                if(c.getNamespace().equals(style.getNamespace()) && c.getName().equals(style.getName())) {
+                    entry.getValue().remove(style);
+                    break;
+                }
             }
         }
     }
 
+    /**
+     * @see ContentManager#associateWithContent(Content, Script)
+     */
     @Override
     public void associateWithContent(Content content, Script script) {
         // First update the content object
@@ -289,12 +376,18 @@ public class TestContentManager implements ContentManager {
         scriptsForContent.add(script);
     }
 
+    /**
+     * @see ContentManager#loadScriptsForContent(Content)
+     */
     @Override
     public List<Script> loadScriptsForContent(Content content) {
         List<Script> scripts = content == null ? null : scriptToContent.get(loadContent(content.getNamespace(), content.getName()));
         return scripts == null ? new Vector<Script>() : scripts;
     }
 
+    /**
+     * @see ContentManager#associateWithContent(Content, Style)
+     */
     @Override
     public void associateWithContent(Content content, Style style) {
         // First update the content object
@@ -331,12 +424,18 @@ public class TestContentManager implements ContentManager {
         stylesForContent.add(style);
     }
 
+    /**
+     * @see ContentManager#loadStylesForContent(Content)
+     */
     @Override
     public List<Style> loadStylesForContent(Content content) {
         List<Style> styles = content == null ? null : styleToContent.get(content.getNamespace().getFullName() + '.' + content.getName());
         return styles == null ? new Vector<Style>() : styles;
     }
 
+    /**
+     * @see ContentManager#disassociateWithContent(Content, Script)
+     */
     @Override
     public void disassociateWithContent(Content content, Script script) {
         // First update the content object
@@ -368,6 +467,9 @@ public class TestContentManager implements ContentManager {
         }
     }
 
+    /**
+     * @see ContentManager#disassociateWithContent(Content, Style)
+     */
     @Override
     public void disassociateWithContent(Content content, Style style) {
         // First update the content object

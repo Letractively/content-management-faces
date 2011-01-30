@@ -32,7 +32,14 @@
             <fieldset id="theStyles" style="border-radius: 10px;">
                 <legend>Styles</legend>
                 <h:panelGroup id="stylePanel">
-                    <h:panelGroup binding="#{styleScriptEditor.styles}"/>
+                    <ui:repeat value="#{editor.styles}" var="style">
+                        <h:commandButton id="styleButton" actionListener="#{admin.loadStyleEditor}" value="#{style.name}"
+                                         styleClass="styleBubble" rendered="#{style != null and style.name != null}">
+                            <f:param name="name" value="#{style.name}"/>
+                            <f:param name="namespace" value="#{style.namespace}"/>
+                            <f:ajax render=":theForm:cssEditor :theForm:currentStyles" onevent="doTheStyleThing2"/>
+                        </h:commandButton>
+                    </ui:repeat>
                 </h:panelGroup>
             </fieldset>
         </div>
@@ -45,3 +52,8 @@
     </div>
 </ui:composition>
 </html>
+
+
+
+
+

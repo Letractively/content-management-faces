@@ -46,10 +46,6 @@ public class Content extends HtmlOutputText {
         name
     }
 
-    public Content() {
-        if(!((TestContentManager)contentManager).initialized)
-            ((TestContentManager)contentManager).init();
-    }
 
     @Override
     public void processEvent(ComponentSystemEvent event) throws AbortProcessingException {
