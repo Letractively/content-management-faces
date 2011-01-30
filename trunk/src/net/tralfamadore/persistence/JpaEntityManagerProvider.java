@@ -19,6 +19,9 @@
 
 package net.tralfamadore.persistence;
 
+import net.tralfamadore.config.Config;
+import net.tralfamadore.config.ConfigFile;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -28,9 +31,9 @@ import java.util.Map;
 /**
  * User: billreh
  * Date: 1/30/11
- * Time: 4:46 AM
+ * Time: 9:06 AM
  */
-public class TestEntityManagerProvider implements EntityManagerProvider {
+public class JpaEntityManagerProvider implements EntityManagerProvider {
     private EntityManager em;
     private EntityManagerFactory emFactory;
 
@@ -47,15 +50,18 @@ public class TestEntityManagerProvider implements EntityManagerProvider {
     @Override
     public EntityManager get() {
         if(em == null) {
+            ConfigFile configFile = Config.getInstance().getConfigFile();
+
             Map<String,String> properties = new HashMap<String,String>();
-            properties.put("javax.persistence.jdbc.driver", "org.postgresql.Driver");
-            properties.put("javax.persistence.jdbc.url", "jdbc:postgresql://localhost/cmf");
-            properties.put("javax.persistence.jdbc.password", "postgres");
-            properties.put("javax.persistence.jdbc.user", "postgres");
-            emFactory =
-                    Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME, properties);
+
+            for(Map.Entry<String,String> entry : configFile.getPersistenceProperties().entrySet()) {
+                properties.put(entry.getKey(), entry.getValue());
+            }
+
+            emFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME, properties);
             em = emFactory.createEntityManager();
         }
+
         return em;
     }
 }

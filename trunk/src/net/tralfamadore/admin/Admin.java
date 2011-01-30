@@ -20,8 +20,9 @@
 package net.tralfamadore.admin;
 
 import net.tralfamadore.cmf.*;
+import net.tralfamadore.persistence.EntityManagerProvider;
 import net.tralfamadore.persistence.EntityManagerProviderFactory;
-import net.tralfamadore.persistence.Test;
+import net.tralfamadore.persistence.entity.ContentEntity;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -320,10 +321,12 @@ public class Admin {
 
     @SuppressWarnings({"unchecked"})
     public void testEntityManager(ActionEvent e) {
-        EntityManager em = EntityManagerProviderFactory.getInstance().get().get();
-        List<Test> tests = (List<Test>) em.createQuery("select t from Test t").getResultList();
-        for(Test test : tests) {
-            System.out.println(test.getValue());
-        }
+        EntityManagerProviderFactory emProviderFactory = EntityManagerProviderFactory.getInstance();
+        EntityManagerProvider emProvider = emProviderFactory.get();
+        EntityManager em = emProvider.get();
+
+        String s = ((ContentEntity)em.createQuery("select c from content c").getSingleResult()).getContent();
+
+        System.out.println("success: " + s);
     }
 }

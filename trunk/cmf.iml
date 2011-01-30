@@ -22,7 +22,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="TopLink" />
         <datasource-mapping>
-          <factory-entry name="cmf" value="ee2f781f-f524-4304-a581-394f5cc210ba" />
+          <factory-entry name="cmf" value="62727118-935b-437b-abf9-fb9cbdb23b3e" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
       </configuration>

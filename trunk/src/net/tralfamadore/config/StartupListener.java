@@ -17,41 +17,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.persistence;
+package net.tralfamadore.config;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.faces.event.AbortProcessingException;
+import javax.faces.event.SystemEvent;
+import javax.faces.event.SystemEventListener;
 
 /**
  * User: billreh
  * Date: 1/30/11
- * Time: 4:54 AM
+ * Time: 10:00 AM
  */
-@Entity
-@Table
-public class Test {
-    private Integer id;
-    private String value;
-
-
-    @Id
-    @Column
-    public Integer getId() {
-        return id;
+public class StartupListener implements SystemEventListener {
+    @Override
+    public void processEvent(SystemEvent systemEvent) throws AbortProcessingException {
+        Config config = Config.getInstance();
+        if(!config.isInitialized()) {
+            ConfigFile configFile = new ConfigFile();
+            config.setConfigFile(configFile);
+            config.setInitialized(true);
+        }
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @Column
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
+    @Override
+    public boolean isListenerForSource(Object o) {
+        return !Config.getInstance().isInitialized();
     }
 }

@@ -19,8 +19,7 @@
 
 package net.tralfamadore.persistence;
 
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
+import net.tralfamadore.config.Config;
 
 /**
  * User: billreh
@@ -43,10 +42,7 @@ public class EntityManagerProviderFactory {
     @SuppressWarnings({"unchecked"})
     public EntityManagerProvider get() {
         if(entityManagerProvider == null) {
-            FacesContext context = FacesContext.getCurrentInstance();
-            ExternalContext externalContext = context.getExternalContext();
-            String className = externalContext.getInitParameter(
-                    "com.google.code.content-management-faces.EntityManagerFactoryProvider");
+            String className = Config.getInstance().getEntityManagerProvider();
             try {
                 Class<?> clazz = getClass().getClassLoader().loadClass(className);
                 entityManagerProvider = (EntityManagerProvider) clazz.newInstance();
