@@ -19,7 +19,11 @@
 
 package net.tralfamadore.admin;
 
-import net.tralfamadore.cmf.*;
+import net.tralfamadore.cmf.Content;
+import net.tralfamadore.cmf.ContentManager;
+import net.tralfamadore.cmf.Namespace;
+import net.tralfamadore.cmf.Style;
+import net.tralfamadore.config.CmfContext;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -38,7 +42,7 @@ import java.util.List;
 @SessionScoped
 public class Tree implements Serializable {
     /** the content manager */
-    private final ContentManager contentManager = TestContentManager.getInstance();
+    private final ContentManager contentManager = CmfContext.getInstance().getContentManager();
 
     /** the tree model, representing all of our content */
     private TreeModel treeModel = new TreeModel();
@@ -133,9 +137,9 @@ public class Tree implements Serializable {
             treeModel.addNode(style);
         }
 
-        List<Script> scripts = contentManager.loadAllScripts();
-        for(Script script : scripts) {
-            treeModel.addNode(script);
-        }
+//        List<Script> scripts = contentManager.loadAllScripts();
+//        for(Script script : scripts) {
+//            treeModel.addNode(script);
+//        }
     }
 }

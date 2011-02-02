@@ -21,7 +21,7 @@ package net.tralfamadore.component.content;
 
 import net.tralfamadore.cmf.ContentManager;
 import net.tralfamadore.cmf.Namespace;
-import net.tralfamadore.cmf.TestContentManager;
+import net.tralfamadore.config.CmfContext;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -37,8 +37,19 @@ import java.io.IOException;
  */
 @FacesRenderer(rendererType = "Content", componentFamily = "javax.faces.Output")
 public class ContentRenderer extends Renderer {
-    protected final ContentManager contentManager = TestContentManager.getInstance();
+    protected ContentManager contentManager;
     private String content;
+
+    public ContentManager getContentManager() {
+        if(contentManager == null) {
+            try {
+                contentManager = CmfContext.getInstance().getContentManager();
+            } catch(Exception e) {
+                // ignore
+            }
+        }
+        return  contentManager;
+    }
 
     @Override
     public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
@@ -78,7 +89,7 @@ public class ContentRenderer extends Renderer {
     protected String getContent(Content content) {
         Namespace namespace = Namespace.createFromString(content.getNamespace());
         String name = content.getName();
-        net.tralfamadore.cmf.Content c = contentManager.loadContent(namespace, name);
+        net.tralfamadore.cmf.Content c = getContentManager().loadContent(namespace, name);
         return c == null ? null : c.getContent();
     }
 }

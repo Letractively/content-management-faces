@@ -19,7 +19,11 @@
 
 package net.tralfamadore.component.content;
 
-import net.tralfamadore.cmf.*;
+import net.tralfamadore.cmf.ContentManager;
+import net.tralfamadore.cmf.Namespace;
+import net.tralfamadore.cmf.Script;
+import net.tralfamadore.cmf.Style;
+import net.tralfamadore.config.CmfContext;
 
 import javax.faces.application.Application;
 import javax.faces.component.FacesComponent;
@@ -39,26 +43,36 @@ import java.util.List;
 @FacesComponent(value = "Content")
 @ListenerFor(systemEventClass = PostAddToViewEvent.class)
 public class Content extends HtmlOutputText {
-    protected final ContentManager contentManager = TestContentManager.getInstance();
+    protected ContentManager contentManager;
 
     protected enum PropertyKeys {
         namespace,
         name
     }
 
+    public ContentManager getContentManager() {
+         if(contentManager == null) {
+             try {
+                 contentManager = CmfContext.getInstance().getContentManager();
+             } catch (Exception e) {
+                 // ignore
+             }
+         }
+        return contentManager;
+    }
 
     @Override
     public void processEvent(ComponentSystemEvent event) throws AbortProcessingException {
         FacesContext context = FacesContext.getCurrentInstance();
 
-        List<Script> scripts = contentManager.loadScriptsForContent(
-                contentManager.loadContent(Namespace.createFromString(getNamespace()), getName()));
+        List<Script> scripts = getContentManager().loadScriptsForContent(
+                getContentManager().loadContent(Namespace.createFromString(getNamespace()), getName()));
         for(Script resource : scripts) {
             addResource(context, resource.getScript(), "script");
         }
 
-        List<Style> styles = contentManager.loadStylesForContent(
-                contentManager.loadContent(Namespace.createFromString(getNamespace()), getName()));
+        List<Style> styles = getContentManager().loadStylesForContent(
+                getContentManager().loadContent(Namespace.createFromString(getNamespace()), getName()));
         for(Style resource : styles) {
             addResource(context, resource.getStyle(), "style");
         }

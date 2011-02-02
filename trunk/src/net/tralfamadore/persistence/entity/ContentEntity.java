@@ -38,8 +38,15 @@ public class ContentEntity implements Serializable {
     private Date dateModified;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contentSeq")
-    @SequenceGenerator(name = "contentSeq", sequenceName = "content_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "contentGen")
+    @TableGenerator(name = "contentGen",
+            table = "id_gen",
+            pkColumnName = "gen_name",
+            valueColumnName = "gen_val",
+            pkColumnValue = "content_id",
+            initialValue = 0,
+            allocationSize = 50
+    )
     public long getId() {
         return id;
     }

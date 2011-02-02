@@ -35,8 +35,15 @@ public class StyleEntity implements Serializable {
     private String style;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contentSeq")
-    @SequenceGenerator(name = "contentSeq", sequenceName = "content_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "styleGen")
+    @TableGenerator(name = "styleGen",
+            table = "id_gen",
+            pkColumnName = "gen_name",
+            valueColumnName = "gen_val",
+            pkColumnValue = "style_id",
+            initialValue = 0,
+            allocationSize = 50
+    )
     public long getId() {
         return id;
     }

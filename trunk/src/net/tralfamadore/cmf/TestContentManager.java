@@ -48,19 +48,19 @@ public class TestContentManager implements ContentManager {
 
 
     /**
-     * A private class to hold our single instance.
+     * A private class to hold our single INSTANCE.
      */
     private static class SingletonHolder {
-        public static final TestContentManager instance = new TestContentManager();
+        public static final TestContentManager INSTANCE = new TestContentManager();
     }
 
     /**
-     * Called to get a reference to the singleton instance.
+     * Called to get a reference to the singleton INSTANCE.
      *
-     * @return the instance.
+     * @return the INSTANCE.
      */
     public static TestContentManager getInstance() {
-        return SingletonHolder.instance;
+        return SingletonHolder.INSTANCE;
     }
 
     private TestContentManager() { }

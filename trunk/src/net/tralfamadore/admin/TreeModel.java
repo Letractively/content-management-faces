@@ -111,7 +111,6 @@ public class TreeModel implements Serializable {
                     continue;
                 NamespaceTreeNode namespaceNode = (NamespaceTreeNode) n;
                 addNode(namespaceNode, namespace);
-                return;
             }
         }
     }

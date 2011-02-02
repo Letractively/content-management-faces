@@ -32,6 +32,6 @@
     </servlet-mapping>
 
     <listener>
-        <listener-class>net.tralfamadore.persistence.JpaShutdownListener</listener-class>
+        <listener-class>net.tralfamadore.config.CmfShutdownListener</listener-class>
     </listener>
 </web-fragment>

@@ -17,27 +17,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.persistence;
+package net.tralfamadore.config;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
+import javax.faces.event.AbortProcessingException;
+import javax.faces.event.SystemEvent;
+import javax.faces.event.SystemEventListener;
 
 /**
  * User: billreh
  * Date: 1/30/11
- * Time: 5:58 AM
+ * Time: 10:00 AM
  */
-public class JpaShutdownListener implements ServletContextListener {
+public class CmfStartupListener implements SystemEventListener {
     @Override
-    public void contextInitialized(ServletContextEvent servletContextEvent) {
-        // ignore
+    public void processEvent(SystemEvent systemEvent) throws AbortProcessingException {
+        CmfContext cmfContext = CmfContext.getInstance();
+        if(!cmfContext.isInitialized()) {
+            ConfigFile configFile = new ConfigFile();
+            cmfContext.setConfigFile(configFile);
+            cmfContext.setInitialized(true);
+        }
     }
 
     @Override
-    public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        // Shut down our entity manager
-        EntityManagerProvider entityManagerProvider = EntityManagerProviderFactory.getInstance().get();
-        if(entityManagerProvider != null)
-            entityManagerProvider.shutdown();
+    public boolean isListenerForSource(Object o) {
+        return !CmfContext.getInstance().isInitialized();
     }
 }

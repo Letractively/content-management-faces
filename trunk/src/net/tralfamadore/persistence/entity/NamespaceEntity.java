@@ -30,12 +30,19 @@ import java.io.Serializable;
 @Entity(name = "namespace")
 public class NamespaceEntity implements Serializable {
     private long id;
-    private String nodeName;
-    private long parentId;
+    private String name;
+    private Long parentId;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "namespaceSeq")
-    @SequenceGenerator(name = "namespaceSeq", sequenceName = "namespace_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "namespaceGen")
+    @TableGenerator(name = "namespaceGen",
+            table = "id_gen",
+            pkColumnName = "gen_name",
+            valueColumnName = "gen_val",
+            pkColumnValue = "namespace_id",
+            initialValue = 0,
+            allocationSize = 50
+    )
     public long getId() {
         return id;
     }
@@ -45,20 +52,20 @@ public class NamespaceEntity implements Serializable {
     }
 
     @Column
-    public String getNodeName() {
-        return nodeName;
+    public String getName() {
+        return name;
     }
 
-    public void setNodeName(String nodeName) {
-        this.nodeName = nodeName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Column(name = "parent_id")
-    public long getParentId() {
+    public Long getParentId() {
         return parentId;
     }
 
-    public void setParentId(long parentId) {
+    public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
 }

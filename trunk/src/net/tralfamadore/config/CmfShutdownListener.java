@@ -19,28 +19,27 @@
 
 package net.tralfamadore.config;
 
-import javax.faces.event.AbortProcessingException;
-import javax.faces.event.SystemEvent;
-import javax.faces.event.SystemEventListener;
+import net.tralfamadore.persistence.EntityManagerProvider;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
 /**
  * User: billreh
  * Date: 1/30/11
- * Time: 10:00 AM
+ * Time: 5:58 AM
  */
-public class StartupListener implements SystemEventListener {
+public class CmfShutdownListener implements ServletContextListener {
     @Override
-    public void processEvent(SystemEvent systemEvent) throws AbortProcessingException {
-        Config config = Config.getInstance();
-        if(!config.isInitialized()) {
-            ConfigFile configFile = new ConfigFile();
-            config.setConfigFile(configFile);
-            config.setInitialized(true);
-        }
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        // ignore
     }
 
     @Override
-    public boolean isListenerForSource(Object o) {
-        return !Config.getInstance().isInitialized();
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+        // Shut down our entity manager
+        EntityManagerProvider entityManagerProvider = CmfContext.getInstance().getEntityManagerProvider();
+        if(entityManagerProvider != null)
+            entityManagerProvider.shutdown();
     }
 }

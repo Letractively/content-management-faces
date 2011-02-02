@@ -19,17 +19,17 @@
 
 package net.tralfamadore.admin;
 
-import net.tralfamadore.cmf.*;
-import net.tralfamadore.persistence.EntityManagerProvider;
-import net.tralfamadore.persistence.EntityManagerProviderFactory;
-import net.tralfamadore.persistence.entity.ContentEntity;
+import net.tralfamadore.cmf.Content;
+import net.tralfamadore.cmf.ContentManager;
+import net.tralfamadore.cmf.Namespace;
+import net.tralfamadore.cmf.Style;
+import net.tralfamadore.config.CmfContext;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.persistence.EntityManager;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -64,7 +64,7 @@ public class Admin {
     private StyleTreeNode currentStyleNode;
 
     /** the content manager */
-    private final ContentManager contentManager = TestContentManager.getInstance();
+    private final ContentManager contentManager = CmfContext.getInstance().getContentManager();
 
 
     /* getters and setters */
@@ -317,16 +317,5 @@ public class Admin {
         currentStyleNode = tree.getTreeModel().findStyleNode(Namespace.createFromString(namespace),
                 name, tree.getTreeModel().root());
         styleScriptEditor.setValue(currentStyleNode.getStyle().getStyle());
-    }
-
-    @SuppressWarnings({"unchecked"})
-    public void testEntityManager(ActionEvent e) {
-        EntityManagerProviderFactory emProviderFactory = EntityManagerProviderFactory.getInstance();
-        EntityManagerProvider emProvider = emProviderFactory.get();
-        EntityManager em = emProvider.get();
-
-        String s = ((ContentEntity)em.createQuery("select c from content c").getSingleResult()).getContent();
-
-        System.out.println("success: " + s);
     }
 }

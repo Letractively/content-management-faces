@@ -19,7 +19,7 @@
 
 package net.tralfamadore.persistence;
 
-import net.tralfamadore.config.Config;
+import net.tralfamadore.config.CmfContext;
 import net.tralfamadore.config.ConfigFile;
 
 import javax.persistence.EntityManager;
@@ -50,7 +50,7 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
     @Override
     public EntityManager get() {
         if(em == null) {
-            ConfigFile configFile = Config.getInstance().getConfigFile();
+            ConfigFile configFile = CmfContext.getInstance().getConfigFile();
 
             Map<String,String> properties = new HashMap<String,String>();
 

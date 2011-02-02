@@ -138,12 +138,14 @@ function resetDirty() {
 function hideEditor() {
     $("#cke_ckCode").css('display',  'none');
     $("#styles").css("display", "none");
+    $("#theEditor").css("display", "none");
     $("#submit").css('display',  'none');
 }
 
 function showEditor() {
     $("#cke_ckCode").css("display", "block");
     $("#styles").css("display", "block");
+    $("#theEditor").css("display", "block");
     $("#submit").css("display", "inline");
     $("#cke_ckCode").css("display", "block");
 }

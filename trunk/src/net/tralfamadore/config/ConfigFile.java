@@ -72,9 +72,10 @@ public class ConfigFile {
     }
 
     public void parseXml() {
-        InputStream stream = FacesContext.getCurrentInstance().getExternalContext().
-                getResourceAsStream("/WEB-INF/cmf-config.xml");
+        InputStream stream = null;
         try {
+            stream = FacesContext.getCurrentInstance().getExternalContext().
+                    getResourceAsStream("/WEB-INF/cmf-config.xml");
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
             Document document = documentBuilder.parse(stream);
@@ -107,7 +108,8 @@ public class ConfigFile {
             throw new RuntimeException(e);
         } finally {
             try {
-                stream.close();
+                if(stream != null)
+                    stream.close();
             } catch(IOException ioe) {
                 ioe.printStackTrace();
             }

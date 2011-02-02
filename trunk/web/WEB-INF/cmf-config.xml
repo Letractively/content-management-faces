@@ -18,7 +18,7 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
   -->
 <cmf-config>
-    <content-manager>net.tralfamadore.cmf.TestContentManager</content-manager>
+    <content-manager>net.tralfamadore.cmf.JpaContentManager</content-manager>
     <entity-manager-provider>net.tralfamadore.persistence.JpaEntityManagerProvider</entity-manager-provider>
     <persistence-properties>
         <persistence-property>
@@ -27,7 +27,7 @@
         </persistence-property>
         <persistence-property>
             <name>javax.persistence.jdbc.url</name>
-            <value>jdbc:postgresql://localhost/cmf</value>
+            <value>jdbc:postgresql://localhost/cmf3</value>
         </persistence-property>
         <persistence-property>
             <name>javax.persistence.jdbc.user</name>
