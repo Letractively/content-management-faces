@@ -83,7 +83,7 @@ public class ContentEntity implements Serializable {
     }
 
     @Column(name = "date_created")
-    @Temporal(value = TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getDateCreated() {
         return dateCreated;
     }
@@ -93,7 +93,7 @@ public class ContentEntity implements Serializable {
     }
 
     @Column(name = "date_modified")
-    @Temporal(value = TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getDateModified() {
         return dateModified;
     }

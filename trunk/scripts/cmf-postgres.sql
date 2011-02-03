@@ -7,8 +7,8 @@ CREATE TABLE content (
     namespace_id bigint NOT NULL,
     name character varying(256) NOT NULL,
     content text,
-    date_created date,
-    date_modified date
+    date_created timestamp,
+    date_modified timestamp
 );
 
 

@@ -18,9 +18,42 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
   -->
 <cmf-config>
+    <!--
+    - The default content manager is the JpaContentManager, but you can specify your own here,
+    - which will need to implements the net.tralfamadore.cmf.ContentManager interface.
+    -->
     <content-manager>net.tralfamadore.cmf.JpaContentManager</content-manager>
+
+    <!--
+    - The default entity provider is the JpaEntityManagerProvider, but you can specify your own here,
+    - which will need to implements the net.tralfamadore.cmf.persistence.EntityManagerProvider interface.
+    - The default provider is configured below in the <persistence-properties> section, just as in JPA's
+    - persistence.xml.
+    -->
     <entity-manager-provider>net.tralfamadore.persistence.JpaEntityManagerProvider</entity-manager-provider>
+
+    <!--
+    - These persistence properties are configured the same way as you would in the JPS persistence-properties.xml
+    - file.  You hook into your db vendor with whatever persistence provider you want (openjpa, toplink, etc) here.
+    - A few simple examples are listed below.
+    -->
     <persistence-properties>
+        <!-- ***** -->
+        <!-- mysql -->
+        <!-- ***** -->
+        <persistence-property>
+            <name>javax.persistence.jdbc.driver</name>
+            <value>com.mysql.jdbc.Driver</value>
+        </persistence-property>
+        <persistence-property>
+            <name>javax.persistence.jdbc.url</name>
+            <value>jdbc:mysql://localhost/cmf</value>
+        </persistence-property>
+
+        <!-- ******** -->
+        <!-- postgres -->
+        <!-- ******** -->
+        <!--
         <persistence-property>
             <name>javax.persistence.jdbc.driver</name>
             <value>org.postgresql.Driver</value>
@@ -37,5 +70,6 @@
             <name>javax.persistence.jdbc.password</name>
             <value>postgres</value>
         </persistence-property>
+        -->
     </persistence-properties>
 </cmf-config>

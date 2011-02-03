@@ -2,6 +2,7 @@
   <library name="postgres">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/postgres/postgresql-8.4-701.jdbc3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/postgres/mysql-connector-java-5.1.13-bin.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
