@@ -29,4 +29,4 @@ The following steps should get you up and running.  Once you're logged into the 
     }}}
   # The administration panel will prompt you to specify a place on the file system to persist the content data.  If you wish to use the in memory database you can ignore this, but your data will not be persisted between deployments or restarts.
 
-*Note:* You will need to deploy this in a server that supports the servlet 3.0 spec such as glassfish3, tomcat7, or the newer jboss application servers.
+*Note:* You will need to deploy this in a server that supports the servlet 3.0 spec such as glassfish3, tomcat7, or the newer jboss application servers.  The library also requires JSF 2.  This will most likely be included in your application server, but if not you can download the necessary jars at http://javaserverfaces.java.net/download.html and include them with your application.
