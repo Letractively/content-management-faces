@@ -3,16 +3,20 @@
 
 = Introduction =
 
-The following steps should get you up and running.
+The following steps should get you up and running.  Once you're logged into the admin panel you can continue to use the in memory derby database or specify a place on the file system to persist the data.   Examples of using postgres and mysql datasources are included in the cmf.xml file, and database generation scripts are located in the scripts directory.
 
 
 = Details =
 
   # Copy cmf.jar to your WEB-INF/lib directory.
-  # Make sure it is in your ide's classpath
-  # Include this in your html declaration:
+  # If you're using an IDE, make sure it includes cmf.jar in its classpath so that it sees the tag library.
+  # Include the taglib in your html declaration:
     {{{
-      xmlns:cmf="http://tralfamadore.net/cmf"
+      <html xmlns="http://www.w3.org/1999/xhtml"
+            xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core"
+            xmlns:ui="http://java.sun.com/jsf/facelets"
+            xmlns:cmf="http://tralfamadore.net/cmf">
     }}}
   # You can now use the content tag in your pages like this:
     {{{
@@ -22,5 +26,6 @@ The following steps should get you up and running.
     {{{
       http://yoursite.com/yourwebroot/cmf/admin/index.jsf
     }}}
+  # The administration panel will prompt you to specify a place on the file system to persist the content data.  If you wish to use the in memory database you can ignore this, but your data will not be persisted between deployments or restarts.
 
-*Note:* You will need to deploy this in a server that supports the servlet 3.0 spec such as tomcat7, glassfish3, or the newer jboss application servers.
+*Note:* You will need to deploy this in a server that supports the servlet 3.0 spec such as glassfish3, tomcat7, or the newer jboss application servers.
