@@ -3,12 +3,13 @@
 
 = Introduction =
 
-The following steps should get you up and running.  Once you're logged into the admin panel you can continue to use the in memory derby database or specify a place on the file system to persist the data.   Examples of using postgres and mysql datasources are included in the cmf.xml file, and database generation scripts are located in the scripts directory.
-
+The following steps should get you up and running.  Once you're logged into the admin panel you can continue to use the in memory derby database or specify a place on the file system to persist the data.
 
 = Details =
 
-  # Copy cmf.jar to your WEB-INF/lib directory.
+  # Copy cmf.jar to your project's WEB-INF/lib directory.
+  # copy cmf-config.xml to your project's WEB-INF directory.
+  # Examples of using postgres and mysql datasources are included in the cmf.xml file.  If you wish to use one of these databases, database generation scripts are located in the scripts directory.
   # If you're using an IDE, make sure it includes cmf.jar in its classpath so that it sees the tag library.
   # Include the taglib in your html declaration:
     {{{
