@@ -39,16 +39,30 @@
     -->
     <persistence-properties>
         <!-- ***** -->
-        <!-- mysql -->
+        <!-- derby -->
         <!-- ***** -->
         <persistence-property>
             <name>javax.persistence.jdbc.driver</name>
-            <value>com.mysql.jdbc.Driver</value>
+            <value>org.apache.derby.jdbc.EmbeddedDriver</value>
         </persistence-property>
         <persistence-property>
             <name>javax.persistence.jdbc.url</name>
+            <value>jdbc:derby:mem;create=true</value>
+        </persistence-property>
+
+        <!-- ***** -->
+        <!-- mysql -->
+        <!-- ***** -->
+        <!--
+        <persistence-property>
+            <name>ConnectionDriverName</name>
+            <value>com.mysql.jdbc.Driver</value>
+        </persistence-property>
+        <persistence-property>
+            <name>openjpa.ConnectionUrl</name>
             <value>jdbc:mysql://localhost/cmf</value>
         </persistence-property>
+        -->
 
         <!-- ******** -->
         <!-- postgres -->

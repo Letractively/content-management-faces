@@ -146,7 +146,7 @@
         <td style="vertical-align: top;" class="tableCell">
 
             <!-- Html Editor -->
-            <div style="width: 800px; margin-top: 10px; margin-left: 10px;">
+            <div style="width: 800px; margin-top: 10px; margin-left: 10px; display: none;">
                 <label for="ckCode"></label>
                 <textarea id="ckCode" name="ckCode" style="display:none">
                     &lt;h1&gt;Header&lt;/h1&gt;
@@ -237,6 +237,61 @@
                 <div style="width: 800px; text-align: right;">
                     <input type="submit" class="theButton" value="Submit" onclick="return false;" style="text-align: right;"/>
                 </div>
+            </div>
+
+
+            <!-- Embedded db setup -->
+            <div style="margin: 10px; display: none;">
+                <div style="text-align: center; font-size: 24pt; font-weight: bold;">Embedded Database Properties</div>
+                <p style="text-indent: 30px;">
+                    You're running the derby embedded database.  Currently, it's running in memory mode, which means
+                    you'll lose your changes the next time you shutdown/restart/redeploy your app.  If you're using
+                    this for testing or development purposes, this may be fine, otherwise you'll probably want derby to
+                    run in directory mode and persist the information into the directory you set up below:
+                </p>
+                <fieldset class="contentFieldset" style=" width: 500px; height: 150px; margin: 0; position: relative; left: 15%;">
+                    <legend style="text-align: center;">Derby Data Directory</legend>
+                    <table>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <label for="derbyPath">Directory Path: </label>
+                                        </td>
+                                        <td>
+                                            <input id="derbyPath" type="text" style="width: 250px;"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="margin-left: 20px; padding-left: 20px; vertical-align: bottom;">
+                                <input type="submit" class="theButton" value="Submit" onclick="return false;"
+                                       style="text-align: right;"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: center; line-height: 80%;">
+                                <p style="font-size: small;">
+                                    * Please enter valid a file system path.  The directory will be created if it does not
+                                    already exist (the parent directory must exist).  Derby will put about a half dozen
+                                    files in this directory.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <p style="text-indent: 30px;">
+                    If you'd like to hook Content Management Faces up to a jdbc data source (postgres, mysql, oracle,
+                    etc), please edit the cmf-config file and redeploy your app.
+                </p>
+            </div>
+
+            <div style="margin: 10px;">
+                <div style="text-align: center; font-size: 24pt; font-weight: bold;">Success!</div>
+                <p style="text-indent: 30px; text-align: center; margin-top: 30px;">
+                    Your database is configured.  All data will be written to /Users/billreh/theDb/
+                </p>
             </div>
         </td>
     </tr>

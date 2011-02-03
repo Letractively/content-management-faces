@@ -50,7 +50,9 @@
     <orderEntry type="library" scope="PROVIDED" name="el" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="jpa" level="project" />
     <orderEntry type="library" name="Java EE 6" level="project" />
-    <orderEntry type="library" name="postgres" level="project" />
+    <orderEntry type="library" name="dbDrivers" level="project" />
+    <orderEntry type="library" name="openjpa" level="project" />
+    <orderEntry type="library" name="derby" level="project" />
   </component>
 </module>
 

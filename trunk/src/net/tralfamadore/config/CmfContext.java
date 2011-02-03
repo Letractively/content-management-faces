@@ -33,6 +33,7 @@ public class CmfContext {
     private boolean initialized = false;
     private ContentManager contentManager;
     private EntityManagerProvider entityManagerProvider;
+    private boolean embeddedDbNeedsConfig = false;
 
     /**
      * A private class to hold our single INSTANCE.
@@ -66,6 +67,14 @@ public class CmfContext {
 
     public void setInitialized(boolean initialized) {
         this.initialized = initialized;
+    }
+
+    public boolean isEmbeddedDbNeedsConfig() {
+        return embeddedDbNeedsConfig;
+    }
+
+    public void setEmbeddedDbNeedsConfig(boolean embeddedDbNeedsConfig) {
+        this.embeddedDbNeedsConfig = embeddedDbNeedsConfig;
     }
 
     public ContentManager getContentManager() {

@@ -24,15 +24,20 @@ import net.tralfamadore.cmf.ContentManager;
 import net.tralfamadore.cmf.Namespace;
 import net.tralfamadore.cmf.Style;
 import net.tralfamadore.config.CmfContext;
+import net.tralfamadore.persistence.JpaEntityManagerProvider;
 
+import javax.faces.FacesException;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * User: billreh
@@ -63,9 +68,20 @@ public class Admin {
     /** the currently selected style node */
     private StyleTreeNode currentStyleNode;
 
-    /** the content manager */
-    private final ContentManager contentManager = CmfContext.getInstance().getContentManager();
+    /** the context manager */
+    private final CmfContext cmfContext = CmfContext.getInstance();
 
+    /** the content manager */
+    private final ContentManager contentManager = cmfContext.getContentManager();
+
+    /** true if we need to configure the embedded database */
+    private boolean embeddedDbNeedsConfig = cmfContext.isEmbeddedDbNeedsConfig();
+
+    /** the path to the embedded db directory */
+    private String derbyPath;
+
+    /** true after we've successfully created the embedded db */
+    private boolean embeddedDbSuccess = false;
 
     /* getters and setters */
 
@@ -91,6 +107,22 @@ public class Admin {
 
     public void setTree(Tree tree) {
         this.tree = tree;
+    }
+
+    public boolean isEmbeddedDbNeedsConfig() {
+        return embeddedDbNeedsConfig;
+    }
+
+    public void setEmbeddedDbNeedsConfig(boolean embeddedDbNeedsConfig) {
+        this.embeddedDbNeedsConfig = embeddedDbNeedsConfig;
+    }
+
+    public String getDerbyPath() {
+        return derbyPath;
+    }
+
+    public void setDerbyPath(String derbyPath) {
+        this.derbyPath = derbyPath;
     }
 
 
@@ -317,5 +349,29 @@ public class Admin {
         currentStyleNode = tree.getTreeModel().findStyleNode(Namespace.createFromString(namespace),
                 name, tree.getTreeModel().root());
         styleScriptEditor.setValue(currentStyleNode.getStyle().getStyle());
+    }
+
+    public void createEmbeddedDb(ActionEvent e) {
+        String jdbc = "jdbc:derby:";
+        String props = ";create=true";
+        Properties properties = new Properties();
+
+        properties.put("javax.persistence.jdbc.driver", "org.apache.derby.jdbc.EmbeddedDriver");
+        properties.put("javax.persistence.jdbc.url", jdbc + derbyPath + props);
+
+        File file = new File(derbyPath);
+        if(!file.getParentFile().exists()) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Invalid path: " + derbyPath + ".  Directory " + file.getParentFile().getAbsolutePath()
+                            + " does not exist.", null));
+            derbyPath = null;
+            throw new FacesException();
+        }
+
+        ((JpaEntityManagerProvider)this.cmfContext.getEntityManagerProvider()).createEmbeddedDb(properties);
+
+        embeddedDbNeedsConfig = false;
+
+        tree.createTreeModel();
     }
 }

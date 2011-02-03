@@ -62,6 +62,7 @@
 
                     <!-- Right pane -->
                     <td class="tableCell rightPane">
+                        <h:messages id="messages"/>
 
                         <!-- Html Editor -->
                         <ui:include src="htmlEditor.xhtml"/>
@@ -77,6 +78,9 @@
 
                         <!-- Css Editor -->
                         <ui:include src="cssEditor.xhtml"/>
+
+                        <!-- Configure emedded db -->
+                        <ui:include src="configDb.xhtml"/>
 
                         <h:outputText id="currentStyles" value="#{editor.currentStyles}" style="display: none"/>
                     </td>

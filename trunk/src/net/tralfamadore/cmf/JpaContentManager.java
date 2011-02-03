@@ -40,8 +40,16 @@ import java.util.Vector;
  * Time: 1:15 PM
  */
 public class JpaContentManager implements ContentManager {
-    public final EntityManagerProvider entityManagerProvider = CmfContext.getInstance().getEntityManagerProvider();
-    public final EntityManager em = entityManagerProvider.get();
+    private final EntityManagerProvider entityManagerProvider = CmfContext.getInstance().getEntityManagerProvider();
+    private EntityManager em = entityManagerProvider.get();
+
+    public EntityManager getEm() {
+        return em;
+    }
+
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
 
     @Override
     public List<Namespace> loadAllNamespaces() {

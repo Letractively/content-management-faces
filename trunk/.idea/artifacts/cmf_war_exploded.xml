@@ -11,7 +11,7 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="jsfunit" />
           <element id="artifact" artifact-name="cmf:jar" />
-          <element id="library" level="project" name="postgres" />
+          <element id="library" level="project" name="dbDrivers" />
         </element>
       </element>
     </root>

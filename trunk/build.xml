@@ -94,7 +94,7 @@
   </path>
   
   <path id="library.postgres.classpath">
-    <pathelement location="${basedir}/lib/postgres/postgresql-8.4-701.jdbc3.jar"/>
+    <pathelement location="${basedir}/lib/dbDrivers/postgresql-8.4-701.jdbc3.jar"/>
   </path>
   
   
@@ -301,7 +301,7 @@
     <copy todir="${artifact.output.cmf:war_exploded}/WEB-INF/lib">
       <fileset dir="${artifact.temp.output.cmf:jar}"/>
     </copy>
-    <copy file="${basedir}/lib/postgres/postgresql-8.4-701.jdbc3.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/postgresql-8.4-701.jdbc3.jar"/>
+    <copy file="${basedir}/lib/dbDrivers/postgresql-8.4-701.jdbc3.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/postgresql-8.4-701.jdbc3.jar"/>
   </target>
   
   <target name="build.all.artifacts" depends="artifact.cmf:jar, artifact.cmf:war_exploded" description="Build all artifacts">

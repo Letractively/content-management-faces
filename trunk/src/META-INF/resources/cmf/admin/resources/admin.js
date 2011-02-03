@@ -32,6 +32,16 @@ var lastHighlightedNodeElement;
 var lastHighlightedNode;
 
 
+function showConfigSuccess(xhr) {
+    if(xhr.status == "success") {
+        var val = $("#derbySuccessPath").html();
+        if(val != null && val != "") {
+            $("#configDb").hide();
+            $("#configDbSuccess").show();
+        }
+    }
+}
+
 function doTheThing(xhr) {
     if(xhr.status == "success") {
         CKEDITOR.instances.ckCode.destroy();
@@ -136,6 +146,7 @@ function resetDirty() {
 }
 
 function hideEditor() {
+    $("#configDbSuccess").css("display", "none");
     $("#cke_ckCode").css('display',  'none');
     $("#styles").css("display", "none");
     $("#theEditor").css("display", "none");
@@ -143,6 +154,7 @@ function hideEditor() {
 }
 
 function showEditor() {
+    $("#configDbSuccess").css("display", "none");
     $("#cke_ckCode").css("display", "block");
     $("#styles").css("display", "block");
     $("#theEditor").css("display", "block");
