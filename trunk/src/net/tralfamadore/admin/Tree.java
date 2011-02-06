@@ -136,10 +136,5 @@ public class Tree implements Serializable {
         for(Style style : styles) {
             treeModel.addNode(style);
         }
-
-//        List<Script> scripts = contentManager.loadAllScripts();
-//        for(Script script : scripts) {
-//            treeModel.addNode(script);
-//        }
     }
 }

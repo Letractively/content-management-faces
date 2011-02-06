@@ -25,14 +25,26 @@ import net.tralfamadore.cmf.Namespace;
  * User: billreh
  * Date: 1/20/11
  * Time: 3:03 PM
+ *
+ * Stores data for namespace nodes.
  */
 public class NamespaceTreeNode extends TreeNode {
+    /** The {@link Namespace} object */
     private Namespace namespace;
 
+    /**
+     * Create a new namespace node with <code>parent</code> and <code>namespace</code>.
+     *
+     * @param parent The parent node, <code>null</code> if this is a root node.
+     * @param namespace The {@link Namespace}.
+     */
     public NamespaceTreeNode(TreeNode parent, Namespace namespace) {
         super(parent, namespace.getNodeName());
         this.namespace = namespace;
     }
+
+
+    /* getters and setters */
 
     public Namespace getNamespace() {
         return namespace;
@@ -43,6 +55,11 @@ public class NamespaceTreeNode extends TreeNode {
     }
 
     @Override
+    /**
+     * Match nodes of type "namespace".
+     *
+     * @return "namespace"
+     */
     public String getType() {
         return "namespace";
     }

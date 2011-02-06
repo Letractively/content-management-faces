@@ -27,18 +27,27 @@ import java.util.Vector;
  * User: billreh
  * Date: 1/20/11
  * Time: 3:03 PM
+ *
+ * Abstract base class for all tree nodes, which are what make up the tree model ({@link TreeModel}).
  */
 public abstract class TreeNode implements Serializable {
     private TreeNode parent;
     private List<TreeNode> children = new Vector<TreeNode>();
     private String text;
-    private String type;
 
+
+    /**
+     * Create a new tree node with parent <code>parent</code> that will display <code>text</code>.
+     *
+     * @param parent The parent of this node.  If this is a root node, this will be set to <code>null</code>.
+     * @param text The text that will be displayed.
+     */
     public TreeNode(TreeNode parent, String text) {
         this.parent = parent;
         this.text = text;
     }
 
+    /* getters and setters */
     public TreeNode getParent() {
         return parent;
     }
@@ -71,11 +80,38 @@ public abstract class TreeNode implements Serializable {
         children.remove(child);
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
+    /**
+     * Subclasses must implement this method to return the type of node this is, where type is the same as
+     * the {@link net.tralfamadore.component.tree.UITreeNode} type from the component that is represented in
+     * this model.
+     * <br/>
+     * <strong>Example</strong><br/>
+     *     Return a String in the overriding getType() method that matches "file" or "directory" from the
+     *   treeNode tag attributes below.
+     * <code>
+     *      ...
+     *      <cmfAdmin:tree var="node" value="#{someBean.treeModel}"/>
+     *          <cmfAdmin:treeNode type="file>
+     *              <img alt="file" src="images/file.png"/>
+     *              <h:outputText value="#{node.fileName}"/>
+     *              <h:outputText value="#{node.fileSize}"/>
+     *          </cmfAdmin:treeNode>
+     *
+     *          <cmfAdmin:treeNode type="directory>
+     *              <img alt="directory" src="images/directory.png"/>
+     *              <h:outputText value="#{node.directoryName}"/>
+     *          </cmfAdmin:treeNode>
+     *      </cmfAdmin:tree>
+     *      ...
+     * </code>
+     *
+     *   In your backing bean:
+     * <code>
+     *      ...
+     * </code>
+     *
+     *
+     * @return The type of node.
+     */
+    public abstract String getType();
 }

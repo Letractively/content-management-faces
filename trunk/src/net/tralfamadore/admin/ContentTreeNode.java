@@ -25,15 +25,26 @@ import net.tralfamadore.cmf.Content;
  * User: billreh
  * Date: 1/20/11
  * Time: 3:03 PM
+ *
+ * Stores data for content nodes.
  */
 public class ContentTreeNode extends TreeNode {
+    /** The {@link Content} object */
     private Content content;
 
+    /**
+     * Create a new content node with <code>parent</code> and <code>content</code>.
+     *
+     * @param parent The parent node, <code>null</code> if this is a root node.
+     * @param content The {@link Content}.
+     */
     public ContentTreeNode(TreeNode parent, Content content) {
         super(parent, content.getName());
         this.content = content;
     }
 
+
+    /* getters and setters */
     public Content getContent() {
         return content;
     }
@@ -42,6 +53,11 @@ public class ContentTreeNode extends TreeNode {
         this.content = content;
     }
 
+    /**
+     * Match nodes of type "content".
+     *
+     * @return "content"
+     */
     @Override
     public String getType() {
         return "content";

@@ -25,14 +25,26 @@ import net.tralfamadore.cmf.Style;
  * User: billreh
  * Date: 1/20/11
  * Time: 3:03 PM
+ *
+ * Stores data for style nodes.
  */
 public class StyleTreeNode extends TreeNode {
+    /** The {@link Style} object */
     private Style style;
 
+    /**
+     * Create a new style node with <code>parent</code> and <code>style</code>.
+     *
+     * @param parent The parent node, <code>null</code> if this is a root node.
+     * @param style The {@link Style}.
+     */
     public StyleTreeNode(TreeNode parent, Style style) {
         super(parent, style.getName());
         this.style = style;
     }
+
+
+    /* getters and setters */
 
     public Style getStyle() {
         return style;
@@ -42,6 +54,11 @@ public class StyleTreeNode extends TreeNode {
         this.style = style;
     }
 
+    /**
+     * Match nodes of type "Style".
+     *
+     * @return "Style"
+     */
     @Override
     public String getType() {
         return "style";

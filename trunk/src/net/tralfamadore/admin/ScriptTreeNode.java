@@ -25,14 +25,26 @@ import net.tralfamadore.cmf.Script;
  * User: billreh
  * Date: 1/20/11
  * Time: 3:03 PM
+ *
+ * Stores data for script nodes.
  */
 public class ScriptTreeNode extends TreeNode {
+    /** The {@link Script} object */
     private Script script;
 
+    /**
+     * Create a new script node with <code>parent</code> and <code>script</code>.
+     *
+     * @param parent The parent node, <code>null</code> if this is a root node.
+     * @param script The {@link Script}.
+     */
     public ScriptTreeNode(TreeNode parent, Script script) {
         super(parent, script.getName());
         this.script = script;
     }
+
+
+    /* getters and setters */
 
     public Script getScript() {
         return script;
@@ -42,6 +54,11 @@ public class ScriptTreeNode extends TreeNode {
         this.script = script;
     }
 
+    /**
+     * Match nodes of type "script".
+     *
+     * @return "script"
+     */
     @Override
     public String getType() {
         return "script";

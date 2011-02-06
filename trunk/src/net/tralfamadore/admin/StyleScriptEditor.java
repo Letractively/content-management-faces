@@ -21,23 +21,24 @@ package net.tralfamadore.admin;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIPanel;
 import java.io.Serializable;
-import java.util.List;
-import java.util.Vector;
 
 /**
  * User: billreh
  * Date: 1/19/11
  * Time: 3:27 AM
+ *
+ * This managed bean is a backing bean for the admin page and is also used by the {@link Admin} managed bean.  It
+ * represents the current contents of the style editor.
  */
 @ManagedBean
 @SessionScoped
 public class StyleScriptEditor implements Serializable {
-    private UIPanel styles;
+    /** the contents of the style editor */
     private String value;
 
+
+    /* getters and setters */
 
     public String getValue() {
         return value;
@@ -45,27 +46,5 @@ public class StyleScriptEditor implements Serializable {
 
     public void setValue(String value) {
         this.value = value;
-    }
-
-    public UIPanel getStyles() {
-        List<String> ids = new Vector<String>();
-        List<UIComponent> children = new Vector<UIComponent>();
-        if(styles != null) {
-            for(UIComponent c : styles.getChildren()) {
-                if(ids.contains(c.getId()))
-                    continue;
-                ids.add(c.getId());
-                children.add(c);
-            }
-            styles.getChildren().clear();
-            for(UIComponent c : children) {
-                styles.getChildren().add(c);
-            }
-        }
-        return styles;
-    }
-
-    public void setStyles(UIPanel styles) {
-        this.styles = styles;
     }
 }

@@ -44,7 +44,7 @@ import java.util.Properties;
  * Date: 1/19/11
  * Time: 1:33 AM
  *
- * The main backing bean used for the admin page (META-INF/resources/admin/index.xhtml and the pages it includes.
+ * The main backing bean used for the admin page (META-INF/resources/admin/index.xhtml) and the pages it includes.
  */
 @ManagedBean
 @SessionScoped
@@ -80,8 +80,6 @@ public class Admin {
     /** the path to the embedded db directory */
     private String derbyPath;
 
-    /** true after we've successfully created the embedded db */
-    private boolean embeddedDbSuccess = false;
 
     /* getters and setters */
 
@@ -325,21 +323,11 @@ public class Admin {
         }
     }
 
-
-    /* helper methods */
-
-    private void addStylesForEditor() {
-        List<Style> styles = editor.getStyles();
-        styles.clear();
-        editor.clearCurrentStyles();
-        for(Style style : contentManager.loadStylesForContent(currentNode.getContent())) {
-            editor.addCurrentStyle(style.getStyle());
-            styles.add(style);
-        }
-
-
-    }
-
+    /**
+     * Action listener that is called when the style editor is loaded.
+     *
+     * @param e event info
+     */
     public void loadStyleEditor(ActionEvent e) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
@@ -351,6 +339,11 @@ public class Admin {
         styleScriptEditor.setValue(currentStyleNode.getStyle().getStyle());
     }
 
+    /**
+     * Action listener that creates the embedded database from the initial screen.
+     *
+     * @param e event info
+     */
     public void createEmbeddedDb(ActionEvent e) {
         String jdbc = "jdbc:derby:";
         String props = ";create=true";
@@ -373,5 +366,23 @@ public class Admin {
         embeddedDbNeedsConfig = false;
 
         tree.createTreeModel();
+    }
+
+
+    /* helper methods */
+
+    /**
+     * Load styles for the current content node.
+     */
+    private void addStylesForEditor() {
+        List<Style> styles = editor.getStyles();
+        styles.clear();
+        editor.clearCurrentStyles();
+        for(Style style : contentManager.loadStylesForContent(currentNode.getContent())) {
+            editor.addCurrentStyle(style.getStyle());
+            styles.add(style);
+        }
+
+
     }
 }

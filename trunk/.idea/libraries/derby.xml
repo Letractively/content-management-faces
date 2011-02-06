@@ -3,7 +3,7 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/derby/derby-10.5.3.0_1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/derby/eclipselink.jar!/" />
-      <root url="jar://$USER_HOME$/lib/eclipselink/jlib/jpa/javax.persistence_2.0.1.v201006031150.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/derby/javax.persistence.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
