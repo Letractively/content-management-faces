@@ -1,0 +1,31 @@
+#summary Documentation for the <cmf:content> tag.
+
+= Content =
+
+The content tag is the basic tag for inserting content with cmf.  
+
+== Info  ==
+|| Tag || content ||
+|| Component Class || net.tralfamadore.cmf.component.content.Content ||
+|| Component Type || javax.faces.component.UIOutput ||
+|| RendererClass || net.tralfamadore.component.content.ContentRenderer ||
+
+
+= Attributes =
+|| *Name* || *Default* || *Type* || *Description* ||
+|| name || null || String || Name for the content.  The name must be unique within its namespace. ||
+|| namespace || null || String || Path under wich content and styles exist.  All namespace names are written as name.of.namespace.separated.by.periods and must be unique. ||
+|| id || assigned || String || Unique component identifier. ||
+|| escape || true || boolean || Set to true to escape html. ||
+|| binding || null || UIComponent || An el expression that points to a server side UIComponent field in a backing bean, which can be cast to the net.tralfamadore.component.content.Content class. ||
+|| rendered || true || boolean || Whether the component is rendered. ||
+|| style || null || String || Html style attribute. ||
+|| styleClass || null || String || Css class name. ||
+|| dir || assigned || String || Unique component identifier. ||
+|| lang || null || String || Html lang attribute. ||
+|| title || null || String || Html dir attribute. ||
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
