@@ -1,0 +1,24 @@
+#summary What is Content Management Faces?
+
+= Introduction =
+
+Content Management Faces is meant as a drop in cms solution for jsf2.  The idea is to have a single jar file (cmf.jar) that you can put into the WEB-INF/lib directory of your web application that will provide a jsf tag library to insert various content tags in your pages, and a web interface from which you can edit your content.
+
+= Details =
+
+== Tags ==
+
+Currently cmf has only one tag, the <cmf:content> tag.  See ContentTag for details.
+
+== Admin Interface ==
+
+CkEditor  CodeMirror
+
+== Supported App Servers ==
+
+  * [http://glassfish.java.net/ Glassfish 3]
+  * [http://tomcat.apache.org/download-70.cgi Tomcat 7]
+
+
+
+Please see the [Quickstart] for installation instructions.
