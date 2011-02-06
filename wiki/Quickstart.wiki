@@ -8,7 +8,8 @@ The following steps should get you up and running.  Once you're logged into the 
 = Details =
 
   # Copy cmf.jar to your project's WEB-INF/lib directory.
-  # copy cmf-config.xml to your project's WEB-INF directory.
+  # If you're running tomcat7, copy derby-10.5.3.0_1.jar, eclipselink.jar, and javax.persistence.jar to your WEB-INF/lib directory as well.
+  # Copy cmf-config.xml to your project's WEB-INF directory.
   # Examples of using postgres and mysql datasources are included in the cmf.xml file.  If you wish to use one of these databases, database generation scripts are located in the scripts directory.
   # If you're using an IDE, make sure it includes cmf.jar in its classpath so that it sees the tag library.
   # Include the taglib in your html declaration:
