@@ -93,6 +93,7 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
 
     public void createEmbeddedDb(Properties properties) {
         shutdown();
+
         emFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME, properties);
         em = emFactory.createEntityManager();
 

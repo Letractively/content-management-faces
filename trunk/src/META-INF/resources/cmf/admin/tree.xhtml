@@ -51,7 +51,8 @@
                 <h:commandButton image="images/file_add.png" styleClass="treeButton"
                                  actionListener="#{admin.selectNamespace}">
                     <f:param name="namespace" value="#{node.namespace}"/>
-                    <f:ajax render="style content contentNamespace namespace" onevent="hideEditorAndShowStyle"/>
+                    <f:ajax render="style content contentNamespace namespace styleNamespace"
+                            onevent="hideEditorAndShowStyle"/>
                 </h:commandButton>
             </span>
         </cmf:treeNode>

@@ -15,7 +15,6 @@
           <element id="dir-copy" path="$PROJECT_DIR$/src/net" />
         </element>
       </element>
-      <element id="library" level="project" name="derby" />
     </root>
   </artifact>
 </component>
