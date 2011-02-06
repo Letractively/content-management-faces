@@ -27,4 +27,10 @@ The content tag is the basic tag for inserting content with cmf.  A name and nam
 
 == Example ==
 
+In your .xhtml file you would put something like the following:
+
 `<cmf:content name="header" namespace="com.mysite.page1">Default Header</cmf:content>`
+
+In the administration panel you would configure content for that namespace and name:
+
+http://content-management-faces.googlecode.com/svn/wiki/images/contentTagExample.png
