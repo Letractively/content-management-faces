@@ -60,6 +60,18 @@
   
   <!-- Project Libraries -->
   
+  <path id="library.dbdrivers.classpath">
+    <fileset dir="${basedir}/lib/dbDrivers">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="library.derby.classpath">
+    <pathelement location="${basedir}/lib/derby/derby-10.5.3.0_1.jar"/>
+    <pathelement location="${basedir}/lib/derby/eclipselink.jar"/>
+    <pathelement location="${basedir}/lib/derby/javax.persistence.jar"/>
+  </path>
+  
   <path id="library.el.classpath">
     <pathelement location="${basedir}/lib/el/el-impl-2.1.2-b04.jar"/>
     <pathelement location="${basedir}/lib/el/javax.el.jar"/>
@@ -86,15 +98,11 @@
       <patternset refid="library.patterns"/>
     </fileset>
   </path>
-
+  
   <path id="library.junit.classpath">
     <fileset dir="${basedir}/lib/junit">
       <patternset refid="library.patterns"/>
     </fileset>
-  </path>
-  
-  <path id="library.postgres.classpath">
-    <pathelement location="${basedir}/lib/dbDrivers/postgresql-8.4-701.jdbc3.jar"/>
   </path>
   
   
@@ -126,13 +134,15 @@
     <path refid="library.el.classpath"/>
     <path refid="library.jpa.classpath"/>
     <path refid="library.java_ee_6.classpath"/>
-    <path refid="library.postgres.classpath"/>
+    <path refid="library.dbdrivers.classpath"/>
+    <path refid="library.derby.classpath"/>
   </path>
   
   <path id="cmf.runtime.production.module.classpath">
     <pathelement location="${cmf.output.dir}"/>
     <path refid="library.java_ee_6.classpath"/>
-    <path refid="library.postgres.classpath"/>
+    <path refid="library.dbdrivers.classpath"/>
+    <path refid="library.derby.classpath"/>
   </path>
   
   <path id="cmf.module.classpath">
@@ -140,11 +150,12 @@
     <path refid="library.jsf.classpath"/>
     <path refid="library.jsfunit.classpath"/>
     <path refid="library.junit.classpath"/>
-    <pathelement location="${basedir}/lib/jsfunit/junit-3.8.1.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.7.jar"/>
     <path refid="library.el.classpath"/>
     <path refid="library.jpa.classpath"/>
     <path refid="library.java_ee_6.classpath"/>
-    <path refid="library.postgres.classpath"/>
+    <path refid="library.dbdrivers.classpath"/>
+    <path refid="library.derby.classpath"/>
   </path>
   
   <path id="cmf.runtime.module.classpath">
@@ -152,12 +163,12 @@
     <pathelement location="${cmf.output.dir}"/>
     <path refid="library.jsf.classpath"/>
     <path refid="library.jsfunit.classpath"/>
-    <path refid="library.junit.classpath"/>
-    <pathelement location="${basedir}/lib/jsfunit/junit-3.8.1.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.7.jar"/>
     <path refid="library.el.classpath"/>
     <path refid="library.jpa.classpath"/>
     <path refid="library.java_ee_6.classpath"/>
-    <path refid="library.postgres.classpath"/>
+    <path refid="library.dbdrivers.classpath"/>
+    <path refid="library.derby.classpath"/>
   </path>
   
   
@@ -274,34 +285,18 @@
       <fileset dir="${basedir}/out/test/cmf"/>
     </copy>
     <mkdir dir="${artifact.output.cmf:war_exploded}/WEB-INF/lib"/>
-    <copy file="${basedir}/lib/jsfunit/ant-1.5.4.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/ant-1.5.4.jar"/>
-    <copy file="${basedir}/lib/jsfunit/apache-mime4j-0.6.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/apache-mime4j-0.6.jar"/>
-    <copy file="${basedir}/lib/jsfunit/aspectjrt-1.2.1.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/aspectjrt-1.2.1.jar"/>
-    <copy file="${basedir}/lib/jsfunit/cactus-13-1.7.1.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/cactus-13-1.7.1.jar"/>
-    <copy file="${basedir}/lib/jsfunit/cactus-ant-13-1.7.1.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/cactus-ant-13-1.7.1.jar"/>
-    <copy file="${basedir}/lib/jsfunit/cargo-0.5.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/cargo-0.5.jar"/>
-    <copy file="${basedir}/lib/jsfunit/commons-codec-1.4.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/commons-codec-1.4.jar"/>
-    <copy file="${basedir}/lib/jsfunit/commons-collections-3.2.1.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/commons-collections-3.2.1.jar"/>
-    <copy file="${basedir}/lib/jsfunit/commons-httpclient-2.0.2.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/commons-httpclient-2.0.2.jar"/>
-    <copy file="${basedir}/lib/jsfunit/commons-io-1.4.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/commons-io-1.4.jar"/>
-    <copy file="${basedir}/lib/jsfunit/commons-lang-2.4.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/commons-lang-2.4.jar"/>
-    <copy file="${basedir}/lib/jsfunit/commons-logging-1.1.1.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/commons-logging-1.1.1.jar"/>
-    <copy file="${basedir}/lib/jsfunit/cssparser-0.9.5.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/cssparser-0.9.5.jar"/>
-    <copy file="${basedir}/lib/jsfunit/htmlunit-2.8.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/htmlunit-2.8.jar"/>
-    <copy file="${basedir}/lib/jsfunit/htmlunit-core-js-2.8.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/htmlunit-core-js-2.8.jar"/>
-    <copy file="${basedir}/lib/jsfunit/httpclient-4.0.1.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/httpclient-4.0.1.jar"/>
-    <copy file="${basedir}/lib/jsfunit/httpcore-4.0.1.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/httpcore-4.0.1.jar"/>
-    <copy file="${basedir}/lib/jsfunit/httpmime-4.0.1.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/httpmime-4.0.1.jar"/>
-    <copy file="${basedir}/lib/jsfunit/jboss-jsfunit-core-1.3.0.Final.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/jboss-jsfunit-core-1.3.0.Final.jar"/>
-    <copy file="${basedir}/lib/jsfunit/junit-3.8.1.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/junit-3.8.1.jar"/>
-    <copy file="${basedir}/lib/jsfunit/nekohtml-1.9.14.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/nekohtml-1.9.14.jar"/>
-    <copy file="${basedir}/lib/jsfunit/sac-1.3.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/sac-1.3.jar"/>
-    <copy file="${basedir}/lib/jsfunit/xalan-2.7.0.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/xalan-2.7.0.jar"/>
-    <copy file="${basedir}/lib/jsfunit/xercesImpl-2.8.1.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/xercesImpl-2.8.1.jar"/>
     <copy todir="${artifact.output.cmf:war_exploded}/WEB-INF/lib">
       <fileset dir="${artifact.temp.output.cmf:jar}"/>
     </copy>
     <copy file="${basedir}/lib/dbDrivers/postgresql-8.4-701.jdbc3.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/postgresql-8.4-701.jdbc3.jar"/>
+    <copy file="${basedir}/lib/dbDrivers/mysql-connector-java-5.1.13-bin.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/mysql-connector-java-5.1.13-bin.jar"/>
+    <copy file="${basedir}/lib/dbDrivers/derby-10.5.3.0_1.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/derby-10.5.3.0_1.jar"/>
+    <copy file="${basedir}/lib/el/el-impl-2.1.2-b04.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/el-impl-2.1.2-b04.jar"/>
+    <copy file="${basedir}/lib/el/javax.el.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/javax.el.jar"/>
+    <copy file="${basedir}/lib/jpa/javax.ejb.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/javax.ejb.jar"/>
+    <copy file="${basedir}/lib/derby/derby-10.5.3.0_1.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/derby-10.5.3.0_1.jar"/>
+    <copy file="${basedir}/lib/derby/eclipselink.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/eclipselink.jar"/>
+    <copy file="${basedir}/lib/derby/javax.persistence.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/javax.persistence.jar"/>
   </target>
   
   <target name="build.all.artifacts" depends="artifact.cmf:jar, artifact.cmf:war_exploded" description="Build all artifacts">

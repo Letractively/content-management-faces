@@ -4,7 +4,10 @@
       <root url="file://$PROJECT_DIR$/lib/jsf" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$USER_HOME$/lib/mojarra-2.0.2-FCS-source/jsf-ri/src" />
+      <root url="file://$USER_HOME$/lib/mojarra-2.0.2-FCS-source/jsf-api/src/main/java" />
+    </SOURCES>
     <jarDirectory url="file://$PROJECT_DIR$/lib/jsf" recursive="false" />
   </library>
 </component>
