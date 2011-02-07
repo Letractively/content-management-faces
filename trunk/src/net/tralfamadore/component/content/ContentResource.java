@@ -32,7 +32,9 @@ public class ContentResource extends UIOutput {
 
     protected enum PropertyKeys {
         type,
-        content
+        content,
+        name,
+        namespace
     }
 
     public String getType() {
@@ -49,6 +51,22 @@ public class ContentResource extends UIOutput {
 
     public void setContent(String content) {
         getStateHelper().put(PropertyKeys.content, content);
+    }
+
+    public String getName() {
+        return (String) getStateHelper().eval(PropertyKeys.name);
+    }
+
+    public void setName(String name) {
+        getStateHelper().put(PropertyKeys.name, name);
+    }
+
+    public String getNamespace() {
+        return (String) getStateHelper().eval(PropertyKeys.namespace);
+    }
+
+    public void setNamespace(String namespace) {
+        getStateHelper().put(PropertyKeys.namespace, namespace);
     }
 }
 

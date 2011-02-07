@@ -25,10 +25,9 @@ public class ContentTest extends ServletTestCase {
         JSFServerSession serverSession = session.getJSFServerSession();
         JSFClientSession clientSession = session.getJSFClientSession();
 
-        clientSession.click("emptyPathButton");
-        clientSession.setValue("in", "net");
-        clientSession.click("submitNamespace");
-        System.out.println(clientSession.getPageAsText());
-        assertEquals("/cmf/admin/index.xhtml", serverSession.getCurrentViewID());
+        clientSession.setValue("derbyPath", "/Users/billreh/tmpDb");
+        clientSession.click("submitDerbyPath");
+
+        assertTrue(clientSession.getPageAsText().contains("Success"));
     }
 }

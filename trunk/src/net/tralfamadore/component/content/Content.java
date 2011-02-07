@@ -68,23 +68,33 @@ public class Content extends HtmlOutputText {
         List<Script> scripts = getContentManager().loadScriptsForContent(
                 getContentManager().loadContent(Namespace.createFromString(getNamespace()), getName()));
         for(Script resource : scripts) {
-            addResource(context, resource.getScript(), "script");
+            addResource(context, resource);
         }
 
         List<Style> styles = getContentManager().loadStylesForContent(
                 getContentManager().loadContent(Namespace.createFromString(getNamespace()), getName()));
         for(Style resource : styles) {
-            addResource(context, resource.getStyle(), "style");
+            addResource(context, resource);
         }
     }
 
-    private void addResource(FacesContext context, String content, String type) {
+    public void addResource(FacesContext context, Style style) {
+        addResource(context, style.getName(), style.getNamespace().getFullName(), style.getStyle(), "style");
+    }
+
+    public void addResource(FacesContext context, Script script) {
+        addResource(context, script.getName(), script.getNamespace().getFullName(), script.getScript(), "script");
+    }
+
+    private void addResource(FacesContext context, String name, String namespace, String content, String type) {
         if(content != null && ! content.isEmpty()) {
             Application application = context.getApplication();
             ContentResource contentResource = (ContentResource)
                     application.createComponent(context, "ContentResource", "ContentResourceRenderer");
             contentResource.setContent(content);
             contentResource.setType(type);
+            contentResource.setName(name);
+            contentResource.setNamespace(namespace);
             context.getViewRoot().addComponentResource(context, contentResource, "head");
         }
     }

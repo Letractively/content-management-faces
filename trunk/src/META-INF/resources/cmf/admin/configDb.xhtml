@@ -52,8 +52,8 @@
                             </table>
                         </td>
                         <td style="margin-left: 20px; padding-left: 20px; vertical-align: bottom;">
-                            <h:commandButton class="theButton" value="Submit" style="text-align: right;"
-                                    actionListener="#{admin.createEmbeddedDb}">
+                            <h:commandButton id="submitDerbyPath" class="theButton" value="Submit"
+                                             style="text-align: right;" actionListener="#{admin.createEmbeddedDb}">
                                 <f:ajax execute="derbyPath" onevent="showConfigSuccess"
                                         render="configDb configDbSuccess derbySuccessPath messages theTree"/>
 

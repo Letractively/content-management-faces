@@ -19,12 +19,16 @@
 
 package net.tralfamadore.component.content;
 
+import javax.faces.application.Resource;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 import javax.faces.render.Renderer;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * User: billreh
@@ -33,29 +37,58 @@ import java.io.IOException;
  */
 @FacesRenderer(componentFamily = "javax.faves.Output", rendererType = "ContentResource")
 public class ContentResourceRenderer extends Renderer {
+    private static final String BASE_RESOURCE_PATH = "/WEB-INF/classes/META-INF/resources";
+    private static final String resourceLibrary = "cmfDynamicResources";
+
+    private static Map<String,Integer> resourceMap = new HashMap<String, Integer>();
+
+
+    public static void encodeDynamicResource(FacesContext context, ContentResource component) throws IOException {
+        String path = context.getExternalContext().getRealPath(BASE_RESOURCE_PATH);
+        File file = new File(path);
+
+        File base = new File(file, resourceLibrary);
+        if(!base.exists()) {
+            //noinspection ResultOfMethodCallIgnored
+            base.mkdirs();
+        }
+
+        String name = component.getNamespace().replaceAll("\\.", "-")+ "-" + component.getName() +
+                ("style".equals(component.getType()) ? ".css" : ".js");
+
+        File resource = new File(base, name);
+        if(!resource.exists()) {
+            //noinspection ResultOfMethodCallIgnored
+            resource.createNewFile();
+        }
+        Integer hash = resourceMap.get(name);
+        Integer componentHashCode = component.getContent().hashCode();
+        if(hash == null || !hash.equals(componentHashCode)) {
+            writeStringToFile(resource, component.getContent());
+            resourceMap.put(name, component.getContent().hashCode());
+        }
+
+        Resource res = context.getApplication().getResourceHandler().createResource(name, resourceLibrary);
+        path = res.getRequestPath();
+
+        context.getResponseWriter().write("<link type=\"text/css\" rel=\"stylesheet\" href=\"" + path + "\"/>");
+    }
+
+
     @Override
     public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
-        ContentResource contentResource = (ContentResource) component;
-        if("script".equals(contentResource.getType()))
-            encodeScript(context, contentResource);
-        else if("style".equals(contentResource.getType()))
-            encodeStyle(context, contentResource);
-    }
-
-    protected void encodeStyle(FacesContext context, ContentResource component) throws IOException {
-        ResponseWriter responseWriter = context.getResponseWriter();
-        responseWriter.write("<style type=\"text/css\">");
-        responseWriter.write(component.getContent());
-        responseWriter.write("</style>");
-        responseWriter.flush();
+        encodeDynamicResource(context, (ContentResource) component);
     }
 
 
-    protected void encodeScript(FacesContext context, ContentResource component) throws IOException {
-        ResponseWriter responseWriter = context.getResponseWriter();
-        responseWriter.write("<script type=\"text/javascript\">");
-        responseWriter.write(component.getContent());
-        responseWriter.write("</script>");
-        responseWriter.flush();
+    private static void writeStringToFile(File file, String string) throws java.io.IOException{
+        FileOutputStream outputStream = null;
+        try {
+            outputStream = new FileOutputStream(file);
+            outputStream.write(string.getBytes());
+        } finally {
+            try { if(outputStream != null)outputStream.close(); } catch(Exception ignore) {}
+        }
+
     }
 }
