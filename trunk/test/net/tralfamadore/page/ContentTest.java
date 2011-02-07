@@ -4,7 +4,6 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 import org.apache.cactus.ServletTestCase;
 import org.jboss.jsfunit.jsfsession.JSFClientSession;
-import org.jboss.jsfunit.jsfsession.JSFServerSession;
 import org.jboss.jsfunit.jsfsession.JSFSession;
 
 import java.io.IOException;
@@ -22,7 +21,7 @@ public class ContentTest extends ServletTestCase {
 
     public void testAdmin() throws IOException {
         JSFSession session = new JSFSession("/cmf/admin/index.jsf");
-        JSFServerSession serverSession = session.getJSFServerSession();
+//        JSFServerSession serverSession = session.getJSFServerSession();
         JSFClientSession clientSession = session.getJSFClientSession();
 
         clientSession.setValue("derbyPath", "/Users/billreh/tmpDb");
