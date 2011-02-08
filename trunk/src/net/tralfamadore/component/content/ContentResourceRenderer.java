@@ -42,8 +42,10 @@ public class ContentResourceRenderer extends Renderer {
         ContentResource content = (ContentResource) component;
         String name = content.getNamespace().replaceAll("\\.", "-")+ "-" + content.getName() +
                 ("style".equals(content.getType()) ? ".css" : ".js");
-        String path = DynamicResourceLoader.encodeDynamicResource(context, resourceLibrary, name, content.getContent());
+        String path = DynamicResourceLoader.encodeDynamicResource(context, resourceLibrary,
+                name, content.getContent());
 
-        context.getResponseWriter().write("<link type=\"text/css\" rel=\"stylesheet\" href=\"" + path + "\"/>");
+        context.getResponseWriter().write(
+                "<link type=\"text/css\" rel=\"stylesheet\" href=\"" + path + "\"/>");
     }
 }

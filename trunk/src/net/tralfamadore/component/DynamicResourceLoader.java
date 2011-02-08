@@ -41,12 +41,12 @@ public class DynamicResourceLoader {
 
 
     /**
-     * Creates a jsf resource file with the given <code>content</code>, <code>name</code>, and <code>library</code>,
-     * creating the library and a file resource if need be, and filling it with the contents of the
-     * <code>content</code> String.
+     * Creates a jsf resource file with the given <code>content</code>, <code>name</code>, and
+     * <code>library</code>, creating the library and a file resource if need be, and filling it
+     * with the contents of the <code>content</code> String.
      *
-     * This method will "cache" the content, only changing the file contents if the hashCode of the <code>content</code>
-     * String has changed.
+     * This method will "cache" the content, only changing the file contents if the hashCode of the
+     * <code>content</code> String has changed.
      *
      * @param context The current FacesContext
      * @param library The library name (will be created if it does not exist)
@@ -55,10 +55,14 @@ public class DynamicResourceLoader {
      *
      * @throws IOException If there's some sort of IO Exception :)
      *
-     * @return The name of the resource location such as "com-mysite-siteStyle.css.jsf?ln=cmfDynamicResources".  This
-     * can be put into the href/src attribute of a style/script tag in the header to point to the resource.
+     * @return The name of the resource location such as
+     * "com-mysite-siteStyle.css.jsf?ln=cmfDynamicResources".  This can be put into the href/src
+     * attribute of a style/script tag in the header to point to the resource.
      */
-    public static String encodeDynamicResource(FacesContext context, String library, String name, String content)
+    public static String encodeDynamicResource(FacesContext context,
+                                               String library,
+                                               String name,
+                                               String content)
             throws IOException
     {
         // Get the path to the resources directory
@@ -76,10 +80,11 @@ public class DynamicResourceLoader {
         Integer hash = resourceMap.get(name);
         Integer componentHashCode = content.hashCode();
         /*
-           we prepend the hash code of the content String to make the name unique because jsf (or possibly glassfish?)
-           caches it when it changes even when we don't want it to.  The response header changes to indicate that the
-           server should serve up a the file anew, but it serves up the old content anyway.  Note that if the resource
-           contents haven't changed, this will stay the same (i.e. we aren't constantly recreating the file, we
+           we prepend the hash code of the content String to make the name unique because jsf (or
+           possibly glassfish?) caches it when it changes even when we don't want it to.  The
+           response header changes to indicate that the server should serve up a the file anew,
+           but it serves up the old content anyway.  Note that if the resource contents haven't
+           changed, this will stay the same (i.e. we aren't constantly recreating the file, we
            only make/change it when the content changes)
         */
         String resourceName = componentHashCode + name;
@@ -102,7 +107,8 @@ public class DynamicResourceLoader {
             resourceMap.put(name, content.hashCode());
         }
 
-        Resource res = context.getApplication().getResourceHandler().createResource(resourceName, library);
+        Resource res =
+                context.getApplication().getResourceHandler().createResource(resourceName, library);
 
         if(res != null) {
             res.getResponseHeaders().entrySet();
