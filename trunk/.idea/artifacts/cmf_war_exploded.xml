@@ -10,7 +10,6 @@
         </element>
         <element id="directory" name="lib">
           <element id="artifact" artifact-name="cmf:jar" />
-          <element id="library" level="project" name="dbDrivers" />
           <element id="library" level="project" name="el" />
           <element id="library" level="project" name="Java EE 6" />
           <element id="library" level="project" name="derby" />
