@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+<!--
+  After generating the build file from idea, copy everything within the project tag into the
+  generated build file to have a distribution target that is called like so:
+     ant -Dversion=1.1.1 artifact.cmf:dist
+  That would generate a cmf-1.1.1.zip file in the out/artifacts/cmf_dist directory.
+-->
+<project>
+    <property name="artifact.output.cmf:dist" value="${basedir}/out/artifacts/cmf_dist"/>
+    <property name="artifact.output.cmf:dist.temp" value="${basedir}/out/artifacts/cmf_dist/cmf-${version}"/>
+    <target name="artifact.cmf:dist.clean">
+        <delete dir="${artifact.output.cmf:dist}"/>
+        <mkdir dir="${artifact.output.cmf:dist}"/>
+    </target>
+    <target name="artifact.cmf:dist" depends="init.artifacts, compile.module.cmf, artifact.cmf:jar">
+        <delete dir="${artifact.output.cmf:dist}"/>
+        <mkdir dir="${artifact.output.cmf:dist}"/>
+        <mkdir dir="${artifact.output.cmf:dist.temp}"/>
+        <copy file="${artifact.temp.output.cmf:jar}/cmf.jar" todir="${artifact.output.cmf:dist.temp}"/>
+        <copy todir="${artifact.output.cmf:dist.temp}/lib">
+            <fileset dir="${basedir}/lib/derby"/>
+        </copy>
+        <copy todir="${artifact.output.cmf:dist.temp}/scripts">
+            <fileset dir="${basedir}/scripts"/>
+        </copy>
+        <copy file="${basedir}/LICENSE" todir="${artifact.output.cmf:dist.temp}"/>
+        <copy file="${basedir}/INSTALL" todir="${artifact.output.cmf:dist.temp}"/>
+        <copy file="${basedir}/web/WEB-INF/cmf-config.xml" todir="${artifact.output.cmf:dist.temp}"/>
+        <zip destfile="${artifact.output.cmf:dist}/cmf-${version}.zip" basedir="${artifact.output.cmf:dist}"/>
+        <!-- Delete temporary files -->
+        <delete dir="${artifact.output.cmf:dist.temp}"/>
+        <delete dir="${artifacts.temp.dir}"/>
+    </target>
+</project>

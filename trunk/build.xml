@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="cmf" default="all">
-  
-  
+
+
   <property file="cmf.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
-  <!-- 
+  <!--
   <property name="skip.tests" value="true"/>
    -->
-  
+
   <!-- Compiler options -->
-  
+
   <property name="compiler.debug" value="on"/>
   <property name="compiler.generate.no.warnings" value="off"/>
   <property name="compiler.args" value=""/>
@@ -56,79 +56,79 @@
     <include name="**/?*.tld"/>
     <include name="**/?*.ftl"/>
   </patternset>
-  
-  
+
+
   <!-- Project Libraries -->
-  
+
   <path id="library.dbdrivers.classpath">
     <fileset dir="${basedir}/lib/dbDrivers">
       <patternset refid="library.patterns"/>
     </fileset>
   </path>
-  
+
   <path id="library.derby.classpath">
     <pathelement location="${basedir}/lib/derby/derby-10.5.3.0_1.jar"/>
     <pathelement location="${basedir}/lib/derby/eclipselink.jar"/>
     <pathelement location="${basedir}/lib/derby/javax.persistence.jar"/>
   </path>
-  
+
   <path id="library.el.classpath">
     <pathelement location="${basedir}/lib/el/el-impl-2.1.2-b04.jar"/>
     <pathelement location="${basedir}/lib/el/javax.el.jar"/>
   </path>
-  
+
   <path id="library.java_ee_6.classpath">
     <pathelement location="${basedir}/lib/jpa/javax.ejb.jar"/>
   </path>
-  
+
   <path id="library.jpa.classpath">
     <fileset dir="${basedir}/lib/jpa">
       <patternset refid="library.patterns"/>
     </fileset>
   </path>
-  
+
   <path id="library.jsf.classpath">
     <fileset dir="${basedir}/lib/jsf">
       <patternset refid="library.patterns"/>
     </fileset>
   </path>
-  
+
   <path id="library.jsfunit.classpath">
     <fileset dir="${basedir}/lib/jsfunit">
       <patternset refid="library.patterns"/>
     </fileset>
   </path>
-  
+
   <path id="library.junit.classpath">
     <fileset dir="${basedir}/lib/junit">
       <patternset refid="library.patterns"/>
     </fileset>
   </path>
-  
-  
+
+
   <!-- Global Libraries -->
-  
-  
+
+
   <!-- Application Server Libraries -->
-  
+
   <!-- Modules -->
-  
-  
+
+
   <!-- Module cmf -->
-  
+
   <dirname property="module.cmf.basedir" file="${ant.file}"/>
-  
-  
-  
+
+
+
   <property name="compiler.args.cmf" value="${compiler.args}"/>
-  
+
   <property name="cmf.output.dir" value="${module.cmf.basedir}/out/production/cmf"/>
   <property name="cmf.testoutput.dir" value="${module.cmf.basedir}/out/test/cmf"/>
-  
+
   <path id="cmf.module.bootclasspath">
     <!-- Paths to be included in compilation bootclasspath -->
   </path>
-  
+
   <path id="cmf.module.production.classpath">
     <path refid="library.jsf.classpath"/>
     <path refid="library.el.classpath"/>
@@ -137,14 +137,14 @@
     <path refid="library.dbdrivers.classpath"/>
     <path refid="library.derby.classpath"/>
   </path>
-  
+
   <path id="cmf.runtime.production.module.classpath">
     <pathelement location="${cmf.output.dir}"/>
     <path refid="library.java_ee_6.classpath"/>
     <path refid="library.dbdrivers.classpath"/>
     <path refid="library.derby.classpath"/>
   </path>
-  
+
   <path id="cmf.module.classpath">
     <pathelement location="${cmf.output.dir}"/>
     <path refid="library.jsf.classpath"/>
@@ -157,7 +157,7 @@
     <path refid="library.dbdrivers.classpath"/>
     <path refid="library.derby.classpath"/>
   </path>
-  
+
   <path id="cmf.runtime.module.classpath">
     <pathelement location="${cmf.testoutput.dir}"/>
     <pathelement location="${cmf.output.dir}"/>
@@ -170,31 +170,31 @@
     <path refid="library.dbdrivers.classpath"/>
     <path refid="library.derby.classpath"/>
   </path>
-  
-  
+
+
   <patternset id="excluded.from.module.cmf">
     <patternset refid="ignored.files"/>
   </patternset>
-  
+
   <patternset id="excluded.from.compilation.cmf">
     <patternset refid="excluded.from.module.cmf"/>
   </patternset>
-  
+
   <path id="cmf.module.sourcepath">
     <dirset dir="${module.cmf.basedir}">
       <include name="src"/>
     </dirset>
   </path>
-  
+
   <path id="cmf.module.test.sourcepath">
     <dirset dir="${module.cmf.basedir}">
       <include name="test"/>
     </dirset>
   </path>
-  
-  
+
+
   <target name="compile.module.cmf" depends="compile.module.cmf.production,compile.module.cmf.tests" description="Compile module cmf"/>
-  
+
   <target name="compile.module.cmf.production" description="Compile module cmf; production classes">
     <mkdir dir="${cmf.output.dir}"/>
     <javac destdir="${cmf.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
@@ -204,7 +204,7 @@
       <src refid="cmf.module.sourcepath"/>
       <patternset refid="excluded.from.compilation.cmf"/>
     </javac>
-    
+
     <copy todir="${cmf.output.dir}">
       <fileset dir="${module.cmf.basedir}/src">
         <patternset refid="compiler.resources"/>
@@ -212,7 +212,7 @@
       </fileset>
     </copy>
   </target>
-  
+
   <target name="compile.module.cmf.tests" depends="compile.module.cmf.production" description="compile module cmf; test classes" unless="skip.tests">
     <mkdir dir="${cmf.testoutput.dir}"/>
     <javac destdir="${cmf.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
@@ -222,7 +222,7 @@
       <src refid="cmf.module.test.sourcepath"/>
       <patternset refid="excluded.from.compilation.cmf"/>
     </javac>
-    
+
     <copy todir="${cmf.testoutput.dir}">
       <fileset dir="${module.cmf.basedir}/test">
         <patternset refid="compiler.resources"/>
@@ -230,20 +230,20 @@
       </fileset>
     </copy>
   </target>
-  
+
   <target name="clean.module.cmf" description="cleanup module">
     <delete dir="${cmf.output.dir}"/>
     <delete dir="${cmf.testoutput.dir}"/>
   </target>
-  
+
   <target name="init" description="Build initialization">
     <!-- Perform any build initialization in this target -->
   </target>
-  
+
   <target name="clean" depends="clean.module.cmf, clean.artifact.cmf:war_exploded" description="cleanup all"/>
-  
+
   <target name="build.modules" depends="init, clean, compile.module.cmf" description="build all modules"/>
-  
+
   <target name="init.artifacts">
     <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
     <property name="artifact.output.cmf:jar" value="${basedir}/out/artifacts/cmf_jar"/>
@@ -251,11 +251,11 @@
     <mkdir dir="${artifacts.temp.dir}"/>
     <property name="temp.jar.path.cmf.jar" value="${artifacts.temp.dir}/cmf.jar"/>
   </target>
-  
+
   <target name="clean.artifact.cmf:war_exploded" description="clean cmf:war exploded artifact output">
     <delete dir="${artifact.output.cmf:war_exploded}"/>
   </target>
-  
+
   <target name="artifact.cmf:jar" depends="init.artifacts, compile.module.cmf" description="Build &apos;cmf:jar&apos; artifact">
     <property name="artifact.temp.output.cmf:jar" value="${artifacts.temp.dir}/cmf_jar"/>
     <mkdir dir="${artifact.temp.output.cmf:jar}"/>
@@ -268,7 +268,7 @@
     </jar>
     <copy file="${temp.jar.path.cmf.jar}" tofile="${artifact.temp.output.cmf:jar}/cmf.jar"/>
   </target>
-  
+
   <target name="artifact.cmf:war_exploded" depends="init.artifacts, compile.module.cmf, artifact.cmf:jar" description="Build &apos;cmf:war exploded&apos; artifact">
     <mkdir dir="${artifact.output.cmf:war_exploded}"/>
     <copy todir="${artifact.output.cmf:war_exploded}">
@@ -298,16 +298,42 @@
     <copy file="${basedir}/lib/derby/eclipselink.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/eclipselink.jar"/>
     <copy file="${basedir}/lib/derby/javax.persistence.jar" tofile="${artifact.output.cmf:war_exploded}/WEB-INF/lib/javax.persistence.jar"/>
   </target>
-  
+
+    <property name="artifact.output.cmf:dist" value="${basedir}/out/artifacts/cmf_dist"/>
+    <property name="artifact.output.cmf:dist.temp" value="${basedir}/out/artifacts/cmf_dist/cmf-${version}"/>
+    <target name="artifact.cmf:dist.clean">
+        <delete dir="${artifact.output.cmf:dist}"/>
+        <mkdir dir="${artifact.output.cmf:dist}"/>
+    </target>
+    <target name="artifact.cmf:dist" depends="init.artifacts, compile.module.cmf, artifact.cmf:jar">
+        <delete dir="${artifact.output.cmf:dist}"/>
+        <mkdir dir="${artifact.output.cmf:dist}"/>
+        <mkdir dir="${artifact.output.cmf:dist.temp}"/>
+        <copy file="${artifact.temp.output.cmf:jar}/cmf.jar" todir="${artifact.output.cmf:dist.temp}"/>
+        <copy todir="${artifact.output.cmf:dist.temp}/lib">
+            <fileset dir="${basedir}/lib/derby"/>
+        </copy>
+        <copy todir="${artifact.output.cmf:dist.temp}/scripts">
+            <fileset dir="${basedir}/scripts"/>
+        </copy>
+        <copy file="${basedir}/LICENSE" todir="${artifact.output.cmf:dist.temp}"/>
+        <copy file="${basedir}/INSTALL" todir="${artifact.output.cmf:dist.temp}"/>
+        <copy file="${basedir}/web/WEB-INF/cmf-config.xml" todir="${artifact.output.cmf:dist.temp}"/>
+        <zip destfile="${artifact.output.cmf:dist}/cmf-${version}.zip" basedir="${artifact.output.cmf:dist}"/>
+        <!-- Delete temporary files -->
+        <delete dir="${artifact.output.cmf:dist.temp}"/>
+        <delete dir="${artifacts.temp.dir}"/>
+    </target>
+
   <target name="build.all.artifacts" depends="artifact.cmf:jar, artifact.cmf:war_exploded" description="Build all artifacts">
     <mkdir dir="${artifact.output.cmf:jar}"/>
     <copy todir="${artifact.output.cmf:jar}">
       <fileset dir="${artifact.temp.output.cmf:jar}"/>
     </copy>
-    
+
     <!-- Delete temporary files -->
     <delete dir="${artifacts.temp.dir}"/>
   </target>
-  
+
   <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
 </project>

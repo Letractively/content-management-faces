@@ -24,10 +24,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="d252fcb5-7c5d-4bdd-bb3d-8158cf0997cd" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/page/ContentTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/page" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/cmf_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/cmf_war_exploded.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/INSTALL" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build_dist.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
     </list>
     <ignored path="cmf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -332,10 +332,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ComponentUtils.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ComponentUtils.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/ComponentUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="895" selection-end="895" vertical-scroll-proportion="0.18282549">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="279" column="0" selection-start="10033" selection-end="10033" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build_dist.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build_dist.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="82" selection-start="1125" selection-end="1125" vertical-scroll-proportion="0.38227147">
               <folding />
             </state>
           </provider>
@@ -344,7 +362,7 @@
       <file leaf-file-name="configDb.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/configDb.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="0" selection-start="2333" selection-end="2333" vertical-scroll-proportion="0.0">
+            <state line="42" column="0" selection-start="2219" selection-end="2219" vertical-scroll-proportion="-0.5714286">
               <folding />
             </state>
           </provider>
@@ -364,8 +382,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/admin/StyleTreeNode.java" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/admin/StyleScriptEditor.java" />
         <option value="$PROJECT_DIR$/src/net/tralfamadore/admin/TreeModel.java" />
         <option value="$PROJECT_DIR$/web/contentTest.xhtml" />
         <option value="$PROJECT_DIR$/web/full/cssEditor.xhtml" />
@@ -380,6 +396,8 @@
         <option value="$PROJECT_DIR$/src/net/tralfamadore/component/DynamicResourceLoader.java" />
         <option value="$PROJECT_DIR$/src/net/tralfamadore/component/content/ContentResourceRenderer.java" />
         <option value="$PROJECT_DIR$/test/net/tralfamadore/page/ContentTest.java" />
+        <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/build_dist.xml" />
       </list>
     </option>
   </component>
@@ -1395,7 +1413,7 @@
     <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23944415" sideWeight="0.6787037" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962963" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32962963" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1404,14 +1422,14 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962963" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32962963" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962963" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962963" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17370391" sideWeight="0.6703704" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16942811" sideWeight="0.6703704" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16942811" sideWeight="0.6703704" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32222223" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1515,21 +1533,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/content/ContentRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/content/ContentResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/ContentManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/jsf/jsf-impl.jar!/com/sun/faces/application/resource/ResourceHandlerImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="13" selection-start="172" selection-end="172" vertical-scroll-proportion="0.06926407">
@@ -1621,7 +1624,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/ComponentUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="895" selection-end="895" vertical-scroll-proportion="0.18282549">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/configDb.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="0" selection-start="2219" selection-end="2219" vertical-scroll-proportion="-0.5714286">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="279" column="0" selection-start="10033" selection-end="10033" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build_dist.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="82" selection-start="1125" selection-end="1125" vertical-scroll-proportion="0.38227147">
           <folding />
         </state>
       </provider>
