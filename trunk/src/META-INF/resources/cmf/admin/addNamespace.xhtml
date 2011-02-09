@@ -36,7 +36,7 @@
                 <h:inputText id="in" value="#{admin.tree.newNamespace}"/>
                 <h:commandButton styleClass="theButton" value="Submit" actionListener="#{admin.addNamespace}"
                                  id="submitNamespace">
-                    <f:ajax execute="in" render="theTree"/>
+                    <f:ajax execute="in" render="theTree" onevent="rendTree"/>
                 </h:commandButton>
             </div>
         </fieldset>

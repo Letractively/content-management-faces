@@ -29,7 +29,7 @@
     <div id="theEditor" style="width: 750px; margin-top: 10px; margin-left: 10px; display: none;">
         <h:inputTextarea id="ckCode" name="ckCode" value="#{admin.editor.value}" style="display:none"/>
         <div style="width: 100%;" id="styles">
-            <fieldset id="theStyles" style="border-radius: 10px;">
+            <fieldset id="theStyles" style="border-radius: 10px; -moz-border-radius: 10px;-webkit-border-radius: 10px;">
                 <legend>Styles</legend>
                 <h:panelGroup id="stylePanel">
                     <ui:repeat value="#{editor.styles}" var="style">

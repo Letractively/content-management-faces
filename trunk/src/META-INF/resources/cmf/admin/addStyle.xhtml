@@ -52,9 +52,9 @@
                         </table>
                     </td>
                     <td style="margin-left: 20px; padding-left: 20px; vertical-align: bottom;">
-                        <h:commandButton type="submit" class="theButton" value="Submit"
+                        <h:commandButton id="submitStyle" type="submit" class="theButton" value="Submit"
                                          actionListener="#{admin.newStyle}">
-                            <f:ajax execute="style" render="theTree"/>
+                            <f:ajax execute="style" render="theTree" onevent="rendTree"/>
                         </h:commandButton>
                     </td>
                 </tr>

@@ -164,6 +164,8 @@ function showEditor() {
 
 function hideEditorAndShowNamespace() {
     hideEditor();
+    $("#configDbSuccess").css("display", "none");
+    $("#configDb").css("display", "none");
     $("#addContent").css("display", "none");
     $("#addScriptEditor").css("display", "none");
     $("#addCssEditor").css("display", "none");
@@ -194,6 +196,8 @@ function hideEditorAndShowContent() {
 
 function showEditorAndHideNamespace() {
     showEditor();
+    $("#configDbSuccess").css("display", "none");
+    $("#configDb").css("display", "none");
     $("#addNamespace").css("display", "none");
     $("#addContent").css("display", "none");
     $("#addScriptEditor").css("display", "none");
@@ -251,6 +255,16 @@ function getCssEditor() {
     return cssEditor;
 }
 
+function rendTree(xhr) {
+    if(xhr.status == "success" && $.browser.mozilla) {
+        tree1 = new YAHOO.widget.TreeView("theTree");
+        tree1.singleNodeHighlight = true;
+        tree1.subscribe('clickEvent',handleNodeClick);
+        tree1.expandAll();
+        tree1.render();
+    }
+}
+
 $(document).ready(function() {
     var css = $("#currentStyles").text();
     CKEDITOR.on('instanceCreated', function(e) {
@@ -267,4 +281,7 @@ $(document).ready(function() {
         reindentOnLoad: true,
         lineNumbers: true
     });
+    if(tree1 != null) {
+        tree1.render();
+    }
 });
