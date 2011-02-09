@@ -30,9 +30,10 @@
 </h:head>
 <h:body>
     <h:form>
-        <cmf:content name="article" namespace="net.tralfamadore.site.page1">
+        <cmf:content id="theContent" name="article" namespace="net.tralfamadore.site.page1">
             default content
         </cmf:content>
+        <h:commandButton id="resetDb" actionListener="#{admin.resetDb}" value="Reset Database"/>
     </h:form>
 </h:body>
 </html>

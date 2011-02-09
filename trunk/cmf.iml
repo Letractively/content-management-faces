@@ -53,6 +53,7 @@
     <orderEntry type="library" name="dbDrivers" level="project" />
     <orderEntry type="library" name="openjpa" level="project" />
     <orderEntry type="library" name="derby" level="project" />
+    <orderEntry type="library" name="selenium" level="project" />
   </component>
 </module>
 

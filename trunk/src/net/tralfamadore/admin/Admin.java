@@ -33,7 +33,9 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -368,6 +370,19 @@ public class Admin {
         tree.createTreeModel();
     }
 
+    public void resetDb(ActionEvent e) {
+        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+
+        if(principal != null)
+            System.out.println(principal.getName());
+        else
+            System.out.println("not logged in");
+
+        JpaEntityManagerProvider jpaEmp = (JpaEntityManagerProvider) this.cmfContext.getEntityManagerProvider();
+        jpaEmp.dropEmbeddedTables();
+        jpaEmp.createEmbeddedTables();
+    }
+
 
     /* helper methods */
 
@@ -384,5 +399,11 @@ public class Admin {
         }
 
 
+    }
+
+    public static HttpServletRequest getRequest() {
+        Object request = FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        return request instanceof HttpServletRequest
+                ? (HttpServletRequest) request : null;
     }
 }

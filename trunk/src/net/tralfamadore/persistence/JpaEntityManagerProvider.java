@@ -73,18 +73,28 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
             if(embedded && mem) {
                 CmfContext.getInstance().setEmbeddedDbNeedsConfig(true);
                 // drop and recreate the tables
-                em.getTransaction().begin();
-                try {
-                    for(String query : dropDerbyTables)
-                        em.createNativeQuery(query).executeUpdate();
-                } catch(Exception ignore) { /* the tables aren't there */ }
-                for(String query : createDerbyTables)
-                    em.createNativeQuery(query).executeUpdate();
-                em.getTransaction().commit();
+                dropEmbeddedTables();
+                createEmbeddedTables();
             }
         }
 
         return em;
+    }
+
+    public void createEmbeddedTables() {
+        em.getTransaction().begin();
+        for(String query : createDerbyTables)
+            em.createNativeQuery(query).executeUpdate();
+        em.getTransaction().commit();
+    }
+
+    public void dropEmbeddedTables() {
+        em.getTransaction().begin();
+        try {
+            for(String query : dropDerbyTables)
+                em.createNativeQuery(query).executeUpdate();
+        } catch(Exception ignore) { /* the tables aren't there */ }
+        em.getTransaction().commit();
     }
 
     public void createEmbeddedDb(Properties properties) {

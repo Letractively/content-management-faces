@@ -47,3 +47,23 @@ INSERT INTO id_gen VALUES('style_id', 100)
 INSERT INTO id_gen VALUES('content_id', 100)
 INSERT INTO id_gen VALUES('namespace_id', 100)
 INSERT INTO id_gen VALUES('style_to_content_id', 100)
+
+
+CREATE TABLE users (
+    id bigint NOT NULL primary key,
+    username varchar(80) NOT NULL unique
+)
+
+CREATE TABLE groups (
+    id bigint NOT NULL primary key,
+    groupname varchar(80) NOT NULL unique
+)
+
+CREATE TABLE user_to_group (
+    id bigint NOT NULL primary key,
+    id user_id NOT NULL,
+    id group_id NOT NULL,
+	foreign key (user_id) references users(id),
+	foreign key (group_id) references groups(id),
+	constraint user_group_constraint unique(user_id, group_id)
+)

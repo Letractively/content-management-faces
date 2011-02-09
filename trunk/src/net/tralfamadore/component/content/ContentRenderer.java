@@ -67,11 +67,23 @@ public class ContentRenderer extends Renderer {
         ResponseWriter responseWriter = context.getResponseWriter();
         if(content != null) {
             responseWriter.startElement("span", component);
+            writeAttributes(context, component);
             responseWriter.write(content);
             responseWriter.endElement("span");
             content = null;
         }
         responseWriter.flush();
+    }
+
+    private void writeAttributes(FacesContext context, UIComponent component) throws IOException {
+        ResponseWriter responseWriter = context.getResponseWriter();
+        Content content = (Content) component;
+        responseWriter.writeAttribute("id", content.getId(), "clientId");
+        responseWriter.writeAttribute("style", content.getStyle(), "style");
+        responseWriter.writeAttribute("class", content.getStyleClass(), "styleClass");
+        responseWriter.writeAttribute("dir", content.getDir(), "dir");
+        responseWriter.writeAttribute("lang", content.getLang(), "lang");
+        responseWriter.writeAttribute("title", content.getTitle(), "title");
     }
 
     @Override
