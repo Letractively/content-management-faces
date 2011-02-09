@@ -31,7 +31,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.SQLSyntaxErrorException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -73,18 +72,15 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
             boolean mem = properties.get("javax.persistence.jdbc.url").matches("^jdbc:derby:mem.*");
             if(embedded && mem) {
                 CmfContext.getInstance().setEmbeddedDbNeedsConfig(true);
+                // drop and recreate the tables
+                em.getTransaction().begin();
                 try {
-                    em.createQuery("select n from namespace n").getResultList();
-                } catch(Exception e) {
-                    if(e.getCause().getClass().equals(SQLSyntaxErrorException.class)
-                            && e.getMessage().contains("does not exist"))
-                    {
-                        em.getTransaction().begin();
-                        for(String query : createDerbyTables)
-                            em.createNativeQuery(query).executeUpdate();
-                        em.getTransaction().commit();
-                    }
-                }
+                    for(String query : dropDerbyTables)
+                        em.createNativeQuery(query).executeUpdate();
+                } catch(Exception ignore) { /* the tables aren't there */ }
+                for(String query : createDerbyTables)
+                    em.createNativeQuery(query).executeUpdate();
+                em.getTransaction().commit();
             }
         }
 
@@ -152,6 +148,17 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
         return new String(buffer);
     }
 
+    String dropDerbyTables[] = {
+            "delete from style_to_content\n",
+            "delete from style\n",
+            "delete from content\n",
+            "delete from namespace\n",
+            "drop table style_to_content\n",
+            "drop table style\n",
+            "drop table content\n",
+            "drop table namespace\n",
+            "drop table id_gen\n"
+    };
 
     String createDerbyTables[] = {
             "CREATE TABLE namespace (\n" +
