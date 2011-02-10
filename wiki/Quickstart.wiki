@@ -7,6 +7,7 @@ The following steps should get you up and running.  Once you're logged into the 
 
 = Details =
 
+  # You must me running in a servlet 3.0 container and be using web.xml version 3.0.
   # Copy cmf.jar to your project's WEB-INF/lib directory.
   # If you're running tomcat7, copy derby-10.5.3.0_1.jar, eclipselink.jar, and javax.persistence.jar to your WEB-INF/lib directory as well.  You'll also need to deploy the jsf implementation libraries (available here: http://javaserverfaces.java.net/download.html).
   # Copy cmf-config.xml to your project's WEB-INF directory.
