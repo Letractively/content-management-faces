@@ -57,6 +57,13 @@ function doTheThing(xhr) {
     }
 }
 
+function rendTreeAndDropStyle(xhr) {
+    if(xhr.status == "success") {
+        rendTree(xhr);
+        updateEditorPostStyleDrop();
+    }
+}
+
 function updateEditorPostStyleDrop() {
     CKEDITOR.instances.ckCode.destroy();
     CKEDITOR.on('instanceCreated', function(e) {
@@ -89,6 +96,7 @@ function doTheStyleThing2(xhr) {
         cssEditor.setCode(content);
         showCssEditor();
         $("#cssEditor").hide();
+        rendTree(xhr);
     }
 }
 function addCssToEditor() {

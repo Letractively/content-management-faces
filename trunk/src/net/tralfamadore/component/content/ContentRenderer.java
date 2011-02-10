@@ -79,11 +79,16 @@ public class ContentRenderer extends Renderer {
         ResponseWriter responseWriter = context.getResponseWriter();
         Content content = (Content) component;
         responseWriter.writeAttribute("id", content.getId(), "clientId");
-        responseWriter.writeAttribute("style", content.getStyle(), "style");
-        responseWriter.writeAttribute("class", content.getStyleClass(), "styleClass");
-        responseWriter.writeAttribute("dir", content.getDir(), "dir");
-        responseWriter.writeAttribute("lang", content.getLang(), "lang");
-        responseWriter.writeAttribute("title", content.getTitle(), "title");
+        if(content.getStyle() != null)
+            responseWriter.writeAttribute("style", content.getStyle(), "style");
+        if(content.getStyleClass() != null)
+            responseWriter.writeAttribute("class", content.getStyleClass(), "styleClass");
+        if(content.getDir() != null)
+            responseWriter.writeAttribute("dir", content.getDir(), "dir");
+        if(content.getLang() != null)
+            responseWriter.writeAttribute("lang", content.getLang(), "lang");
+        if(content.getTitle() != null)
+            responseWriter.writeAttribute("title", content.getTitle(), "title");
     }
 
     @Override

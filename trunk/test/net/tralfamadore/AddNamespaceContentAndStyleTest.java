@@ -127,6 +127,24 @@ public class AddNamespaceContentAndStyleTest {
         // we get the color in rgb format
         assertEquals("rgb(0, 128, 0)", s);
         pause(250);
+        // open the admin page back up
+        selenium.open("http://localhost:8080/cmf/cmf/admin/index.jsf");
+        // disassociate the style from the content
+        selenium.click("//td[@id='ygtvcontentel5']/span/span[1]");
+        pause(250);
+        selenium.click("j_idt30");
+        pause(250);
+        selenium.click("j_idt55:0:j_idt58");
+        pause(250);
+        // go back to the content page
+        selenium.open("http://localhost:8080/cmf/contentTest.jsf", "");
+        s = selenium.getEval("window.getComputedStyle(" +
+                "window.document.getElementById('theContent').firstChild, null).getPropertyValue('color')");
+        pause(250);
+        // the color should be black now
+        assertEquals("rgb(0, 0, 0)", s);
+        pause(250);
+        // reset the database
         selenium.click("j_idt7:resetDb");
     }
 

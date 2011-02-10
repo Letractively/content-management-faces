@@ -39,6 +39,12 @@
                             <f:param name="namespace" value="#{style.namespace}"/>
                             <f:ajax render=":theForm:cssEditor :theForm:currentStyles" onevent="doTheStyleThing2"/>
                         </h:commandButton>
+                        <h:commandButton image="images/style_delete.png" styleClass="deleteStyle"
+                                         actionListener="#{admin.disassociateStyle}">
+                            <f:param name="name" value="#{style.name}"/>
+                            <f:param name="namespace" value="#{style.namespace}"/>
+                            <f:ajax render=":theForm:ckCode :theForm:currentStyles :theForm:stylePanel :theForm:theTree" onevent="rendTreeAndDropStyle"/>
+                        </h:commandButton>
                     </ui:repeat>
                 </h:panelGroup>
             </fieldset>
@@ -52,8 +58,3 @@
     </div>
 </ui:composition>
 </html>
-
-
-
-
-

@@ -305,6 +305,25 @@ public class Admin {
     }
 
     /**
+     * Action listener to delete a style.
+     *
+     * @param e event info
+     */
+    public void disassociateStyle(ActionEvent e) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        Map requestMap = context.getExternalContext().getRequestParameterMap();
+        String name = (String) requestMap.get("name");
+        String namespace = (String) requestMap.get("namespace");
+
+        if(namespace != null) {
+            Style style = contentManager.loadStyle(Namespace.createFromString(namespace), name);
+            contentManager.disassociateWithContent(currentNode.getContent(), style);
+            tree.createTreeModel();
+            addStylesForEditor();
+        }
+    }
+
+    /**
      * Action listener to associate a style with content.
      *
      * @param e event info

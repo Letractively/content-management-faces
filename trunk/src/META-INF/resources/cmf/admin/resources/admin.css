@@ -137,6 +137,11 @@ body {
     -webkit-border-radius: 25px 15px 25px 15px;
 }
 
+.deleteStyle {
+    vertical-align: bottom;
+    margin-right: 10px;
+}
+
 .theButton {
     padding-top: 4px;
     font: 12px/18px 'QuicksandBold', Arial, sans-serif;
