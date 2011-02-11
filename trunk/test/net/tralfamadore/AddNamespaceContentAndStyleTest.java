@@ -33,6 +33,8 @@ public class AddNamespaceContentAndStyleTest {
 
     @Before
     public void setUp() throws Exception {
+        SeleniumServerManager.getInstance().startServer();
+
         selenium = new DefaultSelenium("localhost", 4444, "*firefox", "http://localhost:8080/cmf/cmf/admin/index.jsf");
         selenium.start();
     }
@@ -159,5 +161,6 @@ public class AddNamespaceContentAndStyleTest {
     @After
     public void tearDown() throws Exception {
         selenium.stop();
+        SeleniumServerManager.getInstance().stopServer();
     }
 }
