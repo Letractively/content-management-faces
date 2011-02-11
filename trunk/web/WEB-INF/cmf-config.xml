@@ -47,7 +47,7 @@
         </persistence-property>
         <persistence-property>
             <name>javax.persistence.jdbc.url</name>
-            <value>jdbc:derby:mem;create=true</value>
+            <value>jdbc:derby:memory:cmf;create=true</value>
         </persistence-property>
 
         <!-- ***** -->

@@ -17,50 +17,50 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.admin;
+package net.tralfamadore.admin.tree;
 
-import net.tralfamadore.cmf.Script;
+import net.tralfamadore.cmf.Style;
 
 /**
  * User: billreh
  * Date: 1/20/11
  * Time: 3:03 PM
  *
- * Stores data for script nodes.
+ * Stores data for style nodes.
  */
-public class ScriptTreeNode extends TreeNode {
-    /** The {@link Script} object */
-    private Script script;
+public class StyleTreeNode extends TreeNode {
+    /** The {@link Style} object */
+    private Style style;
 
     /**
-     * Create a new script node with <code>parent</code> and <code>script</code>.
+     * Create a new style node with <code>parent</code> and <code>style</code>.
      *
      * @param parent The parent node, <code>null</code> if this is a root node.
-     * @param script The {@link Script}.
+     * @param style The {@link Style}.
      */
-    public ScriptTreeNode(TreeNode parent, Script script) {
-        super(parent, script.getName());
-        this.script = script;
+    public StyleTreeNode(TreeNode parent, Style style) {
+        super(parent, style.getName());
+        this.style = style;
     }
 
 
     /* getters and setters */
 
-    public Script getScript() {
-        return script;
+    public Style getStyle() {
+        return style;
     }
 
-    public void setScript(Script script) {
-        this.script = script;
+    public void setStyle(Style style) {
+        this.style = style;
     }
 
     /**
-     * Match nodes of type "script".
+     * Match nodes of type "Style".
      *
-     * @return "script"
+     * @return "Style"
      */
     @Override
     public String getType() {
-        return "script";
+        return "style";
     }
 }

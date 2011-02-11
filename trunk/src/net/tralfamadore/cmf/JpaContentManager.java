@@ -58,15 +58,7 @@ public class JpaContentManager implements ContentManager {
         for(Object result : results) {
             NamespaceEntity namespaceEntity = (NamespaceEntity) result;
             String[] nodeNames = namespaceEntity.getName().split("\\.");
-            Namespace parent = null;
-            for(String nodeName : nodeNames) {
-                Namespace namespace = new Namespace();
-                namespace.setNodeName(nodeName);
-                namespace.setParent(parent);
-                if(!namespaces.contains(namespace))
-                    namespaces.add(namespace);
-                parent = namespace;
-            }
+            makeNamespaceNodes(namespaces, nodeNames);
         }
 
         return namespaces;
@@ -83,18 +75,22 @@ public class JpaContentManager implements ContentManager {
         for(Object result : results) {
             NamespaceEntity namespaceEntity = (NamespaceEntity) result;
             String[] nodeNames = namespaceEntity.getName().split("\\.");
-            Namespace parent = null;
-            for(String nodeName : nodeNames) {
-                Namespace ns = new Namespace();
-                ns.setNodeName(nodeName);
-                ns.setParent(parent);
-                if(!namespaces.contains(ns))
-                    namespaces.add(ns);
-                parent = ns;
-            }
+            makeNamespaceNodes(namespaces, nodeNames);
         }
 
         return namespaces;
+    }
+
+    private void makeNamespaceNodes(List<Namespace> namespaces, String[] nodeNames) {
+        Namespace parent = null;
+        for(String nodeName : nodeNames) {
+            Namespace ns = new Namespace();
+            ns.setNodeName(nodeName);
+            ns.setParent(parent);
+            if(!namespaces.contains(ns))
+                namespaces.add(ns);
+            parent = ns;
+        }
     }
 
     @Override
@@ -156,12 +152,12 @@ public class JpaContentManager implements ContentManager {
     @Override
     public List<Content> loadAllContent() {
         List<Content> contentList = new Vector<Content>();
-        List contentEntities = em.createQuery("select c from content c").getResultList();
+        List contentEntities = em.createQuery("select c,n from content c, namespace n where c.namespaceId = n.id")
+                .getResultList();
         for(Object o : contentEntities) {
-            ContentEntity contentEntity = (ContentEntity) o;
-            Query q = em.createQuery("select n from namespace n where n.id = ?1");
-            q.setParameter(1, contentEntity.getNamespaceId());
-            NamespaceEntity n = (NamespaceEntity) q.getSingleResult();
+            Object[] res = (Object[]) o;
+            ContentEntity contentEntity = (ContentEntity) res[0];
+            NamespaceEntity n = (NamespaceEntity) res[1];
 
             Content content = new Content();
             content.setContent(contentEntity.getContent());
@@ -187,14 +183,14 @@ public class JpaContentManager implements ContentManager {
         }
 
         NamespaceEntity ne = (NamespaceEntity) result;
-        List contentEntities = em.createQuery("select c from content c where c.namespaceId = ?1").
+        List contentEntities = em.createQuery(
+                "select c,n from content c, namespace n where c.namespaceId = ?1 and c.namespaceId = n.id").
                 setParameter(1, ne.getId()).getResultList();
 
         for(Object o : contentEntities) {
-            ContentEntity contentEntity = (ContentEntity) o;
-            Query q = em.createQuery("select n from namespace n where n.id = ?1");
-            q.setParameter(1, contentEntity.getNamespaceId());
-            NamespaceEntity n = (NamespaceEntity) q.getSingleResult();
+            Object[] res = (Object[]) o;
+            ContentEntity contentEntity = (ContentEntity) res[0];
+            NamespaceEntity n = (NamespaceEntity) res[1];
 
             Content content = new Content();
             content.setContent(contentEntity.getContent());
@@ -220,13 +216,16 @@ public class JpaContentManager implements ContentManager {
 
         NamespaceEntity ne = (NamespaceEntity) result;
         try {
-            result = em.createQuery("select c from content c where c.namespaceId = ?1 and c.name = ?2").
+            result = em.createQuery("select c, n from content c, namespace n where c.namespaceId = ?1 and c.name = ?2 "
+                    + " and c.namespaceId = n.id").
                     setParameter(1, ne.getId()).setParameter(2, name).getSingleResult();
         } catch(NoResultException e) {
             return null;
         }
 
-        ContentEntity contentEntity = (ContentEntity) result;
+        Object[] res = (Object[]) result;
+        ContentEntity contentEntity = (ContentEntity) res[0];
+        NamespaceEntity n = (NamespaceEntity) res[1];
 
         Content content = new Content();
         content.setContent(contentEntity.getContent());
@@ -294,10 +293,13 @@ public class JpaContentManager implements ContentManager {
         }
         ContentEntity contentEntity = (ContentEntity) result;
         List results = em.createQuery(
-                "select c from style c, style_to_content s where s.contentId = ?1 and c.id = s.styleId").
+                "select c, n from style c, style_to_content s, namespace n " +
+                        " where s.contentId = ?1 and c.id = s.styleId and n.id = c.namespaceId").
                 setParameter(1, contentEntity.getId()).getResultList();
         for(Object r : results) {
-            StyleEntity styleEntity = (StyleEntity) r;
+            Object o[] = (Object[]) r;
+            StyleEntity styleEntity = (StyleEntity) o[0];
+            ne = (NamespaceEntity) o[1];
             Style style = new Style();
             style.setStyle(styleEntity.getStyle());
             style.setNamespace(Namespace.createFromString(ne.getName()));
@@ -307,7 +309,7 @@ public class JpaContentManager implements ContentManager {
 
         EntityTransaction t = em.getTransaction();
         t.begin();
-        em.remove(result);
+        em.remove(contentEntity);
         t.commit();
     }
 

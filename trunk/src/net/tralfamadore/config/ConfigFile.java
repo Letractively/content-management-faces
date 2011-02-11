@@ -44,7 +44,12 @@ public class ConfigFile {
     private Map<String,String> persistenceProperties = new HashMap<String, String>();
 
     public ConfigFile() {
-        parseXml();
+        this(true);
+    }
+
+    public ConfigFile(boolean parse) {
+        if(parse)
+            parseXml();
     }
 
     public String getContentManager() {

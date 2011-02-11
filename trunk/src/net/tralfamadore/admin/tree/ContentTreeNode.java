@@ -17,50 +17,49 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.admin;
+package net.tralfamadore.admin.tree;
 
-import net.tralfamadore.cmf.Namespace;
+import net.tralfamadore.cmf.Content;
 
 /**
  * User: billreh
  * Date: 1/20/11
  * Time: 3:03 PM
  *
- * Stores data for namespace nodes.
+ * Stores data for content nodes.
  */
-public class NamespaceTreeNode extends TreeNode {
-    /** The {@link Namespace} object */
-    private Namespace namespace;
+public class ContentTreeNode extends TreeNode {
+    /** The {@link Content} object */
+    private Content content;
 
     /**
-     * Create a new namespace node with <code>parent</code> and <code>namespace</code>.
+     * Create a new content node with <code>parent</code> and <code>content</code>.
      *
      * @param parent The parent node, <code>null</code> if this is a root node.
-     * @param namespace The {@link Namespace}.
+     * @param content The {@link Content}.
      */
-    public NamespaceTreeNode(TreeNode parent, Namespace namespace) {
-        super(parent, namespace.getNodeName());
-        this.namespace = namespace;
+    public ContentTreeNode(TreeNode parent, Content content) {
+        super(parent, content.getName());
+        this.content = content;
     }
 
 
     /* getters and setters */
-
-    public Namespace getNamespace() {
-        return namespace;
+    public Content getContent() {
+        return content;
     }
 
-    public void setNamespace(Namespace namespace) {
-        this.namespace = namespace;
+    public void setContent(Content content) {
+        this.content = content;
     }
 
-    @Override
     /**
-     * Match nodes of type "namespace".
+     * Match nodes of type "content".
      *
-     * @return "namespace"
+     * @return "content"
      */
+    @Override
     public String getType() {
-        return "namespace";
+        return "content";
     }
 }

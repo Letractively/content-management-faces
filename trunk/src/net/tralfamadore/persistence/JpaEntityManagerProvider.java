@@ -69,11 +69,13 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
             em = emFactory.createEntityManager();
             boolean embedded =
                     properties.get("javax.persistence.jdbc.driver").equals("org.apache.derby.jdbc.EmbeddedDriver");
-            boolean mem = properties.get("javax.persistence.jdbc.url").matches("^jdbc:derby:mem.*");
+            boolean mem = properties.get("javax.persistence.jdbc.url").matches("^jdbc:derby:memory:.*");
             if(embedded && mem) {
                 CmfContext.getInstance().setEmbeddedDbNeedsConfig(true);
                 // drop and recreate the tables
-                dropEmbeddedTables();
+                try {
+                    dropEmbeddedTables();
+                } catch(Exception ignore) { }
                 createEmbeddedTables();
             }
         }
@@ -127,7 +129,7 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
         String contents = readFileAsString(file);
         String newUrl = properties.getProperty("javax.persistence.jdbc.url");
         System.out.println(contents);
-        contents = contents.replaceAll("jdbc:derby:mem;create=true", newUrl);
+        contents = contents.replaceAll("jdbc:derby:memory:cmf;create=true", newUrl);
         System.out.println("--------------------------------------------------------------------------------");
         System.out.println(contents);
         writeStringToFile(file, contents);

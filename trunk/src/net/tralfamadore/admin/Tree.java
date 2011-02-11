@@ -19,6 +19,7 @@
 
 package net.tralfamadore.admin;
 
+import net.tralfamadore.admin.tree.TreeModel;
 import net.tralfamadore.cmf.Content;
 import net.tralfamadore.cmf.ContentManager;
 import net.tralfamadore.cmf.Namespace;

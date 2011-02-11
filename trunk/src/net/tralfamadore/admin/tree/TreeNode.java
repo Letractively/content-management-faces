@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.admin;
+package net.tralfamadore.admin.tree;
 
 import java.io.Serializable;
 import java.util.List;

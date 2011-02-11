@@ -17,49 +17,50 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.admin;
+package net.tralfamadore.admin.tree;
 
-import net.tralfamadore.cmf.Content;
+import net.tralfamadore.cmf.Script;
 
 /**
  * User: billreh
  * Date: 1/20/11
  * Time: 3:03 PM
  *
- * Stores data for content nodes.
+ * Stores data for script nodes.
  */
-public class ContentTreeNode extends TreeNode {
-    /** The {@link Content} object */
-    private Content content;
+public class ScriptTreeNode extends TreeNode {
+    /** The {@link Script} object */
+    private Script script;
 
     /**
-     * Create a new content node with <code>parent</code> and <code>content</code>.
+     * Create a new script node with <code>parent</code> and <code>script</code>.
      *
      * @param parent The parent node, <code>null</code> if this is a root node.
-     * @param content The {@link Content}.
+     * @param script The {@link Script}.
      */
-    public ContentTreeNode(TreeNode parent, Content content) {
-        super(parent, content.getName());
-        this.content = content;
+    public ScriptTreeNode(TreeNode parent, Script script) {
+        super(parent, script.getName());
+        this.script = script;
     }
 
 
     /* getters and setters */
-    public Content getContent() {
-        return content;
+
+    public Script getScript() {
+        return script;
     }
 
-    public void setContent(Content content) {
-        this.content = content;
+    public void setScript(Script script) {
+        this.script = script;
     }
 
     /**
-     * Match nodes of type "content".
+     * Match nodes of type "script".
      *
-     * @return "content"
+     * @return "script"
      */
     @Override
     public String getType() {
-        return "content";
+        return "script";
     }
 }

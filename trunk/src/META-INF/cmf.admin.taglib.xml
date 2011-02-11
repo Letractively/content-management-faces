@@ -32,7 +32,7 @@
         <attribute>
             <name>value</name>
             <required>true</required>
-            <type>net.tralfamadore.admin.TreeModel</type>
+            <type>net.tralfamadore.admin.tree.TreeModel</type>
         </attribute>
         <attribute>
             <name>var</name>

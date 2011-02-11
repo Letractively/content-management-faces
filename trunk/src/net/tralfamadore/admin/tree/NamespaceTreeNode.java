@@ -17,50 +17,50 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.admin;
+package net.tralfamadore.admin.tree;
 
-import net.tralfamadore.cmf.Style;
+import net.tralfamadore.cmf.Namespace;
 
 /**
  * User: billreh
  * Date: 1/20/11
  * Time: 3:03 PM
  *
- * Stores data for style nodes.
+ * Stores data for namespace nodes.
  */
-public class StyleTreeNode extends TreeNode {
-    /** The {@link Style} object */
-    private Style style;
+public class NamespaceTreeNode extends TreeNode {
+    /** The {@link Namespace} object */
+    private Namespace namespace;
 
     /**
-     * Create a new style node with <code>parent</code> and <code>style</code>.
+     * Create a new namespace node with <code>parent</code> and <code>namespace</code>.
      *
      * @param parent The parent node, <code>null</code> if this is a root node.
-     * @param style The {@link Style}.
+     * @param namespace The {@link Namespace}.
      */
-    public StyleTreeNode(TreeNode parent, Style style) {
-        super(parent, style.getName());
-        this.style = style;
+    public NamespaceTreeNode(TreeNode parent, Namespace namespace) {
+        super(parent, namespace.getNodeName());
+        this.namespace = namespace;
     }
 
 
     /* getters and setters */
 
-    public Style getStyle() {
-        return style;
+    public Namespace getNamespace() {
+        return namespace;
     }
 
-    public void setStyle(Style style) {
-        this.style = style;
+    public void setNamespace(Namespace namespace) {
+        this.namespace = namespace;
     }
 
-    /**
-     * Match nodes of type "Style".
-     *
-     * @return "Style"
-     */
     @Override
+    /**
+     * Match nodes of type "namespace".
+     *
+     * @return "namespace"
+     */
     public String getType() {
-        return "style";
+        return "namespace";
     }
 }

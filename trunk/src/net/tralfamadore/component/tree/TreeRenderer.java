@@ -19,8 +19,8 @@
 
 package net.tralfamadore.component.tree;
 
-import net.tralfamadore.admin.TreeModel;
-import net.tralfamadore.admin.TreeNode;
+import net.tralfamadore.admin.tree.TreeModel;
+import net.tralfamadore.admin.tree.TreeNode;
 
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
