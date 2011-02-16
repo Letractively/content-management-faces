@@ -42,6 +42,7 @@ public class ConfigFile {
     private String contentManager;
     private String entityManagerProvider;
     private Map<String,String> persistenceProperties = new HashMap<String, String>();
+    private String customLoginUrl;
 
     public ConfigFile() {
         this(true);
@@ -140,5 +141,9 @@ public class ConfigFile {
         String s = n.getFirstChild().getTextContent();
         String v = n.getNextSibling().getNextSibling().getFirstChild().getTextContent();
         return new AbstractMap.SimpleEntry<String, String>(s, v);
+    }
+
+    public String getCustomLoginUrl() {
+        return customLoginUrl;
     }
 }

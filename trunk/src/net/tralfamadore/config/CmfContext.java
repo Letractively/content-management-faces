@@ -22,6 +22,7 @@ package net.tralfamadore.config;
 import net.tralfamadore.cmf.ContentManager;
 import net.tralfamadore.cmf.TestContentManager;
 import net.tralfamadore.persistence.EntityManagerProvider;
+import net.tralfamadore.security.SecurityType;
 
 /**
  * User: billreh
@@ -33,12 +34,22 @@ public class CmfContext {
     private boolean initialized = false;
     private ContentManager contentManager;
     private EntityManagerProvider entityManagerProvider;
+    private SecurityType securityType = SecurityType.PRINCIPAL;
     private boolean embeddedDbNeedsConfig = false;
+    private String customLoginUrl;
+
+    public String getCustomLoginUrl() {
+        return configFile.getCustomLoginUrl();
+    }
+
+    public String getCurrentUser() {
+        return securityType.getCurrentUserInfo().getCurrentUser();
+    }
 
     /**
      * A private class to hold our single INSTANCE.
      */
-    private static class ConfigHolder {
+    private static class CmfContextHolder {
         public static final CmfContext INSTANCE = new CmfContext();
     }
 
@@ -48,7 +59,7 @@ public class CmfContext {
      * @return the INSTANCE.
      */
     public static CmfContext getInstance() {
-        return ConfigHolder.INSTANCE;
+        return CmfContextHolder.INSTANCE;
     }
 
     private CmfContext() { }
@@ -77,20 +88,25 @@ public class CmfContext {
         this.embeddedDbNeedsConfig = embeddedDbNeedsConfig;
     }
 
+    public SecurityType getSecurityType() {
+        return securityType;
+    }
+
+    public void setSecurityType(SecurityType securityType) {
+        this.securityType = securityType;
+    }
+
     public ContentManager getContentManager() {
         if(contentManager == null) {
             String contentManagerName = configFile.getContentManager();
 
-            if(contentManagerName == null || TestContentManager.class.getName().equals(contentManagerName))
+            try {
+                contentManager =
+                        (ContentManager) getClass().getClassLoader().loadClass(contentManagerName).newInstance();
+            } catch(Exception e) {
+                e.printStackTrace();
                 contentManager = TestContentManager.getInstance();
-            else
-                try {
-                    contentManager =
-                            (ContentManager) getClass().getClassLoader().loadClass(contentManagerName).newInstance();
-                } catch(Exception e) {
-                    e.printStackTrace();
-                    contentManager = TestContentManager.getInstance();
-                }
+            }
         }
 
         return contentManager;

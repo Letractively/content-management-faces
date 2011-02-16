@@ -41,7 +41,7 @@
     </login-config>
 
     <security-role>
-        <role-name>admin</role-name>
+        <role-name>cmfAdmin</role-name>
     </security-role>
 
     <security-constraint>
@@ -50,7 +50,7 @@
             <url-pattern>/cmf/admin/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>admin</role-name>
+            <role-name>cmfAdmin</role-name>
         </auth-constraint>
     </security-constraint>
     -->

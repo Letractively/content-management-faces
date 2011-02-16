@@ -27,6 +27,7 @@ import net.tralfamadore.cmf.Namespace;
 import net.tralfamadore.cmf.Style;
 import net.tralfamadore.config.CmfContext;
 import net.tralfamadore.persistence.JpaEntityManagerProvider;
+import net.tralfamadore.security.SecurityPhaseListener;
 
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
@@ -35,13 +36,13 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.PhaseListener;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.security.Principal;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.security.Provider;
+import java.security.Security;
+import java.util.*;
 
 /**
  * User: billreh
@@ -206,6 +207,7 @@ public class Admin {
      */
     public void selectNamespace(ActionEvent e) {
         FacesContext context = FacesContext.getCurrentInstance();
+        String curUser = CmfContext.getInstance().getCurrentUser();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
         String value = (String)requestMap.get("namespace");
         tree.setSelectedNamespace(value == null || value.isEmpty() ? null : Namespace.createFromString(value));
@@ -426,5 +428,114 @@ public class Admin {
         Object request = FacesContext.getCurrentInstance().getExternalContext().getRequest();
         return request instanceof HttpServletRequest
                 ? (HttpServletRequest) request : null;
+    }
+
+    private PhaseListener thePhaseListener = new SecurityPhaseListener();
+
+    public PhaseListener getThePhaseListener() {
+        return thePhaseListener;
+    }
+
+    public void setThePhaseListener(PhaseListener thePhaseListener) {
+        this.thePhaseListener = thePhaseListener;
+    }
+
+    @ManagedProperty(value = "#{currentUser}")
+    private CurrentUser theUser;
+
+    public String getCurrentUser() {
+        return theUser.getUser();
+    }
+
+    public CurrentUser getTheUser() {
+        return theUser;
+    }
+
+    public void setTheUser(CurrentUser theUser) {
+        this.theUser = theUser;
+    }
+
+    private String loginName;
+    private String password;
+
+    public String getLoginName() {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String login() {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+
+        if(loginName == null || loginName.isEmpty())
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "user name is empty", ""));
+        if(password == null || password.isEmpty())
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "password is empty", ""));
+
+        if(facesContext.getMessages().hasNext())
+            return "login";
+
+        if(!loginName.equals("cmfAdmin")) {
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid user name", ""));
+            return "login";
+        }
+
+        if(!password.equals("cmfAdmin")) {
+            facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid password", ""));
+            return "login";
+        }
+
+        theUser.setUser(loginName);
+
+        for(Provider provider : Security.getProviders()) {
+            System.out.println(provider.getName() + ": " + provider.getInfo());
+        }
+
+        return "index";
+    }
+
+    private List<PermissionData> permissionData;
+
+    public List<PermissionData> getPermissionData() {
+        if(permissionData == null) {
+            permissionData = new Vector<PermissionData>();
+            PermissionData d = new PermissionData();
+            d.setEdit(true);
+            d.setView(true);
+            d.setEditGroups(true);
+            d.setDelete(true);
+            d.setGroupName("cmfAdmin");
+            permissionData.add(d);
+            d = new PermissionData();
+            d.setEdit(true);
+            d.setView(true);
+            d.setDelete(true);
+            d.setGroupName("editors");
+            permissionData.add(d);
+            d = new PermissionData();
+            d.setEdit(true);
+            d.setView(true);
+            d.setGroupName("users");
+            permissionData.add(d);
+            d = new PermissionData();
+            d.setView(true);
+            d.setGroupName("client");
+            permissionData.add(d);
+        }
+        return permissionData;
+    }
+
+    public void setPermissionData(List<PermissionData> permissionData) {
+        this.permissionData = permissionData;
     }
 }

@@ -36,6 +36,7 @@
 <h:body>
     <f:view contentType="text/html">
         <h:form prependId="false" id="theForm">
+            <f:phaseListener binding="#{admin.thePhaseListener}"/>
             <table style="width: 100%; border-spacing: 10px;">
                 <tr>
                     <!-- Title -->
@@ -53,7 +54,7 @@
                         <h:commandButton id="emptyPathButton" actionListener="#{admin.selectNamespace}"
                                          class="thePathButton" image="images/folder_add.png" alt="add folder"
                                          style="padding: 6px 7px 10px;">
-                            <f:ajax render="in namespace" onevent="hideEditorAndShowNamespace()"/>
+                            <f:ajax execute="permissionTable" render="in namespace permissionTable" onevent="hideEditorAndShowNamespace"/>
                         </h:commandButton>
 
                         <!-- Tree -->

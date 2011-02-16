@@ -22,6 +22,7 @@ package net.tralfamadore.persistence.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * User: billreh
@@ -31,7 +32,6 @@ import java.util.Date;
 @Entity(name = "content")
 public class ContentEntity implements Serializable {
     private long id;
-    private long namespaceId;
     private String name;
     private String content;
     private Date dateCreated;
@@ -53,15 +53,6 @@ public class ContentEntity implements Serializable {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    @Column(name = "namespace_id")
-    public long getNamespaceId() {
-        return namespaceId;
-    }
-
-    public void setNamespaceId(long namespaceId) {
-        this.namespaceId = namespaceId;
     }
 
     @Column
@@ -100,5 +91,31 @@ public class ContentEntity implements Serializable {
 
     public void setDateModified(Date dateModified) {
         this.dateModified = dateModified;
+    }
+
+    private Set<StyleEntity> styles;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "style_to_content",
+            joinColumns = { @JoinColumn(name = "content_id") },
+            inverseJoinColumns = { @JoinColumn(name = "style_id") })
+    public Set<StyleEntity> getStyles() {
+        return styles;
+    }
+
+    public void setStyles(Set<StyleEntity> styles) {
+        this.styles = styles;
+    }
+
+    private NamespaceEntity namespace;
+
+    @OneToOne
+    @JoinColumn(name = "namespace_id")
+    public NamespaceEntity getNamespace() {
+        return namespace;
+    }
+
+    public void setNamespace(NamespaceEntity namespace) {
+        this.namespace = namespace;
     }
 }

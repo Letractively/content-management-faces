@@ -152,12 +152,10 @@ public class JpaContentManager implements ContentManager {
     @Override
     public List<Content> loadAllContent() {
         List<Content> contentList = new Vector<Content>();
-        List contentEntities = em.createQuery("select c,n from content c, namespace n where c.namespaceId = n.id")
-                .getResultList();
+        List contentEntities = em.createQuery("select c from content c").getResultList();
         for(Object o : contentEntities) {
-            Object[] res = (Object[]) o;
-            ContentEntity contentEntity = (ContentEntity) res[0];
-            NamespaceEntity n = (NamespaceEntity) res[1];
+            ContentEntity contentEntity = (ContentEntity) o;
+            NamespaceEntity n = contentEntity.getNamespace();
 
             Content content = new Content();
             content.setContent(contentEntity.getContent());
@@ -174,23 +172,13 @@ public class JpaContentManager implements ContentManager {
     @Override
     public List<Content> loadContent(Namespace namespace) {
         List<Content> contentList = new Vector<Content>();
-        Object result;
-        try {
-            result = em.createQuery("select n from namespace n where n.name = ?1").
-                    setParameter(1, namespace.getFullName()).getSingleResult();
-        } catch(NoResultException e) {
-            return contentList;
-        }
 
-        NamespaceEntity ne = (NamespaceEntity) result;
-        List contentEntities = em.createQuery(
-                "select c,n from content c, namespace n where c.namespaceId = ?1 and c.namespaceId = n.id").
-                setParameter(1, ne.getId()).getResultList();
+        List contentEntities =  em.createQuery("select c from content c where c.namespace.name = ?1").
+                setParameter(1, namespace.getFullName()).getResultList();
 
         for(Object o : contentEntities) {
-            Object[] res = (Object[]) o;
-            ContentEntity contentEntity = (ContentEntity) res[0];
-            NamespaceEntity n = (NamespaceEntity) res[1];
+            ContentEntity contentEntity = (ContentEntity) o;
+            NamespaceEntity n = contentEntity.getNamespace();
 
             Content content = new Content();
             content.setContent(contentEntity.getContent());
@@ -208,29 +196,19 @@ public class JpaContentManager implements ContentManager {
     public Content loadContent(Namespace namespace, String name) {
         Object result;
         try {
-            result = em.createQuery("select n from namespace n where n.name = ?1").
-                    setParameter(1, namespace.getFullName()).getSingleResult();
+            result = em.createQuery("select c from content c where c.namespace.name = ?1 and c.name = ?2").
+                    setParameter(1, namespace.getFullName()).setParameter(2, name).getSingleResult();
         } catch(NoResultException e) {
             return null;
         }
 
-        NamespaceEntity ne = (NamespaceEntity) result;
-        try {
-            result = em.createQuery("select c, n from content c, namespace n where c.namespaceId = ?1 and c.name = ?2 "
-                    + " and c.namespaceId = n.id").
-                    setParameter(1, ne.getId()).setParameter(2, name).getSingleResult();
-        } catch(NoResultException e) {
-            return null;
-        }
-
-        Object[] res = (Object[]) result;
-        ContentEntity contentEntity = (ContentEntity) res[0];
-        NamespaceEntity n = (NamespaceEntity) res[1];
+        ContentEntity contentEntity = (ContentEntity) result;
+        NamespaceEntity n = contentEntity.getNamespace();
 
         Content content = new Content();
         content.setContent(contentEntity.getContent());
         content.setName(contentEntity.getName());
-        content.setNamespace(Namespace.createFromString(ne.getName()));
+        content.setNamespace(Namespace.createFromString(n.getName()));
         content.setDateCreated(contentEntity.getDateCreated());
         content.setDateModified(contentEntity.getDateModified());
 
@@ -249,7 +227,7 @@ public class JpaContentManager implements ContentManager {
         }
         NamespaceEntity ne = (NamespaceEntity) result;
         try {
-            result = em.createQuery("select c from content c where c.namespaceId = ?1 and c.name = ?2").
+            result = em.createQuery("select c from content c where c.namespace.id = ?1 and c.name = ?2").
                     setParameter(1, ne.getId()).setParameter(2, content.getName()).getSingleResult();
         } catch(NoResultException e) {
             result = null;
@@ -262,12 +240,14 @@ public class JpaContentManager implements ContentManager {
             contentEntity.setContent(content.getContent());
             contentEntity.setDateCreated(new Date());
             contentEntity.setDateModified(new Date());
-            contentEntity.setNamespaceId(ne.getId());
+            contentEntity.setNamespace(ne);
         } else {
             contentEntity = (ContentEntity) result;
             contentEntity.setContent(content.getContent());
             contentEntity.setDateModified(new Date());
         }
+
+// TODO:       setContentStyles()...
 
         EntityTransaction t = em.getTransaction();
         t.begin();
@@ -286,7 +266,7 @@ public class JpaContentManager implements ContentManager {
         }
         NamespaceEntity ne = (NamespaceEntity) result;
         try {
-            result = em.createQuery("select c from content c where c.namespaceId = ?1 and c.name = ?2").
+            result = em.createQuery("select c from content c where c.namespace.id = ?1 and c.name = ?2").
                     setParameter(1, ne.getId()).setParameter(2, content.getName()).getSingleResult();
         } catch(NoResultException e) {
             return;
@@ -303,6 +283,7 @@ public class JpaContentManager implements ContentManager {
             Style style = new Style();
             style.setStyle(styleEntity.getStyle());
             style.setNamespace(Namespace.createFromString(ne.getName()));
+// TODO:            perhaps we can do this through a cascade...
             style.setName(styleEntity.getName());
             disassociateWithContent(content, style);
         }
@@ -529,7 +510,7 @@ public class JpaContentManager implements ContentManager {
         }
         ne = (NamespaceEntity) result;
         try {
-            result = em.createQuery("select c from content c where c.namespaceId = ?1 and c.name = ?2").
+            result = em.createQuery("select c from content c where c.namespace.id = ?1 and c.name = ?2").
                     setParameter(1, ne.getId()).setParameter(2, content.getName()).getSingleResult();
         } catch(NoResultException e) {
             throw new RuntimeException("Can't locate content: " + content.getName());
@@ -569,7 +550,7 @@ public class JpaContentManager implements ContentManager {
         }
         NamespaceEntity ne = (NamespaceEntity) result;
         try {
-            result = em.createQuery("select c from content c where c.namespaceId = ?1 and c.name = ?2").
+            result = em.createQuery("select c from content c where c.namespace.id = ?1 and c.name = ?2").
                     setParameter(1, ne.getId()).setParameter(2, content.getName()).getSingleResult();
         } catch(NoResultException e) {
             return styles;
@@ -626,7 +607,7 @@ public class JpaContentManager implements ContentManager {
         }
         ne = (NamespaceEntity) result;
         try {
-            result = em.createQuery("select c from content c where c.namespaceId = ?1 and c.name = ?2").
+            result = em.createQuery("select c from content c where c.namespace.id = ?1 and c.name = ?2").
                     setParameter(1, ne.getId()).setParameter(2, content.getName()).getSingleResult();
         } catch(NoResultException e) {
             throw new RuntimeException("Can't locate content: " + content.getName());

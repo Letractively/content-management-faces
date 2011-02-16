@@ -24,6 +24,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
       xml:lang="en" lang="en">
 <ui:composition>
     <div id="addNamespace" style="display: none; margin-left: 10px;">
@@ -35,10 +36,48 @@
                               value="#{admin.tree.selectedNamespaceString}"/>
                 <h:inputText id="in" value="#{admin.tree.newNamespace}"/>
                 <h:commandButton styleClass="theButton" value="Submit" actionListener="#{admin.addNamespace}"
-                                 id="submitNamespace">
-                    <f:ajax execute="in" render="theTree" onevent="rendTree"/>
-                </h:commandButton>
+                                 id="submitNamespace"/>
             </div>
+            <hr class="namspaceBreak"/>
+            <h4>Security</h4>
+            <h:dataTable id="permissionTable" value="#{admin.permissionData}" var="data" columnClasses="centerCol">
+                <h:column>
+                    <f:facet name="header">
+                        Group Name
+                    </f:facet>
+                    <h:outputText value="'#{data.groupName}'"/>:
+                    <h:outputText value="'#{admin.currentUser}'"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        View
+                    </f:facet>
+                    <h:selectBooleanCheckbox value="#{data.view}" disabled="#{data.groupName eq admin.currentUser}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        Edit
+                    </f:facet>
+                    <h:selectBooleanCheckbox value="#{data.edit}" disabled="#{data.groupName eq admin.currentUser}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        Delete
+                    </f:facet>
+                    <h:selectBooleanCheckbox value="#{data.delete}" disabled="#{data.groupName eq admin.currentUser}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        Edit Groups
+                    </f:facet>
+                    <h:selectBooleanCheckbox value="#{data.editGroups}" disabled="#{data.groupName eq admin.currentUser}"/>
+                    <h:selectOneRadio value="#{data.editGroups}" disabled="#{data.groupName eq admin.currentUser}"/>
+                </h:column>
+            </h:dataTable>
         </fieldset>
     </div>
 

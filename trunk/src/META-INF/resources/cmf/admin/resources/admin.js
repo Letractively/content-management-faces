@@ -30,6 +30,7 @@ var scriptEditor;
 var cssEditor;
 var lastHighlightedNodeElement;
 var lastHighlightedNode;
+var marked = false;
 
 
 function showConfigSuccess(xhr) {
@@ -54,6 +55,9 @@ function doTheThing(xhr) {
         CKEDITOR.instances.ckCode.resetDirty();
         showEditorAndHideNamespace();
         CKEDITOR.instances.ckCode.focus();
+        if(!marked)
+            $('input').ezMark();
+        marked = true;
     }
 }
 
@@ -170,16 +174,19 @@ function showEditor() {
     $("#cke_ckCode").css("display", "block");
 }
 
-function hideEditorAndShowNamespace() {
-    hideEditor();
-    $("#configDbSuccess").css("display", "none");
-    $("#configDb").css("display", "none");
-    $("#addContent").css("display", "none");
-    $("#addScriptEditor").css("display", "none");
-    $("#addCssEditor").css("display", "none");
-    $("#addNamespace").css("display", "block");
-    $("#addStyle").css("display", "none");
-    $("#in").focus();
+function hideEditorAndShowNamespace(xhr) {
+    if(xhr.status == "success") {
+        hideEditor();
+        $("#configDbSuccess").css("display", "none");
+        $("#configDb").css("display", "none");
+        $("#addContent").css("display", "none");
+        $("#addScriptEditor").css("display", "none");
+        $("#addCssEditor").css("display", "none");
+        $("#addNamespace").css("display", "block");
+        $("#addStyle").css("display", "none");
+        $("#in").focus();
+        $('input').ezMark();
+    }
 }
 
 function hideEditorAndShowStyle() {

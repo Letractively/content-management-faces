@@ -46,4 +46,12 @@
             <renderer-class>net.tralfamadore.component.tree.TreeRenderer</renderer-class>
         </renderer>
     </render-kit>
+    <navigation-rule>
+        <navigation-case>
+            <from-action>#{admin.login}</from-action>
+            <from-outcome>index</from-outcome>
+            <to-view-id>cmf/admin/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

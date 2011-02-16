@@ -52,8 +52,8 @@
     <orderEntry type="library" name="Java EE 6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="dbDrivers" level="project" />
     <orderEntry type="library" name="derby" level="project" />
-    <orderEntry type="library" name="selenium" level="project" />
-    <orderEntry type="library" name="jmockit" level="project" />
+    <orderEntry type="library" scope="TEST" name="selenium" level="project" />
+    <orderEntry type="library" scope="TEST" name="jmockit" level="project" />
   </component>
 </module>
 

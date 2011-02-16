@@ -116,7 +116,7 @@ body {
     background: -webkit-gradient(linear, left top, right top, from(#f3f8ff), to(#accfff));
 }
 
-.theButton, .thePathButton, .styleBubble {
+.theButton, .theGroupButton, .thePathButton, .styleBubble {
     font: 14px/21px 'QuicksandBold', Arial, sans-serif;
     font-weight: bold;
     background-color: #f3f8ff;
@@ -126,6 +126,21 @@ body {
     box-shadow: #000000 1px 1px 3px;
     -moz-box-shadow: #000000 1px 1px 3px;
     -webkit-box-shadow: #000000 1px 1px 3px;
+}
+
+.rightCol {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+    margin-left: 10px;
+}
+.centerCol {
+    text-align: center;
+    margin-left: 10px;
+}
+
+.leftCol {
+    text-align: left;
 }
 
 .styleBubble {
@@ -171,12 +186,17 @@ body {
 
 .namespaceFieldset {
     width: 500px;
-    height: 70px;
+    height: 300px;
 }
 
 .contentFieldset {
     width: 500px;
     height: 100px;
+}
+
+.namespaceBreak {
+    color: #4e0c0c;
+    padding: 15px;
 }
 
 .cssEditor {
@@ -200,4 +220,24 @@ body {
 
 .styleNode {
     color: #4e0c0c;
+}
+
+.oddRow {
+    background-color: #597cd8;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.evenRow {
+}
+
+.groupBox {
+    margin-left: 10px;
+    width: 150px;
+}
+
+.theGroupButton {
+    font-size: small;
+    margin-left: 10px;
+    vertical-align: top;
 }
