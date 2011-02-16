@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+<ui:composition>
+    <div id="theEditor" style="width: 750px; margin-top: 10px; margin-left: 10px; display: none;">
+        <h:inputTextarea id="ckCode" name="ckCode" value="#{admin.editor.value}" style="display:none"/>
+
+        <div style="width: 100%; text-align: right;">
+            <h:commandButton id="submit" value="Submit" actionListener="#{admin.saveEditorContent}"
+                             onclick="updateEditor(); return true;" styleClass="theButton">
+                <f:ajax execute="ckCode" render="ckCode" onevent="resetDirty"/>
+            </h:commandButton>
+        </div>
+        <div style="width: 100%;" id="styles">
+            <fieldset id="theStyles" style="border-radius: 10px; -moz-border-radius: 10px;-webkit-border-radius: 10px;">
+                <legend>Styles</legend>
+                <h:panelGroup id="stylePanel">
+                    <ui:repeat value="#{editor.styles}" var="style">
+                        <h:commandButton id="styleButton" actionListener="#{admin.loadStyleEditor}" value="#{style.name}"
+                                         styleClass="styleBubble" rendered="#{style != null and style.name != null}">
+                            <f:param name="name" value="#{style.name}"/>
+                            <f:param name="namespace" value="#{style.namespace}"/>
+                            <f:ajax render=":theForm:cssEditor :theForm:currentStyles" onevent="doTheStyleThing2"/>
+                        </h:commandButton>
+                        <h:commandButton image="images/style_delete.png" styleClass="deleteStyle"
+                                         actionListener="#{admin.disassociateStyle}">
+                            <f:param name="name" value="#{style.name}"/>
+                            <f:param name="namespace" value="#{style.namespace}"/>
+                            <f:ajax render=":theForm:ckCode :theForm:currentStyles :theForm:stylePanel :theForm:theTree" onevent="rendTreeAndDropStyle"/>
+                        </h:commandButton>
+                    </ui:repeat>
+                </h:panelGroup>
+            </fieldset>
+        </div>
+        <div style="width: 100%;" id="groupList">
+            <fieldset id="groupListFieldset" style="border-radius: 10px; -moz-border-radius: 10px;-webkit-border-radius: 10px;">
+                <legend>Permissions <span id="sh" onclick="$('#sh').html('(hide)');$('.gg').show()" style="cursor: pointer; font-size: 9pt;">(show)</span> </legend>
+                <h:dataTable id="editorPermissionTable" value="#{admin.permissionData}" var="data" width="400px;"
+                             columnClasses="leftCol,centerCol,centerCol,centerCol,rightCol"
+                             rowClasses="oddRow,evenRow" style="padding: 0; margin: 0; border-spacing: 0;" styleClass="gg">
+                    <h:column headerClass="leftCol">
+                        <f:facet name="header">
+                            Group Name
+                        </f:facet>
+                        <h:outputText value="#{data.groupName}" style="font-style: italic;"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            &nbsp;View&nbsp;
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{data.view}" disabled="#{data.groupName eq admin.currentUser}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            &nbsp;Edit&nbsp;
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{data.edit}" disabled="#{data.groupName eq admin.currentUser}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            Delete
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{data.delete}" disabled="#{data.groupName eq admin.currentUser}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            Groups
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{data.editGroups}" disabled="#{data.groupName eq admin.currentUser}"/>
+                    </h:column>
+                    <f:facet name="footer">
+
+                    </f:facet>
+                </h:dataTable>
+                <h:commandButton styleClass="theGroupButton" onclick="$('.group').show();return false;" value="New Group"/>
+                <h:commandButton styleClass="theGroupButton" onclick="$('.group').show();return false;" value="Reset"/>
+                <h:commandButton styleClass="theGroupButton" onclick="$('.group').show();return false;" value="Save"/>
+                <br/>
+                <h:selectOneListbox size="3" styleClass="groupBox group" style="display: none;">
+                    <f:selectItem itemLabel="editors" itemValue="editors"/>
+                    <f:selectItem itemLabel="users" itemValue="users"/>
+                    <f:selectItem itemLabel="client" itemValue="client"/>
+                    <f:selectItem itemLabel="admin" itemValue="admin"/>
+                    <f:selectItem itemLabel="design" itemValue="design"/>
+                    <f:selectItem itemLabel="developer" itemValue="developer"/>
+                    <f:selectItem itemLabel="manager" itemValue="manager"/>
+                </h:selectOneListbox>
+
+                <h:commandButton styleClass="theGroupButton group" onclick="$('.group').hide();return false;" value="Cancel" style="display: none;"/>
+                <h:commandButton styleClass="theGroupButton group" onclick="$('.group').hide();return false;" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" style="display: none; position: relative; top: 35px; left: -70px;"/>
+
+    </fieldset>
+</div>
+</div>
+        </ui:composition>
+        </html>
