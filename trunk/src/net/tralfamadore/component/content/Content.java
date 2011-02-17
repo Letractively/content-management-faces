@@ -65,14 +65,14 @@ public class Content extends HtmlOutputText {
     public void processEvent(ComponentSystemEvent event) throws AbortProcessingException {
         FacesContext context = FacesContext.getCurrentInstance();
 
-        List<Script> scripts = getContentManager().loadScriptsForContent(
-                getContentManager().loadContent(Namespace.createFromString(getNamespace()), getName()));
+        List<Script> scripts =
+                getContentManager().loadContent(Namespace.createFromString(getNamespace()), getName()).getScripts();
         for(Script resource : scripts) {
             addResource(context, resource);
         }
 
-        List<Style> styles = getContentManager().loadStylesForContent(
-                getContentManager().loadContent(Namespace.createFromString(getNamespace()), getName()));
+        List<Style> styles =
+                getContentManager().loadContent(Namespace.createFromString(getNamespace()), getName()).getStyles();
         for(Style resource : styles) {
             addResource(context, resource);
         }

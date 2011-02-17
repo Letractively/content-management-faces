@@ -59,42 +59,42 @@
         <div style="width: 100%;" id="groupList">
             <fieldset id="groupListFieldset" style="border-radius: 10px; -moz-border-radius: 10px;-webkit-border-radius: 10px;">
                 <legend>Permissions <span id="sh" onclick="$('#sh').html('(hide)');$('.gg').show()" style="cursor: pointer; font-size: 9pt;">(show)</span> </legend>
-                <h:dataTable id="editorPermissionTable" value="#{admin.permissionData}" var="data" width="400px;"
+                <h:dataTable id="editorPermissionTable" value="#{admin.currentContentGroupPermissions}" var="data" width="400px;"
                              columnClasses="leftCol,centerCol,centerCol,centerCol,rightCol"
                              rowClasses="oddRow,evenRow" style="padding: 0; margin: 0; border-spacing: 0;" styleClass="gg">
                     <h:column headerClass="leftCol">
                         <f:facet name="header">
                             Group Name
                         </f:facet>
-                        <h:outputText value="#{data.groupName}" style="font-style: italic;"/>
+                        <h:outputText value="#{data.group}" style="font-style: italic;"/>
                     </h:column>
 
                     <h:column>
                         <f:facet name="header">
                             &nbsp;View&nbsp;
                         </f:facet>
-                        <h:selectBooleanCheckbox value="#{data.view}" disabled="#{data.groupName eq admin.currentUser}"/>
+                        <h:selectBooleanCheckbox value="#{data.canView}" disabled="#{data.group eq admin.currentUser}"/>
                     </h:column>
 
                     <h:column>
                         <f:facet name="header">
                             &nbsp;Edit&nbsp;
                         </f:facet>
-                        <h:selectBooleanCheckbox value="#{data.edit}" disabled="#{data.groupName eq admin.currentUser}"/>
+                        <h:selectBooleanCheckbox value="#{data.canEdit}" disabled="#{data.group eq admin.currentUser}"/>
                     </h:column>
 
                     <h:column>
                         <f:facet name="header">
                             Delete
                         </f:facet>
-                        <h:selectBooleanCheckbox value="#{data.delete}" disabled="#{data.groupName eq admin.currentUser}"/>
+                        <h:selectBooleanCheckbox value="#{data.canDelete}" disabled="#{data.group eq admin.currentUser}"/>
                     </h:column>
 
                     <h:column>
                         <f:facet name="header">
                             Groups
                         </f:facet>
-                        <h:selectBooleanCheckbox value="#{data.editGroups}" disabled="#{data.groupName eq admin.currentUser}"/>
+                        <h:selectBooleanCheckbox value="#{data.canAdmin}" disabled="#{data.group eq admin.currentUser}"/>
                     </h:column>
                     <f:facet name="footer">
 

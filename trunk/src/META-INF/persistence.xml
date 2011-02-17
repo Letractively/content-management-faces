@@ -25,5 +25,13 @@
         <class>net.tralfamadore.persistence.entity.ContentEntity</class>
         <class>net.tralfamadore.persistence.entity.StyleEntity</class>
         <class>net.tralfamadore.persistence.entity.StyleToContentEntity</class>
+
+        <class>net.tralfamadore.persistence.entity.GroupEntity</class>
+        <class>net.tralfamadore.persistence.entity.GroupPermissionsEntity</class>
+        <class>net.tralfamadore.persistence.entity.GroupPermissionsToContentEntity</class>
+        <class>net.tralfamadore.persistence.entity.GroupToPermissionsNamespaceEntity</class>
+        <class>net.tralfamadore.persistence.entity.GroupPermissionsToStyleEntity</class>
+        <class>net.tralfamadore.persistence.entity.UserEntity</class>
+        <class>net.tralfamadore.persistence.entity.UserToGroupEntity</class>
     </persistence-unit>
 </persistence>

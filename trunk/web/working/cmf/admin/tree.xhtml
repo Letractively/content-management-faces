@@ -64,7 +64,7 @@
                                  actionListener="#{admin.updateEditorContent}">
                     <f:param name="name" value="#{node.content.name}"/>
                     <f:param name="namespace" value="#{node.content.namespace}"/>
-                    <f:ajax execute="stylePanel" render="ckCode currentStyles stylePanel" onevent="doTheThing"/>
+                    <f:ajax execute="stylePanel" render="ckCode currentStyles stylePanel editorPermissionTable" onevent="doTheThing"/>
                 </h:commandButton>
 
                 <h:commandButton image="images/document_delete.png" styleClass="treeButton"

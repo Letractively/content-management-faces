@@ -109,13 +109,30 @@ public class ContentEntity implements Serializable {
 
     private NamespaceEntity namespace;
 
-    @OneToOne
-    @JoinColumn(name = "namespace_id")
+    @ManyToOne
+    @JoinColumn(name = "namespace_id", referencedColumnName = "id")
     public NamespaceEntity getNamespace() {
         return namespace;
     }
 
     public void setNamespace(NamespaceEntity namespace) {
         this.namespace = namespace;
+    }
+
+
+
+
+    private Set<GroupPermissionsEntity> groupPermissions;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "group_permissions_to_content",
+            joinColumns = { @JoinColumn(name = "content_id") },
+            inverseJoinColumns = { @JoinColumn(name = "group_permissions_id") })
+    public Set<GroupPermissionsEntity> getGroupPermissions() {
+        return groupPermissions;
+    }
+
+    public void setGroupPermissions(Set<GroupPermissionsEntity> groupPermissions) {
+        this.groupPermissions = groupPermissions;
     }
 }

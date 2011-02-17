@@ -21,10 +21,7 @@ package net.tralfamadore.admin;
 
 import net.tralfamadore.admin.tree.ContentTreeNode;
 import net.tralfamadore.admin.tree.StyleTreeNode;
-import net.tralfamadore.cmf.Content;
-import net.tralfamadore.cmf.ContentManager;
-import net.tralfamadore.cmf.Namespace;
-import net.tralfamadore.cmf.Style;
+import net.tralfamadore.cmf.*;
 import net.tralfamadore.config.CmfContext;
 import net.tralfamadore.persistence.JpaEntityManagerProvider;
 import net.tralfamadore.security.SecurityPhaseListener;
@@ -504,38 +501,19 @@ public class Admin {
         return "index";
     }
 
-    private List<PermissionData> permissionData;
+    public List<GroupPermissions> getCurrentContentGroupPermissions() {
+        try {
+            return currentNode.getContent().getGroupPermissionsList();
+        } catch(NullPointerException ignore) { }
 
-    public List<PermissionData> getPermissionData() {
-        if(permissionData == null) {
-            permissionData = new Vector<PermissionData>();
-            PermissionData d = new PermissionData();
-            d.setEdit(true);
-            d.setView(true);
-            d.setEditGroups(true);
-            d.setDelete(true);
-            d.setGroupName("cmfAdmin");
-            permissionData.add(d);
-            d = new PermissionData();
-            d.setEdit(true);
-            d.setView(true);
-            d.setDelete(true);
-            d.setGroupName("editors");
-            permissionData.add(d);
-            d = new PermissionData();
-            d.setEdit(true);
-            d.setView(true);
-            d.setGroupName("users");
-            permissionData.add(d);
-            d = new PermissionData();
-            d.setView(true);
-            d.setGroupName("client");
-            permissionData.add(d);
-        }
-        return permissionData;
+        return new Vector<GroupPermissions>();
     }
 
-    public void setPermissionData(List<PermissionData> permissionData) {
-        this.permissionData = permissionData;
+    public List<GroupPermissions> getCurrentStyleGroupPermissions() {
+        try {
+            return currentStyleNode.getStyle().getGroupPermissionsList();
+        } catch(NullPointerException ignore) { }
+
+        return new Vector<GroupPermissions>();
     }
 }

@@ -39,6 +39,8 @@
                                  id="submitNamespace"/>
             </div>
             <hr class="namspaceBreak"/>
+            <h:outputText id="permissionTable"/>
+            <ui:remove>
             <h:dataTable id="permissionTable" value="#{admin.permissionData}" var="data" width="400px;"
                          columnClasses="leftCol,centerCol,centerCol,centerCol,rightCol"
                          rowClasses="oddRow,evenRow" style="padding: 0; margin: 0; border-spacing: 0;">
@@ -92,6 +94,7 @@
                     <h:commandButton styleClass="theGroupButton group" onclick="$('.group').hide();return false;" value="Add" style="display: none;"/>
                 </f:facet>
             </h:dataTable>
+            </ui:remove>
         </fieldset>
     </div>
 

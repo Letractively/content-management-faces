@@ -41,6 +41,7 @@
         <!-- ***** -->
         <!-- derby -->
         <!-- ***** -->
+        <!--
         <persistence-property>
             <name>javax.persistence.jdbc.driver</name>
             <value>org.apache.derby.jdbc.EmbeddedDriver</value>
@@ -49,6 +50,7 @@
             <name>javax.persistence.jdbc.url</name>
             <value>jdbc:derby:memory:cmf;create=true</value>
         </persistence-property>
+        -->
 
         <!-- ***** -->
         <!-- mysql -->
@@ -67,7 +69,6 @@
         <!-- ******** -->
         <!-- postgres -->
         <!-- ******** -->
-        <!--
         <persistence-property>
             <name>javax.persistence.jdbc.driver</name>
             <value>org.postgresql.Driver</value>
@@ -84,6 +85,7 @@
             <name>javax.persistence.jdbc.password</name>
             <value>postgres</value>
         </persistence-property>
+        <!--
         -->
     </persistence-properties>
 </cmf-config>

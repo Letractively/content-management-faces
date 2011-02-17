@@ -21,10 +21,7 @@ package net.tralfamadore.cmf;
 
 import net.tralfamadore.config.CmfContext;
 import net.tralfamadore.persistence.EntityManagerProvider;
-import net.tralfamadore.persistence.entity.ContentEntity;
-import net.tralfamadore.persistence.entity.NamespaceEntity;
-import net.tralfamadore.persistence.entity.StyleEntity;
-import net.tralfamadore.persistence.entity.StyleToContentEntity;
+import net.tralfamadore.persistence.entity.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -32,6 +29,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 
 /**
@@ -42,6 +40,73 @@ import java.util.Vector;
 public class JpaContentManager implements ContentManager {
     private final EntityManagerProvider entityManagerProvider = CmfContext.getInstance().getEntityManagerProvider();
     private EntityManager em = entityManagerProvider.get();
+
+    public static List<Namespace> makeNamespaceNodes(NamespaceEntity namespaceEntity) {
+        List<Namespace> namespaces = new Vector<Namespace>();
+        String[] nodeNames = namespaceEntity.getName().split("\\.");
+        Namespace parent = null;
+
+        for(String nodeName : nodeNames) {
+            Namespace ns = new Namespace();
+            ns.setNodeName(nodeName);
+            ns.setParent(parent);
+            if(!namespaces.contains(ns))
+                namespaces.add(ns);
+            parent = ns;
+        }
+
+        return namespaces;
+    }
+
+    public static Content makeContent(ContentEntity contentEntity) {
+        Content content = new Content();
+        content.setContent(contentEntity.getContent());
+        content.setName(contentEntity.getName());
+        content.setNamespace(Namespace.createFromString(contentEntity.getNamespace().getName()));
+        content.setDateCreated(contentEntity.getDateCreated());
+        content.setDateModified(contentEntity.getDateModified());
+        content.getGroupPermissionsList().addAll(makeGroupPermissions(contentEntity.getGroupPermissions()));
+        content.getStyles().addAll(makeStyles(contentEntity.getStyles()));
+
+        return content;
+    }
+
+    public static Style makeStyle(StyleEntity styleEntity) {
+        Style style = new Style();
+
+        style.setName(styleEntity.getName());
+        style.setNamespace(Namespace.createFromString(styleEntity.getNamespace().getName()));
+        style.setStyle(styleEntity.getStyle());
+        style.getGroupPermissionsList().addAll(makeGroupPermissions(styleEntity.getGroupPermissions()));
+
+        return style;
+    }
+
+    public static List<Style> makeStyles(Set<StyleEntity> styleEntities){
+        List<Style> styles = new Vector<Style>();
+
+        for(StyleEntity styleEntity : styleEntities) {
+            styles.add(makeStyle(styleEntity));
+        }
+
+        return styles;
+    }
+
+    public static List<GroupPermissions> makeGroupPermissions(Set<GroupPermissionsEntity> groupPermissionsEntities) {
+        List<GroupPermissions> groupPermissionsList = new Vector<GroupPermissions>();
+
+        for(GroupPermissionsEntity groupPermissionsEntity : groupPermissionsEntities) {
+            GroupPermissions groupPermissions = new GroupPermissions();
+            groupPermissions.setCanView(groupPermissionsEntity.canView());
+            groupPermissions.setCanEdit(groupPermissionsEntity.canEdit());
+            groupPermissions.setCanDelete(groupPermissionsEntity.canDelete());
+            groupPermissions.setCanAdmin(groupPermissionsEntity.canAdmin());
+            groupPermissions.setGroup(groupPermissionsEntity.getGroup().getGroupname());
+            groupPermissionsList.add(groupPermissions);
+        }
+
+        return groupPermissionsList;
+    }
 
     public EntityManager getEm() {
         return em;
@@ -57,8 +122,7 @@ public class JpaContentManager implements ContentManager {
         List results = em.createQuery("select n from namespace n").getResultList();
         for(Object result : results) {
             NamespaceEntity namespaceEntity = (NamespaceEntity) result;
-            String[] nodeNames = namespaceEntity.getName().split("\\.");
-            makeNamespaceNodes(namespaces, nodeNames);
+            namespaces.addAll(makeNamespaceNodes(namespaceEntity));
         }
 
         return namespaces;
@@ -74,23 +138,10 @@ public class JpaContentManager implements ContentManager {
 
         for(Object result : results) {
             NamespaceEntity namespaceEntity = (NamespaceEntity) result;
-            String[] nodeNames = namespaceEntity.getName().split("\\.");
-            makeNamespaceNodes(namespaces, nodeNames);
+            namespaces.addAll(makeNamespaceNodes(namespaceEntity));
         }
 
         return namespaces;
-    }
-
-    private void makeNamespaceNodes(List<Namespace> namespaces, String[] nodeNames) {
-        Namespace parent = null;
-        for(String nodeName : nodeNames) {
-            Namespace ns = new Namespace();
-            ns.setNodeName(nodeName);
-            ns.setParent(parent);
-            if(!namespaces.contains(ns))
-                namespaces.add(ns);
-            parent = ns;
-        }
     }
 
     @Override
@@ -155,15 +206,7 @@ public class JpaContentManager implements ContentManager {
         List contentEntities = em.createQuery("select c from content c").getResultList();
         for(Object o : contentEntities) {
             ContentEntity contentEntity = (ContentEntity) o;
-            NamespaceEntity n = contentEntity.getNamespace();
-
-            Content content = new Content();
-            content.setContent(contentEntity.getContent());
-            content.setName(contentEntity.getName());
-            content.setNamespace(Namespace.createFromString(n.getName()));
-            content.setDateCreated(contentEntity.getDateCreated());
-            content.setDateModified(contentEntity.getDateModified());
-            contentList.add(content);
+            contentList.add(makeContent(contentEntity));
         }
 
         return contentList;
@@ -178,15 +221,7 @@ public class JpaContentManager implements ContentManager {
 
         for(Object o : contentEntities) {
             ContentEntity contentEntity = (ContentEntity) o;
-            NamespaceEntity n = contentEntity.getNamespace();
-
-            Content content = new Content();
-            content.setContent(contentEntity.getContent());
-            content.setName(contentEntity.getName());
-            content.setNamespace(Namespace.createFromString(n.getName()));
-            content.setDateCreated(contentEntity.getDateCreated());
-            content.setDateModified(contentEntity.getDateModified());
-            contentList.add(content);
+            contentList.add(makeContent(contentEntity));
         }
 
         return contentList;
@@ -203,17 +238,10 @@ public class JpaContentManager implements ContentManager {
         }
 
         ContentEntity contentEntity = (ContentEntity) result;
-        NamespaceEntity n = contentEntity.getNamespace();
 
-        Content content = new Content();
-        content.setContent(contentEntity.getContent());
-        content.setName(contentEntity.getName());
-        content.setNamespace(Namespace.createFromString(n.getName()));
-        content.setDateCreated(contentEntity.getDateCreated());
-        content.setDateModified(contentEntity.getDateModified());
-
-        return content;
+        return makeContent(contentEntity);
     }
+
 
     @Override
     public void saveContent(Content content) {
@@ -274,7 +302,7 @@ public class JpaContentManager implements ContentManager {
         ContentEntity contentEntity = (ContentEntity) result;
         List results = em.createQuery(
                 "select c, n from style c, style_to_content s, namespace n " +
-                        " where s.contentId = ?1 and c.id = s.styleId and n.id = c.namespaceId").
+                        " where s.contentId = ?1 and c.id = s.styleId and n.id = c.namespace.id").
                 setParameter(1, contentEntity.getId()).getResultList();
         for(Object r : results) {
             Object o[] = (Object[]) r;
@@ -323,17 +351,10 @@ public class JpaContentManager implements ContentManager {
     public List<Style> loadAllStyles() {
         List<Style> styleList = new Vector<Style>();
         List styleEntities = em.createQuery("select c from style c").getResultList();
+
         for(Object o : styleEntities) {
             StyleEntity styleEntity = (StyleEntity) o;
-            Query q = em.createQuery("select n from namespace n where n.id = ?1");
-            q.setParameter(1, styleEntity.getNamespaceId());
-            NamespaceEntity n = (NamespaceEntity) q.getSingleResult();
-
-            Style style = new Style();
-            style.setStyle(styleEntity.getStyle());
-            style.setName(styleEntity.getName());
-            style.setNamespace(Namespace.createFromString(n.getName()));
-            styleList.add(style);
+            styleList.add(makeStyle(styleEntity));
         }
 
         return styleList;
@@ -342,29 +363,13 @@ public class JpaContentManager implements ContentManager {
     @Override
     public List<Style> loadStyle(Namespace namespace) {
         List<Style> styleList = new Vector<Style>();
-        Object result;
-        try {
-            result = em.createQuery("select n from namespace n where n.name = ?1").
-                    setParameter(1, namespace.getFullName()).getSingleResult();
-        } catch(NoResultException e) {
-            return styleList;
-        }
 
-        NamespaceEntity ne = (NamespaceEntity) result;
-        List styleEntities = em.createQuery("select c from style c where c.namespaceId = ?1").
-                setParameter(1, ne.getId()).getResultList();
+        List styleEntities = em.createQuery("select c from style c where c.namespace.name = ?1").
+                setParameter(1, namespace.getFullName()).getResultList();
 
         for(Object o : styleEntities) {
             StyleEntity styleEntity = (StyleEntity) o;
-            Query q = em.createQuery("select n from namespace n where n.id = ?1");
-            q.setParameter(1, styleEntity.getNamespaceId());
-            NamespaceEntity n = (NamespaceEntity) q.getSingleResult();
-
-            Style style = new Style();
-            style.setStyle(styleEntity.getStyle());
-            style.setName(styleEntity.getName());
-            style.setNamespace(Namespace.createFromString(n.getName()));
-            styleList.add(style);
+            styleList.add(makeStyle(styleEntity));
         }
 
         return styleList;
@@ -373,29 +378,17 @@ public class JpaContentManager implements ContentManager {
     @Override
     public Style loadStyle(Namespace namespace, String name) {
         Object result;
-        try {
-            result = em.createQuery("select n from namespace n where n.name = ?1").
-                    setParameter(1, namespace.getFullName()).getSingleResult();
-        } catch(NoResultException e) {
-            return null;
-        }
 
-        NamespaceEntity ne = (NamespaceEntity) result;
         try {
-            result = em.createQuery("select c from style c where c.namespaceId = ?1 and c.name = ?2").
-                    setParameter(1, ne.getId()).setParameter(2, name).getSingleResult();
+            result = em.createQuery("select c from style c where c.namespace.name = ?1 and c.name = ?2").
+                    setParameter(1, namespace.getFullName()).setParameter(2, name).getSingleResult();
         } catch(NoResultException e) {
             return null;
         }
 
         StyleEntity styleEntity = (StyleEntity) result;
 
-        Style style = new Style();
-        style.setStyle(styleEntity.getStyle());
-        style.setName(styleEntity.getName());
-        style.setNamespace(Namespace.createFromString(ne.getName()));
-
-        return style;
+        return makeStyle(styleEntity);
     }
 
     @Override
@@ -410,7 +403,7 @@ public class JpaContentManager implements ContentManager {
         }
         NamespaceEntity ne = (NamespaceEntity) result;
         try {
-            result = em.createQuery("select c from style c where c.namespaceId = ?1 and c.name = ?2").
+            result = em.createQuery("select c from style c where c.namespace.id = ?1 and c.name = ?2").
                     setParameter(1, ne.getId()).setParameter(2, style.getName()).getSingleResult();
         } catch(NoResultException e) {
             result = null;
@@ -421,7 +414,7 @@ public class JpaContentManager implements ContentManager {
             styleEntity = new StyleEntity();
             styleEntity.setName(style.getName());
             styleEntity.setStyle(style.getStyle());
-            styleEntity.setNamespaceId(ne.getId());
+            styleEntity.setNamespace(ne);
         } else {
             styleEntity = (StyleEntity) result;
             styleEntity.setStyle(style.getStyle());
@@ -444,7 +437,7 @@ public class JpaContentManager implements ContentManager {
         }
         NamespaceEntity ne = (NamespaceEntity) result;
         try {
-            result = em.createQuery("select c from style c where c.namespaceId = ?1 and c.name = ?2").
+            result = em.createQuery("select c from style c where c.namespace.id = ?1 and c.name = ?2").
                     setParameter(1, ne.getId()).setParameter(2, style.getName()).getSingleResult();
         } catch(NoResultException e) {
             return;
@@ -496,7 +489,7 @@ public class JpaContentManager implements ContentManager {
         }
         NamespaceEntity ne = (NamespaceEntity) result;
         try {
-            result = em.createQuery("select c from style c where c.namespaceId = ?1 and c.name = ?2").
+            result = em.createQuery("select c from style c where c.namespace.id = ?1 and c.name = ?2").
                     setParameter(1, ne.getId()).setParameter(2, style.getName()).getSingleResult();
         } catch(NoResultException e) {
             throw new RuntimeException("Can't locate style: " + style.getName());
@@ -571,7 +564,7 @@ public class JpaContentManager implements ContentManager {
             StyleEntity styleEntity = (StyleEntity) o;
             Style style = new Style();
             query = em.createQuery("select n from namespace n where n.id = ?1");
-            query.setParameter(1, styleEntity.getNamespaceId());
+            query.setParameter(1, styleEntity.getNamespace().getId());
             ne = (NamespaceEntity) query.getSingleResult();
             style.setNamespace(Namespace.createFromString(ne.getName()));
             style.setStyle(styleEntity.getStyle());
@@ -593,7 +586,7 @@ public class JpaContentManager implements ContentManager {
         }
         NamespaceEntity ne = (NamespaceEntity) result;
         try {
-            result = em.createQuery("select c from style c where c.namespaceId = ?1 and c.name = ?2").
+            result = em.createQuery("select c from style c where c.namespace.id = ?1 and c.name = ?2").
                     setParameter(1, ne.getId()).setParameter(2, style.getName()).getSingleResult();
         } catch(NoResultException e) {
             throw new RuntimeException("Can't locate style: " + style.getName());

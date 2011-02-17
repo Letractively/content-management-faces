@@ -20,6 +20,8 @@
 package net.tralfamadore.cmf;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * User: billreh
@@ -29,6 +31,7 @@ import java.io.Serializable;
 public abstract class BaseContent implements Serializable {
     private String name;
     private Namespace namespace;
+    private List<GroupPermissions> groupPermissionsList = new Vector<GroupPermissions>();
 
 
     public String getName() {
@@ -47,6 +50,13 @@ public abstract class BaseContent implements Serializable {
         this.namespace = namespace;
     }
 
+    public List<GroupPermissions> getGroupPermissionsList() {
+        return groupPermissionsList;
+    }
+
+    public void setGroupPermissionsList(List<GroupPermissions> groupPermissionsList) {
+        this.groupPermissionsList = groupPermissionsList;
+    }
 
     @Override
     public boolean equals(Object o) {

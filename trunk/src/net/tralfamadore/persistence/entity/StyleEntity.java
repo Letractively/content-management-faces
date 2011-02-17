@@ -21,6 +21,7 @@ package net.tralfamadore.persistence.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * User: billreh
@@ -30,7 +31,7 @@ import java.io.Serializable;
 @Entity(name = "style")
 public class StyleEntity implements Serializable {
     private long id;
-    private long namespaceId;
+    private NamespaceEntity namespace;
     private String name;
     private String style;
 
@@ -52,13 +53,14 @@ public class StyleEntity implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "namespace_id")
-    public long getNamespaceId() {
-        return namespaceId;
+    @ManyToOne
+    @JoinColumn(name = "namespace_id", referencedColumnName = "id")
+    public NamespaceEntity getNamespace() {
+        return namespace;
     }
 
-    public void setNamespaceId(long namespaceId) {
-        this.namespaceId = namespaceId;
+    public void setNamespace(NamespaceEntity namespace) {
+        this.namespace = namespace;
     }
 
     @Column
@@ -77,5 +79,19 @@ public class StyleEntity implements Serializable {
 
     public void setStyle(String style) {
         this.style = style;
+    }
+
+    private Set<GroupPermissionsEntity> groupPermissions;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "group_permissions_to_style",
+            joinColumns = { @JoinColumn(name = "style_id") },
+            inverseJoinColumns = { @JoinColumn(name = "group_permissions_id") })
+    public Set<GroupPermissionsEntity> getGroupPermissions() {
+        return groupPermissions;
+    }
+
+    public void setGroupPermissions(Set<GroupPermissionsEntity> groupPermissions) {
+        this.groupPermissions = groupPermissions;
     }
 }
