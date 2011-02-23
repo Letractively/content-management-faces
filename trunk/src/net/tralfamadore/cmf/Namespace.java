@@ -31,6 +31,7 @@ import java.util.Vector;
 public class Namespace implements Serializable {
     private String nodeName;
     private Namespace parent;
+    private List<GroupPermissions> groupPermissionsList = new Vector<GroupPermissions>();
 
 
     public static Namespace createFromString(String namespace) {
@@ -95,6 +96,14 @@ public class Namespace implements Serializable {
 
     public void setParent(Namespace parent) {
         this.parent = parent;
+    }
+
+    public List<GroupPermissions> getGroupPermissionsList() {
+        return groupPermissionsList;
+    }
+
+    public void setGroupPermissionsList(List<GroupPermissions> groupPermissionsList) {
+        this.groupPermissionsList = groupPermissionsList;
     }
 
     public List<Namespace> getParentNamespaces() {

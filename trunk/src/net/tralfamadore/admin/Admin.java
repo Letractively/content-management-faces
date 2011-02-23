@@ -237,9 +237,32 @@ public class Admin {
         content.setDateModified(now);
         content.setNamespace(tree.getSelectedNamespace());
         content.setName(tree.getNewContentName());
+        content.setGroupPermissionsList(defaultGroupPermissions());
         contentManager.saveContent(content);
         tree.createTreeModel();
         tree.setNewContentName(null);
+    }
+
+    private List<GroupPermissions> defaultGroupPermissions() {
+        List<GroupPermissions> groupPermissionsList = new Vector<GroupPermissions>();
+        GroupPermissions groupPermissions = new GroupPermissions();
+
+        groupPermissions.setGroup(cmfContext.getCurrentUser());
+        groupPermissions.setCanAdmin(true);
+        groupPermissions.setCanDelete(true);
+        groupPermissions.setCanEdit(true);
+        groupPermissions.setCanView(true);
+        groupPermissionsList.add(groupPermissions);
+
+        groupPermissions = new GroupPermissions();
+        groupPermissions.setGroup("users");
+        groupPermissions.setCanAdmin(false);
+        groupPermissions.setCanDelete(false);
+        groupPermissions.setCanEdit(false);
+        groupPermissions.setCanView(true);
+        groupPermissionsList.add(groupPermissions);
+
+        return groupPermissionsList;
     }
 
     /**
@@ -318,7 +341,18 @@ public class Admin {
 
         if(namespace != null) {
             Style style = contentManager.loadStyle(Namespace.createFromString(namespace), name);
-            contentManager.disassociateWithContent(currentNode.getContent(), style);
+            Iterator<Style> it = currentNode.getContent().getStyles().iterator();
+            while(it.hasNext()) {
+                Style s = it.next();
+                if(s.getName().equals(style.getName())
+                        && s.getNamespace().getFullName().equals(style.getNamespace().getFullName()))
+                {
+                    it.remove();
+                    break;
+                }
+
+            }
+            contentManager.saveContent(currentNode.getContent());
             tree.createTreeModel();
             addStylesForEditor();
         }
@@ -338,7 +372,8 @@ public class Admin {
         if(namespace != null) {
             Style style = contentManager.loadStyle(Namespace.createFromString(namespace), name);
             Content content = currentNode.getContent();
-            contentManager.associateWithContent(content, style);
+            content.getStyles().add(style);
+            contentManager.saveContent(content);
             styleScriptEditor.setValue(style.getStyle());
 
             addStylesForEditor();
@@ -413,7 +448,7 @@ public class Admin {
         List<Style> styles = editor.getStyles();
         styles.clear();
         editor.clearCurrentStyles();
-        for(Style style : contentManager.loadStylesForContent(currentNode.getContent())) {
+        for(Style style : currentNode.getContent().getStyles()) {
             editor.addCurrentStyle(style.getStyle());
             styles.add(style);
         }

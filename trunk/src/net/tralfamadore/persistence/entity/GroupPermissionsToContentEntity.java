@@ -19,7 +19,6 @@
 
 package net.tralfamadore.persistence.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -27,8 +26,9 @@ import java.io.Serializable;
  * Date: 2/15/11
  * Time: 11:40 PM
  */
-@Entity(name = "group_permissions_to_content")
+//@Entity(name = "group_permissions_to_content")
 public class GroupPermissionsToContentEntity implements Serializable {
+    /*
     private long id;
     private long contentId;
     private long groupId;
@@ -68,4 +68,5 @@ public class GroupPermissionsToContentEntity implements Serializable {
     public void setGroupId(long groupId) {
         this.groupId = groupId;
     }
+    */
 }

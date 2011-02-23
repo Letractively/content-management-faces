@@ -38,7 +38,7 @@ public class GroupEntity implements Serializable {
             table = "id_gen",
             pkColumnName = "gen_name",
             valueColumnName = "gen_val",
-            pkColumnValue = "group_id",
+            pkColumnValue = "groups_id",
             initialValue = 0,
             allocationSize = 50
     )

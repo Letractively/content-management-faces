@@ -32,6 +32,7 @@ import java.util.Set;
 @Entity(name = "content")
 public class ContentEntity implements Serializable {
     private long id;
+    private long namespaceId;
     private String name;
     private String content;
     private Date dateCreated;
@@ -53,6 +54,15 @@ public class ContentEntity implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @Column(insertable = false, updatable = false, name = "namespace_id")
+    public long getNamespace_id() {
+        return namespaceId;
+    }
+
+    public void setNamespace_id(long namespaceId) {
+        this.namespaceId = namespaceId;
     }
 
     @Column
@@ -95,7 +105,7 @@ public class ContentEntity implements Serializable {
 
     private Set<StyleEntity> styles;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "style_to_content",
             joinColumns = { @JoinColumn(name = "content_id") },
             inverseJoinColumns = { @JoinColumn(name = "style_id") })
@@ -109,8 +119,8 @@ public class ContentEntity implements Serializable {
 
     private NamespaceEntity namespace;
 
-    @ManyToOne
-    @JoinColumn(name = "namespace_id", referencedColumnName = "id")
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @JoinColumn(name = "namespace_id", referencedColumnName = "ID")
     public NamespaceEntity getNamespace() {
         return namespace;
     }
@@ -124,7 +134,7 @@ public class ContentEntity implements Serializable {
 
     private Set<GroupPermissionsEntity> groupPermissions;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "group_permissions_to_content",
             joinColumns = { @JoinColumn(name = "content_id") },
             inverseJoinColumns = { @JoinColumn(name = "group_permissions_id") })
@@ -135,4 +145,5 @@ public class ContentEntity implements Serializable {
     public void setGroupPermissions(Set<GroupPermissionsEntity> groupPermissions) {
         this.groupPermissions = groupPermissions;
     }
+
 }

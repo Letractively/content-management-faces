@@ -19,7 +19,11 @@
 
 package net.tralfamadore.cmf;
 
-import java.util.*;
+import net.tralfamadore.persistence.entity.GroupEntity;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * User: billreh
@@ -40,12 +44,6 @@ public class TestContentManager implements ContentManager {
 
     /** list of all styles */
     private final List<Style> styles = new Vector<Style>();
-
-    /** mapping of content namespace with content name appended to list of styles for that content */
-    private final Map<String,List<Style>> styleToContent = new HashMap<String, List<Style>>();
-    /** mapping of content namespace with content name appended to list of styles for that content */
-    private final Map<Content,List<Script>> scriptToContent = new HashMap<Content, List<Script>>();
-
 
     /**
      * A private class to hold our single INSTANCE.
@@ -323,181 +321,10 @@ public class TestContentManager implements ContentManager {
                 break;
             }
         }
-
-        for(Map.Entry<String, List<Style>> entry : this.styleToContent.entrySet()) {
-            it = entry.getValue().iterator();
-            //noinspection WhileLoopReplaceableByForEach
-            while(it.hasNext()) {
-                Style c = it.next();
-                if(c.getNamespace().equals(style.getNamespace()) && c.getName().equals(style.getName())) {
-                    entry.getValue().remove(style);
-                    break;
-                }
-            }
-        }
     }
 
-    /**
-     * @see ContentManager#associateWithContent(Content, Script)
-     */
     @Override
-    public void associateWithContent(Content content, Script script) {
-        // First update the content object
-        for(Script s : content.getScripts()) {
-            boolean found = false;
-            if(s.getNamespace().equals(script.getNamespace()) && s.getName().equals(script.getName())) {
-                s.setScript(script.getScript());
-                found = true;
-            }
-            // need to add it
-            if(!found)
-                content.getScripts().add(script);
-        }
-
-        List<Script> scriptsForContent = scriptToContent.get(content);
-
-        // If nothing is there, put it there
-        if(scriptsForContent == null) {
-            scriptsForContent = new Vector<Script>();
-            scriptsForContent.add(script);
-            scriptToContent.put(content, scriptsForContent);
-            return;
-        }
-
-        // If it's there, update it
-        for(Script s : scriptsForContent) {
-            if(s.getNamespace().equals(script.getNamespace()) && s.getName().equals(script.getName())) {
-                s.setScript(script.getScript());
-                return;
-            }
-        }
-
-        // otherwise add it
-        scriptsForContent.add(script);
-    }
-
-    /**
-     * @see ContentManager#loadScriptsForContent(Content)
-     */
-    @Override
-    public List<Script> loadScriptsForContent(Content content) {
-        List<Script> scripts = content == null ? null : scriptToContent.get(loadContent(content.getNamespace(), content.getName()));
-        return scripts == null ? new Vector<Script>() : scripts;
-    }
-
-    /**
-     * @see ContentManager#associateWithContent(Content, Style)
-     */
-    @Override
-    public void associateWithContent(Content content, Style style) {
-        // First update the content object
-        for(Style s : content.getStyles()) {
-            boolean found = false;
-            if(s.getNamespace().equals(style.getNamespace()) && s.getName().equals(style.getName())) {
-                s.setStyle(style.getStyle());
-                found = true;
-            }
-            // need to add it
-            if(!found)
-                content.getStyles().add(style);
-        }
-
-        List<Style> stylesForContent = styleToContent.get(content.getNamespace().getFullName() + '.' + content.getName());
-
-        // If nothing is there, put it there
-        if(stylesForContent == null) {
-            stylesForContent = new Vector<Style>();
-            stylesForContent.add(style);
-            styleToContent.put(content.getNamespace().getFullName() + '.' + content.getName(), stylesForContent);
-            return;
-        }
-
-        // If it's there, update it
-        for(Style s : stylesForContent) {
-            if(s.getNamespace().equals(style.getNamespace()) && s.getName().equals(style.getName())) {
-                s.setStyle(style.getStyle());
-                return;
-            }
-        }
-
-        // otherwise add it
-        stylesForContent.add(style);
-    }
-
-    /**
-     * @see ContentManager#loadStylesForContent(Content)
-     */
-    @Override
-    public List<Style> loadStylesForContent(Content content) {
-        List<Style> styles = content == null ? null : styleToContent.get(content.getNamespace().getFullName() + '.' + content.getName());
-        return styles == null ? new Vector<Style>() : styles;
-    }
-
-    /**
-     * @see ContentManager#disassociateWithContent(Content, Script)
-     */
-    @Override
-    public void disassociateWithContent(Content content, Script script) {
-        // First update the content object
-        for(Script s : content.getScripts()) {
-            boolean found = false;
-            if(s.getNamespace().equals(script.getNamespace()) && s.getName().equals(script.getName())) {
-                found = true;
-            }
-            // need to remove it
-            if(found)
-                content.getScripts().remove(script);
-        }
-
-        List<Script> scriptsForContent = scriptToContent.get(content);
-
-        // it's not there
-        if(scriptsForContent == null)
-            return;
-
-        // If it's there, remove it
-        Iterator<Script> it = scriptsForContent.iterator();
-        //noinspection WhileLoopReplaceableByForEach
-        while(it.hasNext()) {
-            Script s = it.next();
-            if(s.getNamespace().equals(script.getNamespace()) && s.getName().equals(script.getName())) {
-                scriptsForContent.remove(s);
-                return;
-            }
-        }
-    }
-
-    /**
-     * @see ContentManager#disassociateWithContent(Content, Style)
-     */
-    @Override
-    public void disassociateWithContent(Content content, Style style) {
-        // First update the content object
-        for(Style s : content.getStyles()) {
-            boolean found = false;
-            if(s.getNamespace().equals(style.getNamespace()) && s.getName().equals(style.getName())) {
-                found = true;
-            }
-            // need to remove it
-            if(found)
-                content.getStyles().remove(style);
-        }
-
-        List<Style> stylesForContent = styleToContent.get(content.getNamespace().getFullName() + '.' + content.getName());
-
-        // it's not there
-        if(stylesForContent == null)
-            return;
-
-        // If it's there, remove it
-        Iterator<Style> it = stylesForContent.iterator();
-        //noinspection WhileLoopReplaceableByForEach
-        while(it.hasNext()) {
-            Style s = it.next();
-            if(s.getNamespace().equals(style.getNamespace()) && s.getName().equals(style.getName())) {
-                stylesForContent.remove(s);
-                return;
-            }
-        }
+    public void saveGroup(GroupEntity group) {
+        throw new RuntimeException("Implement me!");
     }
 }

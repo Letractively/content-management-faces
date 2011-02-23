@@ -8,6 +8,7 @@
         <element id="directory" name="resources">
           <element id="dir-copy" path="$PROJECT_DIR$/src/META-INF/resources" />
         </element>
+        <element id="file-copy" path="$PROJECT_DIR$/scripts/cmf-derby.sql" />
       </element>
       <element id="file-copy" path="$PROJECT_DIR$/LICENSE" />
       <element id="directory" name="src">

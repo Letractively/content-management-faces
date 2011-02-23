@@ -34,6 +34,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.jar.JarFile;
+import java.util.zip.ZipEntry;
 
 /**
  * User: billreh
@@ -85,18 +87,30 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
 
     public void createEmbeddedTables() {
         em.getTransaction().begin();
-        for(String query : createDerbyTables)
-            em.createNativeQuery(query).executeUpdate();
-        em.getTransaction().commit();
+        try {
+            String[] tableSql = getDerbyCreate();
+            for(String query : tableSql) {
+                if(query.matches("^\\s*$"))
+                    continue;
+                em.createNativeQuery(query).executeUpdate();
+            }
+            em.getTransaction().commit();
+        } catch(Exception e) {
+            // most likely the tables are already there, probably the cmf-config.xml was overwritten
+            em.getTransaction().rollback();
+        }
     }
 
     public void dropEmbeddedTables() {
-        em.getTransaction().begin();
         try {
+        em.getTransaction().begin();
             for(String query : dropDerbyTables)
                 em.createNativeQuery(query).executeUpdate();
-        } catch(Exception ignore) { /* the tables aren't there */ }
-        em.getTransaction().commit();
+            em.getTransaction().commit();
+        } catch(Exception ignore) {
+            // most likely the tables are already there, probably the cmf-config.xml was overwritten
+            em.getTransaction().rollback();
+        }
     }
 
     public void createEmbeddedDb(Properties properties) {
@@ -105,15 +119,7 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
         emFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME, properties);
         em = emFactory.createEntityManager();
 
-        em.getTransaction().begin();
-        try {
-            for(String query : createDerbyTables)
-                em.createNativeQuery(query).executeUpdate();
-            em.getTransaction().commit();
-        } catch(Exception e) {
-            // most likely the tables are already there, probably the cmf-config.xml was overwritten
-            em.getTransaction().rollback();
-        }
+        createEmbeddedTables();
 
         ((JpaContentManager)CmfContext.getInstance().getContentManager()).setEm(em);
         try {
@@ -134,6 +140,17 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
         System.out.println(contents);
         writeStringToFile(file, contents);
     }
+
+    private String[] getDerbyCreate() throws Exception {
+        String url = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/lib/cmf.jar");
+        File file = new File(url);
+        JarFile jarFile = new JarFile(file);
+        ZipEntry zipEntry = jarFile.getEntry("cmf-derby.sql");
+        url = "/Users/billreh/IdeaProjects/content-management-faces/scripts/cmf-derby.sql";
+        file = new File(url);
+        return readFileAsString(file).split(";");
+    }
+
     private static void writeStringToFile(File file, String string) throws java.io.IOException{
         FileOutputStream outputStream = null;
         try {
@@ -161,10 +178,13 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
     }
 
     String dropDerbyTables[] = {
-            "delete from style_to_content\n",
-            "delete from style\n",
-            "delete from content\n",
-            "delete from namespace\n",
+            "drop table group_permissions_to_content\n",
+            "drop table group_permissions_to_namespace\n",
+            "drop table group_permissions_to_style\n",
+            "drop table group_permissions\n",
+            "drop table user_to_group\n",
+            "drop table groups\n",
+            "drop table users\n",
             "drop table style_to_content\n",
             "drop table style\n",
             "drop table content\n",
@@ -212,5 +232,6 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
             "INSERT INTO id_gen VALUES('style_id', 100)\n",
             "INSERT INTO id_gen VALUES('content_id', 100)\n",
             "INSERT INTO id_gen VALUES('namespace_id', 100)\n",
-            "INSERT INTO id_gen VALUES('style_to_content_id', 100)"};
+            "INSERT INTO id_gen VALUES('style_to_content_id', 100)"
+    };
 }

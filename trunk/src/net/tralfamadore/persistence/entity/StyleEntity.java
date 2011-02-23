@@ -31,6 +31,7 @@ import java.util.Set;
 @Entity(name = "style")
 public class StyleEntity implements Serializable {
     private long id;
+    private long namespaceId;
     private NamespaceEntity namespace;
     private String name;
     private String style;
@@ -53,8 +54,17 @@ public class StyleEntity implements Serializable {
         this.id = id;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "namespace_id", referencedColumnName = "id")
+    @Column(insertable = false, updatable = false, name = "namespace_id")
+    public long getNamespace_id() {
+        return namespaceId;
+    }
+
+    public void setNamespace_id(long namespaceId) {
+        this.namespaceId = namespaceId;
+    }
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @JoinColumn(name = "namespace_id", referencedColumnName = "ID", insertable = true, updatable = true)
     public NamespaceEntity getNamespace() {
         return namespace;
     }
@@ -83,7 +93,7 @@ public class StyleEntity implements Serializable {
 
     private Set<GroupPermissionsEntity> groupPermissions;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "group_permissions_to_style",
             joinColumns = { @JoinColumn(name = "style_id") },
             inverseJoinColumns = { @JoinColumn(name = "group_permissions_id") })

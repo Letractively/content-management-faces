@@ -42,7 +42,7 @@ public class GroupPermissionsEntity implements Serializable {
             table = "id_gen",
             pkColumnName = "gen_name",
             valueColumnName = "gen_val",
-            pkColumnValue = "group_permission_id",
+            pkColumnValue = "group_permissions_id",
             initialValue = 0,
             allocationSize = 50
     )
@@ -55,7 +55,7 @@ public class GroupPermissionsEntity implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "group_id", referencedColumnName = "id")
+    @JoinColumn(name = "group_id", referencedColumnName = "ID")
     public GroupEntity getGroup() {
         return group;
     }

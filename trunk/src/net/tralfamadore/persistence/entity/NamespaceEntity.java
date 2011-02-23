@@ -21,6 +21,7 @@ package net.tralfamadore.persistence.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * User: billreh
@@ -32,6 +33,7 @@ public class NamespaceEntity implements Serializable {
     private long id;
     private String name;
     private Long parentId;
+    private Set<GroupPermissionsEntity> groupPermissions;
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "namespaceGen")
@@ -68,4 +70,31 @@ public class NamespaceEntity implements Serializable {
     public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "group_permissions_to_namespace",
+            joinColumns = { @JoinColumn(name = "namespace_id") },
+            inverseJoinColumns = { @JoinColumn(name = "group_permissions_id") })
+    public Set<GroupPermissionsEntity> getGroupPermissions() {
+        return groupPermissions;
+    }
+
+    public void setGroupPermissions(Set<GroupPermissionsEntity> groupPermissions) {
+        this.groupPermissions = groupPermissions;
+    }
+/*
+    private Set<ContentEntity> content;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "content",
+            joinColumns = { @JoinColumn(name = "namespace_id") },
+            inverseJoinColumns = { @JoinColumn(name = "id") })
+    public Set<ContentEntity> getContent() {
+        return content;
+    }
+
+    public void setContent(Set<ContentEntity> content) {
+        this.content = content;
+    }
+    */
 }

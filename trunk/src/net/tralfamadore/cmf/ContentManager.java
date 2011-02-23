@@ -19,6 +19,8 @@
 
 package net.tralfamadore.cmf;
 
+import net.tralfamadore.persistence.entity.GroupEntity;
+
 import java.util.List;
 
 /**
@@ -77,11 +79,5 @@ public interface ContentManager {
     public void saveStyle(Style style);
     public void deleteStyle(Style style);
 
-    public void associateWithContent(Content content, Script script);
-    public List<Script> loadScriptsForContent(Content content);
-    public void disassociateWithContent(Content content, Script script);
-
-    public void associateWithContent(Content content, Style style);
-    public List<Style> loadStylesForContent(Content content);
-    public void disassociateWithContent(Content content, Style style);
+    public void saveGroup(GroupEntity group);
 }

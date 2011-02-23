@@ -34,7 +34,7 @@ public class CmfContext {
     private boolean initialized = false;
     private ContentManager contentManager;
     private EntityManagerProvider entityManagerProvider;
-    private SecurityType securityType = SecurityType.PRINCIPAL;
+    private SecurityType securityType = SecurityType.NONE;
     private boolean embeddedDbNeedsConfig = false;
     private String customLoginUrl;
 

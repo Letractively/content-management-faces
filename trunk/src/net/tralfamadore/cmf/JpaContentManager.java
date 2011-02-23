@@ -27,10 +27,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * User: billreh
@@ -41,18 +38,23 @@ public class JpaContentManager implements ContentManager {
     private final EntityManagerProvider entityManagerProvider = CmfContext.getInstance().getEntityManagerProvider();
     private EntityManager em = entityManagerProvider.get();
 
-    public static List<Namespace> makeNamespaceNodes(NamespaceEntity namespaceEntity) {
+    public List<Namespace> makeNamespaceNodes(NamespaceEntity namespaceEntity) {
         List<Namespace> namespaces = new Vector<Namespace>();
         String[] nodeNames = namespaceEntity.getName().split("\\.");
         Namespace parent = null;
+        String name = namespaceEntity.getName();
 
         for(String nodeName : nodeNames) {
             Namespace ns = new Namespace();
             ns.setNodeName(nodeName);
             ns.setParent(parent);
+            namespaceEntity = (NamespaceEntity) em.createQuery("select n from namespace n where n.name = ?1").
+                    setParameter(1, name).getSingleResult();
+            ns.setGroupPermissionsList(makeGroupPermissions(namespaceEntity.getGroupPermissions()));
             if(!namespaces.contains(ns))
                 namespaces.add(ns);
             parent = ns;
+            name = name.replaceAll("\\." + nodeName + "$", "");
         }
 
         return namespaces;
@@ -85,6 +87,8 @@ public class JpaContentManager implements ContentManager {
     public static List<Style> makeStyles(Set<StyleEntity> styleEntities){
         List<Style> styles = new Vector<Style>();
 
+        if(styleEntities == null)
+            return styles;
         for(StyleEntity styleEntity : styleEntities) {
             styles.add(makeStyle(styleEntity));
         }
@@ -94,6 +98,8 @@ public class JpaContentManager implements ContentManager {
 
     public static List<GroupPermissions> makeGroupPermissions(Set<GroupPermissionsEntity> groupPermissionsEntities) {
         List<GroupPermissions> groupPermissionsList = new Vector<GroupPermissions>();
+        if(groupPermissionsEntities == null)
+            return groupPermissionsList;
 
         for(GroupPermissionsEntity groupPermissionsEntity : groupPermissionsEntities) {
             GroupPermissions groupPermissions = new GroupPermissions();
@@ -122,7 +128,10 @@ public class JpaContentManager implements ContentManager {
         List results = em.createQuery("select n from namespace n").getResultList();
         for(Object result : results) {
             NamespaceEntity namespaceEntity = (NamespaceEntity) result;
-            namespaces.addAll(makeNamespaceNodes(namespaceEntity));
+            for(Namespace namespace : makeNamespaceNodes(namespaceEntity)) {
+                if(!namespaces.contains(namespace))
+                    namespaces.add(namespace);
+            }
         }
 
         return namespaces;
@@ -138,7 +147,10 @@ public class JpaContentManager implements ContentManager {
 
         for(Object result : results) {
             NamespaceEntity namespaceEntity = (NamespaceEntity) result;
-            namespaces.addAll(makeNamespaceNodes(namespaceEntity));
+            for(Namespace ns : makeNamespaceNodes(namespaceEntity)) {
+                if(!namespaces.contains(ns))
+                    namespaces.add(ns);
+            }
         }
 
         return namespaces;
@@ -146,13 +158,14 @@ public class JpaContentManager implements ContentManager {
 
     @Override
     public void saveNamespace(Namespace namespace) {
+        NamespaceEntity namespaceEntity = new NamespaceEntity();
         try {
             Object result = em.createQuery("select n from namespace n where n.name = ?1").
                     setParameter(1, namespace.getFullName()).getSingleResult();
             if(result != null)
-                return;
+                namespaceEntity = (NamespaceEntity) result;
         } catch(NoResultException e) {
-            // then save it
+            // then save the new one
         }
 
         String[] nodeNames = namespace.getFullName().split("\\.");
@@ -164,23 +177,116 @@ public class JpaContentManager implements ContentManager {
         try {
             parentId = (Long) q.getSingleResult();
         } catch(NoResultException e) {
+            if(parentName.contains("."))
+                throw new RuntimeException("Can't find parent namespace " + parentName);
             parentId = null; // root node
         }
 
-        NamespaceEntity namespaceEntity = new NamespaceEntity();
         namespaceEntity.setName(namespace.getFullName());
         if(parentId != null)
             namespaceEntity.setParentId(parentId);
-
-        q = em.createQuery("select n from namespace n where n.name = ?1");
-        q.setParameter(1, namespaceEntity.getName());
-        if(q.getResultList().size() > 0)
-            return;
+        makeGroupPermissionsEntity(namespaceEntity, namespace.getGroupPermissionsList());
 
         EntityTransaction t = em.getTransaction();
         t.begin();
         em.persist(namespaceEntity);
         t.commit();
+    }
+
+
+    private void makeGroupPermissionsEntity(NamespaceEntity namespaceEntity,
+                                            List<GroupPermissions> groupPermissionsList)
+    {
+        if(groupPermissionsList.isEmpty())
+            return;
+
+        for(GroupPermissions groupPermissions : groupPermissionsList) {
+            boolean found = false;
+            for(GroupPermissionsEntity groupPermissionsEntity : namespaceEntity.getGroupPermissions()) {
+                if(groupPermissions.getGroup().equals(groupPermissionsEntity.getGroup().getGroupname())) {
+                    groupPermissions.setCanAdmin(groupPermissionsEntity.canAdmin());
+                    groupPermissions.setCanDelete(groupPermissionsEntity.canDelete());
+                    groupPermissions.setCanEdit(groupPermissionsEntity.canEdit());
+                    groupPermissions.setCanView(groupPermissionsEntity.canView());
+                    found = true;
+                }
+            }
+            if(!found) {
+                GroupPermissionsEntity gpe = new GroupPermissionsEntity();
+                GroupEntity group = (GroupEntity) em.createQuery("select g from groups g where g.groupname = ?1")
+                        .setParameter(1, groupPermissions.getGroup()).getSingleResult();
+                gpe.setGroup(group);
+                gpe.setCanAdmin(groupPermissions.isCanAdmin());
+                gpe.setCanView(groupPermissions.isCanView());
+                gpe.setCanEdit(groupPermissions.isCanEdit());
+                gpe.setCanDelete(groupPermissions.isCanDelete());
+                namespaceEntity.getGroupPermissions().add(gpe);
+            }
+        }
+    }
+
+    private void makeGroupPermissionsEntity(ContentEntity contentEntity, List<GroupPermissions> groupPermissionsList) {
+        if(groupPermissionsList.isEmpty())
+            return;
+
+        for(GroupPermissions groupPermissions : groupPermissionsList) {
+            boolean found = false;
+            if(contentEntity.getGroupPermissions() != null) {
+                contentEntity.setGroupPermissions(new HashSet<GroupPermissionsEntity>());
+                for(GroupPermissionsEntity groupPermissionsEntity : contentEntity.getGroupPermissions()) {
+                    if(groupPermissions.getGroup().equals(groupPermissionsEntity.getGroup().getGroupname())) {
+                        groupPermissions.setCanAdmin(groupPermissionsEntity.canAdmin());
+                        groupPermissions.setCanDelete(groupPermissionsEntity.canDelete());
+                        groupPermissions.setCanEdit(groupPermissionsEntity.canEdit());
+                        groupPermissions.setCanView(groupPermissionsEntity.canView());
+                        found = true;
+                    }
+                }
+            }
+            if(!found) {
+                GroupPermissionsEntity gpe = new GroupPermissionsEntity();
+                GroupEntity group = (GroupEntity) em.createQuery("select g from groups g where g.groupname = ?1")
+                        .setParameter(1, groupPermissions.getGroup()).getSingleResult();
+                gpe.setGroup(group);
+                gpe.setCanAdmin(groupPermissions.isCanAdmin());
+                gpe.setCanView(groupPermissions.isCanView());
+                gpe.setCanEdit(groupPermissions.isCanEdit());
+                gpe.setCanDelete(groupPermissions.isCanDelete());
+                contentEntity.setGroupPermissions(new HashSet<GroupPermissionsEntity>());
+                contentEntity.getGroupPermissions().add(gpe);
+            }
+        }
+    }
+
+    private void makeGroupPermissionsEntity(StyleEntity styleEntity, List<GroupPermissions> groupPermissionsList) {
+        if(groupPermissionsList.isEmpty())
+            return;
+
+        for(GroupPermissions groupPermissions : groupPermissionsList) {
+            boolean found = false;
+            if(styleEntity.getGroupPermissions() == null)
+                styleEntity.setGroupPermissions(new HashSet<GroupPermissionsEntity>());
+            for(GroupPermissionsEntity groupPermissionsEntity : styleEntity.getGroupPermissions()) {
+                if(groupPermissions.getGroup().equals(groupPermissionsEntity.getGroup().getGroupname())) {
+                    groupPermissions.setCanAdmin(groupPermissionsEntity.canAdmin());
+                    groupPermissions.setCanDelete(groupPermissionsEntity.canDelete());
+                    groupPermissions.setCanEdit(groupPermissionsEntity.canEdit());
+                    groupPermissions.setCanView(groupPermissionsEntity.canView());
+                    found = true;
+                }
+            }
+            if(!found) {
+                GroupPermissionsEntity gpe = new GroupPermissionsEntity();
+                GroupEntity group = (GroupEntity) em.createQuery("select g from groups g where g.groupname = ?1")
+                        .setParameter(1, groupPermissions.getGroup()).getSingleResult();
+                gpe.setGroup(group);
+                gpe.setCanAdmin(groupPermissions.isCanAdmin());
+                gpe.setCanView(groupPermissions.isCanView());
+                gpe.setCanEdit(groupPermissions.isCanEdit());
+                gpe.setCanDelete(groupPermissions.isCanDelete());
+                styleEntity.getGroupPermissions().add(gpe);
+            }
+        }
     }
 
     @Override
@@ -269,18 +375,45 @@ public class JpaContentManager implements ContentManager {
             contentEntity.setDateCreated(new Date());
             contentEntity.setDateModified(new Date());
             contentEntity.setNamespace(ne);
+            contentEntity.setStyles(new HashSet<StyleEntity>());
+            contentEntity.getStyles().addAll(makeStyleEntities(content.getStyles()));
         } else {
             contentEntity = (ContentEntity) result;
             contentEntity.setContent(content.getContent());
             contentEntity.setDateModified(new Date());
         }
 
-// TODO:       setContentStyles()...
+        makeGroupPermissionsEntity(contentEntity, content.getGroupPermissionsList());
 
         EntityTransaction t = em.getTransaction();
         t.begin();
         em.persist(contentEntity);
         t.commit();
+    }
+
+    private List<StyleEntity> makeStyleEntities(List<Style> styles) {
+        List<StyleEntity> styleEntities = new Vector<StyleEntity>();
+
+        for(Style style : styles)
+            styleEntities.add(makeStyleEntity(style));
+
+        return styleEntities;
+    }
+
+
+    private StyleEntity makeStyleEntity(Style style) {
+        StyleEntity styleEntity = new StyleEntity();
+
+        Object result = em.createQuery("select s from style s where s.namespace.name = ?1 and s.name = ?2 ").
+                setParameter(1, style.getNamespace().getFullName()).setParameter(2, style.getName()).getSingleResult();
+        if(result != null)
+            styleEntity = (StyleEntity) result;
+
+        styleEntity.setName(style.getName());
+        styleEntity.setStyle(style.getStyle());
+        makeGroupPermissionsEntity(styleEntity, style.getGroupPermissionsList());
+
+        return styleEntity;
     }
 
     @Override
@@ -300,21 +433,6 @@ public class JpaContentManager implements ContentManager {
             return;
         }
         ContentEntity contentEntity = (ContentEntity) result;
-        List results = em.createQuery(
-                "select c, n from style c, style_to_content s, namespace n " +
-                        " where s.contentId = ?1 and c.id = s.styleId and n.id = c.namespace.id").
-                setParameter(1, contentEntity.getId()).getResultList();
-        for(Object r : results) {
-            Object o[] = (Object[]) r;
-            StyleEntity styleEntity = (StyleEntity) o[0];
-            ne = (NamespaceEntity) o[1];
-            Style style = new Style();
-            style.setStyle(styleEntity.getStyle());
-            style.setNamespace(Namespace.createFromString(ne.getName()));
-// TODO:            perhaps we can do this through a cascade...
-            style.setName(styleEntity.getName());
-            disassociateWithContent(content, style);
-        }
 
         EntityTransaction t = em.getTransaction();
         t.begin();
@@ -420,6 +538,8 @@ public class JpaContentManager implements ContentManager {
             styleEntity.setStyle(style.getStyle());
         }
 
+        makeGroupPermissionsEntity(styleEntity, style.getGroupPermissionsList());
+
         EntityTransaction t = em.getTransaction();
         t.begin();
         em.persist(styleEntity);
@@ -442,20 +562,6 @@ public class JpaContentManager implements ContentManager {
         } catch(NoResultException e) {
             return;
         }
-        StyleEntity styleEntity = (StyleEntity) result;
-        List results = em.createQuery(
-                "select c from content c, style_to_content s where s.styleId = ?1 and c.id = s.contentId").
-                setParameter(1, styleEntity.getId()).getResultList();
-        for(Object r : results) {
-            ContentEntity contentEntity = (ContentEntity) r;
-            Content content = new Content();
-            content.setContent(contentEntity.getContent());
-            content.setNamespace(Namespace.createFromString(ne.getName()));
-            content.setDateCreated(contentEntity.getDateCreated());
-            content.setDateModified(contentEntity.getDateModified());
-            content.setName(contentEntity.getName());
-            disassociateWithContent(content, style);
-        }
 
         EntityTransaction t = em.getTransaction();
         t.begin();
@@ -464,160 +570,9 @@ public class JpaContentManager implements ContentManager {
     }
 
     @Override
-    public void associateWithContent(Content content, Script script) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public List<Script> loadScriptsForContent(Content content) {
-        return new Vector<Script>();  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public void disassociateWithContent(Content content, Script script) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public void associateWithContent(Content content, Style style) {
-        Object result;
-        try {
-            result = em.createQuery("select n from namespace n where n.name = ?1").
-                    setParameter(1, style.getNamespace().getFullName()).getSingleResult();
-        } catch(NoResultException e) {
-            throw new RuntimeException("Invalid namespace for style: " + content.getNamespace().getFullName());
-        }
-        NamespaceEntity ne = (NamespaceEntity) result;
-        try {
-            result = em.createQuery("select c from style c where c.namespace.id = ?1 and c.name = ?2").
-                    setParameter(1, ne.getId()).setParameter(2, style.getName()).getSingleResult();
-        } catch(NoResultException e) {
-            throw new RuntimeException("Can't locate style: " + style.getName());
-        }
-        StyleEntity styleEntity = (StyleEntity) result;
-        try {
-            result = em.createQuery("select n from namespace n where n.name = ?1").
-                    setParameter(1, content.getNamespace().getFullName()).getSingleResult();
-        } catch(NoResultException e) {
-            throw new RuntimeException("Invalid namespace for content: " + content.getNamespace().getFullName());
-        }
-        ne = (NamespaceEntity) result;
-        try {
-            result = em.createQuery("select c from content c where c.namespace.id = ?1 and c.name = ?2").
-                    setParameter(1, ne.getId()).setParameter(2, content.getName()).getSingleResult();
-        } catch(NoResultException e) {
-            throw new RuntimeException("Can't locate content: " + content.getName());
-        }
-        ContentEntity contentEntity = (ContentEntity) result;
-
-
-        Query q = em.createQuery("select s from style_to_content s where s.contentId = ?1 and s.styleId = ?2");
-        q.setParameter(1, contentEntity.getId());
-        q.setParameter(2, styleEntity.getId());
-        try {
-            result = q.getSingleResult();
-            if(result != null)
-                return; // already associated
-        } catch(NoResultException e) {
-            // ok, time to associate;
-        }
-        StyleToContentEntity styleToContentEntity = new StyleToContentEntity();
-        styleToContentEntity.setContentId(contentEntity.getId());
-        styleToContentEntity.setStyleId(styleEntity.getId());
+    public void saveGroup(GroupEntity group) {
         em.getTransaction().begin();
-        em.persist(styleToContentEntity);
-        em.getTransaction().commit();
-    }
-
-    @Override
-    public List<Style> loadStylesForContent(Content content) {
-        List<Style> styles = new Vector<Style>();
-        if(content == null)
-            return styles;
-        Object result;
-        try {
-            result = em.createQuery("select n from namespace n where n.name = ?1").
-                    setParameter(1, content.getNamespace().getFullName()).getSingleResult();
-        } catch(NoResultException e) {
-            throw new RuntimeException("Invalid namespace for content: " + content.getNamespace().getFullName());
-        }
-        NamespaceEntity ne = (NamespaceEntity) result;
-        try {
-            result = em.createQuery("select c from content c where c.namespace.id = ?1 and c.name = ?2").
-                    setParameter(1, ne.getId()).setParameter(2, content.getName()).getSingleResult();
-        } catch(NoResultException e) {
-            return styles;
-        }
-        ContentEntity contentEntity = (ContentEntity) result;
-
-        Query query = em.createQuery("select s.styleId from style_to_content s where s.contentId = ?1");
-        query.setParameter(1, contentEntity.getId());
-        List results = query.getResultList();
-        if(results.isEmpty())
-            return styles;
-
-        query = em.createQuery("select s from style s where s.id in ?1");
-        query.setParameter(1, results);
-        results = query.getResultList();
-
-        for(Object o : results) {
-            StyleEntity styleEntity = (StyleEntity) o;
-            Style style = new Style();
-            query = em.createQuery("select n from namespace n where n.id = ?1");
-            query.setParameter(1, styleEntity.getNamespace().getId());
-            ne = (NamespaceEntity) query.getSingleResult();
-            style.setNamespace(Namespace.createFromString(ne.getName()));
-            style.setStyle(styleEntity.getStyle());
-            style.setName(styleEntity.getName());
-            styles.add(style);
-        }
-
-        return styles;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public void disassociateWithContent(Content content, Style style) {
-        Object result;
-        try {
-            result = em.createQuery("select n from namespace n where n.name = ?1").
-                    setParameter(1, style.getNamespace().getFullName()).getSingleResult();
-        } catch(NoResultException e) {
-            throw new RuntimeException("Invalid namespace for style: " + style.getNamespace().getFullName());
-        }
-        NamespaceEntity ne = (NamespaceEntity) result;
-        try {
-            result = em.createQuery("select c from style c where c.namespace.id = ?1 and c.name = ?2").
-                    setParameter(1, ne.getId()).setParameter(2, style.getName()).getSingleResult();
-        } catch(NoResultException e) {
-            throw new RuntimeException("Can't locate style: " + style.getName());
-        }
-        StyleEntity styleEntity = (StyleEntity) result;
-        try {
-            result = em.createQuery("select n from namespace n where n.name = ?1").
-                    setParameter(1, content.getNamespace().getFullName()).getSingleResult();
-        } catch(NoResultException e) {
-            throw new RuntimeException("Invalid namespace for content: " + content.getNamespace().getFullName());
-        }
-        ne = (NamespaceEntity) result;
-        try {
-            result = em.createQuery("select c from content c where c.namespace.id = ?1 and c.name = ?2").
-                    setParameter(1, ne.getId()).setParameter(2, content.getName()).getSingleResult();
-        } catch(NoResultException e) {
-            throw new RuntimeException("Can't locate content: " + content.getName());
-        }
-        ContentEntity contentEntity = (ContentEntity) result;
-
-
-        Query q = em.createQuery("select s from style_to_content s where s.contentId = ?1 and s.styleId = ?2");
-        q.setParameter(1, contentEntity.getId());
-        q.setParameter(2, styleEntity.getId());
-        try {
-            result = q.getSingleResult();
-        } catch(NoResultException e) {
-            return;
-        }
-        em.getTransaction().begin();
-        em.remove(result);
+        em.persist(group);
         em.getTransaction().commit();
     }
 }

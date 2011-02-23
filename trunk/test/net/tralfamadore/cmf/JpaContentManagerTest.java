@@ -26,16 +26,13 @@ import net.tralfamadore.config.CmfContext;
 import net.tralfamadore.config.ConfigFile;
 import net.tralfamadore.persistence.EntityManagerProvider;
 import net.tralfamadore.persistence.JpaEntityManagerProvider;
+import net.tralfamadore.persistence.entity.GroupEntity;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNull;
+import static junit.framework.Assert.*;
 
 /**
  * User: billreh
@@ -44,6 +41,7 @@ import static junit.framework.Assert.assertNull;
  */
 public class JpaContentManagerTest {
     private JpaContentManager contentManager;
+    GroupEntity groupEntity = new GroupEntity();
 
     @Before
     public void setUp() {
@@ -147,29 +145,19 @@ public class JpaContentManagerTest {
         content = makeNewContent("com.site", "moreContent", "unk unk unk");
         contentManager.saveContent(content);
         content = makeNewContent("com", "baseContent", "moo moo moo");
+        contentManager.saveStyle(style);
+        if(content.getStyles() == null)
+            content.setStyles(new Vector<Style>());
+        content.getStyles().add(style);
         contentManager.saveContent(content);
 
-        contentManager.associateWithContent(content, style);
-        contentManager.associateWithContent(content, contentManager.loadStyle(Namespace.createFromString("com.site"),
-                "moreStyle"));
-        List<Style> styles = contentManager.loadStylesForContent(content);
-        assertEquals(2, styles.size());
-
-        contentManager.disassociateWithContent(content, style);
-        styles = contentManager.loadStylesForContent(content);
-        assertEquals(1, styles.size());
-
-        contentManager.associateWithContent(content, style);
-        styles = contentManager.loadStylesForContent(content);
-        assertEquals(2, styles.size());
-
-        contentManager.deleteStyle(style);
-        styles = contentManager.loadStylesForContent(content);
-        assertEquals(1, styles.size());
-
+        content = contentManager.loadContent(content.getNamespace(), content.getName());
+        assertNotNull(content.getStyles());
+        assertEquals(content.getStyles().size(), 1);
+        assertEquals(content.getStyles().get(0).getName(), "baseStyle");
         contentManager.deleteContent(content);
         List<Content> contentList = contentManager.loadAllContent();
-        styles = contentManager.loadAllStyles();
+        List styles = contentManager.loadAllStyles();
         assertEquals(2, contentList.size());
         assertEquals(2, styles.size());
     }
@@ -179,6 +167,22 @@ public class JpaContentManagerTest {
         style.setNamespace(Namespace.createFromString(namespace));
         style.setName(name);
         style.setStyle(contents);
+        GroupPermissions groupPermissions = new GroupPermissions();
+        groupPermissions.setGroup("cmfAdmin");
+        groupPermissions.setCanView(true);
+        groupPermissions.setCanDelete(false);
+        groupPermissions.setCanEdit(true);
+
+        if(groupEntity == null) {
+            groupEntity = new GroupEntity();
+            groupEntity.setGroupname("cmfAdmin");
+            contentManager.saveGroup(groupEntity);
+        }
+
+
+        List<GroupPermissions> groupPermissionsList = new Vector<GroupPermissions>();
+        groupPermissionsList.add(groupPermissions);
+        style.setGroupPermissionsList(groupPermissionsList);
         return style;
     }
 
@@ -189,6 +193,22 @@ public class JpaContentManagerTest {
         content.setContent(contents);
         content.setDateModified(new Date());
         content.setDateCreated(new Date());
+        GroupPermissions groupPermissions = new GroupPermissions();
+        groupPermissions.setGroup("cmfAdmin");
+        groupPermissions.setCanView(true);
+        groupPermissions.setCanDelete(false);
+        groupPermissions.setCanEdit(true);
+
+        if(groupEntity == null) {
+            groupEntity = new GroupEntity();
+            groupEntity.setGroupname("cmfAdmin");
+            contentManager.saveGroup(groupEntity);
+        }
+
+
+        List<GroupPermissions> groupPermissionsList = new Vector<GroupPermissions>();
+        groupPermissionsList.add(groupPermissions);
+        content.setGroupPermissionsList(groupPermissionsList);
         return content;
     }
 

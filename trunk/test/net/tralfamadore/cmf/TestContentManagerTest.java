@@ -177,28 +177,6 @@ public class TestContentManagerTest {
         contentManager.saveScript(script);
         assertEquals(script, contentManager.loadScript(namespace, "field1"));
 
-        contentManager.associateWithContent(content, script);
-        assertEquals(1, contentManager.loadScriptsForContent(content).size());
-        assertTrue(contentManager.loadScriptsForContent(content).contains(script));
-
-        // save new script
-        Script newScript = new Script();
-        newScript.setNamespace(namespace);
-        newScript.setName("field2");
-        newScript.setScript("Script of field2");
-        contentManager.saveScript(newScript);
-        assertEquals(script, contentManager.loadScript(namespace, "field1"));
-        assertEquals(newScript, contentManager.loadScript(namespace, "field2"));
-
-        contentManager.associateWithContent(content, newScript);
-        assertEquals(2, contentManager.loadScriptsForContent(content).size());
-        assertTrue(contentManager.loadScriptsForContent(content).contains(script));
-        assertTrue(contentManager.loadScriptsForContent(content).contains(newScript));
-
-        contentManager.disassociateWithContent(content, newScript);
-        assertEquals(1, contentManager.loadScriptsForContent(content).size());
-        assertTrue(contentManager.loadScriptsForContent(content).contains(script));
-        assertFalse(contentManager.loadScriptsForContent(content).contains(newScript));
     }
 
     @Test
@@ -222,27 +200,5 @@ public class TestContentManagerTest {
         contentManager.saveStyle(style);
         assertEquals(style, contentManager.loadStyle(namespace, "field1"));
 
-        contentManager.associateWithContent(content, style);
-        assertEquals(1, contentManager.loadStylesForContent(content).size());
-        assertTrue(contentManager.loadStylesForContent(content).contains(style));
-
-        // save new style
-        Style newStyle = new Style();
-        newStyle.setNamespace(namespace);
-        newStyle.setName("field2");
-        newStyle.setStyle("Style of field2");
-        contentManager.saveStyle(newStyle);
-        assertEquals(style, contentManager.loadStyle(namespace, "field1"));
-        assertEquals(newStyle, contentManager.loadStyle(namespace, "field2"));
-
-        contentManager.associateWithContent(content, newStyle);
-        assertEquals(2, contentManager.loadStylesForContent(content).size());
-        assertTrue(contentManager.loadStylesForContent(content).contains(style));
-        assertTrue(contentManager.loadStylesForContent(content).contains(newStyle));
-
-        contentManager.disassociateWithContent(content, newStyle);
-        assertEquals(1, contentManager.loadStylesForContent(content).size());
-        assertTrue(contentManager.loadStylesForContent(content).contains(style));
-        assertFalse(contentManager.loadStylesForContent(content).contains(newStyle));
     }
 }

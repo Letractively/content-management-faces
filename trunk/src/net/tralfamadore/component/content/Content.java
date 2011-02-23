@@ -33,7 +33,6 @@ import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ComponentSystemEvent;
 import javax.faces.event.ListenerFor;
 import javax.faces.event.PostAddToViewEvent;
-import java.util.List;
 
 /**
  * User: billreh
@@ -51,13 +50,13 @@ public class Content extends HtmlOutputText {
     }
 
     public ContentManager getContentManager() {
-         if(contentManager == null) {
-             try {
-                 contentManager = CmfContext.getInstance().getContentManager();
-             } catch (Exception e) {
-                 // ignore
-             }
-         }
+        if(contentManager == null) {
+            try {
+                contentManager = CmfContext.getInstance().getContentManager();
+            } catch (Exception e) {
+                // ignore
+            }
+        }
         return contentManager;
     }
 
@@ -65,16 +64,16 @@ public class Content extends HtmlOutputText {
     public void processEvent(ComponentSystemEvent event) throws AbortProcessingException {
         FacesContext context = FacesContext.getCurrentInstance();
 
-        List<Script> scripts =
-                getContentManager().loadContent(Namespace.createFromString(getNamespace()), getName()).getScripts();
-        for(Script resource : scripts) {
-            addResource(context, resource);
-        }
+        net.tralfamadore.cmf.Content content = getContentManager().loadContent(Namespace.createFromString(getNamespace()), getName());
 
-        List<Style> styles =
-                getContentManager().loadContent(Namespace.createFromString(getNamespace()), getName()).getStyles();
-        for(Style resource : styles) {
-            addResource(context, resource);
+        if(content != null) {
+            for(Script resource : content.getScripts()) {
+                addResource(context, resource);
+            }
+
+            for(Style resource : content.getStyles()) {
+                addResource(context, resource);
+            }
         }
     }
 
