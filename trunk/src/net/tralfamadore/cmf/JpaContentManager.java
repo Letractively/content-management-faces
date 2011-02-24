@@ -381,6 +381,37 @@ public class JpaContentManager implements ContentManager {
             contentEntity = (ContentEntity) result;
             contentEntity.setContent(content.getContent());
             contentEntity.setDateModified(new Date());
+            if(contentEntity.getStyles() == null)
+                contentEntity.setStyles(new HashSet<StyleEntity>());
+            for(Style style : content.getStyles()) {
+                boolean found = false;
+                for(StyleEntity styleEntity : contentEntity.getStyles()) {
+                    if(style.getName().equals(styleEntity.getName())
+                            && style.getNamespace().getFullName().equals(styleEntity.getNamespace().getName()))
+                    {
+                        styleEntity.setStyle(style.getStyle());
+                        found = true;
+                    }
+                }
+                if(!found) {
+                    StyleEntity styleEntity = makeStyleEntity(style);
+                    contentEntity.getStyles().add(styleEntity);
+                }
+            }
+            Iterator<StyleEntity> it = contentEntity.getStyles().iterator();
+            while(it.hasNext()) {
+                StyleEntity styleEntity = it.next();
+                boolean found = false;
+                for(Style style : content.getStyles()) {
+                    if(style.getName().equals(styleEntity.getName())
+                            && style.getNamespace().getFullName().equals(styleEntity.getNamespace().getName()))
+                    {
+                        found = true;
+                    }
+                }
+                if(!found)
+                    it.remove();
+            }
         }
 
         makeGroupPermissionsEntity(contentEntity, content.getGroupPermissionsList());
