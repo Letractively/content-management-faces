@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="primefaces">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/primefaces/primefaces-3.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

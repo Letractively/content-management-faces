@@ -54,6 +54,7 @@
     <orderEntry type="library" name="derby" level="project" />
     <orderEntry type="library" scope="TEST" name="selenium" level="project" />
     <orderEntry type="library" scope="TEST" name="jmockit" level="project" />
+    <orderEntry type="library" name="primefaces" level="project" />
   </component>
 </module>
 
