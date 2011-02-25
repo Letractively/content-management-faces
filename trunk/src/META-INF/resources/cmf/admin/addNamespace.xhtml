@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xml:lang="en" lang="en">
+<ui:composition>
+    <div id="addNamespace" style="display: none; margin-left: 10px;">
+        <fieldset class="namespaceFieldset">
+            <legend style="font-style: italic; font-weight: bold;">Add Namespace</legend>
+
+            <div>
+                <h:outputText id="namespace" for="in" style="padding-right: 0; margin-right:0;"
+                              value="#{admin.tree.selectedNamespaceString}"/>
+                <h:inputText id="in" value="#{admin.tree.newNamespace}"/>
+                <h:commandButton styleClass="theButton" value="Submit" actionListener="#{admin.addNamespace}"
+                                 id="submitNamespace"/>
+            </div>
+            <hr class="namspaceBreak"/>
+            <h:outputText id="permissionTable"/>
+            <ui:remove>
+            <h:dataTable id="permissionTable" value="#{admin.permissionData}" var="data" width="400px;"
+                         columnClasses="leftCol,centerCol,centerCol,centerCol,rightCol"
+                         rowClasses="oddRow,evenRow" style="padding: 0; margin: 0; border-spacing: 0;">
+                <h:column headerClass="leftCol">
+                    <f:facet name="header">
+                        Group Name
+                    </f:facet>
+                    <h:outputText value="#{data.groupName}" style="font-style: italic;"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        &nbsp;View&nbsp;
+                    </f:facet>
+                    <h:selectBooleanCheckbox value="#{data.view}" disabled="#{data.groupName eq admin.currentUser}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        &nbsp;Edit&nbsp;
+                    </f:facet>
+                    <h:selectBooleanCheckbox value="#{data.edit}" disabled="#{data.groupName eq admin.currentUser}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        Delete
+                    </f:facet>
+                    <h:selectBooleanCheckbox value="#{data.delete}" disabled="#{data.groupName eq admin.currentUser}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        Groups
+                    </f:facet>
+                    <h:selectBooleanCheckbox value="#{data.editGroups}" disabled="#{data.groupName eq admin.currentUser}"/>
+                </h:column>
+                <f:facet name="footer">
+                    <h:commandButton styleClass="theGroupButton" onclick="$('.group').show();return false;" value="New Group"/>
+
+                    <h:selectOneListbox size="3" styleClass="groupBox group" style="display: none;">
+                        <f:selectItem itemLabel="editors" itemValue="editors"/>
+                        <f:selectItem itemLabel="users" itemValue="users"/>
+                        <f:selectItem itemLabel="client" itemValue="client"/>
+                        <f:selectItem itemLabel="admin" itemValue="admin"/>
+                        <f:selectItem itemLabel="design" itemValue="design"/>
+                        <f:selectItem itemLabel="developer" itemValue="developer"/>
+                        <f:selectItem itemLabel="manager" itemValue="manager"/>
+                    </h:selectOneListbox>
+
+                    <h:commandButton styleClass="theGroupButton group" onclick="$('.group').hide();return false;" value="Add" style="display: none;"/>
+                </f:facet>
+            </h:dataTable>
+            </ui:remove>
+        </fieldset>
+    </div>
+
+</ui:composition>
+</html>
