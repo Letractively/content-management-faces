@@ -18,7 +18,7 @@ ALTER TABLE namespace ADD CONSTRAINT namespace_parent_id_fkey1 FOREIGN KEY (pare
 CREATE TABLE content (
     id bigint NOT NULL,
     namespace_id bigint NOT NULL,
-    name character varying(256) NOT NULL,
+    name character varying(256) NOT NULL unique,
     content text,
     date_created timestamp without time zone,
     date_modified timestamp without time zone
@@ -35,6 +35,14 @@ CREATE TABLE style (
 );
 ALTER TABLE style ADD CONSTRAINT style_pkey PRIMARY KEY (id);
 ALTER TABLE style ADD CONSTRAINT style_namespace_id_fkey FOREIGN KEY (namespace_id) REFERENCES namespace(id);
+
+-- Style to Content
+CREATE TABLE style_to_content (
+    content_id bigint NOT NULL,
+    style_id bigint NOT NULL
+);
+ALTER TABLE style_to_content ADD CONSTRAINT style_to_content_content_id_fkey FOREIGN KEY (content_id) REFERENCES content(id);
+ALTER TABLE style_to_content ADD CONSTRAINT style_to_content_style_id_fkey FOREIGN KEY (style_id) REFERENCES style(id);
 
 -- Users
 CREATE TABLE users (
@@ -55,12 +63,10 @@ ALTER TABLE groups ADD CONSTRAINT groups_pkey PRIMARY KEY (id);
 
 -- User to Group
 CREATE TABLE user_to_group (
-    id bigint NOT NULL,
     user_id bigint NOT NULL,
     group_id bigint NOT NULL
 );
 ALTER TABLE user_to_group ADD CONSTRAINT user_group_constraint UNIQUE (user_id, group_id);
-ALTER TABLE user_to_group ADD CONSTRAINT user_to_group_pkey PRIMARY KEY (id);
 ALTER TABLE user_to_group ADD CONSTRAINT user_to_group_group_id_fkey FOREIGN KEY (group_id) REFERENCES groups(id);
 ALTER TABLE user_to_group ADD CONSTRAINT user_to_group_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id);
 
@@ -78,43 +84,27 @@ ALTER TABLE group_permissions ADD CONSTRAINT group_permissions_group_id_fkey FOR
 
 -- Group Permissions to Content
 CREATE TABLE group_permissions_to_content (
-    id bigint NOT NULL,
     group_permissions_id bigint NOT NULL,
     content_id bigint
 );
-ALTER TABLE group_permissions_to_content ADD CONSTRAINT group_permissions_to_content_pkey PRIMARY KEY (id);
 ALTER TABLE group_permissions_to_content ADD CONSTRAINT group_permissions_to_content_content_id_fkey FOREIGN KEY (content_id) REFERENCES content(id);
 ALTER TABLE group_permissions_to_content ADD CONSTRAINT group_permissions_to_content_group_permissions_id_fkey FOREIGN KEY (group_permissions_id) REFERENCES group_permissions(id);
 
 -- Group Permissions to Namespace
 CREATE TABLE group_permissions_to_namespace (
-    id bigint NOT NULL,
     group_permissions_id bigint NOT NULL,
     namespace_id bigint
 );
-ALTER TABLE group_permissions_to_namespace ADD CONSTRAINT group_permissions_to_namespace_pkey PRIMARY KEY (id);
 ALTER TABLE group_permissions_to_namespace ADD CONSTRAINT group_permissions_to_namespace_group_permissions_id_fkey FOREIGN KEY (group_permissions_id) REFERENCES group_permissions(id);
 ALTER TABLE group_permissions_to_namespace ADD CONSTRAINT group_permissions_to_namespace_namespace_id_fkey FOREIGN KEY (namespace_id) REFERENCES namespace(id);
 
 -- Group Permissions to Style
 CREATE TABLE group_permissions_to_style (
-    id bigint NOT NULL,
     group_permissions_id bigint NOT NULL,
     style_id bigint
 );
-ALTER TABLE group_permissions_to_style ADD CONSTRAINT group_permissions_to_style_pkey PRIMARY KEY (id);
 ALTER TABLE group_permissions_to_style ADD CONSTRAINT group_permissions_to_style_group_permissions_id_fkey FOREIGN KEY (group_permissions_id) REFERENCES group_permissions(id);
 ALTER TABLE group_permissions_to_style ADD CONSTRAINT group_permissions_to_style_style_id_fkey FOREIGN KEY (style_id) REFERENCES style(id);
-
--- Style to Content
-CREATE TABLE style_to_content (
-    id bigint NOT NULL,
-    content_id bigint NOT NULL,
-    style_id bigint NOT NULL
-);
-ALTER TABLE style_to_content ADD CONSTRAINT style_to_content_pkey PRIMARY KEY (id);
-ALTER TABLE style_to_content ADD CONSTRAINT style_to_content_content_id_fkey FOREIGN KEY (content_id) REFERENCES content(id);
-ALTER TABLE style_to_content ADD CONSTRAINT style_to_content_style_id_fkey FOREIGN KEY (style_id) REFERENCES style(id);
 
 
 -- Default Users
@@ -126,11 +116,6 @@ INSERT INTO groups VALUES(2, 'users');
 INSERT INTO id_gen VALUES('style_id', 100);
 INSERT INTO id_gen VALUES('content_id', 100);
 INSERT INTO id_gen VALUES('namespace_id', 100);
-INSERT INTO id_gen VALUES('style_to_content_id', 100);
-INSERT INTO id_gen VALUES('group_permissions', 100);
-INSERT INTO id_gen VALUES('group_permissions_to_namespace_id', 100);
-INSERT INTO id_gen VALUES('group_permissions_to_content_id', 100);
-INSERT INTO id_gen VALUES('group_permissions_to_style_id', 100);
+INSERT INTO id_gen VALUES('group_permissions_id', 100);
 INSERT INTO id_gen VALUES('groups_id', 100);
 INSERT INTO id_gen VALUES('users_id', 100);
-INSERT INTO id_gen VALUES('user_to_group_id', 100);

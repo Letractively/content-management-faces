@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+<ui:composition>
+    <h:form id="treeForm">
+        <p:inputText value="#{client.filter}"/>
+        <p:spacer width="20px;"/>
+        <p:commandButton value="Filter" actionListener="#{client.createTreeModel}" update="treeForm"/>
+        <br/>
+        <p:tree id="theTree" value="#{client.rootNode}" var="node" expanded="true" widgetVar="treeWidget"
+                style="width: 90%;">
+            <p:treeNode type="namespace">
+                <p:outputPanel id="node">
+                <span class="treeNode">
+                    <h:outputText value="#{node.nodeName}">
+                    </h:outputText>
+                    <p:spacer width="12"/>
+                    <p:commandButton id="add" image="add" styleClass="treeNodeButton" style="width: 21px;"
+                                     update="namespacePanelForm scroller" actionListener="#{client.selectNamespace}" title="Add Namespace"
+                                     oncomplete="showNamespacePanel(); return false;">
+                        <f:param name="namespace" value="#{node}"/>
+                    </p:commandButton>
+                    <p:spacer width="6"/>
+                    <p:commandButton styleClass="treeNodeButton" image="edit" style="width: 21px;"
+                                     update="thePanel scroller" actionListener="#{client.selectNamespace}" title="Edit Content"
+                                     oncomplete="showContentPanel(); return false;">
+                        <f:param name="namespace" value="#{node}"/>
+                    </p:commandButton>
+
+                </span>
+                </p:outputPanel>
+            </p:treeNode>
+
+            <p:treeNode type="content">
+                <h:outputText value="#{node.name}"/>
+            </p:treeNode>
+
+            <p:treeNode type="style">
+                <h:outputText value="#{node.name}"/>
+            </p:treeNode>
+        </p:tree>
+        <p:tooltip global="true"/>
+        <script type="text/javascript">
+            var namespaceClientId = PrimeFaces.escapeClientId("namespacePanelForm:namespacePanel");
+            var contentClientId = PrimeFaces.escapeClientId("contentPanelForm:contentPanel");
+            var currentPanel;
+
+            jQuery(document).ready(function() {
+                jQuery(".treeNode").hover(treeNodeIn, treeNodeOut);
+
+                function treeNodeIn(eventObject) {
+                    jQuery(this).children('button').show();
+                }
+
+                function treeNodeOut(eventObject) {
+                    jQuery(this).children('button').hide();
+                }
+            });
+
+            function showContentPanel() {
+                hideCurrentPanel();
+                currentPanel = jQuery(contentClientId);
+                currentPanel.show();
+            }
+
+            function showNamespacePanel() {
+                hideCurrentPanel();
+                currentPanel = jQuery(namespaceClientId);
+                currentPanel.show();
+                var sc = jQuery(PrimeFaces.escapeClientId("namespacePanelForm:scroller"));
+                jQuery(PrimeFaces.escapeClientId("namespacePanelForm:scroller")).show();
+            }
+
+            function hideCurrentPanel() {
+                if(currentPanel != null)
+                    currentPanel.hide();
+            }
+        </script>
+    </h:form>
+
+</ui:composition>
+</html>

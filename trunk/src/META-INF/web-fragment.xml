@@ -34,8 +34,4 @@
     <listener>
         <listener-class>net.tralfamadore.config.CmfShutdownListener</listener-class>
     </listener>
-    <context-param>
-        <param-name>primefaces.THEME</param-name>
-        <param-value>none</param-value>
-    </context-param>
 </web-fragment>

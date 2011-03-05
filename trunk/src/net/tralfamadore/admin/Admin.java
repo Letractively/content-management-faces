@@ -20,6 +20,7 @@
 package net.tralfamadore.admin;
 
 import net.tralfamadore.admin.tree.ContentTreeNode;
+import net.tralfamadore.admin.tree.NamespaceTreeNode;
 import net.tralfamadore.admin.tree.StyleTreeNode;
 import net.tralfamadore.cmf.*;
 import net.tralfamadore.config.CmfContext;
@@ -63,6 +64,9 @@ public class Admin {
     /** bean used to hold information about the style editor */
     @ManagedProperty(value = "#{styleScriptEditor}")
     private StyleScriptEditor styleScriptEditor;
+
+    /** the currently selected namespace node */
+    private NamespaceTreeNode namespaceTreeNode;
 
     /** the currently selected content node */
     private ContentTreeNode currentNode;
@@ -125,6 +129,13 @@ public class Admin {
         this.derbyPath = derbyPath;
     }
 
+    public NamespaceTreeNode getNamespaceTreeNode() {
+        return namespaceTreeNode;
+    }
+
+    public void setNamespaceTreeNode(NamespaceTreeNode namespaceTreeNode) {
+        this.namespaceTreeNode = namespaceTreeNode;
+    }
 
     /* action listeners */
 
@@ -204,9 +215,15 @@ public class Admin {
      */
     public void selectNamespace(ActionEvent e) {
         FacesContext context = FacesContext.getCurrentInstance();
-        String curUser = CmfContext.getInstance().getCurrentUser();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
         String value = (String)requestMap.get("namespace");
+        Object disable = requestMap.get("edit");
+
+        if(value != null)
+            namespaceTreeNode = tree.getTreeModel().findNamespaceNode(value, tree.getTreeModel().root());
+
+        disableNamespaceEdit =
+                disable != null && (disable instanceof String && ((String) disable).equalsIgnoreCase("true"));
         tree.setSelectedNamespace(value == null || value.isEmpty() ? null : Namespace.createFromString(value));
     }
 
@@ -550,5 +567,15 @@ public class Admin {
         } catch(NullPointerException ignore) { }
 
         return new Vector<GroupPermissions>();
+    }
+
+    private boolean disableNamespaceEdit;
+
+    public boolean isDisableNamespaceEdit() {
+        return disableNamespaceEdit;
+    }
+
+    public void setDisableNamespaceEdit(boolean disableNamespaceEdit) {
+        this.disableNamespaceEdit = disableNamespaceEdit;
     }
 }

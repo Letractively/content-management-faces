@@ -1,6 +1,7 @@
 <component name="libraryTable">
   <library name="primefaces">
     <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/primefaces/cupertino-1.0.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/primefaces/primefaces-3.0-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC />

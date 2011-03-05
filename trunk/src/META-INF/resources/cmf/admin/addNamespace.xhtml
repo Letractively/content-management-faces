@@ -40,63 +40,71 @@
             </div>
             <hr class="namspaceBreak"/>
             <h:outputText id="permissionTable"/>
-            <ui:remove>
-            <h:dataTable id="permissionTable" value="#{admin.permissionData}" var="data" width="400px;"
-                         columnClasses="leftCol,centerCol,centerCol,centerCol,rightCol"
-                         rowClasses="oddRow,evenRow" style="padding: 0; margin: 0; border-spacing: 0;">
-                <h:column headerClass="leftCol">
-                    <f:facet name="header">
-                        Group Name
-                    </f:facet>
-                    <h:outputText value="#{data.groupName}" style="font-style: italic;"/>
-                </h:column>
-
-                <h:column>
-                    <f:facet name="header">
-                        &nbsp;View&nbsp;
-                    </f:facet>
-                    <h:selectBooleanCheckbox value="#{data.view}" disabled="#{data.groupName eq admin.currentUser}"/>
-                </h:column>
-
-                <h:column>
-                    <f:facet name="header">
-                        &nbsp;Edit&nbsp;
-                    </f:facet>
-                    <h:selectBooleanCheckbox value="#{data.edit}" disabled="#{data.groupName eq admin.currentUser}"/>
-                </h:column>
-
-                <h:column>
-                    <f:facet name="header">
-                        Delete
-                    </f:facet>
-                    <h:selectBooleanCheckbox value="#{data.delete}" disabled="#{data.groupName eq admin.currentUser}"/>
-                </h:column>
-
-                <h:column>
-                    <f:facet name="header">
-                        Groups
-                    </f:facet>
-                    <h:selectBooleanCheckbox value="#{data.editGroups}" disabled="#{data.groupName eq admin.currentUser}"/>
-                </h:column>
-                <f:facet name="footer">
-                    <h:commandButton styleClass="theGroupButton" onclick="$('.group').show();return false;" value="New Group"/>
-
-                    <h:selectOneListbox size="3" styleClass="groupBox group" style="display: none;">
-                        <f:selectItem itemLabel="editors" itemValue="editors"/>
-                        <f:selectItem itemLabel="users" itemValue="users"/>
-                        <f:selectItem itemLabel="client" itemValue="client"/>
-                        <f:selectItem itemLabel="admin" itemValue="admin"/>
-                        <f:selectItem itemLabel="design" itemValue="design"/>
-                        <f:selectItem itemLabel="developer" itemValue="developer"/>
-                        <f:selectItem itemLabel="manager" itemValue="manager"/>
-                    </h:selectOneListbox>
-
-                    <h:commandButton styleClass="theGroupButton group" onclick="$('.group').hide();return false;" value="Add" style="display: none;"/>
-                </f:facet>
-            </h:dataTable>
-            </ui:remove>
         </fieldset>
     </div>
+     <div style="width: 100%;" id="namespaceGroupList">
+            <fieldset id="namespaceGroupListFieldset" style="border-radius: 10px; -moz-border-radius: 10px;-webkit-border-radius: 10px;">
+                <legend>Permissions <span id="namespaceSh" onclick="$('#sh').html('(hide)');$('.gg').show()" style="cursor: pointer; font-size: 9pt;">(show)</span> </legend>
+                <h:dataTable id="namespaceEditorPermissionTable" value="#{admin.namespaceTreeNode.namespace.groupPermissionsList}" var="data" width="400px;"
+                             columnClasses="leftCol,centerCol,centerCol,centerCol,rightCol"
+                             rowClasses="oddRow,evenRow" style="padding: 0; margin: 0; border-spacing: 0;" styleClass="gg">
+                    <h:column headerClass="leftCol">
+                        <f:facet name="header">
+                            Group Name
+                        </f:facet>
+                        <h:outputText value="#{data.group}" style="font-style: italic;"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            &nbsp;View&nbsp;
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{data.canView}" disabled="#{data.group eq admin.currentUser}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            &nbsp;Edit&nbsp;
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{data.canEdit}" disabled="#{data.group eq admin.currentUser}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            Delete
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{data.canDelete}" disabled="#{data.group eq admin.currentUser}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            Groups
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{data.canAdmin}" disabled="#{data.group eq admin.currentUser}"/>
+                    </h:column>
+                    <f:facet name="footer">
+
+                    </f:facet>
+                </h:dataTable>
+                <h:commandButton styleClass="theGroupButton" onclick="$('.group').show();return false;" value="New Group"/>
+                <h:commandButton styleClass="theGroupButton" onclick="$('.group').show();return false;" value="Reset"/>
+                <h:commandButton styleClass="theGroupButton" onclick="$('.group').show();return false;" value="Save"/>
+                <br/>
+                <h:selectOneListbox size="3" styleClass="groupBox group" style="display: none;">
+                    <f:selectItem itemLabel="editors" itemValue="editors"/>
+                    <f:selectItem itemLabel="users" itemValue="users"/>
+                    <f:selectItem itemLabel="client" itemValue="client"/>
+                    <f:selectItem itemLabel="admin" itemValue="admin"/>
+                    <f:selectItem itemLabel="design" itemValue="design"/>
+                    <f:selectItem itemLabel="developer" itemValue="developer"/>
+                    <f:selectItem itemLabel="manager" itemValue="manager"/>
+                </h:selectOneListbox>
+
+                <h:commandButton styleClass="theGroupButton group" onclick="$('.group').hide();return false;" value="Cancel" style="display: none;"/>
+                <h:commandButton styleClass="theGroupButton group" onclick="$('.group').hide();return false;" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" style="display: none; position: relative; top: 35px; left: -70px;"/>
+
+    </fieldset>
+</div>
 
 </ui:composition>
 </html>

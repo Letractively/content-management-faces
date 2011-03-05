@@ -31,6 +31,20 @@ public class GroupPermissions {
     private boolean canDelete;
     private boolean canAdmin;
 
+    public GroupPermissions() {
+    }
+
+    public GroupPermissions(String group) {
+        this.group = group;
+    }
+
+    public GroupPermissions(String group, boolean canView, boolean canEdit, boolean canDelete, boolean canAdmin) {
+        this.group = group;
+        this.canView = canView;
+        this.canEdit = canEdit;
+        this.canDelete = canDelete;
+        this.canAdmin = canAdmin;
+    }
 
     public String getGroup() {
         return group;

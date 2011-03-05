@@ -50,6 +50,10 @@ public abstract class BaseContent implements Serializable {
         this.namespace = namespace;
     }
 
+    public String getFullName() {
+        return namespace.getFullName() + "." + name;
+    }
+
     public List<GroupPermissions> getGroupPermissionsList() {
         return groupPermissionsList;
     }

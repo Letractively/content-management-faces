@@ -37,6 +37,12 @@
                     <f:param name="namespace" value="#{node.namespace}"/>
                     <f:ajax render="in namespace" onevent="hideEditorAndShowNamespace"/>
                 </h:commandButton>
+                <h:commandButton image="images/folder_edit.png" actionListener="#{admin.selectNamespace}"
+                                 styleClass="treeButton">
+                    <f:param name="namespace" value="#{node.namespace}"/>
+                    <f:param name="edit" value="#{true}"/>
+                    <f:ajax render="in namespace" onevent="hideEditorAndShowNamespaceAdmin"/>
+                </h:commandButton>
                 <h:commandButton image="images/folder_delete.png" styleClass="treeButton"
                                  actionListener="#{admin.deleteNamespace}"
                                  rendered="#{empty node.children ? true : false}">

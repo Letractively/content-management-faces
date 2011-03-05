@@ -79,6 +79,7 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
                     dropEmbeddedTables();
                 } catch(Exception ignore) { }
                 createEmbeddedTables();
+                CmfContext.getInstance().setInMemory(true);
             }
         }
 
@@ -127,6 +128,7 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        CmfContext.getInstance().setInMemory(false);
     }
 
     public void editWebXml(Properties properties) throws Exception {

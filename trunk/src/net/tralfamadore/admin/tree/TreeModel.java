@@ -251,4 +251,20 @@ public class TreeModel implements Serializable {
         for(TreeNode node : parent.getChildren())
             addNode(node, script);
     }
+
+    public NamespaceTreeNode findNamespaceNode(String value, TreeNode rootNode) {
+        for(TreeNode n : rootNode.getChildren()) {
+            if(n instanceof NamespaceTreeNode) {
+                NamespaceTreeNode ns = (NamespaceTreeNode) n;
+                if(value.equals(ns.getNamespace().getFullName())) {
+                    return ns;
+                } else {
+                    ns = findNamespaceNode(value,  n);
+                    if(ns != null)
+                        return ns;
+                }
+            }
+        }
+        return null;
+    }
 }

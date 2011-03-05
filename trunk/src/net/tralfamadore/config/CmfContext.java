@@ -37,6 +37,7 @@ public class CmfContext {
     private SecurityType securityType = SecurityType.NONE;
     private boolean embeddedDbNeedsConfig = false;
     private String customLoginUrl;
+    private boolean inMemory;
 
     public String getCustomLoginUrl() {
         return configFile.getCustomLoginUrl();
@@ -44,6 +45,14 @@ public class CmfContext {
 
     public String getCurrentUser() {
         return securityType.getCurrentUserInfo().getCurrentUser();
+    }
+
+    public boolean isInMemory() {
+        return inMemory;
+    }
+
+    public void setInMemory(boolean inMemory) {
+        this.inMemory = inMemory;
     }
 
     /**

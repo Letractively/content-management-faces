@@ -170,6 +170,11 @@ function showEditor() {
     $("#cke_ckCode").css("display", "block");
 }
 
+function hideEditorAndShowNamespaceAdmin() {
+    hideEditorAndShowNamespace();
+    $("#submitNamespace").hide();
+    $("#in").hide();
+}
 function hideEditorAndShowNamespace() {
     hideEditor();
     $("#configDbSuccess").css("display", "none");
@@ -179,6 +184,8 @@ function hideEditorAndShowNamespace() {
     $("#addCssEditor").css("display", "none");
     $("#addNamespace").css("display", "block");
     $("#addStyle").css("display", "none");
+    $("#submitNamespace").show();
+    $("#in").show();
     $("#in").focus();
 }
 
