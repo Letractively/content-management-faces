@@ -202,6 +202,8 @@ public class JpaContentManager implements ContentManager {
 
         for(GroupPermissions groupPermissions : groupPermissionsList) {
             boolean found = false;
+            if(namespaceEntity.getGroupPermissions() == null)
+                namespaceEntity.setGroupPermissions(new HashSet<GroupPermissionsEntity>());
             for(GroupPermissionsEntity groupPermissionsEntity : namespaceEntity.getGroupPermissions()) {
                 if(groupPermissions.getGroup().equals(groupPermissionsEntity.getGroup().getGroupname())) {
                     groupPermissions.setCanAdmin(groupPermissionsEntity.canAdmin());
@@ -605,5 +607,10 @@ public class JpaContentManager implements ContentManager {
         em.getTransaction().begin();
         em.persist(group);
         em.getTransaction().commit();
+    }
+
+    @SuppressWarnings({"unchecked"})
+    public List<String> getAllGroups() {
+        return em.createQuery("select g.groupname from groups g").getResultList();
     }
 }

@@ -51,32 +51,23 @@
                     X
                 </p:column>
             </p:dataTable>
-            <ui:remove>
-                <div style="text-align: right; width: 90%">
-                    <p:commandButton value="Submit" onsuccess="hideCurrentPanel(); return false;"/>
-                </div>
-            </ui:remove>
 
-            <table width="650">
+            <table width="500">
                 <tr>
-                    <td align="left">
+                    <td>
                         <h:outputLabel value="Add a group" for="picker"/>
                     </td>
-                    <td align="left">
-                        <p:selectOneMenu id="picker" value="#{client.selectedGroup}" converter="#{client.converter}"
+                    <td>
+                        <p:selectOneMenu id="picker" value="#{client.selectedGroup}" height="200" widgetVar="sm"
                                          style="width: 150px;" label="Add a group">
-                            <p:ajax update="groupPermissions" listener="#{client.addGroupListener}"/>
-                            <f:selectItem itemLabel="AddGroup" itemValue=""/>
-                            <f:selectItems value="#{client.allGroups}" var="group" itemLabel="#{group.group}"
+                            <p:ajax update="picker"/>
+                            <f:selectItem itemLabel="Add Group" itemValue=""/>
+                            <f:selectItems value="#{client.allGroups}" var="group" itemLabel="#{group}"
                                            itemValue="#{group}"/>
                         </p:selectOneMenu>
                     </td>
-                    <td align="right">
-                        <p:commandButton value="Cancel"/>
-                    </td>
-                    <td align="right">
-                        <p:commandButton id="blah" value=" Save " process="picker" update="groupData picker"
-                                         actionListener="#{client.updateGroups}"/>
+                    <td>
+                        <p:commandButton value="Add" actionListener="#{client.addGroupListener}" update="groupData"/>
                     </td>
                 </tr>
             </table>

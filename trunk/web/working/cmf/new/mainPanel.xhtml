@@ -21,9 +21,9 @@
     </p:ajaxStatus>
 
     <p:outputPanel id="mainPanel">
-        <p:messages id="messages"/>
+        <p:growl id="messages" life="10000" showDetail="true"/>
 
-        <ui:include src="namespace.xhtml"/>
+        <ui:include src="addNamespace.xhtml"/>
         <ui:include src="content.xhtml"/>
     </p:outputPanel>
 

@@ -55,6 +55,11 @@ public class ContentHolder implements Serializable {
         return Collections.unmodifiableMap(allContent);
     }
 
+    public void clear() {
+        allContent.clear();
+        rootNode.getChildren().clear();
+    }
+
     public void add(Namespace namespace) {
         ContentKey contentKey = new ContentKey(null, namespace.getFullName(), "namespace");
         ContentKey parentKey = null;

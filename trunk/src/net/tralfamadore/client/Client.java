@@ -22,11 +22,13 @@ package net.tralfamadore.client;
 import net.tralfamadore.cmf.*;
 import net.tralfamadore.config.CmfContext;
 import org.primefaces.component.picklist.PickList;
+import org.primefaces.component.selectonemenu.SelectOneMenu;
 import org.primefaces.event.NodeSelectEvent;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.DualListModel;
 import org.primefaces.model.TreeNode;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -46,7 +48,7 @@ public class Client {
     private String filter;
     private TreeNode rootNode;
     private List<GroupPermissions> groupData;
-    private List<GroupPermissions> allGroups;
+    private List<String> allGroups;
     private DualListModel<GroupPermissions> groups;
     private PickList pickList;
     private GroupPermissionsConverter converter = new GroupPermissionsConverter();
@@ -56,68 +58,28 @@ public class Client {
     private TreeNode currentContent;
     private TreeNode currentStyle;
     private TreeNode selectedNode;
+    private String newNamespace;
+    private SelectOneMenu menu;
 
     public Client() {
         rootNode = new DefaultTreeNode("Root", null);
         contentHolder = new ContentHolder(rootNode);
-        /*
-        TreeNode node0 = new DefaultTreeNode("net", rootNode);
-        node0.setExpanded(true);
-        TreeNode node1 = new DefaultTreeNode("Node 1", rootNode);
-        node1.setExpanded(true);
-        TreeNode node2 = new DefaultTreeNode("Node 2", rootNode);
-        node2.setExpanded(true);
 
-        TreeNode node00 = new DefaultTreeNode("tralfamadore", node0);
-        node00.setExpanded(true);
-        TreeNode node01 = new DefaultTreeNode("Node 0.1", node0);
-        node01.setExpanded(true);
-
-        TreeNode node10 = new DefaultTreeNode("Node 1.0", node1);
-        node10.setExpanded(true);
-        TreeNode n = new DefaultTreeNode("Node 1.1", node1);
-        n.setExpanded(true);
-
-        TreeNode node000 = new DefaultTreeNode("site", node00);
-        node000.setExpanded(true);
-        n = new DefaultTreeNode("Node 0.0.1", node00);
-        n.setExpanded(true);
-        n = new DefaultTreeNode("Node 0.1.0", node01);
-        n.setExpanded(true);
-
-        n = new DefaultTreeNode("Node 1.0.0", node10);
-        n.setExpanded(true);
-
-        n = new DefaultTreeNode("page1", node000);
-        n.setExpanded(true);
-        */
         createTreeModel(new ActionEvent(new PickList()));
 
 
         groupData = new Vector<GroupPermissions>();
-        allGroups = new Vector<GroupPermissions>();
-        GroupPermissions groupPerm = new GroupPermissions();
-        groupPerm.setGroup("cmfAdmin");
-        groupPerm.setCanAdmin(true);
-        groupPerm.setCanDelete(true);
-        groupPerm.setCanEdit(true);
-        groupPerm.setCanView(true);
-        allGroups.add(groupPerm);
-        groupPerm = new GroupPermissions();
-        groupPerm.setGroup("world");
-        groupPerm.setCanAdmin(false);
-        groupPerm.setCanDelete(false);
-        groupPerm.setCanEdit(false);
-        groupPerm.setCanView(true);
-        allGroups.add(groupPerm);
-        groups = new DualListModel<GroupPermissions>(allGroups, groupData);
+        allGroups = ((JpaContentManager)contentManager).getAllGroups();
     }
+
     /**
      * Creates the tree model for the tree component from information gotten from the content manager.  Used internally
      * and by other components to "re-render" the model when it is updated.
+     *
      * @param event the event
      */
     public void createTreeModel(ActionEvent event) {
+        contentHolder.clear();
         List<Namespace> namespaces = contentManager.loadAllNamespaces();
         for(Namespace namespace : namespaces) {
             contentHolder.add(namespace);
@@ -150,8 +112,47 @@ public class Client {
         selectedNode = currentContent = contentHolder.find(new ContentKey(name, namespace, "content"));
     }
 
+    /**
+     * Action listener to save namespace.
+     *
+     * @param e event info
+     */
+    public void addNamespace(ActionEvent e) {
+        Namespace namespace;
+        Namespace n = (Namespace)currentNamespace.getData();
+        String parentNamespace = n == null ? null : n.getFullName();
+
+        if(parentNamespace == null)
+            namespace = Namespace.createFromString(newNamespace);
+        else
+            namespace = Namespace.createFromString(parentNamespace + '.' + newNamespace);
+
+        namespace.setGroupPermissionsList(getDefaultGroupPermissions());
+        contentManager.saveNamespace(namespace);
+        contentHolder.add(namespace);
+        newNamespace = null;
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Namespace " + namespace.getFullName() + " saved successfully.", ""));
+    }
+
     public void updateGroups(ActionEvent event) {
         groupData.add(new GroupPermissions("users", true, true, false, false));
+    }
+
+    public List<GroupPermissions> getDefaultGroupPermissions() {
+        List<GroupPermissions> defaultGroupPermissionsList = new Vector<GroupPermissions>();
+        String group = CmfContext.getInstance().getCurrentUser();
+        GroupPermissions groupPermissions = new GroupPermissions(group, true, true, true, true);
+        defaultGroupPermissionsList.add(groupPermissions);
+        return defaultGroupPermissionsList;
+    }
+
+    public String getNewNamespace() {
+        return newNamespace;
+    }
+
+    public void setNewNamespace(String newNamespace) {
+        this.newNamespace = newNamespace;
     }
 
     public PickList getPickList() {
@@ -202,11 +203,11 @@ public class Client {
         this.groupData = groupData;
     }
 
-    public List<GroupPermissions> getAllGroups() {
+    public List<String> getAllGroups() {
         return allGroups;
     }
 
-    public void setAllGroups(List<GroupPermissions> allGroups) {
+    public void setAllGroups(List<String> allGroups) {
         this.allGroups = allGroups;
     }
 
@@ -250,21 +251,23 @@ public class Client {
         this.selectedNode = selectedNode;
     }
 
-    private GroupPermissions selectedGroup;
+    private String selectedGroup;
 
-    public GroupPermissions getSelectedGroup() {
+    public String getSelectedGroup() {
         return selectedGroup;
     }
 
-    public void setSelectedGroup(GroupPermissions selectedGroup) {
+    public void setSelectedGroup(String selectedGroup) {
         this.selectedGroup = selectedGroup;
     }
 
-    public void addGroupListener() {
-        System.out.println(selectedGroup);
+    public void addGroupListener(ActionEvent e) {
+        this.getGroupData().add(new GroupPermissions(selectedGroup, true, false, false, false));
     }
 
     public void nodeSelected(NodeSelectEvent event) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
+        FacesContext.getCurrentInstance().addMessage(null, message);
         System.out.println(event.getTreeNode().getData());
     }
 

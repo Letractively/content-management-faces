@@ -54,4 +54,11 @@ public class Style extends BaseContent {
         result = 31 * result + (style != null ? style.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Style{" +
+                "style='" + style + '\'' +
+                "} " + super.toString();
+    }
 }

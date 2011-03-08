@@ -22,18 +22,17 @@
                     <h:outputText value="#{node.nodeName}">
                     </h:outputText>
                     <p:spacer width="12"/>
-                    <p:commandButton id="add" image="add" styleClass="treeNodeButton" style="width: 21px;"
-                                     update="namespacePanelForm scroller" actionListener="#{client.selectNamespace}" title="Add Namespace"
+                    <p:commandButton styleClass="treeNodeButton" image="edit" style="width: 21px;"
+                                     update="mainPanel namespacePanelForm:picker" actionListener="#{client.selectNamespace}" title="Edit Namespace"
                                      oncomplete="showNamespacePanel(); return false;">
                         <f:param name="namespace" value="#{node}"/>
                     </p:commandButton>
                     <p:spacer width="6"/>
-                    <p:commandButton styleClass="treeNodeButton" image="edit" style="width: 21px;"
-                                     update="thePanel scroller" actionListener="#{client.selectNamespace}" title="Edit Content"
-                                     oncomplete="showContentPanel(); return false;">
+                    <p:commandButton id="add" image="add" styleClass="treeNodeButton" style="width: 21px;"
+                                     update="mainPanel namespacePanelForm:picker" actionListener="#{client.selectNamespace}" title="Add Namespace"
+                                     oncomplete="showNewNamespacePanel(); return false;">
                         <f:param name="namespace" value="#{node}"/>
                     </p:commandButton>
-
                 </span>
                 </p:outputPanel>
             </p:treeNode>
@@ -70,12 +69,16 @@
                 currentPanel.show();
             }
 
+            function showNewNamespacePanel() {
+                showNamespacePanel();
+                jQuery('.newNs').show();
+            }
+
             function showNamespacePanel() {
                 hideCurrentPanel();
                 currentPanel = jQuery(namespaceClientId);
                 currentPanel.show();
-                var sc = jQuery(PrimeFaces.escapeClientId("namespacePanelForm:scroller"));
-                jQuery(PrimeFaces.escapeClientId("namespacePanelForm:scroller")).show();
+                jQuery('.newNs').hide();
             }
 
             function hideCurrentPanel() {

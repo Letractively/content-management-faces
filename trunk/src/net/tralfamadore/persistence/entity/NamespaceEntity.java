@@ -71,7 +71,7 @@ public class NamespaceEntity implements Serializable {
         this.parentId = parentId;
     }
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "group_permissions_to_namespace",
             joinColumns = { @JoinColumn(name = "namespace_id") },
             inverseJoinColumns = { @JoinColumn(name = "group_permissions_id") })
