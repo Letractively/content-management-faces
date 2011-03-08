@@ -70,6 +70,7 @@ public class ContentHolder implements Serializable {
         parent = parent == null ? rootNode : parent;
         TreeNode newNode = new DefaultTreeNode("namespace", namespace, parent);
         newNode.setExpanded(true);
+        namespace.setTreeNode(newNode);
         allContent.put(contentKey, newNode);
     }
 
@@ -96,5 +97,11 @@ public class ContentHolder implements Serializable {
 
     public TreeNode find(ContentKey contentKey) {
         return allContent.get(contentKey);
+    }
+
+    public void remove(ContentKey contentKey) {
+        TreeNode node = find(contentKey);
+        node.getParent().getChildren().remove(node);
+        allContent.remove(contentKey);
     }
 }

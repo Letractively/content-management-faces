@@ -36,7 +36,7 @@
                 </div>
                 <h:outputLabel for="ns" value="Namespace: " style="font-weight: bold;"/>
                 <h:outputText id="ns" value="#{client.currentNamespace}"
-                        /><span class="newNs" style="display: none;">.<p:inputText value="#{client.newNamespace}"/>
+                        /><span class="newNs" style="display: none;">.<p:inputText id="namespaceIn" value="#{client.newNamespace}"/>
                 <p:commandButton value="Add" update="mainPanel treeForm messages" actionListener="#{client.addNamespace}"/>
                 </span>
             </p:fieldset>

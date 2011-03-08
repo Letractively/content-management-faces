@@ -24,19 +24,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="d252fcb5-7c5d-4bdd-bb3d-8158cf0997cd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/tc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/admin/images/folder_edit.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/working/cmf/new/namespace.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/addNamespace.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/tralfamadore/cmf/TreeContent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/tralfamadore/component/CmfCommandButtonRenderer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/primefaces/primefaces-3.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/lib/primefaces/primefaces-3.0-SNAPSHOT.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/primefaces.xml" afterPath="$PROJECT_DIR$/.idea/libraries/primefaces.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/faces-config.xml" afterPath="$PROJECT_DIR$/src/META-INF/faces-config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/cmf/Style.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/cmf/Style.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/persistence/entity/NamespaceEntity.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/persistence/entity/NamespaceEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/new/addNamespace.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/addNamespace.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/new/admin.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/admin.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/new/groups.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/groups.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/new/mainPanel.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/mainPanel.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/new/tree.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/tree.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/new/treeTest.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/treeTest.xhtml" />
     </list>
@@ -59,6 +57,34 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$USER_HOME$/src/primefaces/primefaces/src/main/java/org/primefaces/component/commandbutton/CommandButtonRenderer.java" line="41" class="org.primefaces.component.commandbutton.CommandButtonRenderer" package="org.primefaces.component.commandbutton">
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$USER_HOME$/src/primefaces/primefaces/src/main/java/org/primefaces/component/commandbutton/CommandButtonRenderer.java" line="36" class="org.primefaces.component.commandbutton.CommandButtonRenderer" package="org.primefaces.component.commandbutton">
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -116,10 +142,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Client.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ContentKey.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/ContentKey.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Client.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="219" column="0" selection-start="7339" selection-end="7339" vertical-scroll-proportion="0.0">
+            <state line="150" column="69" selection-start="5894" selection-end="5894" vertical-scroll-proportion="0.767733">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,14 +162,170 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="treeTest.xhtml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ContentHolder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="0" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Admin.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/Admin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="159" column="0" selection-start="4856" selection-end="4856" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JpaContentManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="239" column="0" selection-start="10087" selection-end="10087" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContentManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/ContentManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="treeTest.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/working/cmf/new/treeTest.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="105" selection-start="3155" selection-end="3155" vertical-scroll-proportion="0.5907173">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding>
-                <marker date="1299559582000" expanded="true" signature="3269:3287" placeholder="{...}" />
-                <marker date="1299559582000" expanded="true" signature="3558:3573" placeholder="{...}" />
+                <marker date="1299567916000" expanded="true" signature="3328:3346" placeholder="{...}" />
+                <marker date="1299567916000" expanded="true" signature="3617:3632" placeholder="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tree.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/working/cmf/new/tree.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding>
+                <marker date="1299597909000" expanded="true" signature="1017:1035" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandButton.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/src/primefaces/primefaces/target/generated-sources/maven-jsf-plugin/org/primefaces/component/commandbutton/CommandButton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="143" column="0" selection-start="4609" selection-end="4609" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandButtonRenderer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/src/primefaces/primefaces/src/main/java/org/primefaces/component/commandbutton/CommandButtonRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="0" selection-start="348" selection-end="1046" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CmfCommandButtonRenderer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/CmfCommandButtonRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="faces-config.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/faces-config.xml">
+          <provider editor-type-id="com.intellij.jsf.ui.FacesConfigEditorProvider">
+            <state />
+          </provider>
+          <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="0" selection-start="302" selection-end="302" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoreRenderer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/src/primefaces/primefaces/src/main/java/org/primefaces/renderkit/CoreRenderer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="0" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Namespace.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="91" column="0" selection-start="2450" selection-end="2450" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseContent.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/BaseContent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TreeContent.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/TreeContent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addNamespace.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/working/cmf/new/addNamespace.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding>
+                <marker date="1299568088000" expanded="true" signature="1677:1695" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="groups.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/working/cmf/new/groups.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="0" selection-start="81" selection-end="81" vertical-scroll-proportion="-0.5714286">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/working/cmf/new/admin.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="0" selection-start="534" selection-end="534" vertical-scroll-proportion="-0.5714286">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -153,22 +344,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/scripts/cmf-postgres-new.sql" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/client/GroupPermissionsConverter.java" />
-        <option value="$PROJECT_DIR$/web/working/cmf/new/namespace.xhtml" />
-        <option value="$PROJECT_DIR$/web/working/cmf/new/content.xhtml" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java" />
-        <option value="$PROJECT_DIR$/web/working/cmf/new/mainPanel.xhtml" />
         <option value="$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java" />
         <option value="$PROJECT_DIR$/src/net/tralfamadore/persistence/entity/NamespaceEntity.java" />
-        <option value="$PROJECT_DIR$/web/working/cmf/new/addNamespace.xhtml" />
         <option value="$PROJECT_DIR$/lib/primefaces/primefaces-3.0-SNAPSHOT.jar!/META-INF/resources/primefaces/forms/forms.js" />
-        <option value="$PROJECT_DIR$/web/working/cmf/new/admin.xhtml" />
-        <option value="$PROJECT_DIR$/web/working/cmf/new/tree.xhtml" />
         <option value="$PROJECT_DIR$/web/working/cmf/new/groups.xhtml" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" />
         <option value="$PROJECT_DIR$/src/net/tralfamadore/cmf/Style.java" />
         <option value="$PROJECT_DIR$/web/working/cmf/new/treeTest.xhtml" />
+        <option value="$PROJECT_DIR$/web/working/cmf/new/addNamespace.xhtml" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/cmf/TreeContent.java" />
+        <option value="$USER_HOME$/src/primefaces/primefaces/target/generated-sources/maven-jsf-plugin/org/primefaces/component/commandbutton/CommandButton.java" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/component/CmfCommandButtonRenderer.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/faces-config.xml" />
+        <option value="$PROJECT_DIR$/web/working/cmf/new/tree.xhtml" />
+        <option value="$PROJECT_DIR$/web/working/cmf/new/admin.xhtml" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" />
       </list>
     </option>
   </component>
@@ -261,6 +452,94 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="working" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="working" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="working" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -284,6 +563,254 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tralfamadore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tralfamadore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tralfamadore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tralfamadore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces-3.0-SNAPSHOT.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces-3.0-SNAPSHOT.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces-3.0-SNAPSHOT.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commandbutton" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces-3.0-SNAPSHOT.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -784,6 +1311,7 @@
     </configuration>
     <configuration default="false" name="Glassfish" type="GlassfishConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="Glassfish 3.0.1">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/cmf/working/cmf/new/admin.jsf" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="cmf:war exploded">
           <settings />
@@ -1165,119 +1693,129 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="jar://$PROJECT_DIR$/lib/primefaces/primefaces-3.0-SNAPSHOT.jar!/org/primefaces/context/PrimePartialResponseWriter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="160" selection-end="160" vertical-scroll-proportion="0.08645533">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/primefaces/primefaces-3.0-SNAPSHOT.jar!/org/primefaces/component/commandbutton/CommandButton.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="713" selection-end="713" vertical-scroll-proportion="0.1037464">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/src/primefaces/primefaces/src/main/java/org/primefaces/renderkit/CoreRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/src/primefaces/primefaces/target/generated-sources/maven-jsf-plugin/org/primefaces/component/commandbutton/CommandButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="143" column="0" selection-start="4609" selection-end="4609" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/lib/mojarra-2.0.2-FCS-source/jsf-api/src/main/java/javax/faces/component/UIComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="594" column="27" selection-start="23783" selection-end="23783" vertical-scroll-proportion="0.33240613">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="1125" selection-end="1125" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/GroupPermissionsConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/config/CmfContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="0" selection-start="2184" selection-end="2184" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/persistence/JpaEntityManagerProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="0" selection-start="6528" selection-end="6528" vertical-scroll-proportion="0.0">
+        <state line="6" column="0" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/Admin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="175" column="0" selection-start="5570" selection-end="6761" vertical-scroll-proportion="0.0">
+        <state line="159" column="0" selection-start="4856" selection-end="4856" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/Tree.java">
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="0" selection-start="2518" selection-end="2518" vertical-scroll-proportion="0.0">
+        <state line="239" column="0" selection-start="10087" selection-end="10087" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/index.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/ContentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/tree.xhtml">
+    <entry file="file://$PROJECT_DIR$/web/working/cmf/new/treeTest.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="676" selection-end="676" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1299567916000" expanded="true" signature="3328:3346" placeholder="{...}" />
+            <marker date="1299567916000" expanded="true" signature="3617:3632" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/src/primefaces/primefaces/src/main/java/org/primefaces/component/commandbutton/CommandButtonRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="348" selection-end="1046" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/resources/admin.js">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/faces-config.xml">
+      <provider editor-type-id="com.intellij.jsf.ui.FacesConfigEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="237" column="0" selection-start="6739" selection-end="6739" vertical-scroll-proportion="0.0">
+        <state line="9" column="0" selection-start="302" selection-end="302" vertical-scroll-proportion="-0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/web/working/cmf/new/admin.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="550" selection-end="550" vertical-scroll-proportion="0.0">
+        <state line="14" column="0" selection-start="534" selection-end="534" vertical-scroll-proportion="-0.5714286">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/cmf-config.xml">
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/CmfCommandButtonRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1438" selection-end="1438" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/persistence/entity/GroupPermissionsEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/persistence/entity/NamespaceEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/Style.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="17" selection-start="1594" selection-end="1594" vertical-scroll-proportion="0.8032787">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="219" column="0" selection-start="7339" selection-end="7339" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/working/cmf/new/treeTest.xhtml">
+    <entry file="file://$PROJECT_DIR$/web/working/cmf/new/tree.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="105" selection-start="3155" selection-end="3155" vertical-scroll-proportion="0.5907173">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
           <folding>
-            <marker date="1299559582000" expanded="true" signature="3269:3287" placeholder="{...}" />
-            <marker date="1299559582000" expanded="true" signature="3558:3573" placeholder="{...}" />
+            <marker date="1299597909000" expanded="true" signature="1017:1035" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="150" column="69" selection-start="5894" selection-end="5894" vertical-scroll-proportion="0.767733">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

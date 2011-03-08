@@ -46,7 +46,7 @@
 <h:body>
     <f:view contentType="text/html">
         <h:form>
-            <p:growl id="messages"/>
+            <p:growl id="messages" showDetail="true"/>
             <p:commandButton id="add" image="add" styleClass="treeNodeButton" value="Add"
                              update="namespacePanelForm scroller" actionListener="#{client.selectNamespace}" title="Add Namespace"
                              oncomplete="showNamespacePanel(); return false;">
@@ -63,8 +63,10 @@
                              oncomplete="showContentPanel(); return false;">
                 <f:param name="namespace" value="#{node}"/>
             </p:commandButton>
-            <p:tree value="#{client.rootNode}" var="node" selectionMode="single" selection="#{client.selectedNode}"
-                    expanded="true" onSelectUpdate="messages" nodeSelectListener="#{client.nodeSelected}">
+            <p:tree value="#{client.rootNode}" var="node"
+                    selectionMode="single" selection="#{client.selectedNode}"
+                    expanded="true" onSelectUpdate="messages" nodeSelectListener="#{client.nodeSelected}"
+                    >
                 <p:treeNode type="namespace">
                     <h:outputText value="#{node.nodeName}" style="font-weight: bold;"/>
                 </p:treeNode>

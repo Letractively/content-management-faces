@@ -5,6 +5,9 @@
       <root url="jar://$PROJECT_DIR$/lib/primefaces/primefaces-3.0-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$USER_HOME$/src/primefaces/primefaces/src/main/java" />
+      <root url="file://$USER_HOME$/src/primefaces/primefaces/target/generated-sources/maven-jsf-plugin" />
+    </SOURCES>
   </library>
 </component>

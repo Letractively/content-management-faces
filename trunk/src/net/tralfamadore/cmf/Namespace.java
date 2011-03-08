@@ -19,6 +19,8 @@
 
 package net.tralfamadore.cmf;
 
+import org.primefaces.model.TreeNode;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Vector;
@@ -28,10 +30,11 @@ import java.util.Vector;
  * Date: 1/18/11
  * Time: 10:26 PM
  */
-public class Namespace implements Serializable {
+public class Namespace implements TreeContent, Serializable {
     private String nodeName;
     private Namespace parent;
     private List<GroupPermissions> groupPermissionsList = new Vector<GroupPermissions>();
+    private TreeNode leaf;
 
 
     public static Namespace createFromString(String namespace) {
@@ -144,5 +147,15 @@ public class Namespace implements Serializable {
     @Override
     public String toString() {
         return getFullName();
+    }
+
+    @Override
+    public TreeNode getTreeNode() {
+        return leaf;
+    }
+
+    @Override
+    public void setTreeNode(TreeNode leaf) {
+        this.leaf = leaf;
     }
 }

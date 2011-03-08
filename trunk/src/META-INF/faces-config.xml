@@ -45,7 +45,14 @@
             <renderer-type>TreeRenderer</renderer-type>
             <renderer-class>net.tralfamadore.component.tree.TreeRenderer</renderer-class>
         </renderer>
+
+        <renderer>
+            <component-family>org.primefaces.component</component-family>
+            <renderer-type>org.primefaces.component.CommandButtonRenderer</renderer-type>
+            <renderer-class>net.tralfamadore.component.CmfCommandButtonRenderer</renderer-class>
+        </renderer>
     </render-kit>
+
     <navigation-rule>
         <navigation-case>
             <from-action>#{admin.login}</from-action>

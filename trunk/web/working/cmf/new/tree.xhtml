@@ -19,18 +19,27 @@
             <p:treeNode type="namespace">
                 <p:outputPanel id="node">
                 <span class="treeNode">
-                    <h:outputText value="#{node.nodeName}">
+                    <h:outputText value="#{node.nodeName}" style="font-weight: bold;">
                     </h:outputText>
                     <p:spacer width="12"/>
-                    <p:commandButton styleClass="treeNodeButton" image="edit" style="width: 21px;"
-                                     update="mainPanel namespacePanelForm:picker" actionListener="#{client.selectNamespace}" title="Edit Namespace"
+                    <p:commandButton styleClass="treeNodeButton" image="edit" style="width: 21px;" title="Edit Namespace"
+                                     update="mainPanel namespacePanelForm:picker" actionListener="#{client.selectNamespace}"
                                      oncomplete="showNamespacePanel(); return false;">
                         <f:param name="namespace" value="#{node}"/>
                     </p:commandButton>
                     <p:spacer width="6"/>
-                    <p:commandButton id="add" image="add" styleClass="treeNodeButton" style="width: 21px;"
-                                     update="mainPanel namespacePanelForm:picker" actionListener="#{client.selectNamespace}" title="Add Namespace"
+                    <p:commandButton image="add" styleClass="treeNodeButton" style="width: 21px;" title="Add Namespace"
+                                     update="mainPanel namespacePanelForm:picker" actionListener="#{client.selectNamespace}"
                                      oncomplete="showNewNamespacePanel(); return false;">
+                        <f:param name="namespace" value="#{node}"/>
+                    </p:commandButton>
+                    <p:spacer width="6"/>
+                    <p:commandButton image="delete" styleClass="treeNodeButton" style="width: 21px;" title="Delete namespace"
+                                     update="treeForm mainPanel"
+                                     oncomplete="hideCurrentPanel(); return false;"
+                                     rendered="#{(node != null) ? node.treeNode.leaf : true}"
+                                     actionListener="#{client.deleteNamespace}"
+                            >
                         <f:param name="namespace" value="#{node}"/>
                     </p:commandButton>
                 </span>
@@ -45,9 +54,10 @@
                 <h:outputText value="#{node.name}"/>
             </p:treeNode>
         </p:tree>
-        <p:tooltip global="true"/>
+        <p:tooltip global="true" hideEvent="mouseout click"/>
         <script type="text/javascript">
             var namespaceClientId = PrimeFaces.escapeClientId("namespacePanelForm:namespacePanel");
+            var namespaceInClientId = PrimeFaces.escapeClientId("namespacePanelForm:namespaceIn");
             var contentClientId = PrimeFaces.escapeClientId("contentPanelForm:contentPanel");
             var currentPanel;
 
@@ -72,6 +82,7 @@
             function showNewNamespacePanel() {
                 showNamespacePanel();
                 jQuery('.newNs').show();
+                jQuery(namespaceInClientId).focus();
             }
 
             function showNamespacePanel() {

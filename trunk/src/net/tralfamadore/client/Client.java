@@ -115,9 +115,9 @@ public class Client {
     /**
      * Action listener to save namespace.
      *
-     * @param e event info
+     * @param event event info
      */
-    public void addNamespace(ActionEvent e) {
+    public void addNamespace(ActionEvent event) {
         Namespace namespace;
         Namespace n = (Namespace)currentNamespace.getData();
         String parentNamespace = n == null ? null : n.getFullName();
@@ -133,6 +133,23 @@ public class Client {
         newNamespace = null;
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Namespace " + namespace.getFullName() + " saved successfully.", ""));
+    }
+
+    public void deleteNamespace(ActionEvent event) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        Map requestMap = context.getExternalContext().getRequestParameterMap();
+        String value = (String)requestMap.get("namespace");
+        selectedNode = currentNamespace = contentHolder.find(new ContentKey(null, value, "namespace"));
+        if(!selectedNode.isLeaf())
+            return;
+        if(selectedNode != null) {
+            contentHolder.remove(new ContentKey(null, value, "namespace"));
+            Namespace namespace = (Namespace) selectedNode.getData();
+            contentManager.deleteNamespace(namespace);
+            selectedNode = null;
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                    "Namespace " + namespace.getFullName() + " deleted.", ""));
+        }
     }
 
     public void updateGroups(ActionEvent event) {
@@ -279,5 +296,21 @@ public class Client {
 
     public void setTheText(String theText) {
         this.theText = theText;
+    }
+
+    private String showNamespace;
+
+    public String getShowNamespace() {
+        return showNamespace;
+    }
+
+    public void setShowNamespace(String showNamespace) {
+        this.showNamespace = showNamespace;
+    }
+
+    private int buttonNo = 1;
+
+    public String getButtonId() {
+        return "treeButton_" + buttonNo++;
     }
 }
