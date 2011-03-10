@@ -14,6 +14,9 @@
         <p:spacer width="20px;"/>
         <p:commandButton value="Filter" actionListener="#{client.createTreeModel}" update="treeForm"/>
         <br/>
+        <p:commandButton image="add" value="Add Namespace"
+                         update="mainPanel namespacePanelForm:picker" actionListener="#{client.selectNamespace}"
+                         oncomplete="showNewNamespacePanel(); return false;"/>
         <p:tree id="theTree" value="#{client.rootNode}" var="node" expanded="true" widgetVar="treeWidget"
                 style="width: 90%;">
             <p:treeNode type="namespace">
@@ -47,7 +50,18 @@
             </p:treeNode>
 
             <p:treeNode type="content">
-                <h:outputText value="#{node.name}"/>
+                <p:outputPanel id="contentNode">
+                    <span class="treeNode">
+                        <h:outputText value="#{node.name}"/>
+                        <p:spacer width="12"/>
+                        <p:commandButton styleClass="treeNodeButton" image="edit" style="width: 21px;" title="Edit Content"
+                                         update="mainPanel namespacePanelForm:picker" actionListener="#{client.selectContent}"
+                                         oncomplete="showContentPanel(); return false;">
+                            <f:param name="namespace" value="#{node.namespace}"/>
+                            <f:param name="name" value="#{node.name}"/>
+                        </p:commandButton>
+                    </span>
+                </p:outputPanel>
             </p:treeNode>
 
             <p:treeNode type="style">
@@ -77,6 +91,7 @@
                 hideCurrentPanel();
                 currentPanel = jQuery(contentClientId);
                 currentPanel.show();
+                theEd.init();
             }
 
             function showNewNamespacePanel() {

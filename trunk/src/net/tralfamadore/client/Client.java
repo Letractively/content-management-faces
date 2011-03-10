@@ -22,7 +22,6 @@ package net.tralfamadore.client;
 import net.tralfamadore.cmf.*;
 import net.tralfamadore.config.CmfContext;
 import org.primefaces.component.picklist.PickList;
-import org.primefaces.component.selectonemenu.SelectOneMenu;
 import org.primefaces.event.NodeSelectEvent;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.DualListModel;
@@ -59,7 +58,9 @@ public class Client {
     private TreeNode currentStyle;
     private TreeNode selectedNode;
     private String newNamespace;
-    private SelectOneMenu menu;
+    private String showNamespace;
+    private String selectedGroup;
+    private String editorContent;
 
     public Client() {
         rootNode = new DefaultTreeNode("Root", null);
@@ -112,6 +113,16 @@ public class Client {
         selectedNode = currentContent = contentHolder.find(new ContentKey(name, namespace, "content"));
     }
 
+    public void nodeSelected(NodeSelectEvent event) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        System.out.println(event.getTreeNode().getData());
+    }
+
+    public void addGroupListener(ActionEvent e) {
+        this.getGroupData().add(new GroupPermissions(selectedGroup, true, false, false, false));
+    }
+
     /**
      * Action listener to save namespace.
      *
@@ -119,7 +130,7 @@ public class Client {
      */
     public void addNamespace(ActionEvent event) {
         Namespace namespace;
-        Namespace n = (Namespace)currentNamespace.getData();
+        Namespace n = currentNamespace == null ? null : (Namespace)currentNamespace.getData();
         String parentNamespace = n == null ? null : n.getFullName();
 
         if(parentNamespace == null)
@@ -133,6 +144,14 @@ public class Client {
         newNamespace = null;
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Namespace " + namespace.getFullName() + " saved successfully.", ""));
+    }
+
+    public void saveContent(ActionEvent event) {
+        Content content = (Content) currentContent.getData();
+        content.setContent(editorContent);
+        contentManager.saveContent(content);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Content " + content.getName() + " saved successfully.", ""));
     }
 
     public void deleteNamespace(ActionEvent event) {
@@ -162,6 +181,14 @@ public class Client {
         GroupPermissions groupPermissions = new GroupPermissions(group, true, true, true, true);
         defaultGroupPermissionsList.add(groupPermissions);
         return defaultGroupPermissionsList;
+    }
+
+    public String getEditorContent() {
+        return editorContent;
+    }
+
+    public void setEditorContent(String editorContent) {
+        this.editorContent = editorContent;
     }
 
     public String getNewNamespace() {
@@ -268,8 +295,6 @@ public class Client {
         this.selectedNode = selectedNode;
     }
 
-    private String selectedGroup;
-
     public String getSelectedGroup() {
         return selectedGroup;
     }
@@ -278,39 +303,11 @@ public class Client {
         this.selectedGroup = selectedGroup;
     }
 
-    public void addGroupListener(ActionEvent e) {
-        this.getGroupData().add(new GroupPermissions(selectedGroup, true, false, false, false));
-    }
-
-    public void nodeSelected(NodeSelectEvent event) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
-        FacesContext.getCurrentInstance().addMessage(null, message);
-        System.out.println(event.getTreeNode().getData());
-    }
-
-    private String theText;
-
-    public String getTheText() {
-        return theText;
-    }
-
-    public void setTheText(String theText) {
-        this.theText = theText;
-    }
-
-    private String showNamespace;
-
     public String getShowNamespace() {
         return showNamespace;
     }
 
     public void setShowNamespace(String showNamespace) {
         this.showNamespace = showNamespace;
-    }
-
-    private int buttonNo = 1;
-
-    public String getButtonId() {
-        return "treeButton_" + buttonNo++;
     }
 }

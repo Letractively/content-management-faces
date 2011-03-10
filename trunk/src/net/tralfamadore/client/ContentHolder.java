@@ -75,7 +75,7 @@ public class ContentHolder implements Serializable {
     }
 
     public void add(Content content) {
-        ContentKey contentKey = new ContentKey(null, content.getNamespace().getFullName(), "content");
+        ContentKey contentKey = new ContentKey(content.getName(), content.getNamespace().getFullName(), "content");
         ContentKey parentKey = new ContentKey(null, content.getNamespace().getFullName(), "namespace");
 
         TreeNode parent = allContent.get(parentKey);
