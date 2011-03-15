@@ -81,15 +81,17 @@ public class ContentHolder implements Serializable {
         TreeNode parent = allContent.get(parentKey);
         TreeNode newNode = new DefaultTreeNode("content", content, parent);
         newNode.setExpanded(true);
+        content.setTreeNode(newNode);
         allContent.put(contentKey, newNode);
     }
 
     public void add(Style style) {
-        ContentKey contentKey = new ContentKey(null, style.getNamespace().getFullName(), "style");
+        ContentKey contentKey = new ContentKey(style.getName(), style.getNamespace().getFullName(), "style");
         ContentKey parentKey = new ContentKey(null, style.getNamespace().getFullName(), "namespace");
 
         TreeNode parent = allContent.get(parentKey);
         TreeNode newNode = new DefaultTreeNode("style", style, parent);
+        style.setTreeNode(newNode);
         newNode.setExpanded(true);
         if(!allContent.containsKey(contentKey))
             allContent.put(contentKey, newNode);

@@ -32,6 +32,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -58,9 +59,12 @@ public class Client {
     private TreeNode currentStyle;
     private TreeNode selectedNode;
     private String newNamespace;
+    private String newContentName;
+    private String newStyleName;
     private String showNamespace;
     private String selectedGroup;
     private String editorContent;
+    private String styleEditorContent = "p {\n\tcolor: black;\n}";
 
     public Client() {
         rootNode = new DefaultTreeNode("Root", null);
@@ -104,6 +108,30 @@ public class Client {
         selectedNode = currentNamespace = contentHolder.find(new ContentKey(null, value, "namespace"));
     }
 
+    public void addStyle(ActionEvent event) {
+        Style style = new Style();
+        style.setName(newStyleName);
+        style.setNamespace((Namespace) currentNamespace.getData());
+        style.setGroupPermissionsList(getGroupData());
+        contentHolder.add(style);
+        contentManager.saveStyle(style);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Style " + style.getFullName() + " added.", ""));
+    }
+
+    public void addContent(ActionEvent event) {
+        Content content = new Content();
+        content.setName(newContentName);
+        content.setNamespace((Namespace) currentNamespace.getData());
+        content.setDateCreated(new Date());
+        content.setDateModified(content.getDateCreated());
+        content.setGroupPermissionsList(getGroupData());
+        contentHolder.add(content);
+        contentManager.saveContent(content);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Content " + content.getFullName() + " added.", ""));
+    }
+
     public void selectContent(ActionEvent event) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
@@ -111,6 +139,19 @@ public class Client {
         String name = (String)requestMap.get("name");
 
         selectedNode = currentContent = contentHolder.find(new ContentKey(name, namespace, "content"));
+        Content content = (Content) currentContent.getData();
+        editorContent = content == null? null : content.getContent();
+    }
+
+    public void selectStyle(ActionEvent event) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        Map requestMap = context.getExternalContext().getRequestParameterMap();
+        String namespace = (String)requestMap.get("namespace");
+        String name = (String)requestMap.get("name");
+
+        selectedNode = currentStyle = contentHolder.find(new ContentKey(name, namespace, "style"));
+        Style style = (Style) currentStyle.getData();
+        styleEditorContent = style == null? null : style.getStyle();
     }
 
     public void nodeSelected(NodeSelectEvent event) {
@@ -154,6 +195,14 @@ public class Client {
                 "Content " + content.getName() + " saved successfully.", ""));
     }
 
+    public void saveStyle(ActionEvent event) {
+        Style style = (Style) currentStyle.getData();
+        style.setStyle(styleEditorContent);
+        contentManager.saveStyle(style);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Style " + style.getName() + " saved successfully.", ""));
+    }
+
     public void deleteNamespace(ActionEvent event) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
@@ -168,6 +217,24 @@ public class Client {
             selectedNode = null;
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Namespace " + namespace.getFullName() + " deleted.", ""));
+        }
+    }
+
+    public void deleteContent(ActionEvent event) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        Map requestMap = context.getExternalContext().getRequestParameterMap();
+        String value = (String)requestMap.get("namespace");
+        String name = (String)requestMap.get("name");
+        selectedNode = currentContent = contentHolder.find(new ContentKey(name, value, "content"));
+        if(!selectedNode.isLeaf())
+            return;
+        if(selectedNode != null) {
+            contentHolder.remove(new ContentKey(name, value, "content"));
+            Content content = (Content) selectedNode.getData();
+            contentManager.deleteContent(content);
+            selectedNode = null;
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                    "Content " + content.getFullName() + "." + content.getName() + " deleted.", ""));
         }
     }
 
@@ -309,5 +376,29 @@ public class Client {
 
     public void setShowNamespace(String showNamespace) {
         this.showNamespace = showNamespace;
+    }
+
+    public String getNewContentName() {
+        return newContentName;
+    }
+
+    public void setNewContentName(String newContentName) {
+        this.newContentName = newContentName;
+    }
+
+    public String getNewStyleName() {
+        return newStyleName;
+    }
+
+    public void setNewStyleName(String newStyleName) {
+        this.newStyleName = newStyleName;
+    }
+
+    public String getStyleEditorContent() {
+        return styleEditorContent;
+    }
+
+    public void setStyleEditorContent(String styleEditorContent) {
+        this.styleEditorContent = styleEditorContent;
     }
 }

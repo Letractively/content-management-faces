@@ -32,7 +32,7 @@
         <p:outputPanel id="contentPanel" style="display:none">
 
             <p:fieldset legend="Content" collapsed="false" toggleable="true">
-                <p:editor width="700" lazy="true" widgetVar="theEd" value="#{client.editorContent}"/>
+                <h:inputTextarea id="theEditor" name="theEditor" style="display: none;" value="#{client.editorContent}"/>
             </p:fieldset>
 
             <p:spacer height="18"/>
@@ -44,7 +44,8 @@
             <ui:include src="groups.xhtml"/>
 
             <div style="width: 705px; text-align: right; margin-top: 20px;">
-                <p:commandButton value="Submit" update="mainPanel" actionListener="#{client.saveContent}"/>
+                <p:commandButton value="Submit" update="mainPanel" actionListener="#{client.saveContent}"
+                        onclick="marshallEditorData(); return true;"/>
             </div>
 
         </p:outputPanel>

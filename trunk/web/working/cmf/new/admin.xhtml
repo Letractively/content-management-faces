@@ -10,9 +10,32 @@
       xml:lang="en" lang="en">
 <h:head>
     <title>Content Management Faces</title>
+    <script type="text/javascript" src="../ckeditor/ckeditor_source.js"></script>
+    <script type="text/javascript" src="../CodeMirror-0.94/js/codemirror.js"></script>
+    <!--<script type="text/javascript" src="../CodeMirror-0.94/js/parsecss.js"></script>-->
+    <!--<link type="text/css" target="../CodeMirror-0.94/css/csscolors.css"/>-->
+    <!--<script type="text/javascript" src="../codeMirror2/mode/css/css.js"></script>-->
     <style type="text/css">
         p {
             text-indent: 24px;
+        }
+
+        .CodeMirror-line-numbers {
+            width: 35px;
+            color: #aaa;
+            background-color: #eee;
+            text-align: right;
+            padding-right: .3em;
+            font-size: 10pt;
+            font-family: monospace;
+            padding-top: .4em;
+            line-height: normal;
+            -moz-border-top-left-radius: 10px;
+            -webkit-border-top-left-radius: 10px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            -moz-border-bottom-left-radius: 10px;
+            -webkit-border-bottom-left-radius: 10px;
         }
         .treeNodeButton {
             height: 21px;
@@ -28,6 +51,24 @@
         }
         .delete {
             background-image: url('../admin/images/folder_delete.png') !important;
+        }
+        .addContent {
+            background-image: url('../admin/images/document_add.png') !important;
+        }
+        .editContent {
+            background-image: url('../admin/images/document_edit.png') !important;
+        }
+        .deleteContent {
+            background-image: url('../admin/images/document_delete.png') !important;
+        }
+        .addStyle {
+            background-image: url('../admin/images/file_add.png') !important;
+        }
+        .editStyle {
+            background-image: url('../admin/images/file_edit.png') !important;
+        }
+        .deleteStyle {
+            background-image: url('../admin/images/file_delete.png') !important;
         }
         .ui-widget-content {
             border-radius: 7px;

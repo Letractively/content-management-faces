@@ -19,6 +19,8 @@
 
 package net.tralfamadore.cmf;
 
+import org.primefaces.model.TreeNode;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Vector;
@@ -28,10 +30,11 @@ import java.util.Vector;
  * Date: 1/18/11
  * Time: 11:42 PM
  */
-public abstract class BaseContent implements Serializable {
+public abstract class BaseContent implements Serializable, TreeContent {
     private String name;
     private Namespace namespace;
     private List<GroupPermissions> groupPermissionsList = new Vector<GroupPermissions>();
+    private TreeNode treeNode;
 
 
     public String getName() {
@@ -60,6 +63,16 @@ public abstract class BaseContent implements Serializable {
 
     public void setGroupPermissionsList(List<GroupPermissions> groupPermissionsList) {
         this.groupPermissionsList = groupPermissionsList;
+    }
+
+    @Override
+    public TreeNode getTreeNode() {
+        return treeNode;
+    }
+
+    @Override
+    public void setTreeNode(TreeNode treeNode) {
+        this.treeNode = treeNode;
     }
 
     @Override
