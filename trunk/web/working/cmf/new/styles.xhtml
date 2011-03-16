@@ -28,8 +28,22 @@
 <ui:composition>
     <p:outputPanel id="stylePanel">
         <p:fieldset legend="Styles" toggleable="true">
-
+            <ui:repeat value="#{client.currentContent.data.styles}" var="style">
+                <p:commandButton value="#{style.name}" update="mainPanel" actionListener="#{client.selectStyle}"
+                                 style="font-size: small; color: #8b0000;" oncomplete="showStylePanel(); return false;">
+                    <f:param name="namespace" value="#{style.namespace}"/>
+                    <f:param name="name" value="#{style.name}"/>
+                </p:commandButton>
+                 <p:commandButton image="removeStyle" styleClass="removeButton" update="mainPanel"
+                                  style="background: none; height: 15px; width: 15px; border: none; margin: 0; padding: 0; vertical-align: bottom;"
+                                  actionListener="#{client.removeStyle}" oncomplete="showCPanel(xhr, status, args); return false;">
+                     <f:param name="name" value="#{style.name}"/>
+                     <f:param name="namespace" value="#{style.namespace}"/>
+                 </p:commandButton>
+                <p:spacer width="18"/>
+            </ui:repeat>
         </p:fieldset>
     </p:outputPanel>
+
 </ui:composition>
 </html>

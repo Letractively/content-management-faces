@@ -22,6 +22,7 @@ package net.tralfamadore.client;
 import net.tralfamadore.cmf.*;
 import net.tralfamadore.config.CmfContext;
 import org.primefaces.component.picklist.PickList;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.NodeSelectEvent;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.DualListModel;
@@ -141,6 +142,7 @@ public class Client {
         selectedNode = currentContent = contentHolder.find(new ContentKey(name, namespace, "content"));
         Content content = (Content) currentContent.getData();
         editorContent = content == null? null : content.getContent();
+        addStyles(content == null ? new Vector<Style>() : content.getStyles());
     }
 
     public void selectStyle(ActionEvent event) {
@@ -235,6 +237,54 @@ public class Client {
             selectedNode = null;
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Content " + content.getFullName() + "." + content.getName() + " deleted.", ""));
+        }
+    }
+
+    public void applyStyle(ActionEvent event) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        Map requestMap = context.getExternalContext().getRequestParameterMap();
+        String value = (String)requestMap.get("namespace");
+        String name = (String)requestMap.get("name");
+        currentStyle = contentHolder.find(new ContentKey(name, value, "style"));
+        Content content = (Content) currentContent.getData();
+        Style style = (Style) currentStyle.getData();
+        if(!content.getStyles().contains(style)) {
+            content.getStyles().add(style);
+            contentManager.saveContent(content);
+        }
+        addStyles(content.getStyles());
+    }
+
+    public void removeStyle(ActionEvent event) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        Map requestMap = context.getExternalContext().getRequestParameterMap();
+        String value = (String)requestMap.get("namespace");
+        String name = (String)requestMap.get("name");
+        currentStyle = contentHolder.find(new ContentKey(name, value, "style"));
+        Content content = (Content) currentContent.getData();
+        Style style = (Style) currentStyle.getData();
+        if(content.getStyles().contains(style)) {
+            content.getStyles().remove(style);
+            contentManager.saveContent(content);
+        }
+        addStyles(content.getStyles());
+    }
+
+    public void deleteStyle(ActionEvent event) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        Map requestMap = context.getExternalContext().getRequestParameterMap();
+        String value = (String)requestMap.get("namespace");
+        String name = (String)requestMap.get("name");
+        selectedNode = currentStyle = contentHolder.find(new ContentKey(name, value, "style"));
+        if(!selectedNode.isLeaf())
+            return;
+        if(selectedNode != null) {
+            contentHolder.remove(new ContentKey(name, value, "style"));
+            Style style = (Style) selectedNode.getData();
+            contentManager.deleteStyle(style);
+            selectedNode = null;
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                    "Style " + style.getFullName() + "." + style.getName() + " deleted.", ""));
         }
     }
 
@@ -400,5 +450,13 @@ public class Client {
 
     public void setStyleEditorContent(String styleEditorContent) {
         this.styleEditorContent = styleEditorContent;
+    }
+
+    private void addStyles(List<Style> styles) {
+        StringBuffer buf = new StringBuffer();
+        for(Style style : styles)
+            buf.append(style.getStyle()).append("\n");
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+        requestContext.addCallbackParam("css", buf.toString());
     }
 }

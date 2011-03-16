@@ -24,208 +24,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="d252fcb5-7c5d-4bdd-bb3d-8158cf0997cd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/csharp/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/csharp/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/csharp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/freemarker/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/freemarker/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/freemarker" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/java/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/java/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/lua/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/lua/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/lua" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/ometa/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/ometa/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/ometa" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/php/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/php/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/plsql/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/plsql/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/plsql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/python/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/python/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/python" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/regex/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/regex/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/regex" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/scheme/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/scheme/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/scheme" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/sql/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/sql/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/xquery/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/xquery/js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/xquery" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/css/baboon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/css/baboon_vector.ai" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/css/people.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/clike" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/diff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/haskell" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/htmlmixed" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/javascript" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/bigtest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/compress.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/csharp/css/csharpcolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/csharp/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/csharp/js/parsecsharp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/csharp/js/tokenizecsharp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/freemarker/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/freemarker/css/freemarkercolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/freemarker/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/freemarker/js/parsefreemarker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/groovy/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/java/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/java/css/javacolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/java/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/java/js/parsejava.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/java/js/tokenizejava.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/lua/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/lua/css/luacolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/lua/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/lua/js/parselua.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/ometa/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/ometa/css/ometacolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/ometa/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/ometa/js/parseometa.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/ometa/js/tokenizeometa.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/php/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/php/css/phpcolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/php/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/php/js/parsephp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/php/js/parsephphtmlmixed.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/php/js/tokenizephp.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/plsql/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/plsql/css/plsqlcolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/plsql/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/plsql/js/parseplsql.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/python/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/python/css/pythoncolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/python/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/python/js/parsepython.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/regex/css/js-regexcolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/regex/css/regexcolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/regex/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/regex/js-regex.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/regex/js/parsejavascript_and_regex.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/regex/js/parseregex-unicode.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/regex/js/parseregex.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/scheme/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/scheme/css/schemecolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/scheme/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/scheme/js/parsescheme.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/scheme/js/tokenizescheme.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/sql/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/sql/css/sqlcolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/sql/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/sql/js/parsesql.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/xquery/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/xquery/css/xqcolors-dark.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/xquery/css/xqcolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/xquery/css/xqcolors2.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/xquery/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/xquery/js/parsexquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/contrib/xquery/js/tokenizexquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/css/csscolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/css/docs.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/css/font.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/css/jscolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/css/sparqlcolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/css/xmlcolors.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/csstest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/faq.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/googleb196c451afc2ee11.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/googlehostedservice.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/highlight.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/htmltest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/codemirror.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/editor.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/highlight.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/mirrorframe.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/parsecss.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/parsedummy.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/parsehtmlmixed.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/parsejavascript.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/parsesparql.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/parsexml.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/select.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/stringstream.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/tokenize.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/tokenizejavascript.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/undo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/unittests.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/js/util.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/jstest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/manual.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/mixedtest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/sparqltest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/story.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/unittests.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/xhtmltest.xhtml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/compress.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/demo/complete.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/demo/complete.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/demo/marker.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/demo/mustache.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/demo/resize.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/demo/search.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/docs.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/internals.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/lib/codemirror.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/lib/codemirror.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/lib/overlay.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/manual.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/clike/clike.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/clike/clike.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/clike/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/css/css.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/css/css.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/css/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/diff/diff.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/diff/diff.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/diff/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/haskell/haskell.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/haskell/haskell.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/haskell/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/htmlmixed/htmlmixed.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/htmlmixed/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/javascript/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/javascript/javascript.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/javascript/javascript.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/php/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/php/php.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/xml/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/xml/xml.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/mode/xml/xml.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/test/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/codeMirror2/test/test.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/new/addContent.xhtml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/new/addStyle.xhtml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/working/cmf/new/style.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/cmf/BaseContent.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/cmf/BaseContent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/ckeditor/config.js" afterPath="$PROJECT_DIR$/web/working/cmf/ckeditor/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/new/admin.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/admin.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/new/content.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/content.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/new/mainPanel.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/mainPanel.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/new/style.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/style.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/new/styles.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/styles.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/working/cmf/new/tree.xhtml" afterPath="$PROJECT_DIR$/web/working/cmf/new/tree.xhtml" />
     </list>
@@ -264,84 +67,6 @@
       </breakpoint>
       <breakpoint url="file://$USER_HOME$/src/primefaces/primefaces/src/main/java/org/primefaces/component/commandbutton/CommandButtonRenderer.java" line="36" class="org.primefaces.component.commandbutton.CommandButtonRenderer" package="org.primefaces.component.commandbutton">
         <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" line="223" class="net.tralfamadore.client.Client" package="net.tralfamadore.client">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" line="198" class="net.tralfamadore.client.Client" package="net.tralfamadore.client">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" line="146" class="net.tralfamadore.client.Client" package="net.tralfamadore.client">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" line="99" class="net.tralfamadore.client.Client" package="net.tralfamadore.client">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java" line="100" class="net.tralfamadore.client.ContentHolder" package="net.tralfamadore.client">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java" line="88" class="net.tralfamadore.client.ContentHolder" package="net.tralfamadore.client">
-        <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="SUSPEND_POLICY" value="SuspendAll" />
@@ -401,8 +126,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="exception_breakpoints_groupByClasses" value="true" />
+      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -414,18 +139,30 @@
       <file leaf-file-name="tree.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/working/cmf/new/tree.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="0" selection-start="8641" selection-end="8641" vertical-scroll-proportion="-0.5714286">
+            <state line="86" column="0" selection-start="5616" selection-end="5616" vertical-scroll-proportion="-0.5714286">
+              <folding>
+                <marker date="1300249035000" expanded="true" signature="1495:1513" placeholder="{...}" />
+                <marker date="1300249035000" expanded="true" signature="5867:5882" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xhtml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/working/cmf/new/styles.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="72" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.53481895">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.xhtml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="style.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/working/cmf/new/style.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="0" selection-start="1603" selection-end="1603" vertical-scroll-proportion="0.60167134">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding>
-                <marker date="1300168485000" expanded="true" signature="1507:1535" placeholder="{...}" />
+                <marker date="1300174213000" expanded="true" signature="1507:1535" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -434,10 +171,8 @@
       <file leaf-file-name="Client.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="0" selection-start="4564" selection-end="4564" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="218" column="0" selection-start="9027" selection-end="9027" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -447,7 +182,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding>
-                <marker date="1299821376000" expanded="true" signature="1494:1508" placeholder="{...}" />
+                <marker date="1300174184000" expanded="true" signature="1494:1508" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -456,7 +191,7 @@
       <file leaf-file-name="admin.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/working/cmf/admin/resources/admin.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="135" column="0" selection-start="3549" selection-end="3549" vertical-scroll-proportion="0.0">
+            <state line="123" column="0" selection-start="3304" selection-end="3304" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -465,7 +200,7 @@
       <file leaf-file-name="admin.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/working/cmf/admin/resources/admin.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="216" column="0" selection-start="6093" selection-end="6093" vertical-scroll-proportion="0.0">
+            <state line="232" column="0" selection-start="6646" selection-end="6646" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -474,7 +209,7 @@
       <file leaf-file-name="index.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/working/cmf/admin/index.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="411" selection-end="411" vertical-scroll-proportion="-0.5714286">
+            <state line="25" column="0" selection-start="1103" selection-end="1103" vertical-scroll-proportion="-0.5714286">
               <folding>
                 <marker date="1298612441000" expanded="true" signature="3384:3406" placeholder="{...}" />
                 <marker date="1298612441000" expanded="true" signature="4618:4631" placeholder="{...}" />
@@ -492,14 +227,27 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="htmlEditor.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/working/cmf/admin/htmlEditor.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="0" selection-start="550" selection-end="550" vertical-scroll-proportion="-0.5714286">
+              <folding>
+                <marker date="1298613975000" expanded="true" signature="1388:1400" placeholder="{...}" />
+                <marker date="1298613975000" expanded="true" signature="3927:3968" placeholder="{...}" />
+                <marker date="1298613975000" expanded="true" signature="4229:4248" placeholder="{...}" />
+                <marker date="1298613975000" expanded="true" signature="6091:6105" placeholder="{...}" />
+                <marker date="1298613975000" expanded="true" signature="6803:6817" placeholder="{...}" />
+                <marker date="1298613975000" expanded="true" signature="6974:7032" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="addStyle.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/working/cmf/new/addStyle.xhtml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding>
-                <marker date="1300160753000" expanded="true" signature="1474:1492" placeholder="{...}" />
-                <marker date="1300160753000" expanded="true" signature="1662:1680" placeholder="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -516,7 +264,7 @@
       <file leaf-file-name="Template.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/Template.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="805" selection-end="805" vertical-scroll-proportion="0.0">
+            <state line="29" column="0" selection-start="913" selection-end="913" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -525,10 +273,8 @@
       <file leaf-file-name="ContentList.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/ContentList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="0" selection-start="854" selection-end="854" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="20" column="0" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -545,7 +291,7 @@
       <file leaf-file-name="BaseContent.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/BaseContent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="697" selection-end="697" vertical-scroll-proportion="0.0">
+            <state line="10" column="0" selection-start="365" selection-end="365" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -560,19 +306,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.xhtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/working/cmf/new/styles.xhtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ContentHolder.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="0" selection-start="1585" selection-end="1585" vertical-scroll-proportion="0.0">
+            <state line="48" column="0" selection-start="1495" selection-end="1495" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -581,11 +318,8 @@
       <file leaf-file-name="addContent.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/working/cmf/new/addContent.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding>
-                <marker date="1300156039000" expanded="true" signature="1480:1498" placeholder="{...}" />
-                <marker date="1300156039000" expanded="true" signature="1668:1686" placeholder="{...}" />
-              </folding>
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -593,7 +327,7 @@
       <file leaf-file-name="mainPanel.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/working/cmf/new/mainPanel.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -602,15 +336,8 @@
       <file leaf-file-name="htmlEditor.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/working/cmf/new/htmlEditor.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="371" selection-end="371" vertical-scroll-proportion="-0.5714286">
-              <folding>
-                <marker date="1298842566000" expanded="true" signature="1567:1579" placeholder="{...}" />
-                <marker date="1298842566000" expanded="true" signature="4370:4411" placeholder="{...}" />
-                <marker date="1298842566000" expanded="true" signature="4712:4731" placeholder="{...}" />
-                <marker date="1298842566000" expanded="true" signature="6838:6852" placeholder="{...}" />
-                <marker date="1298842566000" expanded="true" signature="7622:7636" placeholder="{...}" />
-                <marker date="1298842566000" expanded="true" signature="7801:7859" placeholder="{...}" />
-              </folding>
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -629,22 +356,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web/working/cmf/new/admin.js" />
-        <option value="$PROJECT_DIR$/web/working/cmf/ckeditor/config.js" />
         <option value="$PROJECT_DIR$/web/working/cmf/new/addContent.xhtml" />
         <option value="$PROJECT_DIR$/src/net/tralfamadore/cmf/ContentList.java" />
         <option value="$PROJECT_DIR$/src/net/tralfamadore/cmf/BaseContent.java" />
         <option value="$PROJECT_DIR$/src/net/tralfamadore/cmf/Template.java" />
         <option value="$PROJECT_DIR$/web/working/cmf/new/addStyle.xhtml" />
-        <option value="$PROJECT_DIR$/web/working/cmf/new/styles.xhtml" />
         <option value="$PROJECT_DIR$/web/working/cmf/codeMirror2/compress.html" />
         <option value="$PROJECT_DIR$/web/working/cmf/new/mainPanel.xhtml" />
         <option value="$PROJECT_DIR$/web/working/cmf/CodeMirror-0.94/bigtest.html" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java" />
+        <option value="$PROJECT_DIR$/web/working/cmf/new/content.xhtml" />
+        <option value="$PROJECT_DIR$/web/working/cmf/new/style.xhtml" />
+        <option value="$PROJECT_DIR$/web/working/cmf/admin/resources/admin.js" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" />
         <option value="$PROJECT_DIR$/web/working/cmf/new/admin.xhtml" />
         <option value="$PROJECT_DIR$/web/working/cmf/new/tree.xhtml" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java" />
-        <option value="$PROJECT_DIR$/web/working/cmf/new/style.xhtml" />
+        <option value="$PROJECT_DIR$/web/working/cmf/new/styles.xhtml" />
       </list>
     </option>
   </component>
@@ -709,8 +436,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Favorites" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -740,54 +467,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cmf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="content-management-faces" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="working" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cmf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cmf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="content-management-faces" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="working" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cmf" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -880,19 +559,19 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="248" />
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="240" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="248" />
     <property name="project.structure.last.edited" value="Libraries" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="240" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="55" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="252" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="252" />
     <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
     <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
     <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="212" />
@@ -908,26 +587,26 @@
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth4" value="1046" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/lib" />
+    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="options.lastSelected" value="preferences.updates" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
-    <property name="DefaultHtmlFileTemplate" value="Xhtml" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="false" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="DefaultHtmlFileTemplate" value="Xhtml" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
-    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -1543,7 +1222,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1200" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23944415" sideWeight="0.6703704" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942238" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
@@ -1566,7 +1245,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32222223" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962963" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942238" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1667,20 +1346,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/working/cmf/new/admin.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/BaseContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="697" selection-end="697" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/Script.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1690,16 +1355,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/ContentList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="854" selection-end="854" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="20" column="0" selection-start="804" selection-end="804" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/Template.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="805" selection-end="805" vertical-scroll-proportion="0.0">
+        <state line="29" column="0" selection-start="913" selection-end="913" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1713,10 +1376,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/working/cmf/new/addStyle.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/working/cmf/admin/htmlEditor.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="550" selection-end="550" vertical-scroll-proportion="-0.5714286">
           <folding>
-            <marker date="1300160753000" expanded="true" signature="1474:1492" placeholder="{...}" />
-            <marker date="1300160753000" expanded="true" signature="1662:1680" placeholder="{...}" />
+            <marker date="1298613975000" expanded="true" signature="1388:1400" placeholder="{...}" />
+            <marker date="1298613975000" expanded="true" signature="3927:3968" placeholder="{...}" />
+            <marker date="1298613975000" expanded="true" signature="4229:4248" placeholder="{...}" />
+            <marker date="1298613975000" expanded="true" signature="6091:6105" placeholder="{...}" />
+            <marker date="1298613975000" expanded="true" signature="6803:6817" placeholder="{...}" />
+            <marker date="1298613975000" expanded="true" signature="6974:7032" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -1730,7 +1404,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/working/cmf/admin/index.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="411" selection-end="411" vertical-scroll-proportion="-0.5714286">
+        <state line="25" column="0" selection-start="1103" selection-end="1103" vertical-scroll-proportion="-0.5714286">
           <folding>
             <marker date="1298612441000" expanded="true" signature="3384:3406" placeholder="{...}" />
             <marker date="1298612441000" expanded="true" signature="4618:4631" placeholder="{...}" />
@@ -1740,56 +1414,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/working/cmf/admin/resources/admin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="216" column="0" selection-start="6093" selection-end="6093" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/working/cmf/new/content.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1299821376000" expanded="true" signature="1494:1508" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/working/cmf/new/tree.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="0" selection-start="8641" selection-end="8641" vertical-scroll-proportion="-0.5714286">
+        <state line="232" column="0" selection-start="6646" selection-end="6646" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/working/cmf/admin/resources/admin.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="0" selection-start="3549" selection-end="3549" vertical-scroll-proportion="0.0">
+        <state line="123" column="0" selection-start="3304" selection-end="3304" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/ContentHolder.java">
+    <entry file="file://$PROJECT_DIR$/web/working/cmf/new/content.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="0" selection-start="1585" selection-end="1585" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+          <folding>
+            <marker date="1300174184000" expanded="true" signature="1494:1508" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="0" selection-start="4564" selection-end="4564" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="218" column="0" selection-start="9027" selection-end="9027" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/working/cmf/new/style.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="1603" selection-end="1603" vertical-scroll-proportion="0.60167134">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1300168485000" expanded="true" signature="1507:1535" placeholder="{...}" />
+            <marker date="1300174213000" expanded="true" signature="1507:1535" placeholder="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/working/cmf/new/admin.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/working/cmf/new/tree.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="0" selection-start="5616" selection-end="5616" vertical-scroll-proportion="-0.5714286">
+          <folding>
+            <marker date="1300249035000" expanded="true" signature="1495:1513" placeholder="{...}" />
+            <marker date="1300249035000" expanded="true" signature="5867:5882" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/working/cmf/new/styles.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="72" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.53481895">
+          <folding />
         </state>
       </provider>
     </entry>

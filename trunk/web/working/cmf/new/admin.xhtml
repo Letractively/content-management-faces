@@ -15,6 +15,37 @@
     <!--<script type="text/javascript" src="../CodeMirror-0.94/js/parsecss.js"></script>-->
     <!--<link type="text/css" target="../CodeMirror-0.94/css/csscolors.css"/>-->
     <!--<script type="text/javascript" src="../codeMirror2/mode/css/css.js"></script>-->
+      <script type="text/javascript">
+        function showCPanel(xhr, status, args) {
+            hideCurrentPanel();
+            currentPanel = jQuery(contentClientId);
+            currentPanel.show();
+            if(theEditor != null) {
+                CKEDITOR.remove(theEditor);
+                theEditor = null;
+            }
+            try {
+                var css = null;
+                if(args != null) {
+                    css = args.css;
+                }
+
+                var editorId = jQuery(editorClientId);
+                var ed = editorId.get();
+                ed = ed[0];
+                CKEDITOR.on('instanceCreated', function(e) {
+                    var editor = e.editor;
+                    editor._.styles = [];
+                    editor.addCss(css);
+                });
+                theEditor = CKEDITOR.replace(ed, {
+                    toolbar : 'Cmf'
+                });
+            } catch(err) {
+                alert(err);
+            }
+        }
+    </script>
     <style type="text/css">
         p {
             text-indent: 24px;
@@ -36,6 +67,9 @@
             border-bottom-left-radius: 10px;
             -moz-border-bottom-left-radius: 10px;
             -webkit-border-bottom-left-radius: 10px;
+        }
+        .removeButton {
+
         }
         .treeNodeButton {
             height: 21px;
@@ -69,6 +103,12 @@
         }
         .deleteStyle {
             background-image: url('../admin/images/file_delete.png') !important;
+        }
+        .applyStyle {
+            background-image: url('../admin/images/direction_right.png') !important;
+        }
+        .removeStyle {
+            background-image: url('../admin/images/style_delete.png') !important;
         }
         .ui-widget-content {
             border-radius: 7px;
