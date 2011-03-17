@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+<h:head>
+    <title>Content Management Faces</title>
+    <h:outputStylesheet library="cmf/admin/resources" name="admin.css" />
+    <h:outputScript library="cmf/admin/resources" name="jquery-1.4.4.min.js" />
+    <h:outputScript library="cmf/admin/resources" name="admin.js" />
+    <style type="text/css">
+        .checkbox, .radio {
+            width: 19px;
+            height: 25px;
+            padding: 0 5px 0 0;
+            background: url(images/checkbox.png) no-repeat;
+            display: block;
+            clear: left;
+            float: left;
+        }
+        .gg {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="../codeMirror/js/codemirror.js"></script>
+    <script type="text/javascript" src="resources/ezmark/js/jquery.ezmark.js"></script>
+    <link type="text/css" rel="stylesheet" media="all" href="resources/ezmark/css/ezmark.css"/>
+    <script type="text/javascript">
+        $('input').ezMark();
+    </script>
+</h:head>
+<h:body>
+    <f:view contentType="text/html">
+        <h:form prependId="false" id="theForm">
+            <f:phaseListener binding="#{admin.thePhaseListener}"/>
+            <table style="width: 100%; border-spacing: 10px;">
+                <tr>
+                    <!-- Title -->
+                    <td colspan="2" style="text-align: center; padding: 10px;" class="tableCell">
+                        <div class="header" onclick="showEditorAndHideNamespace(); hideEditor(); return false;">
+                            <div class="headerWord">Content</div>
+                            <div class="headerWord">Management</div>
+                            <div class="headerWord">Faces</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- Left pane -->
+                    <td class="tableCell leftPane">
+                        <h:commandButton id="emptyPathButton" actionListener="#{admin.selectNamespace}"
+                                         class="thePathButton" image="images/folder_add.png" alt="add folder"
+                                         style="padding: 6px 7px 10px;">
+                            <f:ajax execute="permissionTable" render="in namespace permissionTable" onevent="hideEditorAndShowNamespace"/>
+                        </h:commandButton>
+
+                        <!-- Tree -->
+                        <ui:include src="tree.xhtml"/>
+                    </td>
+
+                    <!-- Right pane -->
+                    <td class="tableCell rightPane" style="padding-bottom:20px;">
+                        <h:messages id="messages"/>
+
+                        <!-- Html Editor -->
+                        <ui:include src="htmlEditor.xhtml"/>
+
+                        <!-- Namespace -->
+                        <ui:include src="addNamespace.xhtml"/>
+
+                        <!-- Content -->
+                        <ui:include src="addContent.xhtml"/>
+
+                        <!-- Style -->
+                        <ui:include src="addStyle.xhtml"/>
+
+                        <!-- Css Editor -->
+                        <ui:include src="cssEditor.xhtml"/>
+
+                        <!-- Configure emedded db -->
+                        <ui:include src="configDb.xhtml"/>
+
+                        <h:outputText id="currentStyles" value="#{editor.currentStyles}" style="display: none"/>
+                    </td>
+                </tr>
+            </table>
+            <ui:debug/>
+        </h:form>
+    </f:view>
+</h:body>
+</html>

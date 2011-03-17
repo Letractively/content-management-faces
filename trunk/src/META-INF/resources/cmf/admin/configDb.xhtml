@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+<ui:composition>
+    <h:panelGroup id="configDb" rendered="#{admin.embeddedDbNeedsConfig}">
+        <div style="margin: 10px;">
+            <div style="text-align: center; font-size: 24pt; font-weight: bold;">Embedded Database Properties</div>
+            <p style="text-indent: 30px;">
+                You're running the derby embedded database.  Currently, it's running in memory mode, which means
+                you'll lose your changes the next time you shutdown/restart/redeploy your app.  If you're using
+                this for testing or development purposes, this may be fine, otherwise you'll probably want derby to
+                run in directory mode and persist the information into the directory you set up below:
+            </p>
+            <fieldset class="contentFieldset" style=" width: 500px; height: 150px; margin: 0; position: relative; left: 15%;">
+                <legend style="text-align: center;">Derby Data Directory</legend>
+                <table>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <h:outputLabel for="derbyPath" value="Directory Path: "/>
+                                    </td>
+                                    <td>
+                                        <h:inputText id="derbyPath" value="#{admin.derbyPath}" style="width: 250px;"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td style="margin-left: 20px; padding-left: 20px; vertical-align: bottom;">
+                            <h:commandButton id="submitDerbyPath" class="theButton" value="Submit"
+                                             style="text-align: right;" actionListener="#{admin.createEmbeddedDb}">
+                                <f:ajax execute="derbyPath" onevent="showConfigSuccess"
+                                        render="configDb configDbSuccess derbySuccessPath messages theTree"/>
+
+                            </h:commandButton>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center; line-height: 80%;">
+                            <p style="font-size: small;">
+                                * Please enter valid a file system path.  The directory will be created if it does not
+                                already exist (the parent directory must exist).  Derby will put about a half dozen
+                                files in this directory.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <p style="text-indent: 30px;">
+                If you'd like to hook Content Management Faces up to a jdbc data source (postgres, mysql, oracle,
+                etc), please edit the cmf-config file and redeploy your app.
+            </p>
+        </div>
+    </h:panelGroup>
+
+    <h:panelGroup id="configDbSuccess" style="display: none;">
+        <div style="margin: 10px;">
+            <div style="text-align: center; font-size: 24pt; font-weight: bold;">Success!</div>
+            <p style="margin-top: 30px;">
+                Your database is configured.  All data will be written to the directory:
+                <h:outputText id="derbySuccessPath" value="#{admin.derbyPath}"/>
+            </p>
+            <p>
+                The persistence-properties section of your WEB-INF/cmf-config.xml has been updated with:<br/>
+                <code style="font-size: small;">
+                    &lt;persistence-properties&gt;<br/>
+                        &nbsp;&nbsp;&lt;persistence-property&gt;<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;javax.persistence.jdbc.driver&lt;/name&gt;<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;org.apache.derby.jdbc.EmbeddedDriver&lt;/value&gt;<br/>
+                        &nbsp;&nbsp;&lt;/persistence-property&gt;<br/>
+                        &nbsp;&nbsp;&lt;persistence-property&gt;<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;javax.persistence.jdbc.url&lt;/name&gt;<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;jdbc:derby:#{admin.derbyPath}&lt;/value&gt;<br/>
+                        &nbsp;&nbsp;&lt;/persistence-property&gt;<br/>
+                    &lt;/persistence-properties&gt;
+                </code>
+            </p>
+        </div>
+    </h:panelGroup>
+</ui:composition>
+</html>
