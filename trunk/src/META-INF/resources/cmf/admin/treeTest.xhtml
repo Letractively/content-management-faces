@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+<h:head>
+    <title></title>
+    <style type="text/css">
+        .add {
+            background-image: url('../admin/images/folder_add.png') !important;
+        }
+        .edit {
+            background-image: url('../admin/images/folder_empty.png') !important;
+        }
+        .groups {
+            background-image: url('../admin/images/file_add.png') !important;
+        }
+        .treeNodeButton {
+        }
+    </style>
+</h:head>
+<h:body>
+    <f:view contentType="text/html">
+        <h:form>
+            <p:growl id="messages" showDetail="true"/>
+            <p:commandButton id="add" image="add" styleClass="treeNodeButton" value="Add"
+                             update="namespacePanelForm scroller" actionListener="#{client.selectNamespace}" title="Add Namespace"
+                             oncomplete="showNamespacePanel(); return false;">
+                <f:param name="namespace" value="#{node}"/>
+            </p:commandButton>
+            <p:spacer width="6"/>
+            <p:commandButton styleClass="treeNodeButton" image="edit" value="Edit"
+                             update="thePanel scroller" actionListener="#{client.selectNamespace}" title="Edit Content"
+                             oncomplete="showContentPanel(); return false;">
+                <f:param name="namespace" value="#{node}"/>
+            </p:commandButton>
+            <p:commandButton styleClass="treeNodeButton" image="groups" value="Groups"
+                             update="thePanel scroller" actionListener="#{client.selectNamespace}" title="Edit Content"
+                             oncomplete="showContentPanel(); return false;">
+                <f:param name="namespace" value="#{node}"/>
+            </p:commandButton>
+            <p:tree value="#{client.rootNode}" var="node"
+                    selectionMode="single" selection="#{client.selectedNode}"
+                    expanded="true" onSelectUpdate="messages" nodeSelectListener="#{client.nodeSelected}"
+                    >
+                <p:treeNode type="namespace">
+                    <h:outputText value="#{node.nodeName}" style="font-weight: bold;"/>
+                </p:treeNode>
+
+                <p:treeNode type="content">
+                    <h:outputText value="#{node.name}"/>
+                </p:treeNode>
+
+                <p:treeNode type="style">
+                    <h:outputText value="#{node.name}" style="color: #8b0000;"/>
+                </p:treeNode>
+            </p:tree>
+        </h:form>
+    </f:view>
+</h:body>
+</html>
+
