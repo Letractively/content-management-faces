@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -10,12 +29,10 @@
       xml:lang="en" lang="en">
 <h:head>
     <title>Content Management Faces</title>
+    <link type="text/css" rel="stylesheet" href="../st-marie-fontfacekit/stylesheet.css" charset="utf-8"/>
     <script type="text/javascript" src="../ckeditor/ckeditor_source.js"></script>
-    <script type="text/javascript" src="../CodeMirror-0.94/js/codemirror.js"></script>
-    <!--<script type="text/javascript" src="../CodeMirror-0.94/js/parsecss.js"></script>-->
-    <!--<link type="text/css" target="../CodeMirror-0.94/css/csscolors.css"/>-->
-    <!--<script type="text/javascript" src="../codeMirror2/mode/css/css.js"></script>-->
-      <script type="text/javascript">
+    <h:outputScript library="cmf/CodeMirror-0.94/js" name="codemirror.js"/>
+    <script type="text/javascript">
         function showCPanel(xhr, status, args) {
             hideCurrentPanel();
             currentPanel = jQuery(contentClientId);
@@ -46,7 +63,6 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="../st-marie-fontfacekit/stylesheet.css" type="text/css" charset="utf-8"/>
     <style type="text/css">
         p {
             text-indent: 24px;
@@ -138,6 +154,7 @@
             position: relative;
             top: -22px;
             text-shadow: #333 2px 2px 2px;
+            font-weight: bolder;
         }
     </style>
 </h:head>
