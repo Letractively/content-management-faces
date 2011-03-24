@@ -61,7 +61,7 @@
                         <p:selectOneMenu id="picker" value="#{client.selectedGroup}" height="200" widgetVar="sm"
                                          style="width: 150px;" label="Add a group">
                             <p:ajax update="picker"/>
-                            <f:selectItem itemLabel="Add Group" itemValue=""/>
+                            <f:selectItem itemLabel="Add Group" itemValue="Add Group" noSelectionOption="true"/>
                             <f:selectItems value="#{client.allGroups}" var="group" itemLabel="#{group}"
                                            itemValue="#{group}"/>
                         </p:selectOneMenu>

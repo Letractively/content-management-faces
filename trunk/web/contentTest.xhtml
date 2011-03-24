@@ -22,7 +22,9 @@
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:cmf="http://tralfamadore.net/cmf"
       xml:lang="en" lang="en">
 <h:head>
@@ -30,10 +32,20 @@
 </h:head>
 <h:body>
     <h:form>
-        <cmf:content id="theContent" name="article" namespace="net.tralfamadore.site.page1">
+        <cmf:content id="theContent" name="article" namespace="net.tralfamadore.site.page1" var="content">
+            <ui:remove>
+                <f:facet name="header">
+                    author <h:outputText value="#{client.selectedGroup}"/>  |  posted <h:outputText value="#{content.dateCreated}"/>
+                </f:facet>
+            </ui:remove>
             default content
+            <ui:remove>
+                <f:param name="name" value="#{client.selectedGroup}"/>
+            </ui:remove>
         </cmf:content>
-        <h:commandButton id="resetDb" actionListener="#{admin.resetDb}" value="Reset Database"/>
+        <ui:remove>
+            <h:commandButton id="resetDb" actionListener="#{admin.resetDb}" value="Reset Database"/>
+        </ui:remove>
     </h:form>
 </h:body>
 </html>

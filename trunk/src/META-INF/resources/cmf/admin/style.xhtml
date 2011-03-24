@@ -39,8 +39,8 @@
             <ui:include src="groups.xhtml"/>
 
             <div style="text-align: right; margin-top: 20px;">
-                <p:commandButton value="Submit" update="mainPanel" actionListener="#{client.saveStyle}"
-                                 onclick="marshallStyleEditorData(); return true;"/>
+                <p:commandButton value="Submit" update="mainPanel treeForm stylePanel theEditor" actionListener="#{client.saveStyle}"
+                                 onclick="marshallStyleEditorData();"/>
             </div>
 
         </p:outputPanel>

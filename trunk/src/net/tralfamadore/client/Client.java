@@ -253,6 +253,8 @@ public class Client {
             contentManager.saveContent(content);
         }
         addStyles(content.getStyles());
+        ((Content) currentContent.getData()).setStyles(content.getStyles());
+        createTreeModel(new ActionEvent(pickList));
     }
 
     public void removeStyle(ActionEvent event) {
@@ -268,6 +270,8 @@ public class Client {
             contentManager.saveContent(content);
         }
         addStyles(content.getStyles());
+        ((Content) currentContent.getData()).setStyles(content.getStyles());
+        createTreeModel(new ActionEvent(pickList));
     }
 
     public void deleteStyle(ActionEvent event) {
