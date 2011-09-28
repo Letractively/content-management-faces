@@ -19,6 +19,10 @@
 
 package net.tralfamadore.client;
 
+import com.google.code.ckJsfEditor.Toolbar;
+import com.google.code.ckJsfEditor.ToolbarButtonGroup;
+import com.google.code.ckJsfEditor.ToolbarItem;
+import com.google.code.ckJsfEditor.component.SaveEvent;
 import net.tralfamadore.cmf.*;
 import net.tralfamadore.config.CmfContext;
 import org.primefaces.component.picklist.PickList;
@@ -46,6 +50,7 @@ import java.util.Vector;
 @ManagedBean
 @SessionScoped
 public class Client {
+    private Toolbar editorToolbar;
     private String filter;
     private TreeNode rootNode;
     private List<GroupPermissions> groupData;
@@ -76,6 +81,18 @@ public class Client {
 
         groupData = new Vector<GroupPermissions>();
         allGroups = ((JpaContentManager)contentManager).getAllGroups();
+
+        editorToolbar = new Toolbar(
+                ToolbarButtonGroup.DOCUMENT.remove(ToolbarItem.SAVE).remove(ToolbarItem.NEW_PAGE),
+                ToolbarButtonGroup.CLIPBOARD,
+                ToolbarButtonGroup.EDITING,
+                ToolbarButtonGroup.COLORS.item(ToolbarItem.BREAK),
+                ToolbarButtonGroup.PARAGRAPH,
+                ToolbarButtonGroup.INSERT.remove(ToolbarItem.FLASH).remove(ToolbarItem.IFRAME),
+                ToolbarButtonGroup.LINKS.item(ToolbarItem.BREAK),
+                ToolbarButtonGroup.STYLES,
+                ToolbarButtonGroup.TOOLS
+                );
     }
 
     /**
@@ -100,6 +117,16 @@ public class Client {
         for(Style style : styles) {
             contentHolder.add(style);
         }
+
+        Namespace namespace = new Namespace(null, "com");
+        contentHolder.add(namespace);
+        namespace = new Namespace(namespace, "google");
+        contentHolder.add(namespace);
+        Content content = new Content();
+        content.setName("page");
+        content.setContent("Some content");
+        content.setNamespace(namespace);
+        contentHolder.add(content);
     }
 
     public void selectNamespace(ActionEvent event) {
@@ -189,12 +216,17 @@ public class Client {
                 "Namespace " + namespace.getFullName() + " saved successfully.", ""));
     }
 
-    public void saveContent(ActionEvent event) {
+    public void saveContent(SaveEvent event) {
+        try {
         Content content = (Content) currentContent.getData();
-        content.setContent(editorContent);
+        content.setContent(event.getEditorData());
         contentManager.saveContent(content);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Content " + content.getName() + " saved successfully.", ""));
+        } catch(Exception e) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                    "Content [" + event.getEditorData() + "] saved successfully.", ""));
+        }
     }
 
     public void saveStyle(ActionEvent event) {
@@ -456,8 +488,16 @@ public class Client {
         this.styleEditorContent = styleEditorContent;
     }
 
+    public Toolbar getEditorToolbar() {
+        return editorToolbar;
+    }
+
+    public void setEditorToolbar(Toolbar editorToolbar) {
+        this.editorToolbar = editorToolbar;
+    }
+
     private void addStyles(List<Style> styles) {
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for(Style style : styles)
             buf.append(style.getStyle()).append("\n");
         RequestContext requestContext = RequestContext.getCurrentInstance();

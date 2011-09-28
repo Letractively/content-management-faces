@@ -31,11 +31,11 @@ import java.util.Map;
  * Time: 12:37 AM
  */
 public class CmfELResolver extends ELResolver {
-    public static class CMF {
-        public Map<Object,Object> cmf = new HashMap<Object, Object>();
-    }
+    private Map<Object,Object> cmf = new HashMap<Object, Object>();
 
-    CMF cmf = new CMF();
+    public CmfELResolver() {
+        cmf.put("poo", "poooooo!");
+    }
 
     @Override
     public Object getValue(ELContext elContext, Object base, Object property)
@@ -48,6 +48,7 @@ public class CmfELResolver extends ELResolver {
         if(base == null) {
             if("cmf".equals(property)) {
                 System.out.println("cmf motherfucker");
+                elContext.setPropertyResolved(true);
                 return cmf;
             } else {
                 return null;
@@ -77,10 +78,14 @@ public class CmfELResolver extends ELResolver {
     public void setValue(ELContext elContext, Object base, Object property, Object value)
             throws NullPointerException, PropertyNotFoundException, PropertyNotWritableException, ELException
     {
-//        System.out.println("setValue");
-//        System.out.println("base: (" + (base == null ? "" : base.getClass().getSimpleName()) + " " + base);
-//        System.out.println("property: (" + (property == null ? "" : property.getClass().getSimpleName()) + " " + property);
+        System.out.println("setValue");
+        System.out.println("base: (" + (base == null ? "" : base.getClass().getSimpleName()) + " " + base);
+        System.out.println("property: (" + (property == null ? "" : property.getClass().getSimpleName()) + " " + property);
         System.out.println("value: (" + (value == null ? "" : value.getClass().getSimpleName()) + " " + value);
+        if("cmf".equals(base)) {
+            cmf.put(property, value);
+            elContext.setPropertyResolved(true);
+        }
     }
 
     @Override
