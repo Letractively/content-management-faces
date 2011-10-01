@@ -27,6 +27,7 @@ import net.tralfamadore.cmf.*;
 import net.tralfamadore.config.CmfContext;
 import org.primefaces.component.picklist.PickList;
 import org.primefaces.context.RequestContext;
+import org.primefaces.event.DragDropEvent;
 import org.primefaces.event.NodeSelectEvent;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.DualListModel;
@@ -35,8 +36,10 @@ import org.primefaces.model.TreeNode;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.AjaxBehaviorEvent;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -50,13 +53,16 @@ import java.util.Vector;
 @ManagedBean
 @SessionScoped
 public class Client {
+    private String contentCss;
+    private String incomingNamespace;
+    private String incomingContentName;
     private Toolbar editorToolbar;
     private String filter;
     private TreeNode rootNode;
     private List<GroupPermissions> groupData;
     private List<String> allGroups;
     private DualListModel<GroupPermissions> groups;
-    private PickList pickList;
+    private PickList pickList = new PickList();
     private GroupPermissionsConverter converter = new GroupPermissionsConverter();
     private ContentHolder contentHolder;
     private ContentManager contentManager = CmfContext.getInstance().getContentManager();
@@ -216,6 +222,11 @@ public class Client {
                 "Namespace " + namespace.getFullName() + " saved successfully.", ""));
     }
 
+    public void save() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Content [" + editorContent + "] saved successfully.", ""));
+    }
+
     public void saveContent(SaveEvent event) {
         try {
         Content content = (Content) currentContent.getData();
@@ -292,18 +303,24 @@ public class Client {
     public void removeStyle(ActionEvent event) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
-        String value = (String)requestMap.get("namespace");
-        String name = (String)requestMap.get("name");
-        currentStyle = contentHolder.find(new ContentKey(name, value, "style"));
+        UIComponent component = (UIComponent) event.getSource();
+        String namespace = (String) component.getAttributes().get("namespace");
+        String name = (String) component.getAttributes().get("styleName");
+        currentStyle = contentHolder.find(new ContentKey(name, namespace, "style"));
         Content content = (Content) currentContent.getData();
         Style style = (Style) currentStyle.getData();
         if(content.getStyles().contains(style)) {
             content.getStyles().remove(style);
             contentManager.saveContent(content);
         }
-        addStyles(content.getStyles());
         ((Content) currentContent.getData()).setStyles(content.getStyles());
         createTreeModel(new ActionEvent(pickList));
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+        requestContext.addPartialUpdateTarget("theForm:acPanel");
+        requestContext.addPartialUpdateTarget("theForm:theTree");
+        requestContext.addPartialUpdateTarget("theForm:editor");
+        makeContentCss();
+        addStyles(content.getStyles());
     }
 
     public void deleteStyle(ActionEvent event) {
@@ -502,5 +519,109 @@ public class Client {
             buf.append(style.getStyle()).append("\n");
         RequestContext requestContext = RequestContext.getCurrentInstance();
         requestContext.addCallbackParam("css", buf.toString());
+    }
+
+    public String getIncomingNamespace() {
+        return incomingNamespace;
+    }
+
+    public void setIncomingNamespace(String incomingNamespace) {
+        this.incomingNamespace = incomingNamespace;
+    }
+
+    public String getIncomingContentName() {
+        return incomingContentName;
+    }
+
+    public void setIncomingContentName(String incomingContentName) {
+        this.incomingContentName = incomingContentName;
+    }
+
+    public void loadContents() {
+        TreeNode newContent = contentHolder.find(new ContentKey(incomingContentName, incomingNamespace, "content"));
+        if(newContent != null) {
+            newContent.setSelected(true);
+            if(currentContent != null)
+                currentContent.setSelected(false);
+            editorContent = ((Content)newContent.getData()).getContent();
+        } else {
+            editorContent = null;
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Content for namespace [" + incomingNamespace + "] and content name [" +
+                            incomingContentName + "] not found.", null));
+        }
+        currentContent = newContent;
+        selectedNode = currentContent;
+        makeContentCss();
+    }
+
+    private void makeContentCss() {
+        contentCss = "";
+        if(currentContent != null) {
+            for(Style style : ((Content)currentContent.getData()).getStyles())
+                contentCss =  contentCss + style.getStyle();
+        }
+        contentCss = contentCss.replace('\r', ' ');
+        contentCss = contentCss.replace('\n', ' ');
+    }
+
+    public void loadStyle() {
+        TreeNode newContent = contentHolder.find(new ContentKey(incomingContentName, incomingNamespace, "style"));
+        if(newContent != null) {
+            newContent.setSelected(true);
+            if(currentContent != null)
+                currentContent.setSelected(false);
+            styleEditorContent = ((Style)newContent.getData()).getStyle();
+        } else {
+            styleEditorContent = null;
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Style for namespace [" + incomingNamespace + "] and style name [" +
+                            incomingContentName + "] not found.", null));
+        }
+        currentContent = newContent;
+        selectedNode = currentContent;
+    }
+
+    public void styleDrop(DragDropEvent event) {
+        Map<String,String> paramMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        String namespace = paramMap.get("namespace");
+        String styleName = paramMap.get("styleName");
+        Style style = contentManager.loadStyle(new Namespace(namespace), styleName);
+        Content content = (Content) currentContent.getData();
+        if(!content.getStyles().contains(style)) {
+            content.getStyles().add(style);
+            contentManager.saveContent(content);
+
+            RequestContext requestContext = RequestContext.getCurrentInstance();
+            requestContext.addPartialUpdateTarget(event.getDropId());
+            requestContext.addPartialUpdateTarget("theForm:acPanel");
+            requestContext.addPartialUpdateTarget("theForm:acPanel:dropper");
+            requestContext.addPartialUpdateTarget("theForm:acPanel:slot");
+            requestContext.addPartialUpdateTarget("theForm:theTree");
+        }
+        addStyles(content.getStyles());
+    }
+
+    public boolean isCurrentContentHasStyles() {
+        List<Style> styles = ((Content) currentContent.getData()).getStyles();
+        return styles == null || styles.isEmpty();
+    }
+
+    public String getContentCss() {
+        return contentCss;
+    }
+
+    public void setContentCss(String contentCss) {
+        this.contentCss = contentCss;
+    }
+
+    public void permissionChanged(AjaxBehaviorEvent e) {
+        Object content = selectedNode.getData();
+        if(content instanceof Content)
+            contentManager.saveContent((Content)content);
+        else if(content instanceof Style)
+            contentManager.saveStyle((Style) content);
+        else if(content instanceof Namespace)
+            contentManager.saveNamespace((Namespace) content);
     }
 }

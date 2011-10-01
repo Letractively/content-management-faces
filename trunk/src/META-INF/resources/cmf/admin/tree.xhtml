@@ -27,24 +27,37 @@
       xml:lang="en" lang="en">
 <h:body>
     <ui:composition>
-            <p:tree id="theTree" value="#{client.rootNode}" var="node" dynamic="false" cache="false"
-                    style="width: 100%; min-height: 423px;">
+            <p:tree id="theTree" value="#{client.rootNode}" var="node" dynamic="true" cache="false"
+                    selectionMode="single"
+                    style="width: 80%; height80%; min-height: 423px;; margin-left: 20px; margin-top: 20px;">
                 <p:treeNode>
                     <h:outputText style="color: red;" value="#{node}"/>
                 </p:treeNode>
 
                 <p:treeNode type="namespace">
-                    <h:link outcome="/cmf/admin/namespace.jsf" includeViewParams="false">
-                        <f:param name="namespace" value="#{node.nodeName}"/>
+                    <h:link outcome="pretty:namespace" includeViewParams="false">
+                        <f:param name="namespace" value="#{node.fullName}"/>
                         <h:outputText value="#{node.nodeName}"/>
                     </h:link>
                 </p:treeNode>
 
-                <p:treeNode type="style">
-                    <h:link outcome="pretty:style"> <h:outputText value="#{node}"/></h:link> </p:treeNode>
+                <p:treeNode type="content" styleClass=" tree-node-content">
+                    <h:link outcome="pretty:content" style="font-weight: bold;">
+                        <f:param name="namespace" value="#{node.namespace.fullName}"/>
+                        <f:param name="contentName" value="#{node.name}"/>
+                        <h:outputText value="#{node.name}"/>
+                    </h:link>
+                </p:treeNode>
 
-                <p:treeNode type="content">
-                    <h:link outcome="/cmf/admin/content.jsf"><h:outputText value="#{node.name}"/></h:link>
+                <p:treeNode type="style" styleClass=" tree-node-style">
+                    <p:outputPanel id="moo">
+                        <p:draggable snap="true" revert="true" helper="clone" zindex="777" widgetVar="dragger"/>
+                        <h:link outcome="pretty:style">
+                            <f:param name="namespace" value="#{node.namespace.fullName}"/>
+                            <f:param name="styleName" value="#{node.name}"/>
+                            <h:outputText value="#{node.name}"/>
+                        </h:link>
+                    </p:outputPanel>
                 </p:treeNode>
             </p:tree>
     </ui:composition>

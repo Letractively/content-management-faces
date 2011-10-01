@@ -29,8 +29,89 @@
 <h:body>
     <ui:composition template="_template.xhtml">
         <ui:define name="body">
+            <div style="width: 90%; height: 100%; text-align: center; margin-left: 30px; margin-top: 20px;">
             <ck:editor style="padding: 15px;" value="#{client.editorContent}" height="300px" toolbar="#{client.editorToolbar}"
-                       saveMethod="#{client.saveContent}" render="messages"/>
+                       render="messages" uiColor="#d7ebf9" id="editor" widgetVar="theEditor"
+                       contentCss="#{client.contentCss}"/>
+            </div>
+
+            <p:spacer height="10px"/>
+
+            <p:spacer width="10%"/>
+            <p:button value="Cancel" outcome="pretty:content">
+                <f:param name="namespace" value="#{client.incomingNamespace}"/>
+                <f:param name="contentName" value="#{client.incomingContentName}"/>
+            </p:button>
+            <p:spacer height="10px" width="50%"/>
+            <p:commandButton value="Save" action="#{client.save}" update="messages"/>
+
+            <p:spacer height="10px"/>
+
+            <div style="width: 90%; height: 100%; text-align: center; margin-left: 30px; margin-top: 20px;">
+                <p:accordionPanel multiple="true" widgetVar="accord" id="acPanel" style="margin-bottom: 20px;">
+                    <p:tab title="Styles">
+                        <ui:include src="styles.xhtml"/>
+                    </p:tab>
+                    <p:tab title="Permissions">
+                        Permissions stuff...
+                        <p:dataTable id="groupData" value="#{client.groupData}" var="data" style="width: 90%;">
+                <p:column headerText="Group">
+                    <h:outputText value="#{data.group}"/>
+                </p:column>
+                <p:column headerText="View" style="width: 80px; text-align: center;" id="viewCol">
+                    <p:selectBooleanCheckbox value="#{data.canView}" id="viewCb" style="padding-left: 30px;">
+                        <p:ajax listener="#{client.permissionChanged}">
+                            <f:attribute name="groupName" value="#{data.group}"/>
+                        </p:ajax>
+                    </p:selectBooleanCheckbox>
+                </p:column>
+                <p:column headerText="Edit" style="width: 80px;">
+                    <p:selectBooleanCheckbox value="#{data.canEdit}" style="padding-left: 30px;">
+                        <p:ajax listener="#{client.permissionChanged}">
+                            <f:attribute name="groupName" value="#{data.group}"/>
+                        </p:ajax>
+                    </p:selectBooleanCheckbox>
+                </p:column>
+                <p:column headerText="Delete" style="width: 80px;">
+                    <p:selectBooleanCheckbox value="#{data.canDelete}" style="padding-left: 30px;">
+                        <p:ajax listener="#{client.permissionChanged}">
+                            <f:attribute name="groupName" value="#{data.group}"/>
+                        </p:ajax>
+                    </p:selectBooleanCheckbox>
+                </p:column>
+                <p:column headerText="Admin" style="width: 80px;">
+                    <p:selectBooleanCheckbox value="#{data.canAdmin}" style="padding-left: 30px;" disabled="true"/>
+                </p:column>
+                <p:column style="text-align: center;">
+                    <p:commandButton image="ui-icon-circle-close"/>
+                </p:column>
+            </p:dataTable>
+
+            <table style="width: 500px">
+                <tr>
+                    <td>
+                        <h:outputLabel value="Add a group" for="picker"/>
+                    </td>
+                    <td>
+                        <p:selectOneMenu id="picker" value="#{client.selectedGroup}" height="200" widgetVar="sm"
+                                         style="width: 150px;" label="Add a group">
+                            <p:ajax update="picker"/>
+                            <f:selectItem itemLabel="Add Group" itemValue="Add Group" noSelectionOption="true"/>
+                            <f:selectItems value="#{client.allGroups}" var="group" itemLabel="#{group}"
+                                           itemValue="#{group}"/>
+                        </p:selectOneMenu>
+                    </td>
+                    <td>
+                        <p:commandButton value="Add" actionListener="#{client.addGroupListener}" update="theForm:acPanel:groupData"/>
+                    </td>
+                </tr>
+            </table>
+                    </p:tab>
+                </p:accordionPanel>
+                <script type="text/javascript">
+                    accord.unselect(0);
+                </script>
+            </div>
         </ui:define>
     </ui:composition>
 </h:body>

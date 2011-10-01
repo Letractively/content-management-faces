@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+
+<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.0
+               http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.0.xsd">
+
+    <url-mapping id="base">
+        <pattern value="/cmf"/>
+        <view-id value="/cmf/admin/content.jsf"/>
+    </url-mapping>
+
+    <url-mapping id="slash">
+        <pattern value="/cmf/"/>
+        <view-id value="/cmf/admin/content.jsf"/>
+    </url-mapping>
+
+    <url-mapping id="content">
+        <pattern value="/cmf/admin/content/#{ namespace: client.incomingNamespace }/#{ contentName: client.incomingContentName }"/>
+        <view-id value="/cmf/admin/content.jsf"/>
+        <action>#{client.loadContents}</action>
+    </url-mapping>
+
+    <url-mapping id="namespace">
+        <pattern value="/cmf/admin/namespace/#{ namespace: client.incomingNamespace }"/>
+        <view-id value="/cmf/admin/namespace.jsf"/>
+    </url-mapping>
+
+    <url-mapping id="style">
+        <pattern value="/cmf/admin/style/#{ namespace: client.incomingNamespace }/#{ styleName: client.incomingContentName }"/>
+        <view-id value="/cmf/admin/style.jsf"/>
+        <action>#{client.loadStyle}</action>
+    </url-mapping>
+
+    <url-mapping id="namedContents">
+        <pattern value="/contents/admin/#{ cName: contents.name}"/>
+        <view-id value="/cmf/admin/contents.jsf"/>
+    </url-mapping>
+
+</pretty-config>

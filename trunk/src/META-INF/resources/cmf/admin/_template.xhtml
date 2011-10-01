@@ -32,25 +32,29 @@
         <h:outputStylesheet library="css/960" name="reset.css"/>
         <h:outputStylesheet library="css/960" name="text.css"/>
         <h:outputStylesheet library="css/960" name="960.css"/>
+        <h:outputStylesheet library="cmf/admin" name="admin.css"/>
+        <h:outputScript library="cmf/admin" name="admin.js"/>
         <style type="text/css">
             .boldClass {
                 font-weight: bold;
             }
         </style>
     </h:head>
-    <h:body>
-        <div class="container_16" style="border: thin gray solid; margin-top: 25px; min-height: 800px;">
-            <h:form>
-                <div class="grid_16" style="text-align: center; height: 100px">
-                    <h1>Content Management Faces</h1>
+    <h:body style="background-color: #e4f1fb;">
+        <div class="container_16" style="margin-top: 20px; min-height: 800px;">
+            <h:form id="theForm">
+                <div class="grid_16" style="text-align: center; height: 100px; background-color: #74b2e2; border-radius: 15px; margin-bottom: 10px;">
+                    <h1 style="padding-top: 10px;">Content Management Faces</h1>
+                    <div style="display: inline-block; position: relative; bottom: 25px;">
+                        <p:messages id="messages"/>
+                    </div>
                 </div>
                 <div class="clear"></div>
 
-                <div class="grid_5">
+                <div class="grid_5" style="background-color: #74b2e2; border-radius: 15px; height: 100%; min-height: 700px;">
                     <ui:include src="tree.xhtml"/>
                 </div>
-                <div class="grid_11">
-                    <p:messages id="messages"/>
+                <div class="grid_11" style="background-color: #74b2e2; border-radius: 15px; height: 100%; min-height: 700px;">
                     <ui:insert name="body">Body</ui:insert>
                 </div>
                 <div class="clear"></div>

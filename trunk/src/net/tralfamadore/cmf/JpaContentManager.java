@@ -228,6 +228,7 @@ public class JpaContentManager implements ContentManager {
     }
 
     private void makeGroupPermissionsEntity(ContentEntity contentEntity, List<GroupPermissions> groupPermissionsList) {
+        // TODO: leaking group permissions, delete ones you're replacing
         if(groupPermissionsList.isEmpty())
             return;
 
