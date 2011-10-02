@@ -197,6 +197,7 @@ public class Client {
 
     public void addGroupListener(ActionEvent e) {
         this.getGroupData().add(new GroupPermissions(selectedGroup, true, false, false, false));
+        contentManager.saveContent((Content)currentContent.getData());
     }
 
     /**
@@ -603,7 +604,8 @@ public class Client {
     }
 
     public boolean isCurrentContentHasStyles() {
-        List<Style> styles = ((Content) currentContent.getData()).getStyles();
+        Content content = currentContent == null ? null : (Content) currentContent.getData();
+        List<Style> styles = content == null ? null : content.getStyles();
         return styles == null || styles.isEmpty();
     }
 

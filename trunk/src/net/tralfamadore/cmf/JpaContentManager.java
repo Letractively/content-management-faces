@@ -228,35 +228,64 @@ public class JpaContentManager implements ContentManager {
     }
 
     private void makeGroupPermissionsEntity(ContentEntity contentEntity, List<GroupPermissions> groupPermissionsList) {
-        // TODO: leaking group permissions, delete ones you're replacing
-        if(groupPermissionsList.isEmpty())
+        if(groupPermissionsList.isEmpty()) {
+            if(contentEntity.getGroupPermissions() != null)
+                contentEntity.getGroupPermissions().clear();
             return;
+        }
 
-        for(GroupPermissions groupPermissions : groupPermissionsList) {
+        clearOldGroupPermissions(contentEntity.getGroupPermissions(), groupPermissionsList);
+        addNewGroupPermissions(contentEntity.getGroupPermissions(), groupPermissionsList);
+    }
+
+    private void clearOldGroupPermissions(Set<GroupPermissionsEntity> groupPermissionsEntities,
+                                          List<GroupPermissions> groupPermissionsList)
+    {
+        for(Iterator<GroupPermissionsEntity> it = groupPermissionsEntities.iterator(); it.hasNext(); ) {
             boolean found = false;
-            if(contentEntity.getGroupPermissions() != null) {
-                contentEntity.setGroupPermissions(new HashSet<GroupPermissionsEntity>());
-                for(GroupPermissionsEntity groupPermissionsEntity : contentEntity.getGroupPermissions()) {
-                    if(groupPermissions.getGroup().equals(groupPermissionsEntity.getGroup().getGroupname())) {
-                        groupPermissions.setCanAdmin(groupPermissionsEntity.canAdmin());
-                        groupPermissions.setCanDelete(groupPermissionsEntity.canDelete());
-                        groupPermissions.setCanEdit(groupPermissionsEntity.canEdit());
-                        groupPermissions.setCanView(groupPermissionsEntity.canView());
-                        found = true;
-                    }
+            GroupPermissionsEntity groupPermissionsEntity = it.next();
+            String name = groupPermissionsEntity.getGroup().getGroupname();
+
+            for(GroupPermissions groupPermissions : groupPermissionsList) {
+                if(name.equals(groupPermissions.getGroup())) {
+                    found = true;
+                    break;
                 }
             }
+
+            if(!found)
+                it.remove();
+
+        }
+    }
+
+    private void addNewGroupPermissions(Set<GroupPermissionsEntity> groupPermissionsEntities,
+                                        List<GroupPermissions> groupPermissionsList) {
+        for(GroupPermissions groupPermissions : groupPermissionsList) {
+            boolean found = false;
+            String name = groupPermissions.getGroup();
+
+            for(GroupPermissionsEntity groupPermissionsEntity : groupPermissionsEntities) {
+                if(name.equals(groupPermissionsEntity.getGroup().getGroupname())) {
+                    found = true;
+                    groupPermissionsEntity.setCanAdmin(groupPermissions.isCanAdmin());
+                    groupPermissionsEntity.setCanDelete(groupPermissions.isCanDelete());
+                    groupPermissionsEntity.setCanEdit(groupPermissions.isCanEdit());
+                    groupPermissionsEntity.setCanView(groupPermissions.isCanView());
+                    break;
+                }
+            }
+
             if(!found) {
                 GroupPermissionsEntity gpe = new GroupPermissionsEntity();
                 GroupEntity group = (GroupEntity) em.createQuery("select g from groups g where g.groupname = ?1")
-                        .setParameter(1, groupPermissions.getGroup()).getSingleResult();
+                        .setParameter(1, name).getSingleResult();
                 gpe.setGroup(group);
                 gpe.setCanAdmin(groupPermissions.isCanAdmin());
                 gpe.setCanView(groupPermissions.isCanView());
                 gpe.setCanEdit(groupPermissions.isCanEdit());
                 gpe.setCanDelete(groupPermissions.isCanDelete());
-                contentEntity.setGroupPermissions(new HashSet<GroupPermissionsEntity>());
-                contentEntity.getGroupPermissions().add(gpe);
+                groupPermissionsEntities.add(gpe);
             }
         }
     }
