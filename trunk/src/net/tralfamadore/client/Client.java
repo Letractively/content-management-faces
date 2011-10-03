@@ -40,10 +40,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * User: billreh
@@ -166,6 +163,7 @@ public class Client {
                 "Content " + content.getFullName() + " added.", ""));
     }
 
+    /*
     public void selectContent(ActionEvent event) {
         FacesContext context = FacesContext.getCurrentInstance();
         Map requestMap = context.getExternalContext().getRequestParameterMap();
@@ -177,6 +175,7 @@ public class Client {
         editorContent = content == null? null : content.getContent();
         addStyles(content == null ? new Vector<Style>() : content.getStyles());
     }
+    */
 
     public void selectStyle(ActionEvent event) {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -197,7 +196,7 @@ public class Client {
 
     public void addGroupListener(ActionEvent e) {
         this.getGroupData().add(new GroupPermissions(selectedGroup, true, false, false, false));
-        contentManager.saveContent((Content)currentContent.getData());
+        contentManager.saveContent((Content) currentContent.getData());
     }
 
     /**
@@ -296,8 +295,8 @@ public class Client {
             content.getStyles().add(style);
             contentManager.saveContent(content);
         }
-        addStyles(content.getStyles());
         ((Content) currentContent.getData()).setStyles(content.getStyles());
+        makeContentCss();
         createTreeModel(new ActionEvent(pickList));
     }
 
@@ -321,7 +320,6 @@ public class Client {
         requestContext.addPartialUpdateTarget("theForm:theTree");
         requestContext.addPartialUpdateTarget("theForm:editor");
         makeContentCss();
-        addStyles(content.getStyles());
     }
 
     public void deleteStyle(ActionEvent event) {
@@ -514,14 +512,6 @@ public class Client {
         this.editorToolbar = editorToolbar;
     }
 
-    private void addStyles(List<Style> styles) {
-        StringBuilder buf = new StringBuilder();
-        for(Style style : styles)
-            buf.append(style.getStyle()).append("\n");
-        RequestContext requestContext = RequestContext.getCurrentInstance();
-        requestContext.addCallbackParam("css", buf.toString());
-    }
-
     public String getIncomingNamespace() {
         return incomingNamespace;
     }
@@ -599,8 +589,9 @@ public class Client {
             requestContext.addPartialUpdateTarget("theForm:acPanel:dropper");
             requestContext.addPartialUpdateTarget("theForm:acPanel:slot");
             requestContext.addPartialUpdateTarget("theForm:theTree");
+            requestContext.addPartialUpdateTarget("theForm:editor");
         }
-        addStyles(content.getStyles());
+        makeContentCss();
     }
 
     public boolean isCurrentContentHasStyles() {
@@ -615,6 +606,37 @@ public class Client {
 
     public void setContentCss(String contentCss) {
         this.contentCss = contentCss;
+    }
+
+    public void removeGroup(ActionEvent e) {
+        String groupName = (String) e.getComponent().getAttributes().get("group");
+        if(selectedNode.getData() instanceof Namespace) {
+            Namespace namespace = (Namespace) selectedNode.getData();
+            for(Iterator<GroupPermissions> it = namespace.getGroupPermissionsList().iterator(); it.hasNext(); ) {
+                GroupPermissions groupPermissions = it.next();
+                if(groupPermissions.getGroup().equals(groupName)) {
+                    it.remove();
+                    break;
+                }
+            }
+            contentManager.saveNamespace(namespace);
+        } else if(selectedNode.getData() instanceof BaseContent) {
+            BaseContent content = (BaseContent) selectedNode.getData();
+            for(Iterator<GroupPermissions> it = content.getGroupPermissionsList().iterator(); it.hasNext(); ) {
+                GroupPermissions groupPermissions = it.next();
+                if(groupPermissions.getGroup().equals(groupName)) {
+                    it.remove();
+                    break;
+                }
+            }
+            if(content instanceof Style) {
+                contentManager.saveStyle((Style)content);
+            } else if(content instanceof Content) {
+                    contentManager.saveContent((Content)content);
+            } else if(content instanceof Script) {
+                contentManager.saveScript((Script)content);
+            }
+        }
     }
 
     public void permissionChanged(AjaxBehaviorEvent e) {

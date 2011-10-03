@@ -39,15 +39,15 @@
                         <f:param name="styleName" value="#{node.name}"/>
                     </p:button>
                     <p:commandButton image="ui-icon-circle-close" actionListener="#{client.removeStyle}"
-                                     update="theForm:acPanel:slot theForm:acPanel:dropper theForm:theTree theForm:acPanel"
-                                     oncomplete="addCss(xhr, status, args)">
+                                     update="theForm:acPanel:slot theForm:acPanel:dropper theForm:theTree theForm:acPanel theForm:editor"
+                                     >
                         <f:attribute name="namespace" value="#{node.namespace.fullName}"/>
                         <f:attribute name="styleName" value="#{node.name}"/>
                     </p:commandButton>
                 </ui:repeat>
             </p:panel>
             <p:droppable id="dropper" for="slot" onDrop="handleDrop" widgetVar="dropper">
-                <p:ajax event="drop" listener="#{client.styleDrop}" oncomplete="addCss(xhr, status, args)" onstart="startDrop()"/>
+                <p:ajax event="drop" listener="#{client.styleDrop}"/>
             </p:droppable>
         </ui:composition>
     </h:body>

@@ -17,6 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
+String.prototype.trim = function() { return this.replace(/^\s+|\s+$/g, ''); };
 
 function handleDrop(event, ui) {
     var draggable = ui.draggable;
@@ -75,11 +76,14 @@ function addCss(xhr, status, args) {
             css = args.css;
         }
 
-        CKEDITOR.on('instanceCreated', function(e) {
-            var ed = e.editor;
-            ed._.styles = [];
-            ed.addCss(css);
-        });
+        if(css != null && css.trim().length > 0) {
+            CKEDITOR.on('instanceCreated', function(e) {
+                var ed = e.editor;
+                ed._.styles = [];
+                ed.addCss(css);
+            });
+        }
+
         theEditor = new CKEditor('theForm:editor', config);
     } catch(err) {
         alert(err);

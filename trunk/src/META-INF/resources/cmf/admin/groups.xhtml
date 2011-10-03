@@ -52,7 +52,10 @@
                     <p:selectBooleanCheckbox value="#{data.canAdmin}" style="padding-left: 30px;" disabled="true"/>
                 </p:column>
                 <p:column style="text-align: center;">
-                    <p:commandButton image="ui-icon-circle-close"/>
+                    <p:commandButton id="moo" image="ui-icon-circle-close" actionListener="#{client.removeGroup}"
+                                     update="theForm:acPanel theForm:acPanel:groupData">
+                        <f:attribute name="group" value="#{data.group}"/>
+                    </p:commandButton>
                 </p:column>
             </p:dataTable>
 
