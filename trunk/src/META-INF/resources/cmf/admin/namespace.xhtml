@@ -9,9 +9,16 @@
 <h:body>
     <ui:composition template="_template.xhtml">
         <ui:define name="body">
-            <div style="text-align: center">
-                <h2>Namespace: #{client.incomingNamespace}</h2>
-            </div>
+            <p:panel header="Namespace #{client.incomingNamespace}" style="width: 90%; margin-left: 20px; margin-top: 20px;">
+                <ui:include src="groups.xhtml"/>
+                <p:separator/>
+                <p:commandButton value="Add New Namespace" update="addNamespaceDialog"
+                                 actionListener="#{client.addNewNamespace}" oncomplete="addNamespace.show();"/>
+                <p:commandButton value="Add New Content" style="margin-left: 20px;" update="addNamespaceDialog"
+                                 actionListener="#{client.addNewNamespace}" oncomplete="addNamespace.show();"/>
+                <p:commandButton value="Add New Style" style="margin-left: 20px;" update="addNamespaceDialog"
+                                 actionListener="#{client.addNewNamespace}" oncomplete="addNamespace.show();"/>
+            </p:panel>
         </ui:define>
     </ui:composition>
 </h:body>

@@ -41,6 +41,7 @@
     <url-mapping id="namespace">
         <pattern value="/cmf/admin/namespace/#{ namespace: client.incomingNamespace }"/>
         <view-id value="/cmf/admin/namespace.jsf"/>
+        <action>#{client.loadNamespace}</action>
     </url-mapping>
 
     <url-mapping id="style">

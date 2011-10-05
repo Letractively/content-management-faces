@@ -197,34 +197,17 @@ public class JpaContentManager implements ContentManager {
     private void makeGroupPermissionsEntity(NamespaceEntity namespaceEntity,
                                             List<GroupPermissions> groupPermissionsList)
     {
-        if(groupPermissionsList.isEmpty())
+        if(groupPermissionsList.isEmpty()) {
+            if(namespaceEntity.getGroupPermissions() != null)
+                namespaceEntity.getGroupPermissions().clear();
             return;
-
-        for(GroupPermissions groupPermissions : groupPermissionsList) {
-            boolean found = false;
-            if(namespaceEntity.getGroupPermissions() == null)
-                namespaceEntity.setGroupPermissions(new HashSet<GroupPermissionsEntity>());
-            for(GroupPermissionsEntity groupPermissionsEntity : namespaceEntity.getGroupPermissions()) {
-                if(groupPermissions.getGroup().equals(groupPermissionsEntity.getGroup().getGroupname())) {
-                    groupPermissions.setCanAdmin(groupPermissionsEntity.canAdmin());
-                    groupPermissions.setCanDelete(groupPermissionsEntity.canDelete());
-                    groupPermissions.setCanEdit(groupPermissionsEntity.canEdit());
-                    groupPermissions.setCanView(groupPermissionsEntity.canView());
-                    found = true;
-                }
-            }
-            if(!found) {
-                GroupPermissionsEntity gpe = new GroupPermissionsEntity();
-                GroupEntity group = (GroupEntity) em.createQuery("select g from groups g where g.groupname = ?1")
-                        .setParameter(1, groupPermissions.getGroup()).getSingleResult();
-                gpe.setGroup(group);
-                gpe.setCanAdmin(groupPermissions.isCanAdmin());
-                gpe.setCanView(groupPermissions.isCanView());
-                gpe.setCanEdit(groupPermissions.isCanEdit());
-                gpe.setCanDelete(groupPermissions.isCanDelete());
-                namespaceEntity.getGroupPermissions().add(gpe);
-            }
         }
+
+        if(namespaceEntity.getGroupPermissions() == null)
+            namespaceEntity.setGroupPermissions(new HashSet<GroupPermissionsEntity>());
+
+        clearOldGroupPermissions(namespaceEntity.getGroupPermissions(), groupPermissionsList);
+        addNewGroupPermissions(namespaceEntity.getGroupPermissions(), groupPermissionsList);
     }
 
     private void makeGroupPermissionsEntity(ContentEntity contentEntity, List<GroupPermissions> groupPermissionsList) {
@@ -234,6 +217,8 @@ public class JpaContentManager implements ContentManager {
             return;
         }
 
+        if(contentEntity.getGroupPermissions() == null)
+            contentEntity.setGroupPermissions(new HashSet<GroupPermissionsEntity>());
         clearOldGroupPermissions(contentEntity.getGroupPermissions(), groupPermissionsList);
         addNewGroupPermissions(contentEntity.getGroupPermissions(), groupPermissionsList);
     }
@@ -241,6 +226,8 @@ public class JpaContentManager implements ContentManager {
     private void clearOldGroupPermissions(Set<GroupPermissionsEntity> groupPermissionsEntities,
                                           List<GroupPermissions> groupPermissionsList)
     {
+        if(groupPermissionsEntities == null)
+            return;
         for(Iterator<GroupPermissionsEntity> it = groupPermissionsEntities.iterator(); it.hasNext(); ) {
             boolean found = false;
             GroupPermissionsEntity groupPermissionsEntity = it.next();
@@ -291,34 +278,14 @@ public class JpaContentManager implements ContentManager {
     }
 
     private void makeGroupPermissionsEntity(StyleEntity styleEntity, List<GroupPermissions> groupPermissionsList) {
-        if(groupPermissionsList.isEmpty())
+        if(groupPermissionsList.isEmpty()) {
+            if(styleEntity.getGroupPermissions() != null)
+                styleEntity.getGroupPermissions().clear();
             return;
-
-        for(GroupPermissions groupPermissions : groupPermissionsList) {
-            boolean found = false;
-            if(styleEntity.getGroupPermissions() == null)
-                styleEntity.setGroupPermissions(new HashSet<GroupPermissionsEntity>());
-            for(GroupPermissionsEntity groupPermissionsEntity : styleEntity.getGroupPermissions()) {
-                if(groupPermissions.getGroup().equals(groupPermissionsEntity.getGroup().getGroupname())) {
-                    groupPermissions.setCanAdmin(groupPermissionsEntity.canAdmin());
-                    groupPermissions.setCanDelete(groupPermissionsEntity.canDelete());
-                    groupPermissions.setCanEdit(groupPermissionsEntity.canEdit());
-                    groupPermissions.setCanView(groupPermissionsEntity.canView());
-                    found = true;
-                }
-            }
-            if(!found) {
-                GroupPermissionsEntity gpe = new GroupPermissionsEntity();
-                GroupEntity group = (GroupEntity) em.createQuery("select g from groups g where g.groupname = ?1")
-                        .setParameter(1, groupPermissions.getGroup()).getSingleResult();
-                gpe.setGroup(group);
-                gpe.setCanAdmin(groupPermissions.isCanAdmin());
-                gpe.setCanView(groupPermissions.isCanView());
-                gpe.setCanEdit(groupPermissions.isCanEdit());
-                gpe.setCanDelete(groupPermissions.isCanDelete());
-                styleEntity.getGroupPermissions().add(gpe);
-            }
         }
+
+        clearOldGroupPermissions(styleEntity.getGroupPermissions(), groupPermissionsList);
+        addNewGroupPermissions(styleEntity.getGroupPermissions(), groupPermissionsList);
     }
 
     @Override

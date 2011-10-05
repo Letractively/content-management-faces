@@ -90,6 +90,27 @@ function addCss(xhr, status, args) {
     }
 }
 
+function preenInput(event) {
+    if(event == null)
+        event = window.event;
+    var code = event.keyCode;
+    if(code == null)
+        code = event.which;
+    if(
+        (code < 48 || code > 57) &&  // numbers
+        (code < 65 || code > 90) &&  // uppercase letters
+        (code < 97 || code > 122) && // lowercase letters
+        code!==46 &&                 //delete
+        code!==8 &&                  //back space
+        code!==37 &&                 // left arrow
+        code!==39                    // right arrow
+    ) {
+        event.preventDefault();
+        return false;
+    }
+    return true;
+}
+
 PrimeFaces.addSubmitParam  = function(parent, name, value) {
     $(this.escapeClientId(parent)).append("<input id=\"" + "submitParam_" +  name + "\" + type=\"hidden\" name=\"" + name + "\" value=\"" + value + "\"/>");
 

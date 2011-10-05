@@ -29,12 +29,12 @@
     <h:body>
         <ui:composition>
 
-            <p:dataTable id="groupData" value="#{client.groupData}" var="data" style="width: 90%;">
+            <p:dataTable id="dialogGroupData" value="#{client.groupData}" var="data" style="width: 90%;">
                 <p:column headerText="Group">
                     <h:outputText value="#{data.group}"/>
                 </p:column>
-                <p:column headerText="View" style="width: 80px; text-align: center;" id="viewCol">
-                    <p:selectBooleanCheckbox value="#{data.canView}" id="viewCb" style="padding-left: 30px;">
+                <p:column headerText="View" style="width: 80px; text-align: center;" id="dgViewCol">
+                    <p:selectBooleanCheckbox value="#{data.canView}" id="dbViewCb" style="padding-left: 30px;">
                         <p:ajax listener="#{client.permissionChanged}"/>
                     </p:selectBooleanCheckbox>
                 </p:column>
@@ -52,8 +52,8 @@
                     <p:selectBooleanCheckbox value="#{data.canAdmin}" style="padding-left: 30px;" disabled="true"/>
                 </p:column>
                 <p:column style="text-align: center;">
-                    <p:commandButton id="moo" image="ui-icon-circle-close" actionListener="#{client.removeGroup}"
-                                     update="theForm:groupData" process="theForm:groupData">
+                    <p:commandButton id="dgSave" image="ui-icon-circle-close" actionListener="#{client.removeGroup}"
+                                     update="theForm:dialogGroupData" process="theForm:dialogGroupData">
                         <f:attribute name="group" value="#{data.group}"/>
                     </p:commandButton>
                 </p:column>
@@ -62,19 +62,19 @@
             <table style="width: 500px">
                 <tr>
                     <td>
-                        <h:outputLabel value="Add a group" for="picker"/>
+                        <h:outputLabel value="Add a group" for="dgPicker"/>
                     </td>
                     <td>
-                        <p:selectOneMenu id="picker" value="#{client.selectedGroup}" height="200" widgetVar="sm"
+                        <p:selectOneMenu id="dgPicker" value="#{client.selectedGroup}" height="200" widgetVar="sm"
                                          style="width: 150px;" label="Add a group">
-                            <p:ajax update="picker"/>
-                            <f:selectItem itemLabel="Add Group" itemValue="" noSelectionOption="true"/>
+                            <p:ajax update="dgPicker"/>
+                            <f:selectItem itemLabel="Add Group" itemValue="Add Group" noSelectionOption="true"/>
                             <f:selectItems value="#{client.allGroups}" var="group" itemLabel="#{group}"
                                            itemValue="#{group}"/>
                         </p:selectOneMenu>
                     </td>
                     <td>
-                        <p:commandButton value="Add" actionListener="#{client.addGroupListener}" update="theForm:groupData" process="theForm:groupData theForm:picker @this"/>
+                        <p:commandButton value="Add" actionListener="#{client.addGroupListener}" update="theForm:dialogGroupData" process="theForm:dialogGroupData theForm:dgPicker @this"/>
                     </td>
                 </tr>
             </table>

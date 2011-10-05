@@ -53,7 +53,7 @@
                 </p:column>
                 <p:column style="text-align: center;">
                     <p:commandButton id="moo" image="ui-icon-circle-close" actionListener="#{client.removeGroup}"
-                                     update="theForm:groupData" process="theForm:groupData">
+                                     update="theForm:acPanel:groupData" process="theForm:acPanel:groupData">
                         <f:attribute name="group" value="#{data.group}"/>
                     </p:commandButton>
                 </p:column>
@@ -74,7 +74,7 @@
                         </p:selectOneMenu>
                     </td>
                     <td>
-                        <p:commandButton value="Add" actionListener="#{client.addGroupListener}" update="theForm:groupData" process="theForm:groupData theForm:picker @this"/>
+                        <p:commandButton value="Add" actionListener="#{client.addGroupListener}" update="theForm:acPanel:groupData" process="theForm:acPanel:groupData theForm:acPanel:picker @this"/>
                     </td>
                 </tr>
             </table>

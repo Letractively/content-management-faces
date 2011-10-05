@@ -24,3 +24,16 @@
 .tree-node-content {
     font-weight: bold;
 }
+
+.square {
+    height: 96px;
+    width: 96px;
+}
+
+.square span {
+    text-align: left;
+    vertical-align: top;
+    height: 70px;
+    position: relative;
+    right: 5px;
+}

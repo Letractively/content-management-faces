@@ -28,9 +28,12 @@
 <h:body>
     <ui:composition>
 
+        <p:commandButton value="New Namespace ..." style="margin-left: 20px; margin-top: 20px;" update="addNamespaceDialog"
+                         actionListener="#{client.addNewTopLevelNamespace}" oncomplete="addNamespace.show();"/>
+
 
         <p:tree id="theTree" value="#{client.rootNode}" var="node" dynamic="true" cache="false" selectionMode="single"
-                style="width: 80%; height80%; min-height: 423px;; margin-left: 20px; margin-top: 20px;">
+                style="width: 80%; height80%; min-height: 423px; margin-left: 20px; margin-top: 20px;">
 
             <p:treeNode>
                 <h:outputText style="color: red;" value="#{node}"/>

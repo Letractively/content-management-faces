@@ -50,6 +50,9 @@ import java.util.*;
 @ManagedBean
 @SessionScoped
 public class Client {
+    private Namespace namespaceToAdd;
+    private boolean addingNamespace = false;
+    private boolean addingNewNamespace = false;
     private String contentCss;
     private String incomingNamespace;
     private String incomingContentName;
@@ -95,7 +98,7 @@ public class Client {
                 ToolbarButtonGroup.LINKS.item(ToolbarItem.BREAK),
                 ToolbarButtonGroup.STYLES,
                 ToolbarButtonGroup.TOOLS
-                );
+        );
     }
 
     /**
@@ -120,16 +123,6 @@ public class Client {
         for(Style style : styles) {
             contentHolder.add(style);
         }
-
-        Namespace namespace = new Namespace(null, "com");
-        contentHolder.add(namespace);
-        namespace = new Namespace(namespace, "google");
-        contentHolder.add(namespace);
-        Content content = new Content();
-        content.setName("page");
-        content.setContent("Some content");
-        content.setNamespace(namespace);
-        contentHolder.add(content);
     }
 
     public void selectNamespace(ActionEvent event) {
@@ -195,8 +188,15 @@ public class Client {
     }
 
     public void addGroupListener(ActionEvent e) {
-        this.getGroupData().add(new GroupPermissions(selectedGroup, true, false, false, false));
-        contentManager.saveContent((Content) currentContent.getData());
+        Object content = selectedNode.getData();
+        List<GroupPermissions> groupPermissionsList = getGroupData();
+        groupPermissionsList.add(new GroupPermissions(selectedGroup, true, false, false, false));
+        if(content instanceof Content)
+            contentManager.saveContent((Content)content);
+        else if(content instanceof Style)
+            contentManager.saveStyle((Style) content);
+        else if(content instanceof Namespace)
+            contentManager.saveNamespace((Namespace) content);
     }
 
     /**
@@ -401,6 +401,9 @@ public class Client {
     }
 
     public List<GroupPermissions> getGroupData() {
+        if(addingNamespace) {
+            return namespaceToAdd.getGroupPermissionsList();
+        }
         if(selectedNode == null)
             return new Vector<GroupPermissions>();
         Object o = selectedNode.getData();
@@ -532,8 +535,8 @@ public class Client {
         TreeNode newContent = contentHolder.find(new ContentKey(incomingContentName, incomingNamespace, "content"));
         if(newContent != null) {
             newContent.setSelected(true);
-            if(currentContent != null)
-                currentContent.setSelected(false);
+            if(selectedNode != null)
+                selectedNode.setSelected(false);
             editorContent = ((Content)newContent.getData()).getContent();
         } else {
             editorContent = null;
@@ -541,27 +544,37 @@ public class Client {
                     "Content for namespace [" + incomingNamespace + "] and content name [" +
                             incomingContentName + "] not found.", null));
         }
+//        currentNamespace = null;
+        currentStyle = null;
         currentContent = newContent;
         selectedNode = currentContent;
         makeContentCss();
     }
 
-    private void makeContentCss() {
-        contentCss = "";
-        if(currentContent != null) {
-            for(Style style : ((Content)currentContent.getData()).getStyles())
-                contentCss =  contentCss + style.getStyle();
+    public void loadNamespace() {
+        TreeNode newContent = contentHolder.find(new ContentKey(null, incomingNamespace, "namespace"));
+
+        if(newContent != null) {
+            newContent.setSelected(true);
+            if(selectedNode != null)
+                selectedNode.setSelected(false);
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Namespace [" + incomingNamespace + "] not found.", null));
         }
-        contentCss = contentCss.replace('\r', ' ');
-        contentCss = contentCss.replace('\n', ' ');
+
+        currentContent = null;
+        currentStyle = null;
+        currentNamespace = newContent;
+        selectedNode = currentNamespace;
     }
 
     public void loadStyle() {
         TreeNode newContent = contentHolder.find(new ContentKey(incomingContentName, incomingNamespace, "style"));
         if(newContent != null) {
             newContent.setSelected(true);
-            if(currentContent != null)
-                currentContent.setSelected(false);
+            if(selectedNode != null)
+                selectedNode.setSelected(false);
             styleEditorContent = ((Style)newContent.getData()).getStyle();
         } else {
             styleEditorContent = null;
@@ -569,8 +582,10 @@ public class Client {
                     "Style for namespace [" + incomingNamespace + "] and style name [" +
                             incomingContentName + "] not found.", null));
         }
-        currentContent = newContent;
-        selectedNode = currentContent;
+//        currentNamespace = null;
+        currentContent = null;
+        currentStyle = newContent;
+        selectedNode = currentStyle;
     }
 
     public void styleDrop(DragDropEvent event) {
@@ -592,6 +607,16 @@ public class Client {
             requestContext.addPartialUpdateTarget("theForm:editor");
         }
         makeContentCss();
+    }
+
+    private void makeContentCss() {
+        contentCss = "";
+        if(currentContent != null) {
+            for(Style style : ((Content)currentContent.getData()).getStyles())
+                contentCss =  contentCss + style.getStyle();
+        }
+        contentCss = contentCss.replace('\r', ' ');
+        contentCss = contentCss.replace('\n', ' ');
     }
 
     public boolean isCurrentContentHasStyles() {
@@ -632,9 +657,9 @@ public class Client {
             if(content instanceof Style) {
                 contentManager.saveStyle((Style)content);
             } else if(content instanceof Content) {
-                    contentManager.saveContent((Content)content);
+                    contentManager.saveContent((Content) content);
             } else if(content instanceof Script) {
-                contentManager.saveScript((Script)content);
+                contentManager.saveScript((Script) content);
             }
         }
     }
@@ -647,5 +672,45 @@ public class Client {
             contentManager.saveStyle((Style) content);
         else if(content instanceof Namespace)
             contentManager.saveNamespace((Namespace) content);
+    }
+
+    public void addNewTopLevelNamespace(ActionEvent e) {
+        namespaceToAdd = new Namespace();
+        namespaceToAdd.setGroupPermissionsList(getDefaultGroupPermissions());
+        addingNamespace = true;
+        addingNewNamespace = true;
+    }
+
+    public void addNewNamespace(ActionEvent e) {
+        Namespace parent = (Namespace) currentNamespace.getData();
+        namespaceToAdd = new Namespace(parent, "");
+        namespaceToAdd.setGroupPermissionsList(getDefaultGroupPermissions());
+        addingNamespace = true;
+    }
+
+    public void saveNewNamespace(ActionEvent e) {
+        namespaceToAdd.setNodeName(newNamespace);
+        contentManager.saveNamespace(namespaceToAdd);
+        createTreeModel(e);
+        namespaceToAdd = null;
+        addingNamespace = false;
+        addingNewNamespace = false;
+        newNamespace = null;
+    }
+
+    public boolean isAddingNamespace() {
+        return addingNamespace;
+    }
+
+    public void setAddingNamespace(boolean addingNamespace) {
+        this.addingNamespace = addingNamespace;
+    }
+
+    public boolean isAddingNewNamespace() {
+        return addingNewNamespace;
+    }
+
+    public void setAddingNewNamespace(boolean addingNewNamespace) {
+        this.addingNewNamespace = addingNewNamespace;
     }
 }
