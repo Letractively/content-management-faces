@@ -472,27 +472,25 @@ public class JpaContentManager implements ContentManager {
 
     @Override
     public List<Script> loadAllScripts() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
     }
 
     @Override
     public List<Script> loadScript(Namespace namespace) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
     }
 
     @Override
     public Script loadScript(Namespace namespace, String name) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null;
     }
 
     @Override
     public void saveScript(Script script) {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public void deleteScript(Script script) {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -604,6 +602,25 @@ public class JpaContentManager implements ContentManager {
         em.getTransaction().begin();
         em.persist(group);
         em.getTransaction().commit();
+    }
+
+    @Override
+    public List<Namespace> loadChildNamespaces(Namespace namespace) {
+        List<Namespace> namespaces = new Vector<Namespace>();
+        Query query = em.createQuery(
+                "select n from namespace n where n.parentId in (select nn.id from namespace nn where nn.name = ?1)");
+        query.setParameter(1, namespace.getFullName());
+        List results = query.getResultList();
+        if(results == null || results.isEmpty())
+            return namespaces;
+
+        for(Object result : results) {
+            NamespaceEntity namespaceEntity = (NamespaceEntity) result;
+            Namespace ns = Namespace.createFromString(namespaceEntity.getName());
+            ns.setGroupPermissionsList(makeGroupPermissions(namespaceEntity.getGroupPermissions()));
+            namespaces.add(ns);
+        }
+        return namespaces;
     }
 
     @SuppressWarnings({"unchecked"})

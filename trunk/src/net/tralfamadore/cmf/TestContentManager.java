@@ -327,4 +327,9 @@ public class TestContentManager implements ContentManager {
     public void saveGroup(GroupEntity group) {
         throw new RuntimeException("Implement me!");
     }
+
+    @Override
+    public List<Namespace> loadChildNamespaces(Namespace namespace) {
+        return null;
+    }
 }

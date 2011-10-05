@@ -80,4 +80,5 @@ public interface ContentManager {
     public void deleteStyle(Style style);
 
     public void saveGroup(GroupEntity group);
+    public List<Namespace> loadChildNamespaces(Namespace namespace);
 }

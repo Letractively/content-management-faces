@@ -25,6 +25,7 @@ import com.google.code.ckJsfEditor.ToolbarItem;
 import com.google.code.ckJsfEditor.component.SaveEvent;
 import net.tralfamadore.cmf.*;
 import net.tralfamadore.config.CmfContext;
+import org.primefaces.component.datatable.DataTable;
 import org.primefaces.component.picklist.PickList;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.DragDropEvent;
@@ -50,6 +51,9 @@ import java.util.*;
 @ManagedBean
 @SessionScoped
 public class Client {
+    private List<BaseContent> namespaceContents = new Vector<BaseContent>();
+    private Content contentToAdd;
+    private boolean addingContent = false;
     private Namespace namespaceToAdd;
     private boolean addingNamespace = false;
     private boolean addingNewNamespace = false;
@@ -144,16 +148,17 @@ public class Client {
     }
 
     public void addContent(ActionEvent event) {
-        Content content = new Content();
+        Content content = contentToAdd;
         content.setName(newContentName);
         content.setNamespace((Namespace) currentNamespace.getData());
         content.setDateCreated(new Date());
         content.setDateModified(content.getDateCreated());
-        content.setGroupPermissionsList(getGroupData());
         contentHolder.add(content);
         contentManager.saveContent(content);
+        addingContent = false;
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Content " + content.getFullName() + " added.", ""));
+        namespaceContents.add(content);
     }
 
     /*
@@ -197,6 +202,20 @@ public class Client {
             contentManager.saveStyle((Style) content);
         else if(content instanceof Namespace)
             contentManager.saveNamespace((Namespace) content);
+
+        int i = 0;
+        for(UIComponent c : e.getComponent().getParent().getChildren()) {
+            if(c.equals(e.getComponent()))
+                break;
+            i++;
+        }
+        String clientId = null;
+        for( ; i > 0; --i) {
+            if(e.getComponent().getParent().getChildren().get(i) instanceof DataTable)
+                clientId = e.getComponent().getParent().getChildren().get(i).getClientId(FacesContext.getCurrentInstance());
+        }
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+        requestContext.addPartialUpdateTarget(clientId);
     }
 
     /**
@@ -403,6 +422,8 @@ public class Client {
     public List<GroupPermissions> getGroupData() {
         if(addingNamespace) {
             return namespaceToAdd.getGroupPermissionsList();
+        } else if(addingContent) {
+            return contentToAdd.getGroupPermissionsList();
         }
         if(selectedNode == null)
             return new Vector<GroupPermissions>();
@@ -567,6 +588,7 @@ public class Client {
         currentStyle = null;
         currentNamespace = newContent;
         selectedNode = currentNamespace;
+        fetchNamespaceContents();
     }
 
     public void loadStyle() {
@@ -691,6 +713,7 @@ public class Client {
     public void saveNewNamespace(ActionEvent e) {
         namespaceToAdd.setNodeName(newNamespace);
         contentManager.saveNamespace(namespaceToAdd);
+        getNamespaceContents().add(namespaceToAdd);
         createTreeModel(e);
         namespaceToAdd = null;
         addingNamespace = false;
@@ -712,5 +735,93 @@ public class Client {
 
     public void setAddingNewNamespace(boolean addingNewNamespace) {
         this.addingNewNamespace = addingNewNamespace;
+    }
+
+    public void fetchNamespaceContents() {
+        Namespace namespace = (Namespace) currentNamespace.getData();
+        namespaceContents = new Vector<BaseContent>();
+
+        namespaceContents.addAll(contentManager.loadContent(namespace));
+        namespaceContents.addAll(contentManager.loadStyle(namespace));
+        namespaceContents.addAll(contentManager.loadChildNamespaces(namespace));
+        if(contentManager.loadChildNamespaces(namespace).isEmpty() && namespace.getParent() == null)
+            namespaceContents.add(namespace);
+    }
+
+    public List<BaseContent> getNamespaceContents() {
+        return namespaceContents;
+    }
+
+    public void setNamespaceContents(List<BaseContent> namespaceContents) {
+        this.namespaceContents = namespaceContents;
+    }
+
+    public void removeBaseContent(ActionEvent e) {
+        String contentName = getContentToRemove();
+        String contentType = getContentTypeToRemove();
+        System.out.println(contentName + ":" + contentType);
+        if(contentType.equals("Namespace")) {
+            Namespace namespace = Namespace.createFromString(contentName);
+            if(contentManager.loadChildNamespaces(namespace).isEmpty()
+                    && contentManager.loadStyle(namespace).isEmpty())
+            {
+                contentManager.deleteNamespace(namespace);
+                getNamespaceContents().remove(namespace);
+                createTreeModel(e);
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "You can only delete an empty namespace", null));
+            }
+        } else if(contentType.equals("Content")) {
+            String namespaceName = contentName.substring(0, contentName.lastIndexOf('.'));
+            contentName = contentName.substring(contentName.lastIndexOf('.') + 1);
+            System.out.println(namespaceName);
+            System.out.println(contentName);
+            Content content = (Content) contentHolder.find(new ContentKey(contentName, namespaceName, "content")).getData();
+            contentManager.deleteContent(content);
+            getNamespaceContents().remove(content);
+            createTreeModel(e);
+        }
+    }
+
+    private String contentToRemove;
+    private String contentTypeToRemove;
+
+    public String getContentToRemove() {
+        return contentToRemove;
+    }
+
+    public void setContentToRemove(String contentToRemove) {
+        this.contentToRemove = contentToRemove;
+    }
+
+    public String getContentTypeToRemove() {
+        return contentTypeToRemove;
+    }
+
+    public void setContentTypeToRemove(String contentTypeToRemove) {
+        this.contentTypeToRemove = contentTypeToRemove;
+    }
+
+    public void addNewContent(ActionEvent e) {
+        addingContent = true;
+        contentToAdd = new Content();
+        contentToAdd.setGroupPermissionsList(getDefaultGroupPermissions());
+    }
+
+    public boolean isAddingContent() {
+        return addingContent;
+    }
+
+    public void setAddingContent(boolean addingContent) {
+        this.addingContent = addingContent;
+    }
+
+    public Content getContentToAdd() {
+        return contentToAdd;
+    }
+
+    public void setContentToAdd(Content contentToAdd) {
+        this.contentToAdd = contentToAdd;
     }
 }

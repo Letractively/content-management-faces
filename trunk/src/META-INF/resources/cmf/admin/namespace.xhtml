@@ -9,16 +9,68 @@
 <h:body>
     <ui:composition template="_template.xhtml">
         <ui:define name="body">
-            <p:panel header="Namespace #{client.incomingNamespace}" style="width: 90%; margin-left: 20px; margin-top: 20px;">
-                <ui:include src="groups.xhtml"/>
-                <p:separator/>
-                <p:commandButton value="Add New Namespace" update="addNamespaceDialog"
-                                 actionListener="#{client.addNewNamespace}" oncomplete="addNamespace.show();"/>
-                <p:commandButton value="Add New Content" style="margin-left: 20px;" update="addNamespaceDialog"
-                                 actionListener="#{client.addNewNamespace}" oncomplete="addNamespace.show();"/>
-                <p:commandButton value="Add New Style" style="margin-left: 20px;" update="addNamespaceDialog"
-                                 actionListener="#{client.addNewNamespace}" oncomplete="addNamespace.show();"/>
-            </p:panel>
+            <h1 style="padding-top: 20px; text-align: center;">#{client.incomingNamespace}</h1>
+
+
+            <div style="width: 90%; height: 100%; text-align: center; margin-left: 30px; margin-top: 20px;">
+                <p:dataTable id="namespaceContents" value="#{client.namespaceContents}" var="content"
+                             resizableColumns="true">
+                    <f:facet name="header">
+                        Namespace Contents
+                    </f:facet>
+
+                    <p:column sortBy="#{content.name}" style="width: 280px;">
+                        <f:facet name="header">
+                            Name
+                        </f:facet>
+                        <h:outputText value="#{content.name}"/>
+                    </p:column>
+
+                    <p:column sortBy="#{content.class.simpleName}" style="width: 152px;">
+                        <f:facet name="header">
+                            Type
+                        </f:facet>
+                        <h:outputText value="#{content.class.simpleName}"/>
+                    </p:column>
+
+                    <p:column style="width: 80px;">
+                        <f:facet name="header">
+                            Remove
+                        </f:facet>
+                        <p:commandButton image="ui-icon-circle-close" oncomplete="confirmation.show()">
+                            <f:setPropertyActionListener name="content" value="#{content.fullName}" target="#{client.contentToRemove}"/>
+                            <f:setPropertyActionListener name="contentType" value="#{content.class.simpleName}" target="#{client.contentTypeToRemove}"/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+
+                <p:accordionPanel multiple="true" widgetVar="accord" id="acPanel" style="margin-bottom: 20px; margin-top: 20px;">
+                    <p:tab title="Actions">
+                        <p:commandButton value="Add New Namespace" update="theForm:addNamespaceDialog theForm:theTree"
+                                         actionListener="#{client.addNewNamespace}" oncomplete="addNamespace.show();"/>
+                        <p:commandButton value="Add New Content" style="margin-left: 20px;" update="theForm:addNamespaceDialog"
+                                         actionListener="#{client.addNewContent}" oncomplete="addContent.show();"/>
+                        <p:commandButton value="Add New Style" style="margin-left: 20px;" update="theForm:addNamespaceDialog"
+                                         actionListener="#{client.addNewNamespace}" oncomplete="addNamespace.show();"/>
+                    </p:tab>
+                    <p:tab title="Permissions">
+                        <ui:include src="groups.xhtml"/>
+                    </p:tab>
+                </p:accordionPanel>
+                <script type="text/javascript">
+                    accord.unselect(0);
+                </script>
+                <p:confirmDialog message="Are you sure you want to delete this content?" width="200"
+                                 showEffect="explode" hideEffect="explode"
+                                 header="Confirm" severity="alert" widgetVar="confirmation">
+
+                    <p:commandButton value="No" onclick="confirmation.hide()" type="button" style="margin-left: 10px;"/>
+                    <p:spacer width="55"/>
+                    <p:commandButton value="Yes" update="theForm:messages theForm:namespaceContents theForm:theTree"
+                                     actionListener="#{client.removeBaseContent}" onstart="confirmation.hide()"/>
+
+                </p:confirmDialog>
+            </div>
         </ui:define>
     </ui:composition>
 </h:body>

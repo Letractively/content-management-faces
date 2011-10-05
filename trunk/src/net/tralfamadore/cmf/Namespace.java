@@ -30,7 +30,7 @@ import java.util.Vector;
  * Date: 1/18/11
  * Time: 10:26 PM
  */
-public class Namespace implements TreeContent, Serializable {
+public class Namespace extends BaseContent implements TreeContent, Serializable {
     private String nodeName;
     private Namespace parent;
     private List<GroupPermissions> groupPermissionsList = new Vector<GroupPermissions>();
@@ -64,6 +64,17 @@ public class Namespace implements TreeContent, Serializable {
     }
 
 
+    @Override
+    public Namespace getNamespace() {
+        return this;
+    }
+
+    @Override
+    public void setNamespace(Namespace namespace) {
+        throw new RuntimeException("Invalid method for Namespace object");
+    }
+
+    @Override
     public String getFullName() {
         List<String> names = new Vector<String>();
         if(getNodeName() != null)
@@ -75,7 +86,7 @@ public class Namespace implements TreeContent, Serializable {
             p = p.parent;
         }
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for(int i = names.size() - 1; i > 0; i--) {
             buf.append(names.get(i)).append('.');
         }
@@ -101,14 +112,6 @@ public class Namespace implements TreeContent, Serializable {
         this.parent = parent;
     }
 
-    public List<GroupPermissions> getGroupPermissionsList() {
-        return groupPermissionsList;
-    }
-
-    public void setGroupPermissionsList(List<GroupPermissions> groupPermissionsList) {
-        this.groupPermissionsList = groupPermissionsList;
-    }
-
     public List<Namespace> getParentNamespaces() {
         List<Namespace> namespaces = new Vector<Namespace>();
 
@@ -116,7 +119,7 @@ public class Namespace implements TreeContent, Serializable {
             return namespaces;
 
         String[] nodes = getFullName().split("\\.");
-        Namespace cur = new Namespace(), parent = null;
+        Namespace cur, parent = null;
 
         for(String node : nodes) {
             cur = new Namespace(parent, node);
@@ -125,6 +128,16 @@ public class Namespace implements TreeContent, Serializable {
         }
 
         return namespaces;
+    }
+
+    @Override
+    public String getName() {
+        return nodeName;
+    }
+
+    @Override
+    public void setName(String name) {
+        throw new RuntimeException("Invalid method for Namespace object");
     }
 
     @Override
