@@ -9,7 +9,49 @@
 <h:body>
     <ui:composition template="_template.xhtml">
         <ui:define name="body">
-            <p:editor style="padding: 15px;" height="400" width="600" value="#{client.styleEditorContent}"/>
+            <div style="width: 90%; height: 100%; text-align: center; margin-left: 30px; margin-top: 20px;">
+                <p:panel header="Css Editor" style="height: 427px; text-align: left;">
+                    <h:inputTextarea id="theEditor" value="#{client.styleEditorContent}" styleClass="codeEd"/>
+                    <script type="text/javascript">
+                        function updateCodeTextArea(editor) {
+                            editor.save();
+                        }
+
+                        var jqElement = $('.codeEd');
+                        var element = jqElement.get()[0];
+                        var cmEditor = CodeMirror.fromTextArea(element, {
+                            lineNumbers: true,
+                            onChange: updateCodeTextArea
+                        });
+                    </script>
+                </p:panel>
+            </div>
+
+            <p:spacer height="10px"/>
+
+            <p:spacer width="10%"/>
+            <p:button value="Cancel" outcome="pretty:style">
+                <f:param name="namespace" value="#{client.incomingNamespace}"/>
+                <f:param name="contentName" value="#{client.incomingContentName}"/>
+            </p:button>
+            <p:spacer height="10px" width="50%"/>
+            <p:commandButton value="Save" action="#{client.saveStyle}" update="messages"/>
+
+            <p:spacer height="10px"/>
+
+            <div style="width: 90%; height: 100%; text-align: center; margin-left: 30px; margin-top: 20px;">
+                <p:accordionPanel multiple="true" widgetVar="accord" id="acPanel" style="margin-bottom: 20px;">
+                    <p:tab title="Styles">
+                        <ui:include src="styles.xhtml"/>
+                    </p:tab>
+                    <p:tab title="Permissions">
+                        <ui:include src="embeddedGroups.xhtml"/>
+                    </p:tab>
+                </p:accordionPanel>
+                <script type="text/javascript">
+                    accord.unselect(0);
+                </script>
+            </div>
         </ui:define>
     </ui:composition>
 </h:body>

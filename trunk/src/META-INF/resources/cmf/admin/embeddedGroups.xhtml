@@ -29,36 +29,59 @@
     <h:body>
         <ui:composition>
 
-            <p:dataTable id="groupData" value="#{client.groupData}" var="data" style="width: 90%;">
+            <p:dataTable id="groupData" value="#{client.groupData}" var="data" styleClass="zero">
                 <p:column headerText="Group">
                     <h:outputText value="#{data.group}"/>
                 </p:column>
-                <p:column headerText="View" style="width: 80px; text-align: center;" id="viewCol">
+                <p:column headerText="View">
                     <p:selectBooleanCheckbox value="#{data.canView}" id="viewCb" style="padding-left: 30px;">
                         <p:ajax listener="#{client.permissionChanged}"/>
                     </p:selectBooleanCheckbox>
                 </p:column>
-                <p:column headerText="Edit" style="width: 80px;">
+                <p:column headerText="Edit">
                     <p:selectBooleanCheckbox value="#{data.canEdit}" style="padding-left: 30px;">
                         <p:ajax listener="#{client.permissionChanged}"/>
                     </p:selectBooleanCheckbox>
                 </p:column>
-                <p:column headerText="Delete" style="width: 80px;">
+                <p:column headerText="Delete">
                     <p:selectBooleanCheckbox value="#{data.canDelete}" style="padding-left: 30px;">
                         <p:ajax listener="#{client.permissionChanged}"/>
                     </p:selectBooleanCheckbox>
                 </p:column>
-                <p:column headerText="Admin" style="width: 80px;">
+                <p:column headerText="Admin">
                     <p:selectBooleanCheckbox value="#{data.canAdmin}" style="padding-left: 30px;" disabled="true"/>
                 </p:column>
-                <p:column style="text-align: center;">
+                <p:column>
                     <p:commandButton id="moo" image="ui-icon-circle-close" actionListener="#{client.removeGroup}"
                                      update="theForm:acPanel:groupData" process="theForm:acPanel:groupData">
                         <f:attribute name="group" value="#{data.group}"/>
                     </p:commandButton>
                 </p:column>
+                <f:facet name="footer">
+                    <table style="width: 500px">
+                        <tr>
+                            <td>
+                                <h:outputLabel value="Add a group" for="picker"/>
+                            </td>
+                            <td>
+                                <p:selectOneMenu id="picker" value="#{client.selectedGroup}" height="200" widgetVar="sm"
+                                                 style="width: 150px;" label="Add a group">
+                                    <p:ajax update="picker"/>
+                                    <f:selectItem itemLabel="Add Group" itemValue="" noSelectionOption="true"/>
+                                    <f:selectItems value="#{client.allGroups}" var="group" itemLabel="#{group}"
+                                                   itemValue="#{group}"/>
+                                </p:selectOneMenu>
+                            </td>
+                            <td>
+                                <p:commandButton value="Add" actionListener="#{client.addGroupListener}"
+                                                 update="theForm:acPanel:groupData" process="theForm:acPanel:groupData"/>
+                            </td>
+                        </tr>
+                    </table>
+                </f:facet>
             </p:dataTable>
 
+            <ui:remove>
             <table style="width: 500px">
                 <tr>
                     <td>
@@ -74,10 +97,11 @@
                         </p:selectOneMenu>
                     </td>
                     <td>
-                        <p:commandButton value="Add" actionListener="#{client.addGroupListener}" update="theForm:acPanel:groupData" process="theForm:acPanel:groupData theForm:acPanel:picker @this"/>
+                        <p:commandButton value="Add" actionListener="#{client.addGroupListener}"/>
                     </td>
                 </tr>
             </table>
+            </ui:remove>
 
         </ui:composition>
     </h:body>

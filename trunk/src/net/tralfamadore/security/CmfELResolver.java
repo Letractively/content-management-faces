@@ -21,9 +21,7 @@ package net.tralfamadore.security;
 
 import javax.el.*;
 import java.beans.FeatureDescriptor;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * User: billreh
@@ -31,7 +29,7 @@ import java.util.Map;
  * Time: 12:37 AM
  */
 public class CmfELResolver extends ELResolver {
-    private Map<Object,Object> cmf = new HashMap<Object, Object>();
+    private final Map<Object,Object> cmf = new HashMap<Object, Object>();
 
     public CmfELResolver() {
         cmf.put("poo", "poooooo!");
@@ -41,26 +39,20 @@ public class CmfELResolver extends ELResolver {
     public Object getValue(ELContext elContext, Object base, Object property)
             throws NullPointerException, PropertyNotFoundException, ELException
     {
-//        System.out.println("getValue");
-//        System.out.println("base: " + (base == null ? "" : base.getClass().getSimpleName()) + " " + base);
-//        System.out.println("property: " + (property == null ? "" : property.getClass().getSimpleName()) + " " + property);
-
         if(base == null) {
             if("cmf".equals(property)) {
-                System.out.println("cmf motherfucker");
                 elContext.setPropertyResolved(true);
                 return cmf;
             } else {
                 return null;
             }
         }
-        if(base == cmf)
-            System.out.println("property: " + property);
-        if(property == "poo")
-            System.out.println("base: " + base);
 
-        System.out.println("cmf? " + base);
-//        return cmf.cmf.get(property);
+        if(base == cmf) {
+            elContext.setPropertyResolved(true);
+            return cmf.get(property);
+        }
+
         return null;
     }
 
@@ -68,20 +60,16 @@ public class CmfELResolver extends ELResolver {
     public Class<?> getType(ELContext elContext, Object base, Object property)
             throws NullPointerException, PropertyNotFoundException, ELException
     {
-//        System.out.println("getType");
-//        System.out.println("base: (" + (base == null ? "" : base.getClass().getSimpleName()) + " " + base);
-//        System.out.println("property: (" + (property == null ? "" : property.getClass().getSimpleName()) + " " + property);
-        return null;
+        Object o = getValue(elContext, base, property);
+        if(o == null)
+            return Object.class;
+        return o.getClass();
     }
 
     @Override
     public void setValue(ELContext elContext, Object base, Object property, Object value)
             throws NullPointerException, PropertyNotFoundException, PropertyNotWritableException, ELException
     {
-        System.out.println("setValue");
-        System.out.println("base: (" + (base == null ? "" : base.getClass().getSimpleName()) + " " + base);
-        System.out.println("property: (" + (property == null ? "" : property.getClass().getSimpleName()) + " " + property);
-        System.out.println("value: (" + (value == null ? "" : value.getClass().getSimpleName()) + " " + value);
         if("cmf".equals(base)) {
             cmf.put(property, value);
             elContext.setPropertyResolved(true);
@@ -92,23 +80,29 @@ public class CmfELResolver extends ELResolver {
     public boolean isReadOnly(ELContext elContext, Object base, Object property)
             throws NullPointerException, PropertyNotFoundException, ELException
     {
-//        System.out.println("isReadOnly");
-//        System.out.println("base: (" + (base == null ? "" : base.getClass().getSimpleName()) + " " + base);
-//        System.out.println("property: (" + (property == null ? "" : property.getClass().getSimpleName()) + " " + property);
+        elContext.setPropertyResolved(true);
         return false;
     }
 
     @Override
     public Iterator<FeatureDescriptor> getFeatureDescriptors(ELContext elContext, Object base) {
-//        System.out.println("getFeatureDescriptors");
-//        System.out.println("base: (" + (base == null ? "" : base.getClass().getSimpleName()) + " " + base);
+        if(base == null) {
+            List<FeatureDescriptor> list = new Vector<FeatureDescriptor>();
+            FeatureDescriptor fd = new FeatureDescriptor();
+            fd.setDisplayName("cmf");
+            fd.setName("cmf");
+            fd.setPreferred(true);
+            fd.setShortDescription("The base of the cmf namespace");
+            list.add(fd);
+            return list.iterator();
+        }
         return null;
     }
 
     @Override
     public Class<?> getCommonPropertyType(ELContext elContext, Object base) {
-//        System.out.println("getCommonPropertyType");
-//        System.out.println("base: (" + (base == null ? "" : base.getClass().getSimpleName()) + " " + base);
-        return null;
+        if(base == null)
+            return cmf.getClass();
+        return Object.class;
     }
 }

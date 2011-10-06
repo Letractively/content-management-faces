@@ -25,7 +25,6 @@ import com.google.code.ckJsfEditor.ToolbarItem;
 import com.google.code.ckJsfEditor.component.SaveEvent;
 import net.tralfamadore.cmf.*;
 import net.tralfamadore.config.CmfContext;
-import org.primefaces.component.datatable.DataTable;
 import org.primefaces.component.picklist.PickList;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.DragDropEvent;
@@ -34,6 +33,7 @@ import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.DualListModel;
 import org.primefaces.model.TreeNode;
 
+import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -52,6 +52,7 @@ import java.util.*;
 @SessionScoped
 public class Client {
     private List<BaseContent> namespaceContents = new Vector<BaseContent>();
+//    private DataTable groupsDataTable;
     private Content contentToAdd;
     private boolean addingContent = false;
     private Namespace namespaceToAdd;
@@ -189,13 +190,21 @@ public class Client {
     public void nodeSelected(NodeSelectEvent event) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
         FacesContext.getCurrentInstance().addMessage(null, message);
-        System.out.println(event.getTreeNode().getData());
+//        System.out.println(event.getTreeNode().getData());
     }
 
     public void addGroupListener(ActionEvent e) {
-        Object content = selectedNode.getData();
+        if(selectedNode.getData() instanceof BaseContent) {
+            BaseContent content = (BaseContent) selectedNode.getData();
+            for(Iterator<GroupPermissions> it = content.getGroupPermissionsList().iterator(); it.hasNext(); ) {
+                GroupPermissions groupPermissions = it.next();
+                System.out.println(groupPermissions);
+            }
+        }
+        BaseContent content = (BaseContent) selectedNode.getData();
         List<GroupPermissions> groupPermissionsList = getGroupData();
         groupPermissionsList.add(new GroupPermissions(selectedGroup, true, false, false, false));
+        content.setGroupPermissionsList(groupPermissionsList);
         if(content instanceof Content)
             contentManager.saveContent((Content)content);
         else if(content instanceof Style)
@@ -203,19 +212,10 @@ public class Client {
         else if(content instanceof Namespace)
             contentManager.saveNamespace((Namespace) content);
 
-        int i = 0;
-        for(UIComponent c : e.getComponent().getParent().getChildren()) {
-            if(c.equals(e.getComponent()))
-                break;
-            i++;
-        }
-        String clientId = null;
-        for( ; i > 0; --i) {
-            if(e.getComponent().getParent().getChildren().get(i) instanceof DataTable)
-                clientId = e.getComponent().getParent().getChildren().get(i).getClientId(FacesContext.getCurrentInstance());
-        }
-        RequestContext requestContext = RequestContext.getCurrentInstance();
-        requestContext.addPartialUpdateTarget(clientId);
+//        String clientId = groupsDataTable.getClientId(FacesContext.getCurrentInstance());
+//        RequestContext requestContext = RequestContext.getCurrentInstance();
+//        requestContext.addPartialUpdateTarget(clientId);
+        //requestContext.execute("handy!");
     }
 
     /**
@@ -244,6 +244,17 @@ public class Client {
     public void save() {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Content [" + editorContent + "] saved successfully.", ""));
+        Content content = (Content) currentContent.getData();
+        content.setContent(editorContent);
+        contentManager.saveContent(content);
+    }
+
+    public void saveStyle() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Style [" + styleEditorContent + "] saved successfully.", ""));
+        Style style = (Style) currentStyle.getData();
+        style.setStyle(styleEditorContent);
+        contentManager.saveStyle(style);
     }
 
     public void saveContent(SaveEvent event) {
@@ -259,6 +270,7 @@ public class Client {
         }
     }
 
+    /*
     public void saveStyle(ActionEvent event) {
         Style style = (Style) currentStyle.getData();
         style.setStyle(styleEditorContent);
@@ -266,6 +278,7 @@ public class Client {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Style " + style.getName() + " saved successfully.", ""));
     }
+    */
 
     public void deleteNamespace(ActionEvent event) {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -608,6 +621,8 @@ public class Client {
         currentContent = null;
         currentStyle = newContent;
         selectedNode = currentStyle;
+        ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+        elContext.getELResolver().setValue(elContext, "cmf", "style", currentStyle.getData());
     }
 
     public void styleDrop(DragDropEvent event) {
@@ -759,7 +774,7 @@ public class Client {
     public void removeBaseContent(ActionEvent e) {
         String contentName = getContentToRemove();
         String contentType = getContentTypeToRemove();
-        System.out.println(contentName + ":" + contentType);
+//        System.out.println(contentName + ":" + contentType);
         if(contentType.equals("Namespace")) {
             Namespace namespace = Namespace.createFromString(contentName);
             if(contentManager.loadChildNamespaces(namespace).isEmpty()
@@ -775,8 +790,8 @@ public class Client {
         } else if(contentType.equals("Content")) {
             String namespaceName = contentName.substring(0, contentName.lastIndexOf('.'));
             contentName = contentName.substring(contentName.lastIndexOf('.') + 1);
-            System.out.println(namespaceName);
-            System.out.println(contentName);
+//            System.out.println(namespaceName);
+//            System.out.println(contentName);
             Content content = (Content) contentHolder.find(new ContentKey(contentName, namespaceName, "content")).getData();
             contentManager.deleteContent(content);
             getNamespaceContents().remove(content);
@@ -824,4 +839,12 @@ public class Client {
     public void setContentToAdd(Content contentToAdd) {
         this.contentToAdd = contentToAdd;
     }
+
+//    public DataTable getGroupsDataTable() {
+//        return groupsDataTable;
+//    }
+//
+//    public void setGroupsDataTable(DataTable groupsDataTable) {
+//        this.groupsDataTable = groupsDataTable;
+//    }
 }

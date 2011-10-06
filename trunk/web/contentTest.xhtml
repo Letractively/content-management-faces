@@ -32,22 +32,12 @@
 </h:head>
 <h:body>
     <h:form>
-        <cmf:content id="theContent" name="article" namespace="net.tralfamadore.site.page1" var="content">
-            <ui:remove>
-                <f:facet name="header">
-                    author <h:outputText value="#{client.selectedGroup}"/>  |  posted <h:outputText value="#{content.dateCreated}"/>
-                </f:facet>
-            </ui:remove>
-            default content
-            <ui:remove>
-                <f:param name="name" value="#{client.selectedGroup}"/>
-            </ui:remove>
-        </cmf:content>
+        <cmf:content id="theContent" name="article" namespace="net.tralfamadore.site.page1"/>
 
-        #{poo}
-        #{cmf.poo}
-        #{cmf.net.tralfamadore.site.page1.content}
-        <h:outputText value="#{cmf.poo}"/>
+        cmf.poo: #{cmf.poo}<br/>
+        style: #{cmf.style}<br/>
+        style.name: #{cmf.style.name}<br/>
+        outputText poo: <h:outputText value="#{cmf.poo}"/>
         <ui:remove>
             <h:commandButton id="resetDb" actionListener="#{admin.resetDb}" value="Reset Database"/>
         </ui:remove>

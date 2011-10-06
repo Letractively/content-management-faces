@@ -34,9 +34,14 @@
         <h:outputStylesheet library="css/960" name="960.css"/>
         <h:outputStylesheet library="cmf/admin" name="admin.css"/>
         <h:outputScript library="cmf/admin" name="admin.js"/>
+
+        <h:outputScript library="cmf/CodeMirror-2.15/lib" name="codemirror.js"/>
+        <h:outputStylesheet library="cmf/CodeMirror-2.15/lib" name="codemirror.css"/>
+        <h:outputScript library="cmf/CodeMirror-2.15/mode/css" name="css.js"/>
+        <h:outputStylesheet library="cmf/CodeMirror-2.15/theme" name="default.css"/>
         <style type="text/css">
-            .boldClass {
-                font-weight: bold;
+            .zero table {
+                margin-bottom: 0;
             }
         </style>
     </h:head>
@@ -54,7 +59,7 @@
                 <div class="grid_5" style="background-color: #74b2e2; border-radius: 15px; height: 100%; min-height: 700px;">
                     <ui:include src="tree.xhtml"/>
                 </div>
-                <div class="grid_11" style="background-color: #74b2e2; border-radius: 15px; height: 100%; min-height: 700px;">
+                <div id="actionArea" class="grid_11" style="background-color: #74b2e2; border-radius: 15px; height: 100%; min-height: 700px;">
                     <ui:insert name="body">Body</ui:insert>
                 </div>
                 <div class="clear"></div>
