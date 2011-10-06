@@ -33,8 +33,6 @@
         <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
 
-
-
     <!--
     <login-config>
         <auth-method>BASIC</auth-method>
