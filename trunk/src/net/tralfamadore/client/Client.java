@@ -796,6 +796,13 @@ public class Client {
             contentManager.deleteContent(content);
             getNamespaceContents().remove(content);
             createTreeModel(e);
+        } else if(contentType.equals("Style")) {
+            String namespaceName = contentName.substring(0, contentName.lastIndexOf('.'));
+            contentName = contentName.substring(contentName.lastIndexOf('.') + 1);
+            Style style = (Style) contentHolder.find(new ContentKey(contentName, namespaceName, "style")).getData();
+            contentManager.deleteStyle(style);
+            getNamespaceContents().remove(style);
+            createTreeModel(e);
         }
     }
 
