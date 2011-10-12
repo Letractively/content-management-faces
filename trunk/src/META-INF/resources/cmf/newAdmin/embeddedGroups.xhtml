@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+<f:view contentType="text/html">
+    <h:body>
+        <ui:composition>
+
+            <p:dataTable id="groupData" value="#{pageContent.baseContent.groupPermissionsList}" var="data" styleClass="zero">
+                <p:column headerText="Group">
+                    <h:outputText value="#{data.group}"/>
+                </p:column>
+                <p:column headerText="View">
+                    <p:selectBooleanCheckbox value="#{data.canView}" id="viewCb" style="padding-left: 30px;">
+                        <p:ajax listener="#{client.permissionChanged}"/>
+                    </p:selectBooleanCheckbox>
+                </p:column>
+                <p:column headerText="Edit">
+                    <p:selectBooleanCheckbox value="#{data.canEdit}" style="padding-left: 30px;">
+                        <p:ajax listener="#{client.permissionChanged}"/>
+                    </p:selectBooleanCheckbox>
+                </p:column>
+                <p:column headerText="Delete">
+                    <p:selectBooleanCheckbox value="#{data.canDelete}" style="padding-left: 30px;">
+                        <p:ajax listener="#{client.permissionChanged}"/>
+                    </p:selectBooleanCheckbox>
+                </p:column>
+                <p:column headerText="Admin">
+                    <p:selectBooleanCheckbox value="#{data.canAdmin}" style="padding-left: 30px;" disabled="true"/>
+                </p:column>
+                <p:column>
+                    <p:commandButton id="moo" image="ui-icon-circle-close" actionListener="#{client.removeGroup}"
+                                     update="groupData" process="groupData">
+                        <f:attribute name="group" value="#{data.group}"/>
+                    </p:commandButton>
+                </p:column>
+                <f:facet name="footer">
+                    <table style="width: 500px">
+                        <tr>
+                            <td>
+                                <h:outputLabel value="Add a group" for="picker"/>
+                            </td>
+                            <td>
+                                <p:selectOneMenu id="picker" value="#{adminController.selectedGroup}" height="200" widgetVar="sm"
+                                                 style="width: 150px;" label="Add a group">
+                                    <p:ajax update="picker"/>
+                                    <f:selectItem itemLabel="Add Group" itemValue="" noSelectionOption="true"/>
+                                    <f:selectItems value="#{adminController.allGroups}" var="group" itemLabel="#{group}"
+                                                   itemValue="#{group}"/>
+                                </p:selectOneMenu>
+                            </td>
+                            <td>
+                                <p:commandButton value="Add" actionListener="#{client.addGroupListener}"
+                                                 update="groupData" process="groupData"/>
+                            </td>
+                        </tr>
+                    </table>
+                </f:facet>
+            </p:dataTable>
+
+        </ui:composition>
+    </h:body>
+</f:view>
+</html>

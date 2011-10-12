@@ -30,19 +30,19 @@
     <ui:composition template="_template.xhtml">
         <ui:define name="body">
             <div style="width: 90%; height: 100%; text-align: center; margin-left: 30px; margin-top: 20px;">
-            <ck:editor style="padding: 15px;" value="#{client.editorContent}" height="300px" config="#{client.editorConfig}"
-                       render="messages" uiColor="#d7ebf9" id="editor" widgetVar="theEditor" contentCss="#{client.contentCss}"/>
+            <ck:editor style="padding: 15px;" value="#{pageContent.content.content}" height="300px" config="#{client.editorConfig}"
+                       render="messages" uiColor="#d7ebf9" id="editor" widgetVar="theEditor" contentCss="#{adminController.contentCss}"/>
             </div>
 
             <p:spacer height="10px"/>
 
             <p:spacer width="10%"/>
             <p:button value="Cancel" outcome="pretty:content">
-                <f:param name="namespace" value="#{client.incomingNamespace}"/>
-                <f:param name="contentName" value="#{client.incomingContentName}"/>
+                <f:param name="namespace" value="#{adminController.incomingNamespace}"/>
+                <f:param name="contentName" value="#{adminController.incomingContentName}"/>
             </p:button>
             <p:spacer height="10px" width="50%"/>
-            <p:commandButton value="Save" action="#{client.save}" update="messages"/>
+            <p:commandButton value="Save" action="#{adminController.saveContent}" update="messages"/>
 
             <p:spacer height="10px"/>
 

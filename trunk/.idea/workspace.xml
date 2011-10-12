@@ -24,11 +24,45 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="d252fcb5-7c5d-4bdd-bb3d-8158cf0997cd" name="Default" comment="Namespaces, content, styles, and groups all working.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/super-faces-config.xml" />
+    <list default="true" readonly="true" id="d252fcb5-7c5d-4bdd-bb3d-8158cf0997cd" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/tralfamadore/newAdmin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/addStyle.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/welcome.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/_template.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/admin.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/admin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/configDb.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/content.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/dialogGroups.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/embeddedGroups.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/groups.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/namespace.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/style.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/styles.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/tree.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/welcome.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/tralfamadore/newAdmin/AdminController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/tralfamadore/newAdmin/DialogGroups.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/tralfamadore/newAdmin/PageContent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/tralfamadore/newAdmin/TheTree.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/faces-config.xml" afterPath="$PROJECT_DIR$/src/META-INF/faces-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/pretty-config.xml" afterPath="$PROJECT_DIR$/src/META-INF/pretty-config.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/_template.xhtml" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/_template.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/addContent.xhtml" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/addContent.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/addNamespace.xhtml" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/addNamespace.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/admin.css" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/admin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/admin.js" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/admin.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/configDb.xhtml" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/configDb.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/content.xhtml" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/content.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/namespace.xhtml" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/namespace.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/style.xhtml" afterPath="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/style.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/security/CmfELResolver.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/security/CmfELResolver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/contentTest.xhtml" afterPath="$PROJECT_DIR$/web/contentTest.xhtml" />
     </list>
     <ignored path="cmf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,6 +82,34 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" line="173" class="net.tralfamadore.client.Client" package="net.tralfamadore.client">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/net/tralfamadore/security/CmfELResolver.java" line="73" class="net.tralfamadore.security.CmfELResolver" package="net.tralfamadore.security">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -95,8 +157,8 @@
       <property name="field_breakpoints_groupByClasses" value="true" />
       <property name="method_breakpoints_groupByClasses" value="true" />
       <property name="exception_breakpoints_viewId" value="TABLE" />
-      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="exception_breakpoints_groupByClasses" value="true" />
+      <property name="field_breakpoints_viewId" value="TABLE" />
       <property name="method_breakpoints_groupByMethods" value="false" />
     </ui_properties>
   </component>
@@ -105,45 +167,121 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="super-faces-config.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/super-faces-config.xml">
+      <file leaf-file-name="contentTest.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/contentTest.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="56" selection-start="2771" selection-end="2771" vertical-scroll-proportion="-22.5">
+            <state line="40" column="45" selection-start="1609" selection-end="1609" vertical-scroll-proportion="-25.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="faces-config.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/META-INF/faces-config.xml">
+      <file leaf-file-name="pretty-config.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/pretty-config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="16" selection-start="2633" selection-end="2633" vertical-scroll-proportion="-9.717391">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="com.intellij.jsf.ui.FacesConfigEditorProvider">
-            <state />
-          </provider>
-          <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-            <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <file leaf-file-name="Client.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.4159292">
+            <state line="110" column="8" selection-start="4065" selection-end="4065" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-            <state />
+        </entry>
+      </file>
+      <file leaf-file-name="AdminController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/newAdmin/AdminController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="202" column="37" selection-start="6039" selection-end="6039" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
           </provider>
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
-            <state />
+        </entry>
+      </file>
+      <file leaf-file-name="DialogGroups.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/newAdmin/DialogGroups.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="51" selection-start="1469" selection-end="1469" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
           </provider>
-          <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
-            <state />
+        </entry>
+      </file>
+      <file leaf-file-name="TheTree.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/newAdmin/TheTree.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="97" column="0" selection-start="2875" selection-end="2875" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PageContent.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/newAdmin/PageContent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="27" selection-start="1393" selection-end="1393" vertical-scroll-proportion="0.2090784">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_template.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/_template.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="0" selection-start="3127" selection-end="3127" vertical-scroll-proportion="-40.625">
+              <folding>
+                <marker date="1318383153000" expanded="true" signature="2062:2088" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="content.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/content.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="53" selection-start="2626" selection-end="2626" vertical-scroll-proportion="-33.75">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="namespace.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/namespace.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="68" column="118" selection-start="3370" selection-end="3370" vertical-scroll-proportion="-28.125">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="embeddedGroups.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/embeddedGroups.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="29" selection-start="1198" selection-end="1198" vertical-scroll-proportion="-6.9166665">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/styles.xhtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="84" selection-start="1967" selection-end="1967" vertical-scroll-proportion="-25.0">
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -161,22 +299,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java" />
-        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/CodeMirror-2.15/compress.html" />
-        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/style.xhtml" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/security/CmfELResolver.java" />
-        <option value="$PROJECT_DIR$/web/contentTest.xhtml" />
-        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/content.xhtml" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java" />
         <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/embeddedGroups.xhtml" />
-        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/watch.js" />
-        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/_template.xhtml" />
-        <option value="$PROJECT_DIR$/src/META-INF/faces-config.xml" />
-        <option value="$PROJECT_DIR$/src/META-INF/web-fragment.xml" />
-        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/namespace.xhtml" />
+        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/admin/addContent.xhtml" />
+        <option value="$PROJECT_DIR$/web/contentTest.xhtml" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/security/CmfELResolver.java" />
         <option value="$PROJECT_DIR$/src/net/tralfamadore/client/Client.java" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/config/CmfContext.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/super-faces-config.xml" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/newAdmin/DialogGroups.java" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/newAdmin/TheTree.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/configDb.xhtml" />
+        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/_template.xhtml" />
+        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/content.xhtml" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/newAdmin/PageContent.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/styles.xhtml" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/newAdmin/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/embeddedGroups.xhtml" />
+        <option value="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/namespace.xhtml" />
       </list>
     </option>
   </component>
@@ -262,7 +400,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Favorites" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -347,6 +484,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -365,16 +503,16 @@
     <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/lib" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="options.lastSelected" value="preferences.keymap" />
-    <property name="GenerateAntBuildDialog.forceTargetJdk" value="false" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="248" />
-    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="240" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="55" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="252" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
@@ -420,11 +558,11 @@
       <recent name="net.tralfamadore.component.template" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin" />
       <recent name="$PROJECT_DIR$/src/META-INF/resources/cmf" />
       <recent name="$PROJECT_DIR$/src/META-INF/resources/cmf/admin" />
       <recent name="$PROJECT_DIR$/src/META-INF" />
       <recent name="$PROJECT_DIR$/src/META-INF/resources/css/960" />
-      <recent name="$PROJECT_DIR$/src/META-INF/resources/css" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="net.tralfamadore.cmf" />
@@ -1024,7 +1162,7 @@
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="StructureViewFactory">
     <option name="AUTOSCROLL_MODE" value="false" />
-    <option name="ACTIVE_ACTIONS" value="VISIBILITY_SORTER,ALPHA_COMPARATOR" />
+    <option name="ACTIVE_ACTIONS" value="VISIBILITY_SORTER,SHOW_PROPERTIES,ALPHA_COMPARATOR" />
   </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500">
     <option name="USER" value="" />
@@ -1097,13 +1235,12 @@
     <editor active="false" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23944415" sideWeight="0.6703704" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32902032" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32188064" sideWeight="0.97447914" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16782469" sideWeight="0.16913123" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3207024" sideWeight="0.97447914" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34842885" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.340868" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32902032" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1111,15 +1248,16 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820976" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962963" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16835916" sideWeight="0.21574074" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18706574" sideWeight="0.6709797" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18229167" sideWeight="0.659132" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16782469" sideWeight="0.6709797" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16354166" sideWeight="0.659132" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32155478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3207024" sideWeight="0.97447914" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1229,149 +1367,128 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/config/CmfShutdownListener.java">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/embeddedGroups.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1324" selection-end="1324" vertical-scroll-proportion="0.0">
+        <state line="29" column="23" selection-start="1166" selection-end="1166" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/primefaces/primefaces-3.0-SNAPSHOT.jar!/META-INF/faces-config.xml">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/addStyle.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="13" selection-start="976" selection-end="976" vertical-scroll-proportion="-6.195652">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.ui.FacesConfigEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/cmf-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="0" selection-start="2341" selection-end="2341" vertical-scroll-proportion="-0.7916667">
+        <state line="29" column="23" selection-start="1166" selection-end="1166" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/primefaces/ck_jsf_editor.jar!/META-INF/faces-config.xml">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/_template.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="27" selection-start="1142" selection-end="1142" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="42" column="24" selection-start="1962" selection-end="1962" vertical-scroll-proportion="-26.25">
+          <folding>
+            <marker date="1318046209000" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
-      <provider editor-type-id="com.intellij.jsf.ui.FacesConfigEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-        <state />
-      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/Admin.java">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/admin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="553" column="4" selection-start="18695" selection-end="18695" vertical-scroll-proportion="0.0">
+        <state line="61" column="4" selection-start="1921" selection-end="1921" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/addNamespace.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="63" selection-start="1831" selection-end="1831" vertical-scroll-proportion="0.0">
+        <state line="110" column="8" selection-start="4065" selection-end="4065" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/addContent.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/pretty-config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="67" selection-start="1769" selection-end="1769" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/groups.xhtml">
+    <entry file="file://$PROJECT_DIR$/web/contentTest.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="42" selection-start="2694" selection-end="2694" vertical-scroll-proportion="0.0">
+        <state line="40" column="45" selection-start="1609" selection-end="1609" vertical-scroll-proportion="-25.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java">
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/newAdmin/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="21" selection-start="3202" selection-end="3202" vertical-scroll-proportion="0.0">
+        <state line="202" column="37" selection-start="6039" selection-end="6039" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/newAdmin/DialogGroups.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="51" selection-start="1469" selection-end="1469" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/newAdmin/TheTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="0" selection-start="2875" selection-end="2875" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/styles.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="84" selection-start="1967" selection-end="1967" vertical-scroll-proportion="-25.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/BaseContent.java">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/embeddedGroups.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="4" selection-start="1881" selection-end="1881" vertical-scroll-proportion="0.0">
+        <state line="31" column="29" selection-start="1198" selection-end="1198" vertical-scroll-proportion="-6.9166665">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/content.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/_template.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="2613" selection-end="2613" vertical-scroll-proportion="0.0">
+        <state line="65" column="0" selection-start="3127" selection-end="3127" vertical-scroll-proportion="-40.625">
+          <folding>
+            <marker date="1318383153000" expanded="true" signature="2062:2088" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/content.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="53" selection-start="2626" selection-end="2626" vertical-scroll-proportion="-33.75">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/admin/style.xhtml">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/newAdmin/namespace.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="58" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.0">
+        <state line="68" column="118" selection-start="3370" selection-end="3370" vertical-scroll-proportion="-28.125">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/faces-config.xml">
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/newAdmin/PageContent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="2" selection-start="1109" selection-end="1109" vertical-scroll-proportion="-8.152174">
-          <folding />
+        <state line="43" column="27" selection-start="1393" selection-end="1393" vertical-scroll-proportion="0.2090784">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.ui.FacesConfigEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/super-faces-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="56" selection-start="2771" selection-end="2771" vertical-scroll-proportion="-22.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/faces-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="16" selection-start="2633" selection-end="2633" vertical-scroll-proportion="-9.717391">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.ui.FacesConfigEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.4159292">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
-        <state />
       </provider>
     </entry>
   </component>

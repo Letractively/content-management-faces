@@ -48,7 +48,7 @@ public class CmfELResolver extends ELResolver {
             }
         }
 
-        if(base == cmf) {
+        if(base == cmf || "cmf".equals(base)) {
             elContext.setPropertyResolved(true);
             return cmf.get(property);
         }
@@ -70,7 +70,7 @@ public class CmfELResolver extends ELResolver {
     public void setValue(ELContext elContext, Object base, Object property, Object value)
             throws NullPointerException, PropertyNotFoundException, PropertyNotWritableException, ELException
     {
-        if("cmf".equals(base)) {
+        if("cmf".equals(base) || cmf == base) {
             cmf.put(property, value);
             elContext.setPropertyResolved(true);
         }

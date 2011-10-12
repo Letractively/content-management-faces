@@ -24,12 +24,12 @@
 
     <url-mapping id="base">
         <pattern value="/cmf"/>
-        <view-id value="/cmf/admin/content.jsf"/>
+        <view-id value="/cmf/admin/welcome.jsf"/>
     </url-mapping>
 
     <url-mapping id="slash">
         <pattern value="/cmf/"/>
-        <view-id value="/cmf/admin/content.jsf"/>
+        <view-id value="/cmf/admin/welcome.jsf"/>
     </url-mapping>
 
     <url-mapping id="content">

@@ -19,12 +19,14 @@
 
 package net.tralfamadore.client;
 
+import com.google.code.ckJsfEditor.Config;
 import com.google.code.ckJsfEditor.Toolbar;
 import com.google.code.ckJsfEditor.ToolbarButtonGroup;
 import com.google.code.ckJsfEditor.ToolbarItem;
 import com.google.code.ckJsfEditor.component.SaveEvent;
 import net.tralfamadore.cmf.*;
 import net.tralfamadore.config.CmfContext;
+import net.tralfamadore.persistence.JpaEntityManagerProvider;
 import org.primefaces.component.picklist.PickList;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.DragDropEvent;
@@ -34,6 +36,8 @@ import org.primefaces.model.DualListModel;
 import org.primefaces.model.TreeNode;
 
 import javax.el.ELContext;
+import javax.el.ELResolver;
+import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -41,6 +45,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
+import java.io.File;
 import java.util.*;
 
 /**
@@ -51,6 +56,8 @@ import java.util.*;
 @ManagedBean
 @SessionScoped
 public class Client {
+    /** the path to the embedded db directory */
+    private String derbyPath;
     private List<BaseContent> namespaceContents = new Vector<BaseContent>();
 //    private DataTable groupsDataTable;
     private Content contentToAdd;
@@ -70,7 +77,6 @@ public class Client {
     private PickList pickList = new PickList();
     private GroupPermissionsConverter converter = new GroupPermissionsConverter();
     private ContentHolder contentHolder;
-    private ContentManager contentManager = CmfContext.getInstance().getContentManager();
     private TreeNode currentNamespace;
     private TreeNode currentContent;
     private TreeNode currentStyle;
@@ -82,6 +88,17 @@ public class Client {
     private String selectedGroup;
     private String editorContent;
     private String styleEditorContent = "p {\n\tcolor: black;\n}";
+    /** the context manager */
+    private final CmfContext cmfContext = CmfContext.getInstance();
+
+    /** the content manager */
+    private final ContentManager contentManager = cmfContext.getContentManager();
+
+    /** true if we need to configure the embedded database */
+    private boolean embeddedDbNeedsConfig = cmfContext.isEmbeddedDbNeedsConfig();
+    private boolean addingStyle = false;
+    private Style styleToAdd;
+    private Config editorConfig;
 
     public Client() {
         rootNode = new DefaultTreeNode("Root", null);
@@ -104,13 +121,14 @@ public class Client {
                 ToolbarButtonGroup.STYLES,
                 ToolbarButtonGroup.TOOLS
         );
+        editorConfig = new Config();
+        editorConfig.toolbar(editorToolbar);
     }
 
     /**
      * Creates the tree model for the tree component from information gotten from the content manager.  Used internally
      * and by other components to "re-render" the model when it is updated.
      *
-     * @param event the event
      */
     public void createTreeModel(ActionEvent event) {
         contentHolder.clear();
@@ -138,17 +156,21 @@ public class Client {
     }
 
     public void addStyle(ActionEvent event) {
-        Style style = new Style();
+        Style style = styleToAdd;
         style.setName(newStyleName);
         style.setNamespace((Namespace) currentNamespace.getData());
         style.setGroupPermissionsList(getGroupData());
         contentHolder.add(style);
         contentManager.saveStyle(style);
+        addingStyle = false;
+        namespaceContents.add(style);
+        createTreeModel(event);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Style " + style.getFullName() + " added.", ""));
     }
 
     public void addContent(ActionEvent event) {
+        loadNamespace();
         Content content = contentToAdd;
         content.setName(newContentName);
         content.setNamespace((Namespace) currentNamespace.getData());
@@ -157,9 +179,10 @@ public class Client {
         contentHolder.add(content);
         contentManager.saveContent(content);
         addingContent = false;
+        namespaceContents.add(content);
+        createTreeModel(event);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Content " + content.getFullName() + " added.", ""));
-        namespaceContents.add(content);
     }
 
     /*
@@ -237,6 +260,7 @@ public class Client {
         contentManager.saveNamespace(namespace);
         contentHolder.add(namespace);
         newNamespace = null;
+        createTreeModel(event);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Namespace " + namespace.getFullName() + " saved successfully.", ""));
     }
@@ -259,11 +283,14 @@ public class Client {
 
     public void saveContent(SaveEvent event) {
         try {
-        Content content = (Content) currentContent.getData();
-        content.setContent(event.getEditorData());
-        contentManager.saveContent(content);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-                "Content " + content.getName() + " saved successfully.", ""));
+            Content content = (Content) currentContent.getData();
+            content.setContent(event.getEditorData());
+            contentManager.saveContent(content);
+            ELContext elContext = FacesContext.getCurrentInstance().getELContext();
+            ELResolver elResolver = elContext.getELResolver();
+            elResolver.setValue(elContext, "cmf", content.getFullName(), event.getEditorData());
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                    "Content " + content.getName() + " saved successfully.", ""));
         } catch(Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Content [" + event.getEditorData() + "] saved successfully.", ""));
@@ -437,6 +464,8 @@ public class Client {
             return namespaceToAdd.getGroupPermissionsList();
         } else if(addingContent) {
             return contentToAdd.getGroupPermissionsList();
+        } else if(addingStyle) {
+            return styleToAdd.getGroupPermissionsList();
         }
         if(selectedNode == null)
             return new Vector<GroupPermissions>();
@@ -774,7 +803,7 @@ public class Client {
     public void removeBaseContent(ActionEvent e) {
         String contentName = getContentToRemove();
         String contentType = getContentTypeToRemove();
-//        System.out.println(contentName + ":" + contentType);
+
         if(contentType.equals("Namespace")) {
             Namespace namespace = Namespace.createFromString(contentName);
             if(contentManager.loadChildNamespaces(namespace).isEmpty()
@@ -790,8 +819,6 @@ public class Client {
         } else if(contentType.equals("Content")) {
             String namespaceName = contentName.substring(0, contentName.lastIndexOf('.'));
             contentName = contentName.substring(contentName.lastIndexOf('.') + 1);
-//            System.out.println(namespaceName);
-//            System.out.println(contentName);
             Content content = (Content) contentHolder.find(new ContentKey(contentName, namespaceName, "content")).getData();
             contentManager.deleteContent(content);
             getNamespaceContents().remove(content);
@@ -831,6 +858,12 @@ public class Client {
         contentToAdd.setGroupPermissionsList(getDefaultGroupPermissions());
     }
 
+    public void addNewStyle(ActionEvent e) {
+        addingStyle = true;
+        styleToAdd = new Style();
+        styleToAdd.setGroupPermissionsList(getDefaultGroupPermissions());
+    }
+
     public boolean isAddingContent() {
         return addingContent;
     }
@@ -854,4 +887,57 @@ public class Client {
 //    public void setGroupsDataTable(DataTable groupsDataTable) {
 //        this.groupsDataTable = groupsDataTable;
 //    }
+
+    /**
+     * Action listener that creates the embedded database from the initial screen.
+     *
+     * @param e event info
+     */
+    public void createEmbeddedDb(ActionEvent e) {
+        String jdbc = "jdbc:derby:";
+        String props = ";create=true";
+        Properties properties = new Properties();
+
+        properties.put("javax.persistence.jdbc.driver", "org.apache.derby.jdbc.EmbeddedDriver");
+        properties.put("javax.persistence.jdbc.url", jdbc + derbyPath + props);
+
+        File file = new File(derbyPath);
+        if(!file.getParentFile().exists()) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Invalid path: " + derbyPath + ".  Directory " + file.getParentFile().getAbsolutePath()
+                            + " does not exist.", null));
+            derbyPath = null;
+            throw new FacesException();
+        }
+
+        ((JpaEntityManagerProvider)this.cmfContext.getEntityManagerProvider()).createEmbeddedDb(properties);
+
+        embeddedDbNeedsConfig = false;
+
+        createTreeModel(new ActionEvent(pickList));
+    }
+
+    public boolean isEmbeddedDbNeedsConfig() {
+        return embeddedDbNeedsConfig;
+    }
+
+    public void setEmbeddedDbNeedsConfig(boolean embeddedDbNeedsConfig) {
+        this.embeddedDbNeedsConfig = embeddedDbNeedsConfig;
+    }
+
+    public String getDerbyPath() {
+        return derbyPath;
+    }
+
+    public void setDerbyPath(String derbyPath) {
+        this.derbyPath = derbyPath;
+    }
+
+    public Config getEditorConfig() {
+        return editorConfig;
+    }
+
+    public void setEditorConfig(Config editorConfig) {
+        this.editorConfig = editorConfig;
+    }
 }

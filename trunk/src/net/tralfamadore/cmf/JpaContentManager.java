@@ -252,6 +252,9 @@ public class JpaContentManager implements ContentManager {
             boolean found = false;
             String name = groupPermissions.getGroup();
 
+            if(groupPermissionsEntities == null)
+                groupPermissionsEntities = new HashSet<GroupPermissionsEntity>();
+
             for(GroupPermissionsEntity groupPermissionsEntity : groupPermissionsEntities) {
                 if(name.equals(groupPermissionsEntity.getGroup().getGroupname())) {
                     found = true;

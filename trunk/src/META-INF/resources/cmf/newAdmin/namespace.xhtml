@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -9,11 +28,11 @@
 <h:body>
     <ui:composition template="_template.xhtml">
         <ui:define name="body">
-            <h1 style="padding-top: 20px; text-align: center;">#{client.incomingNamespace}</h1>
+            <h1 style="padding-top: 20px; text-align: center;">#{adminController.incomingNamespace}</h1>
 
 
             <div style="width: 90%; height: 100%; text-align: center; margin-left: 30px; margin-top: 20px;">
-                <p:dataTable id="namespaceContents" value="#{client.namespaceContents}" var="content"
+                <p:dataTable id="namespaceContents" value="#{pageContent.namespaceContents}" var="content"
                              resizableColumns="true">
                     <f:facet name="header">
                         Namespace Contents
@@ -66,7 +85,7 @@
 
                     <p:commandButton value="No" onclick="confirmation.hide()" type="button" style="margin-left: 10px;"/>
                     <p:spacer width="55"/>
-                    <p:commandButton value="Yes" update="theForm:messages theForm:namespaceContents theForm:theTree"
+                    <p:commandButton value="Yes" update="messages namespaceContents theTree"
                                      actionListener="#{client.removeBaseContent}" onstart="confirmation.hide()"/>
 
                 </p:confirmDialog>

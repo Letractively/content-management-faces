@@ -33,7 +33,6 @@ import java.util.Vector;
 public class Namespace extends BaseContent implements TreeContent, Serializable {
     private String nodeName;
     private Namespace parent;
-    private List<GroupPermissions> groupPermissionsList = new Vector<GroupPermissions>();
     private TreeNode leaf;
 
 
