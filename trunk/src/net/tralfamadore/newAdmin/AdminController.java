@@ -24,11 +24,11 @@ import net.tralfamadore.cmf.*;
 import org.primefaces.model.TreeNode;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.List;
 import java.util.Vector;
 
@@ -37,16 +37,16 @@ import java.util.Vector;
  * Date: 10/11/11
  * Time: 8:41 PM
  */
-@ManagedBean
+@Named("adminController")
 @RequestScoped
 public class AdminController {
-    @ManagedProperty(value = "#{pageContent}")
+    @Inject
     private PageContent pageContent;
 
-    @ManagedProperty(value = "#{theTree}")
+    @Inject
     private TheTree theTree;
 
-    @ManagedProperty(value = "#{dialogGroups}")
+    @Inject
     private DialogGroups dialogGroups;
 
     private String contentCss;

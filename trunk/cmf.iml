@@ -55,6 +55,8 @@
     <orderEntry type="library" scope="TEST" name="selenium" level="project" />
     <orderEntry type="library" scope="TEST" name="jmockit" level="project" />
     <orderEntry type="library" name="primefaces" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="weld" level="project" />
+    <orderEntry type="library" name="commons" level="project" />
   </component>
 </module>
 

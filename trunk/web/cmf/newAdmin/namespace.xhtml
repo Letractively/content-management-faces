@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xml:lang="en" lang="en">
+<h:body>
+    <ui:composition template="_template.xhtml">
+        <ui:define name="body">
+            <h1 style="padding-top: 20px; text-align: center;">#{adminController.incomingNamespace}</h1>
+
+
+            <div style="width: 90%; height: 100%; text-align: center; margin-left: 30px; margin-top: 20px;">
+                <p:dataTable id="namespaceContents" value="#{pageContent.namespaceContents}" var="content"
+                             resizableColumns="true">
+                    <f:facet name="header">
+                        Namespace Contents
+                    </f:facet>
+
+                    <p:column sortBy="#{content.name}" style="width: 280px;">
+                        <f:facet name="header">
+                            Name
+                        </f:facet>
+                        <h:outputText value="#{content.name}"/>
+                    </p:column>
+
+                    <p:column sortBy="#{content.class.simpleName}" style="width: 152px;">
+                        <f:facet name="header">
+                            Type
+                        </f:facet>
+                        <h:outputText value="#{content.class.simpleName}"/>
+                    </p:column>
+
+                    <p:column style="width: 80px;">
+                        <f:facet name="header">
+                            Remove
+                        </f:facet>
+                        <p:commandButton image="ui-icon-circle-close" oncomplete="confirmation.show()">
+                            <f:setPropertyActionListener name="content" value="#{content.fullName}" target="#{client.contentToRemove}"/>
+                            <f:setPropertyActionListener name="contentType" value="#{content.class.simpleName}" target="#{client.contentTypeToRemove}"/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>
+
+                <p:accordionPanel multiple="true" widgetVar="accord" id="acPanel" style="margin-bottom: 20px; margin-top: 20px;">
+                    <p:tab title="Actions">
+                        <p:commandButton value="Add New Namespace" update="theForm:addNamespaceDialog theForm:theTree"
+                                         actionListener="#{client.addNewNamespace}" oncomplete="addNamespace.show();"/>
+                        <p:commandButton value="Add New Content" style="margin-left: 20px;" update="theForm:addNamespaceDialog"
+                                         actionListener="#{client.addNewContent}" oncomplete="addContent.show();"/>
+                        <p:commandButton value="Add New Style" style="margin-left: 20px;" update="theForm:addNamespaceDialog"
+                                         actionListener="#{client.addNewStyle}" oncomplete="addStyle.show();"/>
+                    </p:tab>
+                    <p:tab title="Permissions">
+                        <ui:include src="embeddedGroups.xhtml"/>
+                    </p:tab>
+                </p:accordionPanel>
+                <script type="text/javascript">
+                    accord.unselect(0);
+                </script>
+                <p:confirmDialog message="Are you sure you want to delete this content?" width="200"
+                                 showEffect="explode" hideEffect="explode"
+                                 header="Confirm" severity="alert" widgetVar="confirmation">
+
+                    <p:commandButton value="No" onclick="confirmation.hide()" type="button" style="margin-left: 10px;"/>
+                    <p:spacer width="55"/>
+                    <p:commandButton value="Yes" update="messages namespaceContents theTree"
+                                     actionListener="#{client.removeBaseContent}" onstart="confirmation.hide()"/>
+
+                </p:confirmDialog>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

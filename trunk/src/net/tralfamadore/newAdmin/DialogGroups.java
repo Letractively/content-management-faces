@@ -22,8 +22,8 @@ package net.tralfamadore.newAdmin;
 import net.tralfamadore.cmf.GroupPermissions;
 import net.tralfamadore.config.CmfContext;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import java.util.List;
 import java.util.Vector;
 
@@ -32,7 +32,7 @@ import java.util.Vector;
  * Date: 10/11/11
  * Time: 9:05 PM
  */
-@ManagedBean
+@Named
 @RequestScoped
 public class DialogGroups {
     private List<GroupPermissions> groupPermissions = new Vector<GroupPermissions>();

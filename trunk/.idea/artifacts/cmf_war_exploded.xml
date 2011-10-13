@@ -6,16 +6,21 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="cmf" />
-          <element id="dir-copy" path="$PROJECT_DIR$/out/test/cmf" />
+          <element id="directory" name="META-INF">
+            <element id="directory" name="services">
+              <element id="dir-copy" path="$PROJECT_DIR$/src/META-INF/services" />
+            </element>
+            <element id="dir-copy" path="$PROJECT_DIR$/src/META-INF" />
+          </element>
         </element>
         <element id="directory" name="lib">
-          <element id="artifact" artifact-name="cmf:jar" />
           <element id="library" level="project" name="el" />
           <element id="library" level="project" name="Java EE 6" />
           <element id="library" level="project" name="derby" />
           <element id="library" level="project" name="dbDrivers" />
           <element id="library" level="project" name="jsf" />
           <element id="library" level="project" name="primefaces" />
+          <element id="library" level="project" name="commons" />
         </element>
       </element>
     </root>

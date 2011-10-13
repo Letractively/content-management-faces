@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="weld">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/weld/weld-servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld/weld-spi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld/weld-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld/weld-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/weld/weld-servlet-core.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

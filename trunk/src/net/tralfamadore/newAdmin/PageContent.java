@@ -23,11 +23,11 @@ import net.tralfamadore.cmf.BaseContent;
 import net.tralfamadore.cmf.Content;
 import net.tralfamadore.cmf.Namespace;
 import net.tralfamadore.cmf.Style;
+import net.tralfamadore.viewScope.ViewScoped;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Vector;
@@ -37,10 +37,10 @@ import java.util.Vector;
  * Date: 10/11/11
  * Time: 8:43 PM
  */
-@ManagedBean
+@Named
 @ViewScoped
 public class PageContent implements Serializable {
-    @ManagedProperty(value = "#{theTree}")
+    @Inject
     private TheTree theTree;
 
     private BaseContent theContent;
@@ -88,14 +88,6 @@ public class PageContent implements Serializable {
 
     public String getType() {
         return theContent.getClass().getSimpleName().toLowerCase();
-    }
-
-    public TheTree getTheTree() {
-        return theTree;
-    }
-
-    public void setTheTree(TheTree theTree) {
-        this.theTree = theTree;
     }
 
     public void setTheContent(BaseContent theContent) {

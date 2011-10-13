@@ -28,8 +28,8 @@ import net.tralfamadore.config.CmfContext;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
@@ -38,7 +38,7 @@ import java.util.List;
  * Date: 10/11/11
  * Time: 8:43 PM
  */
-@ManagedBean
+@Named
 @SessionScoped
 public class TheTree implements Serializable {
     private final ContentManager contentManager = CmfContext.getInstance().getContentManager();
