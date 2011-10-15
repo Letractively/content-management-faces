@@ -21,6 +21,7 @@ package net.tralfamadore.cmf;
 
 import net.tralfamadore.persistence.entity.GroupEntity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -31,7 +32,7 @@ import java.util.List;
  * This interface represents the link between your content and the outside world.  It is where the content is retrieved
  * from /written to the data store.
  */
-public interface ContentManager {
+public interface ContentManager extends Serializable {
     /**
      * Load a list of all namespaces.
      *
@@ -81,4 +82,6 @@ public interface ContentManager {
 
     public void saveGroup(GroupEntity group);
     public List<Namespace> loadChildNamespaces(Namespace namespace);
+
+    public List<String> getAllGroups();
 }

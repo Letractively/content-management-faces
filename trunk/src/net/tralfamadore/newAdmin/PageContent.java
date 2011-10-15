@@ -25,8 +25,6 @@ import net.tralfamadore.cmf.Namespace;
 import net.tralfamadore.cmf.Style;
 import net.tralfamadore.viewScope.ViewScoped;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -40,16 +38,9 @@ import java.util.Vector;
 @Named
 @ViewScoped
 public class PageContent implements Serializable {
-    @Inject
-    private TheTree theTree;
-
     private BaseContent theContent;
+    private BaseContent contentToRemove;
     private List<BaseContent> namespaceContents = new Vector<BaseContent>();
-
-    @PostConstruct
-    private void init() {
-        theContent = (BaseContent) theTree.getSelectedNode().getData();
-    }
 
     public BaseContent getBaseContent() {
         return theContent;
@@ -100,5 +91,13 @@ public class PageContent implements Serializable {
 
     public void setNamespaceContents(List<BaseContent> namespaceContents) {
         this.namespaceContents = namespaceContents;
+    }
+
+    public BaseContent getContentToRemove() {
+        return contentToRemove;
+    }
+
+    public void setContentToRemove(BaseContent contentToRemove) {
+        this.contentToRemove = contentToRemove;
     }
 }

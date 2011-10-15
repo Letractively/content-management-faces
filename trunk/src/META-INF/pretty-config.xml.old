@@ -75,7 +75,7 @@
     <url-mapping id="content">
         <pattern value="/cmf/newAdmin/content/#{ namespace: client.incomingNamespace }/#{ contentName: client.incomingContentName }"/>
         <view-id value="/cmf/newAdmin/content.jsf"/>
-        <action>#{adminController.loadContents}</action>
+        <action>#{adminController.loadContent}</action>
     </url-mapping>
 
     <url-mapping id="namespace">

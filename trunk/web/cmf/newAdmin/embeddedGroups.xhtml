@@ -29,31 +29,31 @@
     <h:body>
         <ui:composition>
 
-            <p:dataTable id="groupData" value="#{pageContent.baseContent.groupPermissionsList}" var="data" styleClass="zero">
+            <p:dataTable id="groupData" value="#{pageContent.baseContent.groupPermissionsList}" var="data"
+                         binding="#{adminController.groupsDataTable}" styleClass="zero">
                 <p:column headerText="Group">
                     <h:outputText value="#{data.group}"/>
                 </p:column>
                 <p:column headerText="View">
                     <p:selectBooleanCheckbox value="#{data.canView}" id="viewCb" style="padding-left: 30px;">
-                        <p:ajax listener="#{client.permissionChanged}"/>
+                        <p:ajax listener="#{adminController.permissionChanged}"/>
                     </p:selectBooleanCheckbox>
                 </p:column>
                 <p:column headerText="Edit">
                     <p:selectBooleanCheckbox value="#{data.canEdit}" style="padding-left: 30px;">
-                        <p:ajax listener="#{client.permissionChanged}"/>
+                        <p:ajax listener="#{adminController.permissionChanged}"/>
                     </p:selectBooleanCheckbox>
                 </p:column>
                 <p:column headerText="Delete">
                     <p:selectBooleanCheckbox value="#{data.canDelete}" style="padding-left: 30px;">
-                        <p:ajax listener="#{client.permissionChanged}"/>
+                        <p:ajax listener="#{adminController.permissionChanged}"/>
                     </p:selectBooleanCheckbox>
                 </p:column>
                 <p:column headerText="Admin">
                     <p:selectBooleanCheckbox value="#{data.canAdmin}" style="padding-left: 30px;" disabled="true"/>
                 </p:column>
                 <p:column>
-                    <p:commandButton id="moo" image="ui-icon-circle-close" actionListener="#{client.removeGroup}"
-                                     update="groupData" process="groupData">
+                    <p:commandButton id="moo" image="ui-icon-circle-close" actionListener="#{adminController.removeGroup}">
                         <f:attribute name="group" value="#{data.group}"/>
                     </p:commandButton>
                 </p:column>
@@ -68,12 +68,12 @@
                                                  style="width: 150px;" label="Add a group">
                                     <p:ajax update="picker"/>
                                     <f:selectItem itemLabel="Add Group" itemValue="" noSelectionOption="true"/>
-                                    <f:selectItems value="#{adminController.allGroups}" var="group" itemLabel="#{group}"
+                                    <f:selectItems value="#{groups.allGroups}" var="group" itemLabel="#{group}"
                                                    itemValue="#{group}"/>
                                 </p:selectOneMenu>
                             </td>
                             <td>
-                                <p:commandButton value="Add" actionListener="#{client.addGroupListener}"
+                                <p:commandButton value="Add" actionListener="#{adminController.addGroup}"
                                                  update="groupData" process="groupData"/>
                             </td>
                         </tr>

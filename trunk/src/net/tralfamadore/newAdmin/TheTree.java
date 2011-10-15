@@ -24,11 +24,13 @@ import net.tralfamadore.cmf.Content;
 import net.tralfamadore.cmf.ContentManager;
 import net.tralfamadore.cmf.Namespace;
 import net.tralfamadore.cmf.Style;
-import net.tralfamadore.config.CmfContext;
+import net.tralfamadore.util.Current;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -41,7 +43,8 @@ import java.util.List;
 @Named
 @SessionScoped
 public class TheTree implements Serializable {
-    private final ContentManager contentManager = CmfContext.getInstance().getContentManager();
+    @Inject @Current
+    private ContentManager contentManager;
 
     private TreeNode root;
     private TreeNode selectedNode;
@@ -50,6 +53,9 @@ public class TheTree implements Serializable {
     public TheTree() {
         root = new DefaultTreeNode("Root", null);
         contentHolder = new ContentHolder(root);
+    }
+    @PostConstruct
+    private void init() {
         createTreeModel();
     }
 
@@ -69,7 +75,7 @@ public class TheTree implements Serializable {
         this.selectedNode = selectedNode;
     }
 
-    private void createTreeModel() {
+    void createTreeModel() {
         contentHolder.clear();
         List<Namespace> namespaces = contentManager.loadAllNamespaces();
         for(Namespace namespace : namespaces) {

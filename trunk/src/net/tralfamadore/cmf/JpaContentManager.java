@@ -627,6 +627,7 @@ public class JpaContentManager implements ContentManager {
     }
 
     @SuppressWarnings({"unchecked"})
+    @Override
     public List<String> getAllGroups() {
         return em.createQuery("select g.groupname from groups g").getResultList();
     }

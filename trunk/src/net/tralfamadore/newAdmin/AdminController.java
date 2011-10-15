@@ -19,16 +19,24 @@
 
 package net.tralfamadore.newAdmin;
 
+import com.google.code.ckJsfEditor.Toolbar;
+import com.google.code.ckJsfEditor.ToolbarButtonGroup;
+import com.google.code.ckJsfEditor.ToolbarItem;
 import net.tralfamadore.client.ContentKey;
 import net.tralfamadore.cmf.*;
+import net.tralfamadore.config.CmfContext;
+import org.primefaces.component.datatable.DataTable;
+import org.primefaces.context.RequestContext;
 import org.primefaces.model.TreeNode;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -40,14 +48,25 @@ import java.util.Vector;
 @Named("adminController")
 @RequestScoped
 public class AdminController {
+    private static final Toolbar editorToolbar = new Toolbar(
+                ToolbarButtonGroup.DOCUMENT.remove(ToolbarItem.SAVE).remove(ToolbarItem.NEW_PAGE),
+                ToolbarButtonGroup.CLIPBOARD,
+                ToolbarButtonGroup.EDITING,
+                ToolbarButtonGroup.COLORS.item(ToolbarItem.BREAK),
+                ToolbarButtonGroup.PARAGRAPH,
+                ToolbarButtonGroup.INSERT.remove(ToolbarItem.FLASH).remove(ToolbarItem.IFRAME),
+                ToolbarButtonGroup.LINKS.item(ToolbarItem.BREAK),
+                ToolbarButtonGroup.STYLES,
+                ToolbarButtonGroup.TOOLS
+        );
     @Inject
     private PageContent pageContent;
-
     @Inject
     private TheTree theTree;
-
     @Inject
     private DialogGroups dialogGroups;
+    @Inject
+    private FacesContext facesContext;
 
     private String contentCss;
     private String incomingNamespace;
@@ -55,13 +74,20 @@ public class AdminController {
     private List<String> allGroups;
     private String selectedGroup;
 
-    @PostConstruct
-    public void init() {
-        allGroups = ((JpaContentManager)theTree.getContentManager()).getAllGroups();
-    }
+    private DataTable groupsDataTable;
+    private Namespace namespaceToAdd;
+    private Content contentToAdd;
+    private Style styleToAdd;
+    private boolean addingContent = false;
+    private boolean addingStyle = false;
+    private boolean addingNamespace = false;
+    private boolean addingTopLevelNamespace = false;
+
 
 
     public void loadNamespace() {
+        if(isAjaxRequest())
+            return;
         TreeNode newContent = theTree.getContentHolder().find(new ContentKey(null, incomingNamespace, "namespace"));
         TreeNode selectedNode = theTree.getSelectedNode();
 
@@ -81,6 +107,8 @@ public class AdminController {
     }
 
     public void loadContent() {
+        if(isAjaxRequest())
+            return;
         TreeNode newContent = theTree.getContentHolder().find(new ContentKey(incomingContentName,
                 incomingNamespace, "content"));
         TreeNode selectedNode = theTree.getSelectedNode();
@@ -102,6 +130,8 @@ public class AdminController {
     }
 
     public void loadStyle() {
+        if(isAjaxRequest())
+            return;
         TreeNode newContent = theTree.getContentHolder().find(
                 new ContentKey(incomingContentName, incomingNamespace, "style"));
         TreeNode selectedNode = theTree.getSelectedNode();
@@ -121,25 +151,136 @@ public class AdminController {
         pageContent.setTheContent((BaseContent) newContent.getData());
     }
 
+    public void addNewTopLevelNamespace(ActionEvent e) {
+        namespaceToAdd = new Namespace();
+        namespaceToAdd.setGroupPermissionsList(newDefaultGroupPermissions());
+        addingNamespace = true;
+        addingTopLevelNamespace = true;
+    }
+
     public void addNewNamespace() {
+        Namespace parent = pageContent.getNamespace();
+        namespaceToAdd = new Namespace(parent, "");
+        namespaceToAdd.setGroupPermissionsList(newDefaultGroupPermissions());
+        addingNamespace = true;
     }
 
     public void addNewContent() {
+        addingContent = true;
+        contentToAdd = new Content();
+        contentToAdd.setGroupPermissionsList(newDefaultGroupPermissions());
     }
 
     public void addNewStyle() {
+        addingStyle = true;
+        styleToAdd = new Style();
+        styleToAdd.setGroupPermissionsList(newDefaultGroupPermissions());
+    }
+
+    public void addGroup(ActionEvent e) {
+        BaseContent content = pageContent.getBaseContent();
+
+        content.getGroupPermissionsList().add(new GroupPermissions(selectedGroup, true, false, false, false));
+
+        if(content instanceof Content)
+            theTree.getContentManager().saveContent((Content) content);
+        else if(content instanceof Style)
+            theTree.getContentManager().saveStyle((Style) content);
+        else if(content instanceof Namespace)
+            theTree.getContentManager().saveNamespace((Namespace) content);
+    }
+
+    public void removeGroup(ActionEvent e) {
+        String groupName = (String) e.getComponent().getAttributes().get("group");
+        if(pageContent.getBaseContent() instanceof Namespace) {
+            Namespace namespace = pageContent.getNamespace();
+            for(Iterator<GroupPermissions> it = namespace.getGroupPermissionsList().iterator(); it.hasNext(); ) {
+                GroupPermissions groupPermissions = it.next();
+                if(groupPermissions.getGroup().equals(groupName)) {
+                    it.remove();
+                    break;
+                }
+            }
+            theTree.getContentManager().saveNamespace(namespace);
+        } else {
+            BaseContent content = pageContent.getBaseContent();
+            for(Iterator<GroupPermissions> it = content.getGroupPermissionsList().iterator(); it.hasNext(); ) {
+                GroupPermissions groupPermissions = it.next();
+                if(groupPermissions.getGroup().equals(groupName)) {
+                    it.remove();
+                    break;
+                }
+            }
+            if(content instanceof Style) {
+                theTree.getContentManager().saveStyle((Style)content);
+            } else if(content instanceof Content) {
+                theTree.getContentManager().saveContent((Content) content);
+            } else if(content instanceof Script) {
+                theTree.getContentManager().saveScript((Script) content);
+            }
+        }
+
+        String clientId = groupsDataTable.getClientId(facesContext);
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+        if(clientId.matches(".*[0-9]+$")) {
+            clientId = clientId.replaceAll(":[0-9]+$", "");
+        }
+        requestContext.addPartialUpdateTarget(clientId);
+    }
+
+    public void permissionChanged(AjaxBehaviorEvent e) {
+        BaseContent content = pageContent.getBaseContent();
+
+        if(content instanceof Content)
+            theTree.getContentManager().saveContent((Content)content);
+        else if(content instanceof Style)
+            theTree.getContentManager().saveStyle((Style) content);
+        else if(content instanceof Namespace)
+            theTree.getContentManager().saveNamespace((Namespace) content);
     }
 
     public void saveNamespace() {
     }
 
     public void saveContent() {
+        Content content = pageContent.getContent();
+        theTree.getContentManager().saveContent(content);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Content " + content.getName() + " saved successfully.", ""));
     }
 
     public void saveStyle() {
     }
 
     public void applyStyle() {
+    }
+
+    public void removeBaseContent(ActionEvent e) {
+        BaseContent content = pageContent.getContentToRemove();
+        ContentManager contentManager = theTree.getContentManager();
+
+        if(content instanceof Namespace) {
+            Namespace namespace = content.getNamespace();
+            if(contentManager.loadChildNamespaces(namespace).isEmpty()
+                    && contentManager.loadStyle(namespace).isEmpty()
+                    && contentManager.loadContent(namespace).isEmpty())
+            {
+                contentManager.deleteNamespace(namespace);
+                pageContent.getNamespaceContents().remove(namespace);
+                theTree.createTreeModel();
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "You can only delete an empty namespace", null));
+            }
+        } else if(content instanceof Content) {
+            contentManager.deleteContent((Content) content);
+            pageContent.getNamespaceContents().remove(content);
+            theTree.createTreeModel();
+        } else if(content instanceof Style) {
+            contentManager.deleteStyle((Style) content);
+            pageContent.getNamespaceContents().remove(content);
+            theTree.createTreeModel();
+        }
     }
 
     public PageContent getPageContent() {
@@ -206,6 +347,18 @@ public class AdminController {
         this.selectedGroup = selectedGroup;
     }
 
+    public Toolbar getEditorToolbar() {
+        return editorToolbar;
+    }
+
+    public DataTable getGroupsDataTable() {
+        return groupsDataTable;
+    }
+
+    public void setGroupsDataTable(DataTable groupsDataTable) {
+        this.groupsDataTable = groupsDataTable;
+    }
+
     private void fetchNamespaceContents() {
         Namespace namespace = pageContent.getNamespace();
         pageContent.setNamespaceContents(new Vector<BaseContent>());
@@ -227,5 +380,17 @@ public class AdminController {
         }
         contentCss = contentCss.replace('\r', ' ');
         contentCss = contentCss.replace('\n', ' ');
+    }
+
+    private boolean isAjaxRequest() {
+        return facesContext.getPartialViewContext().isAjaxRequest();
+    }
+
+    private List<GroupPermissions> newDefaultGroupPermissions() {
+        List<GroupPermissions> defaultGroupPermissionsList = new Vector<GroupPermissions>();
+        String group = CmfContext.getInstance().getCurrentUser();
+        GroupPermissions groupPermissions = new GroupPermissions(group, true, true, true, true);
+        defaultGroupPermissionsList.add(groupPermissions);
+        return defaultGroupPermissionsList;
     }
 }

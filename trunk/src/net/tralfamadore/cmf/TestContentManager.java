@@ -21,6 +21,7 @@ package net.tralfamadore.cmf;
 
 import net.tralfamadore.persistence.entity.GroupEntity;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -331,5 +332,10 @@ public class TestContentManager implements ContentManager {
     @Override
     public List<Namespace> loadChildNamespaces(Namespace namespace) {
         return null;
+    }
+
+    @Override
+    public List<String> getAllGroups() {
+        return Arrays.asList("cmfAdmin", "billreh", "users", "user1", "user2", "user3");
     }
 }

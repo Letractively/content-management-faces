@@ -57,20 +57,19 @@
                             Remove
                         </f:facet>
                         <p:commandButton image="ui-icon-circle-close" oncomplete="confirmation.show()">
-                            <f:setPropertyActionListener name="content" value="#{content.fullName}" target="#{client.contentToRemove}"/>
-                            <f:setPropertyActionListener name="contentType" value="#{content.class.simpleName}" target="#{client.contentTypeToRemove}"/>
+                            <f:setPropertyActionListener name="content" value="#{content}" target="#{pageContent.contentToRemove}"/>
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
 
                 <p:accordionPanel multiple="true" widgetVar="accord" id="acPanel" style="margin-bottom: 20px; margin-top: 20px;">
                     <p:tab title="Actions">
-                        <p:commandButton value="Add New Namespace" update="theForm:addNamespaceDialog theForm:theTree"
-                                         actionListener="#{client.addNewNamespace}" oncomplete="addNamespace.show();"/>
-                        <p:commandButton value="Add New Content" style="margin-left: 20px;" update="theForm:addNamespaceDialog"
-                                         actionListener="#{client.addNewContent}" oncomplete="addContent.show();"/>
-                        <p:commandButton value="Add New Style" style="margin-left: 20px;" update="theForm:addNamespaceDialog"
-                                         actionListener="#{client.addNewStyle}" oncomplete="addStyle.show();"/>
+                        <p:commandButton value="Add New Namespace" update="theTree"
+                                         actionListener="#{adminController.addNewNamespace}" oncomplete="addNamespace.show();"/>
+                        <p:commandButton value="Add New Content" style="margin-left: 20px;" update="addNamespaceDialog"
+                                         actionListener="#{adminController.addNewContent}" oncomplete="addContent.show();"/>
+                        <p:commandButton value="Add New Style" style="margin-left: 20px;" update="addNamespaceDialog"
+                                         actionListener="#{adminController.addNewStyle}" oncomplete="addStyle.show();"/>
                     </p:tab>
                     <p:tab title="Permissions">
                         <ui:include src="embeddedGroups.xhtml"/>
@@ -86,7 +85,7 @@
                     <p:commandButton value="No" onclick="confirmation.hide()" type="button" style="margin-left: 10px;"/>
                     <p:spacer width="55"/>
                     <p:commandButton value="Yes" update="messages namespaceContents theTree"
-                                     actionListener="#{client.removeBaseContent}" onstart="confirmation.hide()"/>
+                                     actionListener="#{adminController.removeBaseContent}" onstart="confirmation.hide()"/>
 
                 </p:confirmDialog>
             </div>

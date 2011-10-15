@@ -22,46 +22,6 @@
                xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.3.0
                http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.3.0.xsd">
 
-    <!--
-    <url-mapping id="base">
-        <pattern value="/cmf"/>
-        <view-id value="/cmf/admin/welcome.jsf"/>
-    </url-mapping>
-
-    <url-mapping id="slash">
-        <pattern value="/cmf/"/>
-        <view-id value="/cmf/admin/welcome.jsf"/>
-    </url-mapping>
-
-    <url-mapping id="content">
-        <pattern value="/cmf/admin/content/#{ namespace: client.incomingNamespace }/#{ contentName: client.incomingContentName }"/>
-        <view-id value="/cmf/admin/content.jsf"/>
-        <action>#{client.loadContents}</action>
-    </url-mapping>
-
-    <url-mapping id="namespace">
-        <pattern value="/cmf/admin/namespace/#{ namespace: client.incomingNamespace }"/>
-        <view-id value="/cmf/admin/namespace.jsf"/>
-        <action>#{client.loadNamespace}</action>
-    </url-mapping>
-
-    <url-mapping id="style">
-        <pattern value="/cmf/admin/style/#{ namespace: client.incomingNamespace }/#{ styleName: client.incomingContentName }"/>
-        <view-id value="/cmf/admin/style.jsf"/>
-        <action>#{client.loadStyle}</action>
-    </url-mapping>
-
-    <url-mapping id="namedContents">
-        <pattern value="/contents/admin/#{ cName: contents.name}"/>
-        <view-id value="/cmf/admin/contents.jsf"/>
-    </url-mapping>
-    -->
-
-
-
-
-
-
     <url-mapping id="base">
         <pattern value="/cmf"/>
         <view-id value="/cmf/newAdmin/welcome.jsf"/>
@@ -73,18 +33,19 @@
     </url-mapping>
 
     <url-mapping id="content">
-        <pattern value="/cmf/newAdmin/content/#{ namespace: client.incomingNamespace }/#{ contentName: client.incomingContentName }"/>
+        <pattern value="/cmf/newAdmin/content/#{ namespace: adminController.incomingNamespace }/#{ contentName: adminController.incomingContentName }"/>
         <view-id value="/cmf/newAdmin/content.jsf"/>
-        <action>#{adminController.loadContents}</action>
+        <action>#{adminController.loadContent}</action>
     </url-mapping>
 
     <url-mapping id="namespace">
-        <pattern value="/cmf/newAdmin/namespace/#{ namespace: client.incomingNamespace }"/>
+        <pattern value="/cmf/newAdmin/namespace/#{ namespace: adminController.incomingNamespace }"/>
         <view-id value="/cmf/newAdmin/namespace.jsf"/>
+        <action>#{adminController.loadNamespace}</action>
     </url-mapping>
 
     <url-mapping id="style">
-        <pattern value="/cmf/newAdmin/style/#{ namespace: client.incomingNamespace }/#{ styleName: client.incomingContentName }"/>
+        <pattern value="/cmf/newAdmin/style/#{ namespace: adminController.incomingNamespace }/#{ styleName: adminController.incomingContentName }"/>
         <view-id value="/cmf/newAdmin/style.jsf"/>
         <action>#{adminController.loadStyle}</action>
     </url-mapping>
