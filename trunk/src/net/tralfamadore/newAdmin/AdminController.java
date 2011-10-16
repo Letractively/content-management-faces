@@ -30,12 +30,14 @@ import org.primefaces.context.RequestContext;
 import org.primefaces.model.TreeNode;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -75,14 +77,11 @@ public class AdminController {
     private String selectedGroup;
 
     private DataTable groupsDataTable;
-    private Namespace namespaceToAdd;
-    private Content contentToAdd;
-    private Style styleToAdd;
-    private boolean addingContent = false;
-    private boolean addingStyle = false;
-    private boolean addingNamespace = false;
-    private boolean addingTopLevelNamespace = false;
-
+    private String newNamespace;
+    private String newContentName;
+    private String newStyleName;
+    private DataTable dialogGroupsDataTable;
+    private DataTable contentDialogGroupsDataTable;
 
 
     public void loadNamespace() {
@@ -152,29 +151,29 @@ public class AdminController {
     }
 
     public void addNewTopLevelNamespace(ActionEvent e) {
-        namespaceToAdd = new Namespace();
-        namespaceToAdd.setGroupPermissionsList(newDefaultGroupPermissions());
-        addingNamespace = true;
-        addingTopLevelNamespace = true;
+        pageContent.setNamespaceToAdd(new Namespace());
+        pageContent.getNamespaceToAdd().setGroupPermissionsList(newDefaultGroupPermissions());
+        pageContent.setAddingNamespace(true);
+        pageContent.setAddingTopLevelNamespace(true);
     }
 
     public void addNewNamespace() {
         Namespace parent = pageContent.getNamespace();
-        namespaceToAdd = new Namespace(parent, "");
-        namespaceToAdd.setGroupPermissionsList(newDefaultGroupPermissions());
-        addingNamespace = true;
+        pageContent.setNamespaceToAdd(new Namespace(parent, ""));
+        pageContent.getNamespaceToAdd().setGroupPermissionsList(newDefaultGroupPermissions());
+        pageContent.setAddingNamespace(true);
     }
 
     public void addNewContent() {
-        addingContent = true;
-        contentToAdd = new Content();
-        contentToAdd.setGroupPermissionsList(newDefaultGroupPermissions());
+        pageContent.setAddingContent(true);
+        pageContent.setContentToAdd(new Content());
+        pageContent.getContentToAdd().setGroupPermissionsList(newDefaultGroupPermissions());
     }
 
     public void addNewStyle() {
-        addingStyle = true;
-        styleToAdd = new Style();
-        styleToAdd.setGroupPermissionsList(newDefaultGroupPermissions());
+        pageContent.setAddingStyle(true);
+        pageContent.setStyleToAdd(new Style());
+        pageContent.getStyleToAdd().setGroupPermissionsList(newDefaultGroupPermissions());
     }
 
     public void addGroup(ActionEvent e) {
@@ -182,12 +181,41 @@ public class AdminController {
 
         content.getGroupPermissionsList().add(new GroupPermissions(selectedGroup, true, false, false, false));
 
-        if(content instanceof Content)
-            theTree.getContentManager().saveContent((Content) content);
-        else if(content instanceof Style)
-            theTree.getContentManager().saveStyle((Style) content);
-        else if(content instanceof Namespace)
-            theTree.getContentManager().saveNamespace((Namespace) content);
+        saveBaseContent();
+    }
+
+    public void addGroupToNewContent(ActionEvent e) {
+        pageContent.addGroupToNewContent(new GroupPermissions(selectedGroup, true, false, false, false));
+    }
+
+    public void addContent(ActionEvent e) {
+        Content content = pageContent.getContentToAdd();
+        content.setName(newContentName);
+        content.setNamespace(pageContent.getNamespace());
+        content.setDateCreated(new Date());
+        content.setDateModified(content.getDateCreated());
+        theTree.getContentHolder().add(content);
+        theTree.getContentManager().saveContent(content);
+        pageContent.setAddingContent(false);
+        pageContent.getNamespaceContents().add(content);
+        theTree.createTreeModel();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Content " + content.getFullName() + " added.", ""));
+
+    }
+
+    public void addStyle(ActionEvent e) {
+        Style style = pageContent.getStyleToAdd();
+        style.setName(newStyleName);
+        style.setNamespace(pageContent.getNamespace());
+        theTree.getContentHolder().add(style);
+        theTree.getContentManager().saveStyle(style);
+        pageContent.setAddingStyle(false);
+        pageContent.getNamespaceContents().add(style);
+        theTree.createTreeModel();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Style " + style.getFullName() + " added.", ""));
+
     }
 
     public void removeGroup(ActionEvent e) {
@@ -211,13 +239,7 @@ public class AdminController {
                     break;
                 }
             }
-            if(content instanceof Style) {
-                theTree.getContentManager().saveStyle((Style)content);
-            } else if(content instanceof Content) {
-                theTree.getContentManager().saveContent((Content) content);
-            } else if(content instanceof Script) {
-                theTree.getContentManager().saveScript((Script) content);
-            }
+            saveBaseContent();
         }
 
         String clientId = groupsDataTable.getClientId(facesContext);
@@ -228,18 +250,57 @@ public class AdminController {
         requestContext.addPartialUpdateTarget(clientId);
     }
 
-    public void permissionChanged(AjaxBehaviorEvent e) {
-        BaseContent content = pageContent.getBaseContent();
+    public void removeGroupForNewContent(ActionEvent e) {
+        String groupName = (String) e.getComponent().getAttributes().get("group");
+        if(pageContent.isAddingNamespace() || pageContent.isAddingTopLevelNamespace()) {
+            Namespace namespace = pageContent.getNamespaceToAdd();
+            for(Iterator<GroupPermissions> it = namespace.getGroupPermissionsList().iterator(); it.hasNext(); ) {
+                GroupPermissions groupPermissions = it.next();
+                if(groupPermissions.getGroup().equals(groupName)) {
+                    it.remove();
+                    break;
+                }
+            }
+        } else {
+            BaseContent content = null;
+            if(pageContent.isAddingContent()) {
+                content = pageContent.getContentToAdd();
+            } else if(pageContent.isAddingStyle()) {
+                content = pageContent.getStyleToAdd();
+            } else {
+                throw new FacesException("Can't save groups for content in dialog: " + content);
+            }
+            for(Iterator<GroupPermissions> it = content.getGroupPermissionsList().iterator(); it.hasNext(); ) {
+                GroupPermissions groupPermissions = it.next();
+                if(groupPermissions.getGroup().equals(groupName)) {
+                    it.remove();
+                    break;
+                }
+            }
+        }
 
-        if(content instanceof Content)
-            theTree.getContentManager().saveContent((Content)content);
-        else if(content instanceof Style)
-            theTree.getContentManager().saveStyle((Style) content);
-        else if(content instanceof Namespace)
-            theTree.getContentManager().saveNamespace((Namespace) content);
+        String clientId = dialogGroupsDataTable.getClientId(facesContext);
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+        if(clientId.matches(".*[0-9]+$")) {
+            clientId = clientId.replaceAll(":[0-9]+$", "");
+        }
+        requestContext.addPartialUpdateTarget(clientId);
     }
 
-    public void saveNamespace() {
+    public void permissionChanged(AjaxBehaviorEvent e) {
+        saveBaseContent();
+    }
+
+    public void saveNewNamespace() {
+        pageContent.getNamespaceToAdd().setNodeName(newNamespace);
+
+        theTree.getContentManager().saveNamespace(pageContent.getNamespaceToAdd());
+        pageContent.getNamespaceContents().add(pageContent.getNamespaceToAdd());
+        theTree.createTreeModel();
+        pageContent.setNamespaceToAdd(null);
+        pageContent.setAddingNamespace(false);
+        pageContent.setAddingTopLevelNamespace(false);
+        newNamespace = null;
     }
 
     public void saveContent() {
@@ -359,6 +420,67 @@ public class AdminController {
         this.groupsDataTable = groupsDataTable;
     }
 
+    public String getNewNamespace() {
+        return newNamespace;
+    }
+
+    public void setNewNamespace(String newNamespace) {
+        this.newNamespace = newNamespace;
+    }
+
+    public DataTable getDialogGroupsDataTable() {
+        return dialogGroupsDataTable;
+    }
+
+    public void setDialogGroupsDataTable(DataTable dialogGroupsDataTable) {
+        this.dialogGroupsDataTable = dialogGroupsDataTable;
+    }
+
+    public String getNewContentName() {
+        return newContentName;
+    }
+
+    public void setNewContentName(String newContentName) {
+        this.newContentName = newContentName;
+    }
+
+    public DataTable getContentDialogGroupsDataTable() {
+        return contentDialogGroupsDataTable;
+    }
+
+    public void setContentDialogGroupsDataTable(DataTable contentDialogGroupsDataTable) {
+        this.contentDialogGroupsDataTable = contentDialogGroupsDataTable;
+    }
+
+    public String getNewStyleName() {
+        return newStyleName;
+    }
+
+    public void setNewStyleName(String newStyleName) {
+        this.newStyleName = newStyleName;
+    }
+
+    private boolean isAjaxRequest() {
+        return facesContext.getPartialViewContext().isAjaxRequest();
+    }
+
+    private void saveBaseContent() {
+        BaseContent content = pageContent.getBaseContent();
+
+        saveBaseContent(content);
+    }
+
+
+
+    private void saveBaseContent(BaseContent content) {
+        if(content instanceof Content)
+            theTree.getContentManager().saveContent((Content)content);
+        else if(content instanceof Style)
+            theTree.getContentManager().saveStyle((Style) content);
+        else if(content instanceof Namespace)
+            theTree.getContentManager().saveNamespace((Namespace) content);
+    }
+
     private void fetchNamespaceContents() {
         Namespace namespace = pageContent.getNamespace();
         pageContent.setNamespaceContents(new Vector<BaseContent>());
@@ -380,10 +502,6 @@ public class AdminController {
         }
         contentCss = contentCss.replace('\r', ' ');
         contentCss = contentCss.replace('\n', ' ');
-    }
-
-    private boolean isAjaxRequest() {
-        return facesContext.getPartialViewContext().isAjaxRequest();
     }
 
     private List<GroupPermissions> newDefaultGroupPermissions() {

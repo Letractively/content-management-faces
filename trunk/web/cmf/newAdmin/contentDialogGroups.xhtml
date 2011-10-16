@@ -29,9 +29,9 @@
     <h:body>
         <ui:composition>
 
-            <p:outputPanel id="theDialogGroupPanel">
-            <p:dataTable value="#{pageContent.namespaceToAdd.groupPermissionsList}" var="data" style="width: 90%;"
-                    binding="#{adminController.dialogGroupsDataTable}">
+            <p:outputPanel id="theContentDialogGroupPanel">
+            <p:dataTable value="#{pageContent.contentToAdd.groupPermissionsList}" var="data" style="width: 90%;"
+                    binding="#{adminController.contentDialogGroupsDataTable}">
                 <p:column headerText="Group">
                     <h:outputText value="#{data.group}"/>
                 </p:column>
@@ -60,7 +60,7 @@
                         <h:outputText value="Add a group"/>
                     </td>
                     <td>
-                        <p:selectOneMenu value="#{adminController.selectedGroup}" height="200" widgetVar="sm" id="groupMenu"
+                        <p:selectOneMenu value="#{adminController.selectedGroup}" height="200" widgetVar="sm" id="contentGroupMenu"
                                          style="width: 150px;" label="Add a group">
                             <p:ajax/>
                             <f:selectItem itemLabel="Add Group" itemValue="Add Group" noSelectionOption="true"/>
@@ -70,7 +70,7 @@
                     </td>
                     <td>
                         <p:commandButton value="Add" actionListener="#{adminController.addGroupToNewContent}"
-                                         process="@form" update="theDialogGroupPanel"/>
+                                         process="@form" update="theContentDialogGroupPanel"/>
                     </td>
                 </tr>
             </table>

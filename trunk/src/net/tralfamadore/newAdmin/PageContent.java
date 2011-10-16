@@ -19,10 +19,7 @@
 
 package net.tralfamadore.newAdmin;
 
-import net.tralfamadore.cmf.BaseContent;
-import net.tralfamadore.cmf.Content;
-import net.tralfamadore.cmf.Namespace;
-import net.tralfamadore.cmf.Style;
+import net.tralfamadore.cmf.*;
 import net.tralfamadore.viewScope.ViewScoped;
 
 import javax.inject.Named;
@@ -41,6 +38,13 @@ public class PageContent implements Serializable {
     private BaseContent theContent;
     private BaseContent contentToRemove;
     private List<BaseContent> namespaceContents = new Vector<BaseContent>();
+    private Namespace namespaceToAdd;
+    private Content contentToAdd;
+    private Style styleToAdd;
+    private boolean addingContent = false;
+    private boolean addingStyle = false;
+    private boolean addingNamespace = false;
+    private boolean addingTopLevelNamespace = false;
 
     public BaseContent getBaseContent() {
         return theContent;
@@ -99,5 +103,70 @@ public class PageContent implements Serializable {
 
     public void setContentToRemove(BaseContent contentToRemove) {
         this.contentToRemove = contentToRemove;
+    }
+
+    public Namespace getNamespaceToAdd() {
+        return namespaceToAdd;
+    }
+
+    public void setNamespaceToAdd(Namespace namespaceToAdd) {
+        this.namespaceToAdd = namespaceToAdd;
+    }
+
+    public Content getContentToAdd() {
+        return contentToAdd;
+    }
+
+    public void setContentToAdd(Content contentToAdd) {
+        this.contentToAdd = contentToAdd;
+    }
+
+    public Style getStyleToAdd() {
+        return styleToAdd;
+    }
+
+    public void setStyleToAdd(Style styleToAdd) {
+        this.styleToAdd = styleToAdd;
+    }
+
+    public boolean isAddingContent() {
+        return addingContent;
+    }
+
+    public void setAddingContent(boolean addingContent) {
+        this.addingContent = addingContent;
+    }
+
+    public boolean isAddingStyle() {
+        return addingStyle;
+    }
+
+    public void setAddingStyle(boolean addingStyle) {
+        this.addingStyle = addingStyle;
+    }
+
+    public boolean isAddingNamespace() {
+        return addingNamespace;
+    }
+
+    public void setAddingNamespace(boolean addingNamespace) {
+        this.addingNamespace = addingNamespace;
+    }
+
+    public boolean isAddingTopLevelNamespace() {
+        return addingTopLevelNamespace;
+    }
+
+    public void setAddingTopLevelNamespace(boolean addingTopLevelNamespace) {
+        this.addingTopLevelNamespace = addingTopLevelNamespace;
+    }
+
+    void addGroupToNewContent(GroupPermissions group) {
+        if(isAddingContent())
+            contentToAdd.getGroupPermissionsList().add(group);
+        else if(isAddingNamespace() || isAddingTopLevelNamespace())
+            namespaceToAdd.getGroupPermissionsList().add(group);
+        else if(isAddingStyle())
+            styleToAdd.getGroupPermissionsList().add(group);
     }
 }
