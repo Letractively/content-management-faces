@@ -29,25 +29,28 @@
     <h:body>
         <ui:composition>
 
-            <p:panel id="slot" style="height: 50px;">
+            <p:panel id="slot" style="height: 50px;" binding="#{adminController.stylePanel}">
                 <h:outputText value="Drag styles here from the tree to apply them to the content"
-                              rendered="#{pageContent.hasContent and pageContent.contentHasStyles}"/>
+                              rendered="#{!(pageContent.hasContent and pageContent.contentHasStyles)}"/>
                 <ui:repeat value="#{pageContent.content.styles}" var="node">
                     <p:tooltip for="styleButton" value="#{node.namespace.fullName}.#{node.name}"/>
                     <p:button id="styleButton" value="#{node.name}" outcome="pretty:style">
                         <f:param name="namespace" value="#{node.namespace.fullName}"/>
                         <f:param name="styleName" value="#{node.name}"/>
                     </p:button>
-                    <p:commandButton image="ui-icon-circle-close" actionListener="#{client.removeStyle}"
+                    <p:commandButton image="ui-icon-circle-close" actionListener="#{adminController.removeStyle}"
                                      update="theTree actionArea">
                         <f:attribute name="namespace" value="#{node.namespace.fullName}"/>
                         <f:attribute name="styleName" value="#{node.name}"/>
                     </p:commandButton>
                 </ui:repeat>
             </p:panel>
+            <p:outputPanel binding="#{adminController.dropper}">
             <p:droppable id="dropper" for="slot" onDrop="handleDrop" widgetVar="dropper">
-                <p:ajax event="drop" listener="#{client.styleDrop}"/>
+
+                <p:ajax event="drop" listener="#{adminController.styleDrop}"/>
             </p:droppable>
+            </p:outputPanel>
         </ui:composition>
     </h:body>
 </f:view>

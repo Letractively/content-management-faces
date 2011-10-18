@@ -13,10 +13,10 @@
                 <p:panel style="height: 427px; text-align: left;">
                     <f:facet name="header">
                         <div style="display: inline-block; width: 100%; text-align: center;">
-                            #{client.currentStyle.data.name}
+                            #{pageContent.style.name}
                         </div>
                     </f:facet>
-                    <h:inputTextarea id="theEditor" value="#{client.styleEditorContent}" styleClass="codeEd"/>
+                    <h:inputTextarea id="theEditor" value="#{pageContent.style.style}" styleClass="codeEd"/>
                     <script type="text/javascript">
                         function updateCodeTextArea(editor) {
                             editor.save();
@@ -36,11 +36,11 @@
 
             <p:spacer width="10%"/>
             <p:button value="Cancel" outcome="pretty:style">
-                <f:param name="namespace" value="#{client.incomingNamespace}"/>
-                <f:param name="contentName" value="#{client.incomingContentName}"/>
+                <f:param name="namespace" value="#{adminController.incomingNamespace}"/>
+                <f:param name="contentName" value="#{adminController.incomingContentName}"/>
             </p:button>
             <p:spacer height="10px" width="50%"/>
-            <p:commandButton value="Save" action="#{client.saveStyle}" update="messages"/>
+            <p:commandButton value="Save" action="#{adminController.saveStyle}" update="messages"/>
 
             <p:spacer height="10px"/>
 

@@ -44,14 +44,9 @@ function handleDrop(event, ui) {
     }
     var name = ref.substring(lastSlash + 1);
     var namespace = ref.substring(ntlSlash + 1, lastSlash);
-    /*
-    alert(name);
-    alert(namespace);
-    alert(dragger);
-    alert(dropper);
-    */
-    PrimeFaces.addSubmitParam('theForm', 'namespace', namespace);
-    PrimeFaces.addSubmitParam('theForm', 'styleName', name)
+    var form = $(".formClass").get()[0].id;
+    PrimeFaces.addSubmitParam(form, 'styleNamespace', namespace);
+    PrimeFaces.addSubmitParam(form, 'styleName', name)
 }
 
 function startDrop() {
@@ -84,7 +79,8 @@ function addCss(xhr, status, args) {
             });
         }
 
-        theEditor = new CKEditor('theForm:editor', config);
+        var editorId = $(".formClass").get()[0].id + ':editor';
+        theEditor = new CKEditor(editorId, config);
     } catch(err) {
         alert(err);
     }

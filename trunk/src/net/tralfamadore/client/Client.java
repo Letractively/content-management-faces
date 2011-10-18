@@ -361,7 +361,7 @@ public class Client {
 
     public void removeStyle(ActionEvent event) {
         FacesContext context = FacesContext.getCurrentInstance();
-        Map requestMap = context.getExternalContext().getRequestParameterMap();
+//        Map requestMap = context.getExternalContext().getRequestParameterMap();
         UIComponent component = (UIComponent) event.getSource();
         String namespace = (String) component.getAttributes().get("namespace");
         String name = (String) component.getAttributes().get("styleName");

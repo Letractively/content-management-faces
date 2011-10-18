@@ -31,7 +31,8 @@
         <ui:define name="body">
             <div style="width: 90%; height: 100%; text-align: center; margin-left: 30px; margin-top: 20px;">
             <ck:editor style="padding: 15px;" value="#{pageContent.content.content}" height="300px" toolbar="#{adminController.editorToolbar}"
-                       render="messages" uiColor="#d7ebf9" id="editor" widgetVar="theEditor" contentCss="#{adminController.contentCss}"/>
+                       render="messages" uiColor="#d7ebf9" id="editor" widgetVar="theEditor" contentCss="#{adminController.contentCss}"
+                    binding="#{adminController.editor}"/>
             </div>
 
             <p:spacer height="10px"/>

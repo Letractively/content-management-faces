@@ -22,25 +22,26 @@ package net.tralfamadore.newAdmin;
 import com.google.code.ckJsfEditor.Toolbar;
 import com.google.code.ckJsfEditor.ToolbarButtonGroup;
 import com.google.code.ckJsfEditor.ToolbarItem;
+import com.google.code.ckJsfEditor.component.Editor;
 import net.tralfamadore.client.ContentKey;
 import net.tralfamadore.cmf.*;
 import net.tralfamadore.config.CmfContext;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.context.RequestContext;
+import org.primefaces.event.DragDropEvent;
 import org.primefaces.model.TreeNode;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.component.html.HtmlForm;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * User: billreh
@@ -82,6 +83,10 @@ public class AdminController {
     private String newStyleName;
     private DataTable dialogGroupsDataTable;
     private DataTable contentDialogGroupsDataTable;
+    private Editor editor;
+    private UIComponent stylePanel;
+    private UIComponent theTreeComponent;
+    private UIComponent dropper;
 
 
     public void loadNamespace() {
@@ -311,11 +316,54 @@ public class AdminController {
     }
 
     public void saveStyle() {
+        Style style = pageContent.getStyle();
+        theTree.getContentManager().saveStyle(style);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+                "Style " + style.getName() + " saved successfully.", ""));
     }
 
-    public void applyStyle() {
+    public void styleDrop(DragDropEvent event) {
+        Map<String,String> paramMap = facesContext.getExternalContext().getRequestParameterMap();
+        String namespace = paramMap.get("styleNamespace");
+        String styleName = paramMap.get("styleName");
+        Style style = theTree.getContentManager().loadStyle(new Namespace(namespace), styleName);
+        Content content = pageContent.getContent();
+        if(!content.getStyles().contains(style)) {
+            content.getStyles().add(style);
+            theTree.getContentManager().saveContent(content);
+
+            RequestContext requestContext = RequestContext.getCurrentInstance();
+            requestContext.addPartialUpdateTarget(event.getDropId());
+            requestContext.addPartialUpdateTarget(stylePanel.getClientId(facesContext));
+            requestContext.addPartialUpdateTarget(editor.getClientId(facesContext));
+            requestContext.addPartialUpdateTarget(dropper.getClientId(facesContext));
+            requestContext.addPartialUpdateTarget(theTreeComponent.getClientId(facesContext));
+//            UIComponent form = getFormForComponent(event.getComponent());
+//            if(form != null)
+//                requestContext.addPartialUpdateTarget(form.getClientId(facesContext));
+        }
+        makeContentCss();
     }
 
+    public void removeStyle(ActionEvent event) {
+        UIComponent component = (UIComponent) event.getSource();
+        String namespace = (String) component.getAttributes().get("namespace");
+        String name = (String) component.getAttributes().get("styleName");
+        Style style = (Style) theTree.getContentHolder().find(new ContentKey(name, namespace, "style")).getData();
+        Content content = pageContent.getContent();
+
+        if(content.getStyles().contains(style)) {
+            content.getStyles().remove(style);
+            theTree.getContentManager().saveContent(content);
+        }
+        theTree.createTreeModel();
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+        requestContext.addPartialUpdateTarget(editor.getClientId(facesContext));
+        requestContext.addPartialUpdateTarget(stylePanel.getClientId(facesContext));
+        requestContext.addPartialUpdateTarget(dropper.getClientId(facesContext));
+        requestContext.addPartialUpdateTarget(theTreeComponent.getClientId(facesContext));
+        makeContentCss();
+    }
     public void removeBaseContent(ActionEvent e) {
         BaseContent content = pageContent.getContentToRemove();
         ContentManager contentManager = theTree.getContentManager();
@@ -460,6 +508,38 @@ public class AdminController {
         this.newStyleName = newStyleName;
     }
 
+    public Editor getEditor() {
+        return editor;
+    }
+
+    public void setEditor(Editor editor) {
+        this.editor = editor;
+    }
+
+    public UIComponent getStylePanel() {
+        return stylePanel;
+    }
+
+    public void setStylePanel(UIComponent stylePanel) {
+        this.stylePanel = stylePanel;
+    }
+
+    public UIComponent getTheTreeComponent() {
+        return theTreeComponent;
+    }
+
+    public void setTheTreeComponent(UIComponent theTreeComponent) {
+        this.theTreeComponent = theTreeComponent;
+    }
+
+    public UIComponent getDropper() {
+        return dropper;
+    }
+
+    public void setDropper(UIComponent dropper) {
+        this.dropper = dropper;
+    }
+
     private boolean isAjaxRequest() {
         return facesContext.getPartialViewContext().isAjaxRequest();
     }
@@ -496,7 +576,7 @@ public class AdminController {
 
     private void makeContentCss() {
         contentCss = "";
-        if(pageContent.getContent() != null) {
+        if(pageContent.getContent() != null && pageContent.getContent().getStyles() != null) {
             for(Style style : pageContent.getContent().getStyles())
                 contentCss =  contentCss + style.getStyle();
         }
@@ -510,5 +590,18 @@ public class AdminController {
         GroupPermissions groupPermissions = new GroupPermissions(group, true, true, true, true);
         defaultGroupPermissionsList.add(groupPermissions);
         return defaultGroupPermissionsList;
+    }
+
+    private UIComponent getFormForComponent(UIComponent component) {
+        UIComponent form = component;
+        if(form instanceof HtmlForm)
+            return form;
+
+        while((form = form.getParent()) != null) {
+            if(form instanceof HtmlForm)
+                return form;
+        }
+
+        return null;
     }
 }

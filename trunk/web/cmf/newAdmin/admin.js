@@ -50,8 +50,9 @@ function handleDrop(event, ui) {
     alert(dragger);
     alert(dropper);
     */
-    PrimeFaces.addSubmitParam('theForm', 'namespace', namespace);
-    PrimeFaces.addSubmitParam('theForm', 'styleName', name)
+    var form = $(".formClass").get();
+    PrimeFaces.addSubmitParam(form, 'namespace', namespace);
+    PrimeFaces.addSubmitParam(form, 'styleName', name)
 }
 
 function startDrop() {

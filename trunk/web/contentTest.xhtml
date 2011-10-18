@@ -25,6 +25,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:cmf="http://tralfamadore.net/cmf"
       xml:lang="en" lang="en">
 <h:head>
@@ -32,16 +33,22 @@
 </h:head>
 <h:body>
     <h:form>
+
         <cmf:content id="theContent" name="article" namespace="net.tralfamadore.site.page1"/>
 
-        cmf.poo: #{cmf.poo}<br/>
-        style: #{cmf.style}<br/>
-        style.name: #{cmf.style.name}<br/>
-        outputText poo: <h:outputText value="#{cmf.poo}"/><br/>
-        #{cmf['net.tralfamadore.site.page1.moo']}
         <ui:remove>
+            cmf.poo: #{cmf.poo}<br/>
+            style: #{cmf.style}<br/>
+            style.name: #{cmf.style.name}<br/>
+            outputText poo: <h:outputText value="#{cmf.poo}"/><br/>
+            #{cmf['net.tralfamadore.site.page1.moo']}
             <h:commandButton id="resetDb" actionListener="#{admin.resetDb}" value="Reset Database"/>
         </ui:remove>
+
+        <p:separator/>
+
+        <cmf:content id="smooooke" name="Lights" namespace="net.tralfamadore.site.page1.cigarette.camel"/>
+
     </h:form>
 </h:body>
 </html>
