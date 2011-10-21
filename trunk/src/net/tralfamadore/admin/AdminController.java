@@ -35,7 +35,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.File;
@@ -58,15 +57,18 @@ public class AdminController {
     @Inject
     private FacesContext facesContext;
 
+    /** true if we need to configure the embedded database */
+    private boolean embeddedDbNeedsConfig = CmfContext.getInstance().isEmbeddedDbNeedsConfig();
+    /** the path to the embedded db directory */
+    private String derbyPath;
     private String contentCss;
     private String incomingNamespace;
     private String incomingContentName;
     private String selectedGroup;
-
-    private DataTable groupsDataTable;
     private String newNamespace;
     private String newContentName;
     private String newStyleName;
+    private DataTable groupsDataTable;
     private DataTable dialogGroupsDataTable;
     private DataTable contentDialogGroupsDataTable;
     private DataTable styleDialogGroupsDataTable;
@@ -74,11 +76,6 @@ public class AdminController {
     private UIComponent stylePanel;
     private UIComponent theTreeComponent;
     private UIComponent dropper;
-    /** true if we need to configure the embedded database */
-    private boolean embeddedDbNeedsConfig = CmfContext.getInstance().isEmbeddedDbNeedsConfig();
-    /** the path to the embedded db directory */
-    private String derbyPath;
-
 
     public void loadNamespace() {
         if(isAjaxRequest())
@@ -100,8 +97,7 @@ public class AdminController {
         loadHelper("style");
     }
 
-
-    public void addNewTopLevelNamespace(ActionEvent e) {
+    public void addNewTopLevelNamespace() {
         pageContent.setNamespaceToAdd(new Namespace());
         pageContent.getNamespaceToAdd().setGroupPermissionsList(newDefaultGroupPermissions());
         pageContent.setAddingNamespace(true);
@@ -119,7 +115,6 @@ public class AdminController {
         pageContent.setAddingContent(true);
         pageContent.setContentToAdd(new Content());
         pageContent.getContentToAdd().setGroupPermissionsList(newDefaultGroupPermissions());
-        List<GroupPermissions> gp = pageContent.getContentToAdd().getGroupPermissionsList();
     }
 
     public void addNewStyle() {
@@ -128,17 +123,17 @@ public class AdminController {
         pageContent.getStyleToAdd().setGroupPermissionsList(newDefaultGroupPermissions());
     }
 
-    public void addGroup(ActionEvent e) {
+    public void addGroup() {
         BaseContent content = pageContent.getBaseContent();
         content.getGroupPermissionsList().add(new GroupPermissions(selectedGroup, true, false, false, false));
         saveBaseContent();
     }
 
-    public void addGroupToNewContent(ActionEvent e) {
+    public void addGroupToNewContent() {
         pageContent.addGroupToNewContent(new GroupPermissions(selectedGroup, true, false, false, false));
     }
 
-    public void addContent(ActionEvent e) {
+    public void addContent() {
         Content content = pageContent.getContentToAdd();
         content.setName(newContentName);
         content.setNamespace(pageContent.getNamespace());
@@ -153,7 +148,7 @@ public class AdminController {
                 "Content " + content.getFullName() + " added.", ""));
     }
 
-    public void addStyle(ActionEvent e) {
+    public void addStyle() {
         Style style = pageContent.getStyleToAdd();
         style.setName(newStyleName);
         style.setNamespace(pageContent.getNamespace());
@@ -169,6 +164,7 @@ public class AdminController {
     public void removeGroup(ActionEvent e) {
         String groupName = (String) e.getComponent().getAttributes().get("group");
         BaseContent content = pageContent.getBaseContent();
+
         for(Iterator<GroupPermissions> it = content.getGroupPermissionsList().iterator(); it.hasNext(); ) {
             GroupPermissions groupPermissions = it.next();
             if(groupPermissions.getGroup().equals(groupName)) {
@@ -204,7 +200,7 @@ public class AdminController {
         requestContext.addPartialUpdateTarget(clientId);
     }
 
-    public void permissionChanged(AjaxBehaviorEvent e) {
+    public void permissionChanged() {
         saveBaseContent();
     }
 
@@ -238,6 +234,7 @@ public class AdminController {
         String styleName = paramMap.get("styleName");
         Style style = theTree.getContentManager().loadStyle(new Namespace(namespace), styleName);
         Content content = pageContent.getContent();
+
         if(!content.getStyles().contains(style)) {
             content.getStyles().add(style);
             theTree.getContentManager().saveContent(content);
@@ -271,7 +268,7 @@ public class AdminController {
         makeContentCss();
     }
 
-    public void removeBaseContent(ActionEvent e) {
+    public void removeBaseContent() {
         BaseContent content = pageContent.getContentToRemove();
         ContentManager contentManager = theTree.getContentManager();
 
@@ -302,10 +299,9 @@ public class AdminController {
 
     /**
      * Action listener that creates the embedded database from the initial screen.
-     *
-     * @param e event info
      */
-    public void createEmbeddedDb(ActionEvent e) {
+    public void createEmbeddedDb() {
+        File file = new File(derbyPath);
         String jdbc = "jdbc:derby:";
         String props = ";create=true";
         Properties properties = new Properties();
@@ -313,7 +309,6 @@ public class AdminController {
         properties.put("javax.persistence.jdbc.driver", "org.apache.derby.jdbc.EmbeddedDriver");
         properties.put("javax.persistence.jdbc.url", jdbc + derbyPath + props);
 
-        File file = new File(derbyPath);
         if(!file.getParentFile().exists()) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Invalid path: " + derbyPath + ".  Directory " + file.getParentFile().getAbsolutePath()

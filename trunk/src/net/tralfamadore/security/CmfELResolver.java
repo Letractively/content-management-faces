@@ -19,7 +19,9 @@
 
 package net.tralfamadore.security;
 
-import javax.el.*;
+import javax.el.ELContext;
+import javax.el.ELException;
+import javax.el.ELResolver;
 import java.beans.FeatureDescriptor;
 import java.util.*;
 
@@ -32,12 +34,12 @@ public class CmfELResolver extends ELResolver {
     private final Map<Object,Object> cmf = new HashMap<Object, Object>();
 
     public CmfELResolver() {
-        cmf.put("poo", "poooooo!");
+        cmf.put("poo", "poo!");
     }
 
     @Override
     public Object getValue(ELContext elContext, Object base, Object property)
-            throws NullPointerException, PropertyNotFoundException, ELException
+            throws NullPointerException, ELException
     {
         if(base == null) {
             if("cmf".equals(property)) {
@@ -58,7 +60,7 @@ public class CmfELResolver extends ELResolver {
 
     @Override
     public Class<?> getType(ELContext elContext, Object base, Object property)
-            throws NullPointerException, PropertyNotFoundException, ELException
+            throws NullPointerException, ELException
     {
         Object o = getValue(elContext, base, property);
         if(o == null)
@@ -68,7 +70,7 @@ public class CmfELResolver extends ELResolver {
 
     @Override
     public void setValue(ELContext elContext, Object base, Object property, Object value)
-            throws NullPointerException, PropertyNotFoundException, PropertyNotWritableException, ELException
+            throws NullPointerException, ELException
     {
         if("cmf".equals(base) || cmf == base) {
             cmf.put(property, value);
@@ -78,7 +80,7 @@ public class CmfELResolver extends ELResolver {
 
     @Override
     public boolean isReadOnly(ELContext elContext, Object base, Object property)
-            throws NullPointerException, PropertyNotFoundException, ELException
+            throws NullPointerException, ELException
     {
         elContext.setPropertyResolved(true);
         return false;
