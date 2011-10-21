@@ -28,6 +28,7 @@ import net.tralfamadore.admin.PageContent;
 import net.tralfamadore.cmf.ContentManager;
 import net.tralfamadore.cmf.Namespace;
 import net.tralfamadore.cmf.TestContentManager;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -63,6 +64,7 @@ public class AtTest implements Module {
         }
     }
 
+    @Ignore
     @Test
     public void testStart() throws Exception {
         Namespace parent = Namespace.createFromString("net.tralfamadore");

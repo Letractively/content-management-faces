@@ -34,8 +34,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.jar.JarFile;
-import java.util.zip.ZipEntry;
 
 /**
  * User: billreh
@@ -144,12 +142,8 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
     }
 
     private String[] getDerbyCreate() throws Exception {
-        String url = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/WEB-INF/lib/cmf.jar");
+        String url = "/Users/billreh/IdeaProjects/content-management-faces/scripts/cmf-derby.sql";
         File file = new File(url);
-        JarFile jarFile = new JarFile(file);
-        ZipEntry zipEntry = jarFile.getEntry("cmf-derby.sql");
-        url = "/Users/billreh/IdeaProjects/content-management-faces/scripts/cmf-derby.sql";
-        file = new File(url);
         return readFileAsString(file).split(";");
     }
 
