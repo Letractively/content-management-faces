@@ -1,4 +1,4 @@
-package net.tralfamadore.viewScope;
+package net.tralfamadore.admin.util.viewScope;
 
 import javax.enterprise.context.spi.Context;
 import javax.enterprise.context.spi.Contextual;

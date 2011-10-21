@@ -1,4 +1,4 @@
-package net.tralfamadore.util;
+package net.tralfamadore.admin.util;
 
 
 import javax.enterprise.inject.Produces;

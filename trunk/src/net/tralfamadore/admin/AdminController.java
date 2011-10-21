@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.newAdmin;
+package net.tralfamadore.admin;
 
 import com.google.code.ckJsfEditor.Toolbar;
 import com.google.code.ckJsfEditor.component.Editor;

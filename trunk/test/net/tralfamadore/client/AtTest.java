@@ -23,11 +23,11 @@ import atunit.*;
 import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.google.inject.Provider;
+import net.tralfamadore.admin.AdminController;
+import net.tralfamadore.admin.PageContent;
 import net.tralfamadore.cmf.ContentManager;
 import net.tralfamadore.cmf.Namespace;
 import net.tralfamadore.cmf.TestContentManager;
-import net.tralfamadore.newAdmin.AdminController;
-import net.tralfamadore.newAdmin.PageContent;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

@@ -17,22 +17,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.util;
+package net.tralfamadore.admin.util;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import net.tralfamadore.cmf.ContentManager;
+import net.tralfamadore.config.CmfContext;
 
 import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
 
 /**
  * User: billreh
- * Date: 10/11/11
- * Time: 3:28 AM
+ * Date: 10/15/11
+ * Time: 4:18 AM
  */
-public class LogProvider {
-    @Produces
-    public Log createLogger(InjectionPoint injectionPoint) {
-        return LogFactory.getLog(injectionPoint.getMember().getDeclaringClass());
+public class ContentManagerProvider {
+    @Produces @Current
+    public ContentManager getContentManager() {
+        return CmfContext.getInstance().getContentManager();
     }
 }

@@ -22,9 +22,9 @@ package net.tralfamadore.client;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provider;
 import com.google.inject.TypeLiteral;
+import net.tralfamadore.admin.util.Current;
 import net.tralfamadore.cmf.ContentManager;
 import net.tralfamadore.cmf.TestContentManager;
-import net.tralfamadore.util.Current;
 
 import javax.faces.context.FacesContext;
 

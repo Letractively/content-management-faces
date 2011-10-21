@@ -17,41 +17,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.newAdmin;
+package net.tralfamadore.admin.util;
 
-import net.tralfamadore.cmf.ContentManager;
-import net.tralfamadore.util.Current;
-import net.tralfamadore.viewScope.ViewScoped;
-
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import javax.inject.Named;
-import java.io.Serializable;
-import java.util.List;
+import javax.inject.Qualifier;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * User: billreh
- * Date: 10/15/11
- * Time: 4:16 AM
+ * Date: 10/11/11
+ * Time: 4:08 AM
  */
-@Named
-@ViewScoped
-public class Groups implements Serializable {
-    @Inject @Current
-    private ContentManager contentManager;
-
-    private List<String> allGroups;
-
-    @PostConstruct
-    public void init() {
-        allGroups = contentManager.getAllGroups();
-    }
-
-    public List<String> getAllGroups() {
-        return allGroups;
-    }
-
-    public void setAllGroups(List<String> allGroups) {
-        this.allGroups = allGroups;
-    }
+@Qualifier
+@Retention(value = RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER})
+public @interface Current {
 }

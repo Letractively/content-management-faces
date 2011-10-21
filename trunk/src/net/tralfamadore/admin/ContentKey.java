@@ -1,4 +1,4 @@
-package net.tralfamadore.newAdmin;
+package net.tralfamadore.admin;
 
 import java.io.Serializable;
 

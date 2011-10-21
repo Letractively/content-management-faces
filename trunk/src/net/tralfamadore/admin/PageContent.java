@@ -17,10 +17,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.newAdmin;
+package net.tralfamadore.admin;
 
+import net.tralfamadore.admin.util.viewScope.ViewScoped;
 import net.tralfamadore.cmf.*;
-import net.tralfamadore.viewScope.ViewScoped;
 
 import javax.inject.Named;
 import java.io.Serializable;

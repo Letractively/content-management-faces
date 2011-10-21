@@ -17,13 +17,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.newAdmin;
+package net.tralfamadore.admin;
 
+import net.tralfamadore.admin.util.Current;
 import net.tralfamadore.cmf.Content;
 import net.tralfamadore.cmf.ContentManager;
 import net.tralfamadore.cmf.Namespace;
 import net.tralfamadore.cmf.Style;
-import net.tralfamadore.util.Current;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
 

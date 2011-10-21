@@ -17,21 +17,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.util;
-
-import net.tralfamadore.cmf.ContentManager;
-import net.tralfamadore.config.CmfContext;
-
-import javax.enterprise.inject.Produces;
+package net.tralfamadore.admin.util.viewScope;
 
 /**
  * User: billreh
- * Date: 10/15/11
- * Time: 4:18 AM
+ * Date: 10/11/11
+ * Time: 10:11 PM
  */
-public class ContentManagerProvider {
-    @Produces @Current
-    public ContentManager getContentManager() {
-        return CmfContext.getInstance().getContentManager();
-    }
-}
+
+import javax.enterprise.context.NormalScope;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
+@Target({TYPE, METHOD, FIELD})
+@Retention(RUNTIME)
+@NormalScope(passivating = true)
+@Inherited
+public @interface ViewScoped { }

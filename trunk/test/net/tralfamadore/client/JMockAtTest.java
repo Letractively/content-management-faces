@@ -22,9 +22,9 @@ package net.tralfamadore.client;
 import mockit.Mocked;
 import mockit.NonStrictExpectations;
 import mockit.Verifications;
+import net.tralfamadore.admin.AdminController;
+import net.tralfamadore.admin.PageContent;
 import net.tralfamadore.cmf.Namespace;
-import net.tralfamadore.newAdmin.AdminController;
-import net.tralfamadore.newAdmin.PageContent;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

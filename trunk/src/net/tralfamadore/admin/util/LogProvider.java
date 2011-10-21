@@ -17,24 +17,22 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.viewScope;
+package net.tralfamadore.admin.util;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.InjectionPoint;
 
 /**
  * User: billreh
  * Date: 10/11/11
- * Time: 10:11 PM
+ * Time: 3:28 AM
  */
-
-import javax.enterprise.context.NormalScope;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
-@Target({TYPE, METHOD, FIELD})
-@Retention(RUNTIME)
-@NormalScope(passivating = true)
-@Inherited
-public @interface ViewScoped { }
+public class LogProvider {
+    @Produces
+    public Log createLogger(InjectionPoint injectionPoint) {
+        return LogFactory.getLog(injectionPoint.getMember().getDeclaringClass());
+    }
+}

@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.util;
+package net.tralfamadore.admin.util;
 
 import com.google.code.ckJsfEditor.Toolbar;
 import com.google.code.ckJsfEditor.ToolbarButtonGroup;

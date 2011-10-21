@@ -17,27 +17,41 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.util;
+package net.tralfamadore.admin;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import net.tralfamadore.admin.util.Current;
+import net.tralfamadore.admin.util.viewScope.ViewScoped;
+import net.tralfamadore.cmf.ContentManager;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * User: billreh
- * Date: 2/13/11
- * Time: 1:39 AM
+ * Date: 10/15/11
+ * Time: 4:16 AM
  */
-@ManagedBean
-@SessionScoped
-public class CurrentUser implements Serializable {
-    private String user;
+@Named
+@ViewScoped
+public class Groups implements Serializable {
+    @Inject @Current
+    private ContentManager contentManager;
 
-    public String getUser() {
-        return user;
+    private List<String> allGroups;
+
+    @PostConstruct
+    public void init() {
+        allGroups = contentManager.getAllGroups();
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public List<String> getAllGroups() {
+        return allGroups;
+    }
+
+    public void setAllGroups(List<String> allGroups) {
+        this.allGroups = allGroups;
     }
 }
