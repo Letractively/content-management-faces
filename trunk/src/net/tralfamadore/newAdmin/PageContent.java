@@ -38,6 +38,7 @@ public class PageContent implements Serializable {
     private BaseContent theContent;
     private BaseContent contentToRemove;
     private List<BaseContent> namespaceContents = new Vector<BaseContent>();
+    private BaseContent baseContentToAdd;
     private Namespace namespaceToAdd;
     private Content contentToAdd;
     private Style styleToAdd;
@@ -109,8 +110,10 @@ public class PageContent implements Serializable {
         return namespaceToAdd;
     }
 
-    public void setNamespaceToAdd(Namespace namespaceToAdd) {
+    public Void setNamespaceToAdd(Namespace namespaceToAdd) {
         this.namespaceToAdd = namespaceToAdd;
+        this.baseContentToAdd = namespaceToAdd;
+        return null;
     }
 
     public Content getContentToAdd() {
@@ -119,6 +122,7 @@ public class PageContent implements Serializable {
 
     public void setContentToAdd(Content contentToAdd) {
         this.contentToAdd = contentToAdd;
+        this.baseContentToAdd = contentToAdd;
     }
 
     public Style getStyleToAdd() {
@@ -127,6 +131,7 @@ public class PageContent implements Serializable {
 
     public void setStyleToAdd(Style styleToAdd) {
         this.styleToAdd = styleToAdd;
+        this.baseContentToAdd = styleToAdd;
     }
 
     public boolean isAddingContent() {
@@ -149,8 +154,9 @@ public class PageContent implements Serializable {
         return addingNamespace;
     }
 
-    public void setAddingNamespace(boolean addingNamespace) {
+    public Void setAddingNamespace(boolean addingNamespace) {
         this.addingNamespace = addingNamespace;
+        return null;
     }
 
     public boolean isAddingTopLevelNamespace() {
@@ -161,12 +167,12 @@ public class PageContent implements Serializable {
         this.addingTopLevelNamespace = addingTopLevelNamespace;
     }
 
+    public BaseContent getBaseContentToAdd() {
+        return baseContentToAdd;
+    }
+
     void addGroupToNewContent(GroupPermissions group) {
-        if(isAddingContent())
-            contentToAdd.getGroupPermissionsList().add(group);
-        else if(isAddingNamespace() || isAddingTopLevelNamespace())
-            namespaceToAdd.getGroupPermissionsList().add(group);
-        else if(isAddingStyle())
-            styleToAdd.getGroupPermissionsList().add(group);
+        if(isAddingContent() || isAddingNamespace() || isAddingTopLevelNamespace() || isAddingStyle())
+            baseContentToAdd.getGroupPermissionsList().add(group);
     }
 }

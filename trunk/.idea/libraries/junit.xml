@@ -1,9 +1,36 @@
 <component name="libraryTable">
   <library name="junit">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/junit/junit-4.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/objenesis-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/junit-4.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/cglib-nodep-2.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/easymock-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/hamcrest-library-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/jmock-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/jmock-junit4-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/jmock-script-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/bsh-core-2.0b4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/hamcrest-core-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/guice-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/guice-assistedinject-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/aopalliance.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/javax.inject.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/guice-throwingproviders-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/guice-multibindings-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/guice-jndi-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/guice-jmx-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/guice-grapher-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/guice-servlet-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/guice-persist-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/atunit-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/jmock-legacy-2.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/jmockit.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/junit/easymock-3.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/objenesis-1.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/atunit-1.0.1.src.jar!/" />
+    </SOURCES>
   </library>
 </component>

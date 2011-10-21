@@ -2,6 +2,7 @@
   <dictionary name="billreh">
     <words>
       <w>anagement</w>
+      <w>chromedriver</w>
       <w>ckeditor</w>
       <w>codemirror</w>
       <w>csscolors</w>
@@ -10,7 +11,10 @@
       <w>glassfish</w>
       <w>googleapis</w>
       <w>groupname</w>
+      <w>guice</w>
       <w>intelli</w>
+      <w>joda</w>
+      <w>mockit</w>
       <w>mysite</w>
       <w>ontent</w>
       <w>openjpa</w>

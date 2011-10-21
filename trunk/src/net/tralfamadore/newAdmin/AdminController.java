@@ -20,8 +20,6 @@
 package net.tralfamadore.newAdmin;
 
 import com.google.code.ckJsfEditor.Toolbar;
-import com.google.code.ckJsfEditor.ToolbarButtonGroup;
-import com.google.code.ckJsfEditor.ToolbarItem;
 import com.google.code.ckJsfEditor.component.Editor;
 import net.tralfamadore.client.ContentKey;
 import net.tralfamadore.cmf.*;
@@ -32,10 +30,8 @@ import org.primefaces.event.DragDropEvent;
 import org.primefaces.model.TreeNode;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
-import javax.faces.component.html.HtmlForm;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
@@ -51,30 +47,18 @@ import java.util.*;
 @Named("adminController")
 @RequestScoped
 public class AdminController {
-    private static final Toolbar editorToolbar = new Toolbar(
-                ToolbarButtonGroup.DOCUMENT.remove(ToolbarItem.SAVE).remove(ToolbarItem.NEW_PAGE),
-                ToolbarButtonGroup.CLIPBOARD,
-                ToolbarButtonGroup.EDITING,
-                ToolbarButtonGroup.COLORS.item(ToolbarItem.BREAK),
-                ToolbarButtonGroup.PARAGRAPH,
-                ToolbarButtonGroup.INSERT.remove(ToolbarItem.FLASH).remove(ToolbarItem.IFRAME),
-                ToolbarButtonGroup.LINKS.item(ToolbarItem.BREAK),
-                ToolbarButtonGroup.STYLES,
-                ToolbarButtonGroup.TOOLS
-        );
+    @Inject
+    private Toolbar editorToolbar;
     @Inject
     private PageContent pageContent;
     @Inject
     private TheTree theTree;
-    @Inject
-    private DialogGroups dialogGroups;
     @Inject
     private FacesContext facesContext;
 
     private String contentCss;
     private String incomingNamespace;
     private String incomingContentName;
-    private List<String> allGroups;
     private String selectedGroup;
 
     private DataTable groupsDataTable;
@@ -83,6 +67,7 @@ public class AdminController {
     private String newStyleName;
     private DataTable dialogGroupsDataTable;
     private DataTable contentDialogGroupsDataTable;
+    private DataTable styleDialogGroupsDataTable;
     private Editor editor;
     private UIComponent stylePanel;
     private UIComponent theTreeComponent;
@@ -92,68 +77,23 @@ public class AdminController {
     public void loadNamespace() {
         if(isAjaxRequest())
             return;
-        TreeNode newContent = theTree.getContentHolder().find(new ContentKey(null, incomingNamespace, "namespace"));
-        TreeNode selectedNode = theTree.getSelectedNode();
-
-        if(newContent != null) {
-            newContent.setSelected(true);
-            if(selectedNode != null)
-                selectedNode.setSelected(false);
-        } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "Namespace [" + incomingNamespace + "] not found.", null));
-            return;
-        }
-
-        theTree.setSelectedNode(newContent);
-        pageContent.setTheContent((BaseContent) newContent.getData());
+        loadHelper("namespace");
         fetchNamespaceContents();
     }
 
     public void loadContent() {
         if(isAjaxRequest())
             return;
-        TreeNode newContent = theTree.getContentHolder().find(new ContentKey(incomingContentName,
-                incomingNamespace, "content"));
-        TreeNode selectedNode = theTree.getSelectedNode();
-
-        if(newContent != null) {
-            newContent.setSelected(true);
-            if(selectedNode != null)
-                selectedNode.setSelected(false);
-        } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "Content for namespace [" + incomingNamespace + "] and content name [" +
-                            incomingContentName + "] not found.", null));
-            return;
-        }
-
-        theTree.setSelectedNode(newContent);
-        pageContent.setTheContent((BaseContent) newContent.getData());
+        loadHelper("content");
         makeContentCss();
     }
 
     public void loadStyle() {
         if(isAjaxRequest())
             return;
-        TreeNode newContent = theTree.getContentHolder().find(
-                new ContentKey(incomingContentName, incomingNamespace, "style"));
-        TreeNode selectedNode = theTree.getSelectedNode();
-
-        if(newContent != null) {
-            newContent.setSelected(true);
-            if(selectedNode != null)
-                selectedNode.setSelected(false);
-        } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "Style for namespace [" + incomingNamespace + "] and style name [" +
-                            incomingContentName + "] not found.", null));
-            return;
-        }
-
-        theTree.setSelectedNode(newContent);
-        pageContent.setTheContent((BaseContent) newContent.getData());
+        loadHelper("style");
     }
+
 
     public void addNewTopLevelNamespace(ActionEvent e) {
         pageContent.setNamespaceToAdd(new Namespace());
@@ -173,6 +113,7 @@ public class AdminController {
         pageContent.setAddingContent(true);
         pageContent.setContentToAdd(new Content());
         pageContent.getContentToAdd().setGroupPermissionsList(newDefaultGroupPermissions());
+        List<GroupPermissions> gp = pageContent.getContentToAdd().getGroupPermissionsList();
     }
 
     public void addNewStyle() {
@@ -183,9 +124,7 @@ public class AdminController {
 
     public void addGroup(ActionEvent e) {
         BaseContent content = pageContent.getBaseContent();
-
         content.getGroupPermissionsList().add(new GroupPermissions(selectedGroup, true, false, false, false));
-
         saveBaseContent();
     }
 
@@ -206,7 +145,6 @@ public class AdminController {
         theTree.createTreeModel();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Content " + content.getFullName() + " added.", ""));
-
     }
 
     public void addStyle(ActionEvent e) {
@@ -220,75 +158,43 @@ public class AdminController {
         theTree.createTreeModel();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Style " + style.getFullName() + " added.", ""));
-
     }
 
     public void removeGroup(ActionEvent e) {
         String groupName = (String) e.getComponent().getAttributes().get("group");
-        if(pageContent.getBaseContent() instanceof Namespace) {
-            Namespace namespace = pageContent.getNamespace();
-            for(Iterator<GroupPermissions> it = namespace.getGroupPermissionsList().iterator(); it.hasNext(); ) {
-                GroupPermissions groupPermissions = it.next();
-                if(groupPermissions.getGroup().equals(groupName)) {
-                    it.remove();
-                    break;
-                }
+        BaseContent content = pageContent.getBaseContent();
+        for(Iterator<GroupPermissions> it = content.getGroupPermissionsList().iterator(); it.hasNext(); ) {
+            GroupPermissions groupPermissions = it.next();
+            if(groupPermissions.getGroup().equals(groupName)) {
+                it.remove();
+                break;
             }
-            theTree.getContentManager().saveNamespace(namespace);
-        } else {
-            BaseContent content = pageContent.getBaseContent();
-            for(Iterator<GroupPermissions> it = content.getGroupPermissionsList().iterator(); it.hasNext(); ) {
-                GroupPermissions groupPermissions = it.next();
-                if(groupPermissions.getGroup().equals(groupName)) {
-                    it.remove();
-                    break;
-                }
-            }
-            saveBaseContent();
         }
+        saveBaseContent();
 
         String clientId = groupsDataTable.getClientId(facesContext);
         RequestContext requestContext = RequestContext.getCurrentInstance();
-        if(clientId.matches(".*[0-9]+$")) {
+        if(clientId.matches(".*[0-9]+$"))
             clientId = clientId.replaceAll(":[0-9]+$", "");
-        }
         requestContext.addPartialUpdateTarget(clientId);
     }
 
     public void removeGroupForNewContent(ActionEvent e) {
         String groupName = (String) e.getComponent().getAttributes().get("group");
-        if(pageContent.isAddingNamespace() || pageContent.isAddingTopLevelNamespace()) {
-            Namespace namespace = pageContent.getNamespaceToAdd();
-            for(Iterator<GroupPermissions> it = namespace.getGroupPermissionsList().iterator(); it.hasNext(); ) {
-                GroupPermissions groupPermissions = it.next();
-                if(groupPermissions.getGroup().equals(groupName)) {
-                    it.remove();
-                    break;
-                }
-            }
-        } else {
-            BaseContent content = null;
-            if(pageContent.isAddingContent()) {
-                content = pageContent.getContentToAdd();
-            } else if(pageContent.isAddingStyle()) {
-                content = pageContent.getStyleToAdd();
-            } else {
-                throw new FacesException("Can't save groups for content in dialog: " + content);
-            }
-            for(Iterator<GroupPermissions> it = content.getGroupPermissionsList().iterator(); it.hasNext(); ) {
-                GroupPermissions groupPermissions = it.next();
-                if(groupPermissions.getGroup().equals(groupName)) {
-                    it.remove();
-                    break;
-                }
+        BaseContent content = pageContent.getBaseContentToAdd();
+
+        for(Iterator<GroupPermissions> it = content.getGroupPermissionsList().iterator(); it.hasNext(); ) {
+            GroupPermissions groupPermissions = it.next();
+            if(groupPermissions.getGroup().equals(groupName)) {
+                it.remove();
+                break;
             }
         }
 
         String clientId = dialogGroupsDataTable.getClientId(facesContext);
         RequestContext requestContext = RequestContext.getCurrentInstance();
-        if(clientId.matches(".*[0-9]+$")) {
+        if(clientId.matches(".*[0-9]+$"))
             clientId = clientId.replaceAll(":[0-9]+$", "");
-        }
         requestContext.addPartialUpdateTarget(clientId);
     }
 
@@ -298,14 +204,12 @@ public class AdminController {
 
     public void saveNewNamespace() {
         pageContent.getNamespaceToAdd().setNodeName(newNamespace);
-
         theTree.getContentManager().saveNamespace(pageContent.getNamespaceToAdd());
         pageContent.getNamespaceContents().add(pageContent.getNamespaceToAdd());
-        theTree.createTreeModel();
-        pageContent.setNamespaceToAdd(null);
         pageContent.setAddingNamespace(false);
         pageContent.setAddingTopLevelNamespace(false);
         newNamespace = null;
+        theTree.createTreeModel();
     }
 
     public void saveContent() {
@@ -338,9 +242,6 @@ public class AdminController {
             requestContext.addPartialUpdateTarget(editor.getClientId(facesContext));
             requestContext.addPartialUpdateTarget(dropper.getClientId(facesContext));
             requestContext.addPartialUpdateTarget(theTreeComponent.getClientId(facesContext));
-//            UIComponent form = getFormForComponent(event.getComponent());
-//            if(form != null)
-//                requestContext.addPartialUpdateTarget(form.getClientId(facesContext));
         }
         makeContentCss();
     }
@@ -356,7 +257,6 @@ public class AdminController {
             content.getStyles().remove(style);
             theTree.getContentManager().saveContent(content);
         }
-        theTree.createTreeModel();
         RequestContext requestContext = RequestContext.getCurrentInstance();
         requestContext.addPartialUpdateTarget(editor.getClientId(facesContext));
         requestContext.addPartialUpdateTarget(stylePanel.getClientId(facesContext));
@@ -364,6 +264,7 @@ public class AdminController {
         requestContext.addPartialUpdateTarget(theTreeComponent.getClientId(facesContext));
         makeContentCss();
     }
+
     public void removeBaseContent(ActionEvent e) {
         BaseContent content = pageContent.getContentToRemove();
         ContentManager contentManager = theTree.getContentManager();
@@ -392,30 +293,6 @@ public class AdminController {
         }
     }
 
-    public PageContent getPageContent() {
-        return pageContent;
-    }
-
-    public void setPageContent(PageContent pageContent) {
-        this.pageContent = pageContent;
-    }
-
-    public TheTree getTheTree() {
-        return theTree;
-    }
-
-    public void setTheTree(TheTree theTree) {
-        this.theTree = theTree;
-    }
-
-    public DialogGroups getDialogGroups() {
-        return dialogGroups;
-    }
-
-    public void setDialogGroups(DialogGroups dialogGroups) {
-        this.dialogGroups = dialogGroups;
-    }
-
     public String getIncomingNamespace() {
         return incomingNamespace;
     }
@@ -438,14 +315,6 @@ public class AdminController {
 
     public void setContentCss(String contentCss) {
         this.contentCss = contentCss;
-    }
-
-    public List<String> getAllGroups() {
-        return allGroups;
-    }
-
-    public void setAllGroups(List<String> allGroups) {
-        this.allGroups = allGroups;
     }
 
     public String getSelectedGroup() {
@@ -540,6 +409,14 @@ public class AdminController {
         this.dropper = dropper;
     }
 
+    public DataTable getStyleDialogGroupsDataTable() {
+        return styleDialogGroupsDataTable;
+    }
+
+    public void setStyleDialogGroupsDataTable(DataTable styleDialogGroupsDataTable) {
+        this.styleDialogGroupsDataTable = styleDialogGroupsDataTable;
+    }
+
     private boolean isAjaxRequest() {
         return facesContext.getPartialViewContext().isAjaxRequest();
     }
@@ -549,8 +426,6 @@ public class AdminController {
 
         saveBaseContent(content);
     }
-
-
 
     private void saveBaseContent(BaseContent content) {
         if(content instanceof Content)
@@ -592,16 +467,33 @@ public class AdminController {
         return defaultGroupPermissionsList;
     }
 
-    private UIComponent getFormForComponent(UIComponent component) {
-        UIComponent form = component;
-        if(form instanceof HtmlForm)
-            return form;
+    private void loadHelper(String type) {
+        TreeNode newContent;
+        if("namespace".equals(type)) {
+            newContent = theTree.getContentHolder().find(new ContentKey(null, incomingNamespace, "namespace"));
+        } else {
+            newContent = theTree.getContentHolder().find(
+                    new ContentKey(incomingContentName, incomingNamespace, type));
+        }
+        TreeNode selectedNode = theTree.getSelectedNode();
 
-        while((form = form.getParent()) != null) {
-            if(form instanceof HtmlForm)
-                return form;
+        if(newContent != null) {
+            newContent.setSelected(true);
+            if(selectedNode != null)
+                selectedNode.setSelected(false);
+        } else {
+            if("namespace".equals(type))
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                        "Namespace [" + incomingNamespace + "] not found.", null));
+            else
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                        "Style for namespace [" + incomingNamespace + "] and " + type + " name [" +
+                                incomingContentName + "] not found.", null));
+            return;
         }
 
-        return null;
+        theTree.setSelectedNode(newContent);
+        pageContent.setTheContent((BaseContent) newContent.getData());
+        theTree.createTreeModel();
     }
 }

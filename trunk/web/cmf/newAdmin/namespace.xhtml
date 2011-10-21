@@ -56,7 +56,8 @@
                         <f:facet name="header">
                             Remove
                         </f:facet>
-                        <p:commandButton image="ui-icon-circle-close" oncomplete="confirmation.show()">
+                        <p:commandButton image="ui-icon-circle-close" oncomplete="confirmation.show()"
+                                         alt="Delete #{content.name}">
                             <f:setPropertyActionListener name="content" value="#{content}" target="#{pageContent.contentToRemove}"/>
                         </p:commandButton>
                     </p:column>
@@ -68,7 +69,7 @@
                                          actionListener="#{adminController.addNewNamespace}" oncomplete="addNamespace.show();"/>
                         <p:commandButton value="Add New Content" style="margin-left: 20px;"
                                          actionListener="#{adminController.addNewContent}" oncomplete="addContent.show();"/>
-                        <p:commandButton value="Add New Style" style="margin-left: 20px;" update="addNamespaceDialog"
+                        <p:commandButton value="Add New Style" style="margin-left: 20px;"
                                          actionListener="#{adminController.addNewStyle}" oncomplete="addStyle.show();"/>
                     </p:tab>
                     <p:tab title="Permissions">

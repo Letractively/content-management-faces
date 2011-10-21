@@ -38,15 +38,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="jsf" level="project" />
     <orderEntry type="library" scope="TEST" name="jsfunit" level="project" />
-    <orderEntry type="module-library" scope="TEST">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/junit/junit-4.8.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="el" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="jpa" level="project" />
     <orderEntry type="library" name="Java EE 6" level="project" />
@@ -57,6 +48,7 @@
     <orderEntry type="library" name="primefaces" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="weld" level="project" />
     <orderEntry type="library" name="commons" level="project" />
+    <orderEntry type="library" scope="TEST" name="junit" level="project" />
   </component>
 </module>
 

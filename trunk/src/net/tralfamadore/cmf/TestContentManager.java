@@ -62,7 +62,7 @@ public class TestContentManager implements ContentManager {
         return SingletonHolder.INSTANCE;
     }
 
-    private TestContentManager() { }
+    public TestContentManager() { }
 
     /**
      * @see ContentManager#loadAllNamespaces()

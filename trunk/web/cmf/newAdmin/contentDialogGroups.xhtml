@@ -30,26 +30,26 @@
         <ui:composition>
 
             <p:outputPanel id="theContentDialogGroupPanel">
-            <p:dataTable value="#{pageContent.contentToAdd.groupPermissionsList}" var="data" style="width: 90%;"
+            <p:dataTable value="#{pageContent.contentToAdd.groupPermissionsList}" var="cdata" style="width: 90%;"
                     binding="#{adminController.contentDialogGroupsDataTable}">
                 <p:column headerText="Group">
-                    <h:outputText value="#{data.group}"/>
+                    <h:outputText value="#{cdata.group}"/>
                 </p:column>
                 <p:column headerText="View" style="width: 80px; text-align: center;">
-                    <p:selectBooleanCheckbox value="#{data.canView}" style="padding-left: 30px;"/>
+                    <p:selectBooleanCheckbox value="#{cdata.canView}" style="padding-left: 30px;"/>
                 </p:column>
                 <p:column headerText="Edit" style="width: 80px;">
-                    <p:selectBooleanCheckbox value="#{data.canEdit}" style="padding-left: 30px;"/>
+                    <p:selectBooleanCheckbox value="#{cdata.canEdit}" style="padding-left: 30px;"/>
                 </p:column>
                 <p:column headerText="Delete" style="width: 80px;">
-                    <p:selectBooleanCheckbox value="#{data.canDelete}" style="padding-left: 30px;"/>
+                    <p:selectBooleanCheckbox value="#{cdata.canDelete}" style="padding-left: 30px;"/>
                 </p:column>
                 <p:column headerText="Admin" style="width: 80px;">
-                    <p:selectBooleanCheckbox value="#{data.canAdmin}" style="padding-left: 30px;" disabled="true"/>
+                    <p:selectBooleanCheckbox value="#{cdata.canAdmin}" style="padding-left: 30px;" disabled="true"/>
                 </p:column>
                 <p:column style="text-align: center;">
                     <p:commandButton image="ui-icon-circle-close" actionListener="#{adminController.removeGroupForNewContent}">
-                        <f:attribute name="group" value="#{data.group}"/>
+                        <f:attribute name="group" value="#{cdata.group}"/>
                     </p:commandButton>
                 </p:column>
             </p:dataTable>
@@ -60,8 +60,8 @@
                         <h:outputText value="Add a group"/>
                     </td>
                     <td>
-                        <p:selectOneMenu value="#{adminController.selectedGroup}" height="200" widgetVar="sm" id="contentGroupMenu"
-                                         style="width: 150px;" label="Add a group">
+                        <p:selectOneMenu value="#{adminController.selectedGroup}" height="200"
+                                         id="contentGroupMenu" style="width: 150px;" label="Add a group">
                             <p:ajax/>
                             <f:selectItem itemLabel="Add Group" itemValue="Add Group" noSelectionOption="true"/>
                             <f:selectItems value="#{groups.allGroups}" var="group" itemLabel="#{group}"

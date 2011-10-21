@@ -19,33 +19,32 @@
 
 package net.tralfamadore.client;
 
-import net.tralfamadore.cmf.GroupPermissions;
+import com.google.inject.AbstractModule;
+import com.google.inject.Provider;
+import com.google.inject.TypeLiteral;
+import net.tralfamadore.cmf.ContentManager;
+import net.tralfamadore.cmf.TestContentManager;
+import net.tralfamadore.util.Current;
 
-import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
 
 /**
  * User: billreh
- * Date: 2/28/11
- * Time: 1:47 AM
+ * Date: 10/19/11
+ * Time: 10:01 AM
  */
-public class GroupPermissionsConverter implements Converter {
+public class TestModule extends AbstractModule {
     @Override
-    public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        try {
-            return component.getAttributes().get("groupPermissions." + value);
-        } catch(Exception e) {
-            return null;
-        }
+    protected void configure() {
+        bind(new TypeLiteral<ContentManager>(){}).annotatedWith(Current.class).toProvider(ContentManagerMockProvider
+                .class);
+        bind(FacesContext.class).to(MockFacesContext.class).asEagerSingleton();
     }
 
-    @Override
-    public String getAsString(FacesContext context, UIComponent component, Object value) {
-        if(value.equals(""))
-            return "";
-        GroupPermissions groupPermissions = (GroupPermissions) value;
-        component.getAttributes().put("groupPermissions." + groupPermissions.getGroup(), groupPermissions);
-        return groupPermissions.getGroup();
+    public static class ContentManagerMockProvider implements Provider<ContentManager> {
+        @Override
+        public ContentManager get() {
+            return TestContentManager.getInstance();
+        }
     }
 }
