@@ -19,7 +19,6 @@
 
 package net.tralfamadore;
 
-import org.openqa.selenium.server.SeleniumServer;
 
 /**
  * User: billreh
@@ -31,7 +30,7 @@ public class SeleniumServerManager {
         private static final SeleniumServerManager INSTANCE = new SeleniumServerManager();
     }
 
-    private SeleniumServer server;
+    private Object server;
 
     public static SeleniumServerManager getInstance() {
         return SeleniumServerManagerHolder.INSTANCE;
@@ -41,24 +40,24 @@ public class SeleniumServerManager {
     }
 
     public void startServer() {
-        if(server == null) {
-            try {
-                server = new SeleniumServer();
-            } catch(Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-        try {
-            server.start();
-        } catch(Exception e) {
-            throw new RuntimeException(e);
-        }
+//        if(server == null) {
+//            try {
+//                server = new SeleniumServer();
+//            } catch(Exception e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
+//        try {
+//            server.start();
+//        } catch(Exception e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     public void stopServer() {
         if(server != null) {
             try {
-                server.stop();
+//                server.stop();
                 server = null;
             } catch(Exception e) {
                 throw new RuntimeException(e);

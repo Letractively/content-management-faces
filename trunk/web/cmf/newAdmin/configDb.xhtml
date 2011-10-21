@@ -28,7 +28,7 @@
       xmlns:p="http://primefaces.org/ui"
       xml:lang="en" lang="en">
 <ui:composition>
-    <h:panelGroup id="configDb" rendered="#{client.embeddedDbNeedsConfig}">
+    <h:panelGroup id="configDb" rendered="#{adminController.embeddedDbNeedsConfig}">
         <div style="margin: 20px;">
             <div style="text-align: center; font-size: 24pt; font-weight: bold;" class="ui-widget ui-widget-header ui-corner-all">
                 Embedded Database Properties
@@ -47,10 +47,10 @@
                         <h:outputLabel for="derbyPath" value="Directory Path: " styleClass="ui-widget" style="vertical-align: bottom;"/>
                     </h:column>
                     <h:column>
-                        <p:inputText id="derbyPath" value="#{client.derbyPath}" style="width: 250px;"/>
+                        <p:inputText id="derbyPath" value="#{adminController.derbyPath}" style="width: 250px;"/>
                     </h:column>
                     <h:column>
-                        <p:commandButton id="submitDerbyPath" value="Submit" actionListener="#{client.createEmbeddedDb}"
+                        <p:commandButton id="submitDerbyPath" value="Submit" actionListener="#{adminController.createEmbeddedDb}"
                                          update="theForm:configDb theForm:configDbSuccessWrapper"/>
                     </h:column>
                 </h:panelGrid>
@@ -70,12 +70,12 @@
     </h:panelGroup>
 
     <h:panelGroup id="configDbSuccessWrapper">
-        <h:panelGroup id="configDbSuccess" rendered="#{!client.embeddedDbNeedsConfig}">
+        <h:panelGroup id="configDbSuccess" rendered="#{!adminController.embeddedDbNeedsConfig}">
         <div style="margin: 10px;" class="ui-widget ui-widget-container">
             <div style="text-align: center; font-size: 24pt; font-weight: bold;">Success!</div>
             <p style="margin-top: 30px;">
                 Your database is configured.  All data will be written to the directory:
-                <h:outputText id="derbySuccessPath" value="#{client.derbyPath}"/>
+                <h:outputText id="derbySuccessPath" value="#{adminController.derbyPath}"/>
             </p>
             <p>
                 The persistence-properties section of your WEB-INF/cmf-config.xml has been updated with:<br/>
@@ -87,7 +87,7 @@
                         &nbsp;&nbsp;&lt;/persistence-property&gt;<br/>
                         &nbsp;&nbsp;&lt;persistence-property&gt;<br/>
                             &nbsp;&nbsp;&nbsp;&nbsp;&lt;name&gt;javax.persistence.jdbc.url&lt;/name&gt;<br/>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;jdbc:derby:#{client.derbyPath}&lt;/value&gt;<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;value&gt;jdbc:derby:#{adminController.derbyPath}&lt;/value&gt;<br/>
                         &nbsp;&nbsp;&lt;/persistence-property&gt;<br/>
                     &lt;/persistence-properties&gt;
                 </code>

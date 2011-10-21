@@ -19,7 +19,7 @@
 
 package net.tralfamadore.security;
 
-import net.tralfamadore.admin.CurrentUser;
+import net.tralfamadore.util.CurrentUser;
 
 import javax.el.ELResolver;
 import javax.faces.context.FacesContext;

@@ -19,7 +19,6 @@
 
 package net.tralfamadore.newAdmin;
 
-import net.tralfamadore.client.ContentHolder;
 import net.tralfamadore.cmf.Content;
 import net.tralfamadore.cmf.ContentManager;
 import net.tralfamadore.cmf.Namespace;

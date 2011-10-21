@@ -21,15 +21,16 @@ package net.tralfamadore.newAdmin;
 
 import com.google.code.ckJsfEditor.Toolbar;
 import com.google.code.ckJsfEditor.component.Editor;
-import net.tralfamadore.client.ContentKey;
 import net.tralfamadore.cmf.*;
 import net.tralfamadore.config.CmfContext;
+import net.tralfamadore.persistence.JpaEntityManagerProvider;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.DragDropEvent;
 import org.primefaces.model.TreeNode;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -37,6 +38,7 @@ import javax.faces.event.ActionEvent;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.File;
 import java.util.*;
 
 /**
@@ -72,6 +74,10 @@ public class AdminController {
     private UIComponent stylePanel;
     private UIComponent theTreeComponent;
     private UIComponent dropper;
+    /** true if we need to configure the embedded database */
+    private boolean embeddedDbNeedsConfig = CmfContext.getInstance().isEmbeddedDbNeedsConfig();
+    /** the path to the embedded db directory */
+    private String derbyPath;
 
 
     public void loadNamespace() {
@@ -293,6 +299,36 @@ public class AdminController {
         }
     }
 
+
+    /**
+     * Action listener that creates the embedded database from the initial screen.
+     *
+     * @param e event info
+     */
+    public void createEmbeddedDb(ActionEvent e) {
+        String jdbc = "jdbc:derby:";
+        String props = ";create=true";
+        Properties properties = new Properties();
+
+        properties.put("javax.persistence.jdbc.driver", "org.apache.derby.jdbc.EmbeddedDriver");
+        properties.put("javax.persistence.jdbc.url", jdbc + derbyPath + props);
+
+        File file = new File(derbyPath);
+        if(!file.getParentFile().exists()) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Invalid path: " + derbyPath + ".  Directory " + file.getParentFile().getAbsolutePath()
+                            + " does not exist.", null));
+            derbyPath = null;
+            throw new FacesException();
+        }
+
+        ((JpaEntityManagerProvider)CmfContext.getInstance().getEntityManagerProvider()).createEmbeddedDb(properties);
+
+        embeddedDbNeedsConfig = false;
+
+        theTree.createTreeModel();
+    }
+
     public String getIncomingNamespace() {
         return incomingNamespace;
     }
@@ -415,6 +451,22 @@ public class AdminController {
 
     public void setStyleDialogGroupsDataTable(DataTable styleDialogGroupsDataTable) {
         this.styleDialogGroupsDataTable = styleDialogGroupsDataTable;
+    }
+
+    public boolean isEmbeddedDbNeedsConfig() {
+        return embeddedDbNeedsConfig;
+    }
+
+    public void setEmbeddedDbNeedsConfig(boolean embeddedDbNeedsConfig) {
+        this.embeddedDbNeedsConfig = embeddedDbNeedsConfig;
+    }
+
+    public String getDerbyPath() {
+        return derbyPath;
+    }
+
+    public void setDerbyPath(String derbyPath) {
+        this.derbyPath = derbyPath;
     }
 
     private boolean isAjaxRequest() {

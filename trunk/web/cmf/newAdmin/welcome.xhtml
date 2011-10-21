@@ -29,10 +29,7 @@
     <h:body>
         <ui:composition template="_template.xhtml">
             <ui:define name="body">
-                <p:outputPanel rendered="#{!admin.embeddedDbNeedsConfig}">
-                    Welcome...
-                </p:outputPanel>
-                <p:outputPanel rendered="#{admin.embeddedDbNeedsConfig}">
+                <p:outputPanel rendered="#{adminController.embeddedDbNeedsConfig}">
                     <ui:include src="configDb.xhtml"/>
                 </p:outputPanel>
             </ui:define>
