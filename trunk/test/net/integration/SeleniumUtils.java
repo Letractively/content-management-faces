@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.client;
+package net.integration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,51 +25,59 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-import static net.tralfamadore.client.SeleniumUtils.*;
-
 /**
  * User: billreh
  * Date: 10/19/11
- * Time: 2:47 AM
+ * Time: 4:14 AM
  */
-public class NamespacePage {
-    private WebDriver webDriver;
-
-    public NamespacePage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-    }
-
-    public void addNamespace(String namespaceName) {
-        findButtonByName(webDriver, "New Namespace ...").click(); pause(500);
-        findInputById(webDriver, "namespaceName").sendKeys(namespaceName); pause(500);
-        findButtonByName(webDriver, "Save").click(); pause(500);
-    }
-
-    public void removeNamespace(String namespaceName) {
+public class SeleniumUtils {
+    public static WebElement findButtonByName(WebDriver webDriver, String name) {
         List<WebElement> elements = webDriver.findElements(By.tagName("button"));
+
         for(WebElement element : elements) {
-            if(("Delete " + namespaceName).equals(element.getAttribute("alt"))) {
-                element.click();
-                break;
-            }
+            if(name.equals(element.getText()))
+                return element;
         }
-        pause(500);
-        elements = webDriver.findElements(By.tagName("button")); // Dialog has appeared w/Yes and No buttons
-        for(WebElement element : elements) {
-            if("Yes".equals(element.getText())) {
-                element.click();
-                break;
-            }
-        }
-        pause(500);
+
+        return null;
     }
 
-    public boolean hasHeader(String text) {
-        List<WebElement> elements = webDriver.findElements(By.tagName("h1"));
+    public static WebElement findInputById(WebDriver webDriver, String id) {
+        List<WebElement> elements = webDriver.findElements(By.tagName("input"));
+
+        for(WebElement element : elements) {
+            if(element.getAttribute("id").matches(".*:" + id + "$"))
+                return element;
+        }
+
+        return null;
+    }
+
+    public static WebElement findLinkByText(WebDriver webDriver, String text) {
+        List<WebElement> elements = webDriver.findElements(By.tagName("a"));
+
         for(WebElement element : elements) {
             if(text.equals(element.getText()))
-                return true;
+                return element;
         }
-        return false;
+
+        return null;
+    }
+
+    public static void pause(int ms) {
+        pause((long)ms);
+    }
+
+    public static void pause(long ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static <T>T pause(T t, int time) {
+        SeleniumUtils.pause(time);
+        return t;
     }
 }

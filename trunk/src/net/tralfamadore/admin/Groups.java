@@ -19,7 +19,6 @@
 
 package net.tralfamadore.admin;
 
-import net.tralfamadore.admin.util.Current;
 import net.tralfamadore.admin.util.viewScope.ViewScoped;
 import net.tralfamadore.cmf.ContentManager;
 
@@ -37,7 +36,7 @@ import java.util.List;
 @Named
 @ViewScoped
 public class Groups implements Serializable {
-    @Inject @Current
+    @Inject
     private ContentManager contentManager;
 
     private List<String> allGroups;

@@ -19,7 +19,6 @@
 
 package net.tralfamadore.admin;
 
-import net.tralfamadore.admin.util.Current;
 import net.tralfamadore.cmf.Content;
 import net.tralfamadore.cmf.ContentManager;
 import net.tralfamadore.cmf.Namespace;
@@ -42,7 +41,7 @@ import java.util.List;
 @Named
 @SessionScoped
 public class TheTree implements Serializable {
-    @Inject @Current
+    @Inject
     private ContentManager contentManager;
 
     private TreeNode root;

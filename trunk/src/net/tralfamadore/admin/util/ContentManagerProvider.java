@@ -30,7 +30,7 @@ import javax.enterprise.inject.Produces;
  * Time: 4:18 AM
  */
 public class ContentManagerProvider {
-    @Produces @Current
+    @Produces
     public ContentManager getContentManager() {
         return CmfContext.getInstance().getContentManager();
     }

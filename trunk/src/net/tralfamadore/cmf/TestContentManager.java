@@ -21,6 +21,7 @@ package net.tralfamadore.cmf;
 
 import net.tralfamadore.persistence.entity.GroupEntity;
 
+import javax.enterprise.inject.Alternative;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -33,6 +34,7 @@ import java.util.Vector;
  *
  * A test implementation of the {@link ContentManager} interface which keeps all content in memory.
  */
+@Alternative
 public class TestContentManager implements ContentManager {
     /** list of all namespaces */
     private final List<Namespace> namespaces = new Vector<Namespace>();

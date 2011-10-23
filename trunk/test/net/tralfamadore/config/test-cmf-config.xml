@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+  ~ Copyright (c) 2011 Bill Reh.
+  ~
+  ~ This file is part of Content Management Faces.
+  ~
+  ~ Content Management Faces is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Lesser General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>
+  -->
+<cmf-config>
+    <!--
+    - The default content manager is the JpaContentManager, but you can specify your own here,
+    - which will need to implements the net.tralfamadore.cmf.ContentManager interface.
+    -->
+    <content-manager>net.tralfamadore.cmf.JpaContentManager</content-manager>
+
+    <!--
+    - The default entity provider is the JpaEntityManagerProvider, but you can specify your own here,
+    - which will need to implements the net.tralfamadore.cmf.persistence.EntityManagerProvider interface.
+    - The default provider is configured below in the <persistence-properties> section, just as in JPA's
+    - persistence.xml.
+    -->
+    <entity-manager-provider>net.tralfamadore.persistence.JpaEntityManagerProvider</entity-manager-provider>
+
+    <!--
+    - These persistence properties are configured the same way as you would in the JPS persistence-properties.xml
+    - file.  You hook into your db vendor with whatever persistence provider you want (openjpa, toplink, etc) here.
+    - A few simple examples are listed below.
+    -->
+    <persistence-properties>
+        <!-- ***** -->
+        <!-- derby -->
+        <!-- ***** -->
+        <!--
+        <persistence-property>
+            <name>javax.persistence.jdbc.driver</name>
+            <value>org.apache.derby.jdbc.EmbeddedDriver</value>
+        </persistence-property>
+        <persistence-property>
+            <name>javax.persistence.jdbc.url</name>
+            <value>jdbc:derby:memory:cmf;create=true</value>
+        </persistence-property>
+        -->
+
+        <!-- ***** -->
+        <!-- mysql -->
+        <!-- ***** -->
+        <!--
+        <persistence-property>
+            <name>ConnectionDriverName</name>
+            <value>com.mysql.jdbc.Driver</value>
+        </persistence-property>
+        <persistence-property>
+            <name>openjpa.ConnectionUrl</name>
+            <value>jdbc:mysql://localhost/cmf</value>
+        </persistence-property>
+        -->
+
+        <!-- ******** -->
+        <!-- postgres -->
+        <!-- ******** -->
+        <persistence-property>
+            <name>javax.persistence.jdbc.driver</name>
+            <value>org.postgresql.Driver</value>
+        </persistence-property>
+        <persistence-property>
+            <name>javax.persistence.jdbc.url</name>
+            <value>jdbc:postgresql://localhost/cmf5</value>
+        </persistence-property>
+        <persistence-property>
+            <name>javax.persistence.jdbc.user</name>
+            <value>postgres</value>
+        </persistence-property>
+        <persistence-property>
+            <name>javax.persistence.jdbc.password</name>
+            <value>postgres</value>
+        </persistence-property>
+        <!--
+        -->
+    </persistence-properties>
+</cmf-config>

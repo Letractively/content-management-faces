@@ -34,6 +34,7 @@ import java.io.IOException;
  * Time: 7:56 PM
  */
 public class SecurityPhaseListener implements PhaseListener {
+    public static String loginUrl = "./login.jsf";
     private CmfContext cmfContext = CmfContext.getInstance();
 
     @Override
@@ -48,7 +49,7 @@ public class SecurityPhaseListener implements PhaseListener {
             switch (CmfContext.getInstance().getSecurityType()) {
                 case LOCAL:
                     try {
-                        externalContext.redirect("./login.jsf");
+                        externalContext.redirect(loginUrl);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

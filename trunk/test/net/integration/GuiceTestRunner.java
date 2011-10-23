@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.client;
+package net.integration;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;

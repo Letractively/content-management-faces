@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.security;
+package net.tralfamadore.component;
 
 import javax.el.ELContext;
 import javax.el.ELException;
@@ -34,7 +34,6 @@ public class CmfELResolver extends ELResolver {
     private final Map<Object,Object> cmf = new HashMap<Object, Object>();
 
     public CmfELResolver() {
-        cmf.put("poo", "poo!");
     }
 
     @Override

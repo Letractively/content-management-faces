@@ -41,7 +41,7 @@ import java.util.Properties;
  * Time: 9:06 AM
  */
 public class JpaEntityManagerProvider implements EntityManagerProvider {
-    private EntityManager em;
+    EntityManager em;
     private EntityManagerFactory emFactory;
 
 
@@ -134,10 +134,7 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
         File file = new File(url);
         String contents = readFileAsString(file);
         String newUrl = properties.getProperty("javax.persistence.jdbc.url");
-        System.out.println(contents);
         contents = contents.replaceAll("jdbc:derby:memory:cmf;create=true", newUrl);
-        System.out.println("--------------------------------------------------------------------------------");
-        System.out.println(contents);
         writeStringToFile(file, contents);
     }
 
@@ -147,7 +144,7 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
         return readFileAsString(file).split(";");
     }
 
-    private static void writeStringToFile(File file, String string) throws java.io.IOException{
+    static void writeStringToFile(File file, String string) throws java.io.IOException{
         FileOutputStream outputStream = null;
         try {
             outputStream = new FileOutputStream(file);
@@ -158,7 +155,7 @@ public class JpaEntityManagerProvider implements EntityManagerProvider {
 
     }
 
-    private static String readFileAsString(File file) throws java.io.IOException{
+    static String readFileAsString(File file) throws java.io.IOException{
         byte[] buffer = new byte[(int) file.length()];
         FileInputStream f = null;
         try {

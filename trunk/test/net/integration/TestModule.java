@@ -17,12 +17,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.client;
+package net.integration;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provider;
 import com.google.inject.TypeLiteral;
-import net.tralfamadore.admin.util.Current;
 import net.tralfamadore.cmf.ContentManager;
 import net.tralfamadore.cmf.TestContentManager;
 
@@ -36,8 +35,7 @@ import javax.faces.context.FacesContext;
 public class TestModule extends AbstractModule {
     @Override
     protected void configure() {
-        bind(new TypeLiteral<ContentManager>(){}).annotatedWith(Current.class).toProvider(ContentManagerMockProvider
-                .class);
+        bind(new TypeLiteral<ContentManager>(){}).toProvider(ContentManagerMockProvider.class);
         bind(FacesContext.class).to(MockFacesContext.class).asEagerSingleton();
     }
 

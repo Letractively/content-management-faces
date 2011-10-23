@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.client;
+package net.integration;
 
 import mockit.Mocked;
 import mockit.NonStrictExpectations;
@@ -28,6 +28,7 @@ import net.tralfamadore.cmf.Namespace;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 //import org.jmock.Expectations;
@@ -42,6 +43,9 @@ import javax.inject.Inject;
 public class JMockAtTest {
     @Inject
     AdminController adminController;
+
+    @Mocked
+    FacesContext facesContext;
 
     @Mocked
     PageContent pageContent;

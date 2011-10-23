@@ -17,14 +17,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.client;
+package net.integration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static net.tralfamadore.client.SeleniumUtils.pause;
+import static net.integration.SeleniumUtils.pause;
 
 /**
  * User: billreh

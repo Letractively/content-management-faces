@@ -38,7 +38,7 @@ public class LocalCurrentUserInfo implements CurrentUserInfo {
         Object o = elResolver.getValue(facesContext.getELContext(), null, "currentUser");
         CurrentUser user = (CurrentUser) o;
 
-        facesContext.getExternalContext().getSessionMap().get("cmfCurrentUser");
+//        facesContext.getExternalContext().getSessionMap().get("cmfCurrentUser");
 
         return user == null ? null : user.getUser();
     }

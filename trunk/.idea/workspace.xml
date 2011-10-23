@@ -27,12 +27,37 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="d252fcb5-7c5d-4bdd-bb3d-8158cf0997cd" name="Default" comment="Bit of cleanup.">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/net/tralfamadore/component/CmfCommandButtonRenderer.java" afterPath="" />
+    <list default="true" readonly="true" id="d252fcb5-7c5d-4bdd-bb3d-8158cf0997cd" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/net/integration" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/net/tralfamadore/config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/net/tralfamadore/config/ConfigFileTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/net/tralfamadore/config/test-cmf-config.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/net/tralfamadore/persistence/JpaEntityManagerProviderTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/net/tralfamadore/security/CurrentUserInfoTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/net/tralfamadore/security/SecurityPhaseListenerTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/client/AtTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/client" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/net/tralfamadore/config/GroupPermissionsConverter.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/admin/util/GroupPermissionsConverter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/net/tralfamadore/security/CmfELResolver.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/component/CmfELResolver.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/client/CmfClientTest.java" afterPath="$PROJECT_DIR$/test/net/integration/CmfClientTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/client/GuiceIntegration.java" afterPath="$PROJECT_DIR$/test/net/integration/GuiceIntegration.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/client/GuiceTestRunner.java" afterPath="$PROJECT_DIR$/test/net/integration/GuiceTestRunner.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/client/JMockAtTest.java" afterPath="$PROJECT_DIR$/test/net/integration/JMockAtTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/client/MockFacesContext.java" afterPath="$PROJECT_DIR$/test/net/integration/MockFacesContext.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/client/NamespacePage.java" afterPath="$PROJECT_DIR$/test/net/integration/NamespacePage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/client/SeleniumUtils.java" afterPath="$PROJECT_DIR$/test/net/integration/SeleniumUtils.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/client/StartPage.java" afterPath="$PROJECT_DIR$/test/net/integration/StartPage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/net/tralfamadore/client/TestModule.java" afterPath="$PROJECT_DIR$/test/net/integration/TestModule.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/billreh.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/billreh.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/admin/AdminController.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/admin/AdminController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/config/CmfContext.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/config/CmfContext.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/security/CmfELResolver.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/security/CmfELResolver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/admin/Groups.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/admin/Groups.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/admin/TheTree.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/admin/TheTree.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/admin/util/ContentManagerProvider.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/admin/util/ContentManagerProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/cmf/TestContentManager.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/cmf/TestContentManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/persistence/JpaEntityManagerProvider.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/persistence/JpaEntityManagerProvider.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/security/LocalCurrentUserInfo.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/security/LocalCurrentUserInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/tralfamadore/security/SecurityPhaseListener.java" afterPath="$PROJECT_DIR$/src/net/tralfamadore/security/SecurityPhaseListener.java" />
     </list>
     <ignored path="cmf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,7 +78,7 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/TestContentManager.java" line="338" class="net.tralfamadore.cmf.TestContentManager" package="net.tralfamadore.cmf">
+      <breakpoint url="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/TestContentManager.java" line="340" class="net.tralfamadore.cmf.TestContentManager" package="net.tralfamadore.cmf">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -66,7 +91,46 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/test/net/tralfamadore/client/GuiceIntegration.java" line="37" class="net.tralfamadore.client.GuiceIntegration" package="net.tralfamadore.client">
+      <breakpoint url="file://$PROJECT_DIR$/test/net/integration/GuiceIntegration.java" line="37" class="net.tralfamadore.client.GuiceIntegration" package="net.tralfamadore.client">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/test/net/tralfamadore/cmf/JpaContentManagerTest.java" line="222" class="net.tralfamadore.cmf.JpaContentManagerTest.MockCmfContext" package="net.tralfamadore.cmf">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/test/net/tralfamadore/cmf/JpaContentManagerTest.java" line="230" class="net.tralfamadore.cmf.JpaContentManagerTest.MockCmfContext" package="net.tralfamadore.cmf">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/net/tralfamadore/persistence/JpaEntityManagerProvider.java" line="58" class="net.tralfamadore.persistence.JpaEntityManagerProvider" package="net.tralfamadore.persistence">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -137,109 +201,109 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="JMockAtTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/client/JMockAtTest.java">
+      <file leaf-file-name="GuiceIntegration.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/net/integration/GuiceIntegration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="14" selection-start="1273" selection-end="1273" vertical-scroll-proportion="0.0">
+            <state line="37" column="36" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CmfClientTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/client/CmfClientTest.java">
+      <file leaf-file-name="GuiceTestRunner.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/net/integration/GuiceTestRunner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="13" selection-start="1663" selection-end="1663" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SeleniumUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/client/SeleniumUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="13" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StartPage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/client/StartPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="13" selection-start="1090" selection-end="1090" vertical-scroll-proportion="0.0">
+            <state line="34" column="13" selection-start="1093" selection-end="1093" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="TestModule.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/client/TestModule.java">
+        <entry file="file://$PROJECT_DIR$/test/net/integration/TestModule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="13" selection-start="1168" selection-end="1168" vertical-scroll-proportion="0.0">
+            <state line="37" column="87" selection-start="1286" selection-end="1286" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AtTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/client/AtTest.java">
+      <file leaf-file-name="Groups.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/Groups.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="1550" selection-end="1550" vertical-scroll-proportion="0.0">
+            <state line="52" column="0" selection-start="1486" selection-end="1486" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ContentListTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/cmf/ContentListTest.java">
+      <file leaf-file-name="JpaContentManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="13" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
+            <state line="37" column="11" selection-start="1241" selection-end="1241" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CmfELResolver.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/security/CmfELResolver.java">
+      <file leaf-file-name="ContentManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/ContentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="41" selection-start="2495" selection-end="2495" vertical-scroll-proportion="0.0">
+            <state line="34" column="17" selection-start="1150" selection-end="1150" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntityManagerProvider.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/persistence/EntityManagerProvider.java">
+      <file leaf-file-name="CmfClientTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/net/integration/CmfClientTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="17" selection-start="923" selection-end="923" vertical-scroll-proportion="0.0">
+            <state line="37" column="13" selection-start="1171" selection-end="1171" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CmfContext.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/config/CmfContext.java">
+      <file leaf-file-name="JMockAtTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/net/integration/JMockAtTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="1372" selection-end="1372" vertical-scroll-proportion="0.0">
+            <state line="63" column="32" selection-start="1876" selection-end="1876" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Namespace.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java">
+      <file leaf-file-name="AdminController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="21" selection-start="1620" selection-end="1620" vertical-scroll-proportion="0.0">
+            <state line="106" column="16" selection-start="3418" selection-end="3418" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewScopeExtension.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/util/viewScope/ViewScopeExtension.java">
+      <file leaf-file-name="MockFacesContext.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/net/integration/MockFacesContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="83" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.0">
+            <state line="46" column="13" selection-start="1501" selection-end="1501" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TheTree.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/TheTree.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="10" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContentManagerProvider.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/util/ContentManagerProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="12" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -248,25 +312,34 @@
       <file leaf-file-name="TestContentManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/TestContentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="4" selection-start="1785" selection-end="1785" vertical-scroll-proportion="0.0">
+            <state line="36" column="11" selection-start="1180" selection-end="1180" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PageContent.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/PageContent.java">
+      <file leaf-file-name="SecurityPhaseListenerTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/security/SecurityPhaseListenerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="4" selection-start="3117" selection-end="3117" vertical-scroll-proportion="0.0">
+            <state line="126" column="65" selection-start="4547" selection-end="4547" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DynamicResourceLoader.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/DynamicResourceLoader.java">
+      <file leaf-file-name="CurrentUserInfoTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/security/CurrentUserInfoTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="19" selection-start="1320" selection-end="1320" vertical-scroll-proportion="0.0">
+            <state line="92" column="57" selection-start="3110" selection-end="3110" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntityManagerProvider.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/persistence/EntityManagerProvider.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="31" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -275,61 +348,110 @@
       <file leaf-file-name="JpaEntityManagerProvider.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/persistence/JpaEntityManagerProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="11" selection-start="2662" selection-end="2662" vertical-scroll-proportion="0.0">
+            <state line="117" column="14" selection-start="3983" selection-end="3983" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupPermissions.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/GroupPermissions.java">
+      <file leaf-file-name="CmfStartupListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/config/CmfStartupListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="42" selection-start="1195" selection-end="1195" vertical-scroll-proportion="0.0">
+            <state line="30" column="13" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Content.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/content/Content.java">
+      <file leaf-file-name="CmfShutdownListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/config/CmfShutdownListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="26" selection-start="1722" selection-end="1722" vertical-scroll-proportion="0.0">
+            <state line="31" column="13" selection-start="1021" selection-end="1021" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseContent.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/BaseContent.java">
+      <file leaf-file-name="JpaEntityManagerProviderTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/persistence/JpaEntityManagerProviderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="22" selection-start="1004" selection-end="1004" vertical-scroll-proportion="0.0">
+            <state line="102" column="54" selection-start="3925" selection-end="3925" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CmfContext.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/config/CmfContext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="4" selection-start="2530" selection-end="2530" vertical-scroll-proportion="0.3888131">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminController.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/AdminController.java">
+      <file leaf-file-name="ConfigFile.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/config/ConfigFile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="1462" selection-end="1462" vertical-scroll-proportion="0.2777778">
+            <state line="40" column="13" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="faces-config.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/META-INF/faces-config.xml">
+      <file leaf-file-name="ConfigFileTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/config/ConfigFileTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="12" selection-start="2169" selection-end="2169" vertical-scroll-proportion="0.0">
+            <state line="47" column="76" selection-start="1473" selection-end="1473" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test-cmf-config.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/config/test-cmf-config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="19" selection-start="2267" selection-end="2267" vertical-scroll-proportion="-18.291666">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manual.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/CodeMirror-2.15/manual.html">
+      <file leaf-file-name="cmf-config.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/cmf-config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="557" column="7" selection-start="27836" selection-end="27836" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JpaContentManagerTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/cmf/JpaContentManagerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="215" column="24" selection-start="8819" selection-end="8819" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocalCurrentUserInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/security/LocalCurrentUserInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="0" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrincipalCurrentUserInfo.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/security/PrincipalCurrentUserInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="13" selection-start="949" selection-end="949" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -349,22 +471,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test/net/tralfamadore/client/MockFacesContext.java" />
-        <option value="$PROJECT_DIR$/web/cmf/newAdmin/tree.xhtml" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/newAdmin/AdminController.java" />
-        <option value="$PROJECT_DIR$/web/cmf/newAdmin/configDb.xhtml" />
-        <option value="$PROJECT_DIR$/web/cmf/newAdmin/welcome.xhtml" />
-        <option value="$PROJECT_DIR$/test/net/tralfamadore/SeleniumServerManager.java" />
-        <option value="$PROJECT_DIR$/test/net/tralfamadore/AddNamespaceContentAndStyleTest.java" />
-        <option value="$PROJECT_DIR$/src/META-INF/faces-config.xml" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/faces-config.xml" />
-        <option value="$PROJECT_DIR$/src/META-INF/services/javax.enterprise.inject.spi.Extension" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/security/SecurityPhaseListener.java" />
+        <option value="$PROJECT_DIR$/test/net/tralfamadore/security/SecurityPhaseListenerTest.java" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/security/LocalCurrentUserInfo.java" />
+        <option value="$PROJECT_DIR$/test/net/tralfamadore/security/CurrentUserInfoTest.java" />
+        <option value="$PROJECT_DIR$/test/test-cmf-config.xml" />
+        <option value="$PROJECT_DIR$/test/net/tralfamadore/config/ConfigFileTest.java" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/admin/TheTree.java" />
+        <option value="$PROJECT_DIR$/test/net/tralfamadore/client/TestModule.java" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/admin/Groups.java" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/admin/util/ContentManagerProvider.java" />
+        <option value="$PROJECT_DIR$/src/net/tralfamadore/cmf/TestContentManager.java" />
+        <option value="$PROJECT_DIR$/test/net/tralfamadore/client/JMockAtTest.java" />
+        <option value="$PROJECT_DIR$/test/net/tralfamadore/config/test-cmf-config.xml" />
+        <option value="$PROJECT_DIR$/test/net/tralfamadore/persistence/JpaEntityManagerProviderTest.java" />
         <option value="$PROJECT_DIR$/src/net/tralfamadore/persistence/JpaEntityManagerProvider.java" />
-        <option value="$PROJECT_DIR$/test/net/tralfamadore/client/AtTest.java" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/security/CmfELResolver.java" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/config/CmfContext.java" />
-        <option value="$PROJECT_DIR$/src/net/tralfamadore/admin/AdminController.java" />
       </list>
     </option>
   </component>
@@ -429,8 +551,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Favorites" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -515,6 +635,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -543,7 +664,89 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tralfamadore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tralfamadore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="persistence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tralfamadore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -591,7 +794,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="component" />
+              <option name="myItemId" value="persistence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tralfamadore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -634,9 +863,40 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tralfamadore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="content-management-faces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -729,7 +989,7 @@
       <recent name="net.tralfamadore.admin" />
     </key>
   </component>
-  <component name="RunManager" selected="Glassfish Server.Glassfish 3.1.1">
+  <component name="RunManager" selected="JUnit.net.tralfamadore in cmf">
     <configuration default="false" name="JMockAtTest" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -740,8 +1000,59 @@
       <module name="cmf" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="PACKAGE_NAME" value="net.tralfamadore.client" />
-      <option name="MAIN_CLASS_NAME" value="net.tralfamadore.client.JMockAtTest" />
+      <option name="PACKAGE_NAME" value="net.integration" />
+      <option name="MAIN_CLASS_NAME" value="net.integration.JMockAtTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-javaagent:lib/junit/jmockit.jar" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="All in cmf" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="cmf" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-javaagent:lib/junit/jmockit.jar" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="JpaEntityManagerProviderTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="net.tralfamadore.persistence.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="cmf" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="net.tralfamadore.persistence" />
+      <option name="MAIN_CLASS_NAME" value="net.tralfamadore.persistence.JpaEntityManagerProviderTest" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-javaagent:lib/junit/jmockit.jar" />
@@ -755,7 +1066,7 @@
       <envs />
       <patterns />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="62865" />
+        <option name="DEBUG_PORT" value="65101" />
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
@@ -770,72 +1081,17 @@
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <configuration default="false" name="JpaContentManagerTest" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="net.tralfamadore in cmf" type="JUnit" factoryName="JUnit" temporary="true">
       <extension name="coverage" enabled="false" merge="false">
         <pattern>
-          <option name="PATTERN" value="net.tralfamadore.cmf.*" />
+          <option name="PATTERN" value="net.tralfamadore.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <module name="cmf" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="net.tralfamadore.cmf" />
-      <option name="MAIN_CLASS_NAME" value="net.tralfamadore.cmf.JpaContentManagerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50158" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <ConfigurationWrapper RunnerId="Debug" />
-      <method />
-    </configuration>
-    <configuration default="false" name="All in cmf" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" />
-      <module name="cmf" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="net.tralfamadore.client in cmf" type="JUnit" factoryName="JUnit" temporary="true">
-      <extension name="coverage" enabled="false" merge="false">
-        <pattern>
-          <option name="PATTERN" value="net.tralfamadore.client.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="cmf" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="net.tralfamadore.client" />
+      <option name="PACKAGE_NAME" value="net.tralfamadore" />
       <option name="MAIN_CLASS_NAME" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="package" />
@@ -1305,15 +1561,15 @@
       </method>
     </configuration>
     <list size="9">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.JMockAtTest" />
-      <item index="1" class="java.lang.String" itemvalue="Query Language Console.Default" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.JpaContentManagerTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.All in cmf" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.net.tralfamadore.client in cmf" />
-      <item index="5" class="java.lang.String" itemvalue="Glassfish Server.Glassfish" />
-      <item index="6" class="java.lang.String" itemvalue="Glassfish Server.Glassfish 3.1.1" />
-      <item index="7" class="java.lang.String" itemvalue="JBoss Server.Unnamed" />
-      <item index="8" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 7" />
+      <item index="0" class="java.lang.String" itemvalue="Glassfish Server.Glassfish" />
+      <item index="1" class="java.lang.String" itemvalue="Glassfish Server.Glassfish 3.1.1" />
+      <item index="2" class="java.lang.String" itemvalue="JBoss Server.Unnamed" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.JMockAtTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.All in cmf" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.JpaEntityManagerProviderTest" />
+      <item index="6" class="java.lang.String" itemvalue="Query Language Console.Default" />
+      <item index="7" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 7" />
+      <item index="8" class="java.lang.String" itemvalue="JUnit.net.tralfamadore in cmf" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -1400,25 +1656,25 @@
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16782469" sideWeight="0.16913123" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31885397" sideWeight="0.97447914" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34750462" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32902032" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32809612" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32902032" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16835916" sideWeight="0.21574074" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18225548" sideWeight="0.6783734" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18225548" sideWeight="0.6792976" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16301443" sideWeight="0.6783734" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3207024" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16301443" sideWeight="0.6792976" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3207024" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31885397" sideWeight="0.97447914" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32809612" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39926064" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1528,112 +1784,118 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/cmf/ContentListTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/security/CmfELResolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="41" selection-start="2495" selection-end="2495" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/persistence/EntityManagerProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="17" selection-start="923" selection-end="923" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/config/CmfContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1372" selection-end="1372" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/Namespace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="21" selection-start="1620" selection-end="1620" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/util/viewScope/ViewScopeExtension.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="83" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/TestContentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="4" selection-start="1785" selection-end="1785" vertical-scroll-proportion="0.0">
+        <state line="36" column="11" selection-start="1180" selection-end="1180" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/PageContent.java">
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/ContentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="4" selection-start="3117" selection-end="3117" vertical-scroll-proportion="0.0">
+        <state line="34" column="17" selection-start="1150" selection-end="1150" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/DynamicResourceLoader.java">
+    <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/cmf/JpaContentManagerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="19" selection-start="1320" selection-end="1320" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/persistence/JpaEntityManagerProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="11" selection-start="2662" selection-end="2662" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/GroupPermissions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="42" selection-start="1195" selection-end="1195" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/component/content/Content.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="26" selection-start="1722" selection-end="1722" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/BaseContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="22" selection-start="1004" selection-end="1004" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/faces-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="12" selection-start="2169" selection-end="2169" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/resources/cmf/CodeMirror-2.15/manual.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="557" column="7" selection-start="27836" selection-end="27836" vertical-scroll-proportion="0.0">
+        <state line="215" column="24" selection-start="8819" selection-end="8819" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/admin/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1462" selection-end="1462" vertical-scroll-proportion="0.2777778">
+        <state line="106" column="16" selection-start="3418" selection-end="3418" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/net/integration/JMockAtTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="32" selection-start="1876" selection-end="1876" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/config/ConfigFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="13" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/persistence/EntityManagerProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="31" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/selenium/junit-dep-4.10.jar!/org/junit/runners/model/FrameworkMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/config/ConfigFileTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="76" selection-start="1473" selection-end="1473" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/config/test-cmf-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="19" selection-start="2267" selection-end="2267" vertical-scroll-proportion="-18.291666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/cmf/JpaContentManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="11" selection-start="1241" selection-end="1241" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/net/tralfamadore/persistence/JpaEntityManagerProviderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="102" column="54" selection-start="3925" selection-end="3925" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/persistence/JpaEntityManagerProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="14" selection-start="3983" selection-end="3983" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/config/CmfStartupListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="13" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/config/CmfShutdownListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="13" selection-start="1021" selection-end="1021" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/tralfamadore/config/CmfContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="4" selection-start="2530" selection-end="2530" vertical-scroll-proportion="0.3888131">
           <folding />
         </state>
       </provider>

@@ -17,7 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
-package net.tralfamadore.config;
+package net.tralfamadore.admin.util;
 
 import net.tralfamadore.cmf.GroupPermissions;
 
