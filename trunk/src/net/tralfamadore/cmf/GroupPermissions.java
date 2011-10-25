@@ -85,4 +85,30 @@ public class GroupPermissions {
     public void setCanAdmin(boolean canAdmin) {
         this.canAdmin = canAdmin;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GroupPermissions)) return false;
+
+        GroupPermissions that = (GroupPermissions) o;
+
+        if (canAdmin != that.canAdmin) return false;
+        if (canDelete != that.canDelete) return false;
+        if (canEdit != that.canEdit) return false;
+        if (canView != that.canView) return false;
+        if (group != null ? !group.equals(that.group) : that.group != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = group != null ? group.hashCode() : 0;
+        result = 31 * result + (canView ? 1 : 0);
+        result = 31 * result + (canEdit ? 1 : 0);
+        result = 31 * result + (canDelete ? 1 : 0);
+        result = 31 * result + (canAdmin ? 1 : 0);
+        return result;
+    }
 }

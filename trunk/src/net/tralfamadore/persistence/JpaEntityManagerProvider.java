@@ -41,7 +41,7 @@ import java.util.Properties;
  * Time: 9:06 AM
  */
 public class JpaEntityManagerProvider implements EntityManagerProvider {
-    EntityManager em;
+    private EntityManager em;
     private EntityManagerFactory emFactory;
 
 

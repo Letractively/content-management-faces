@@ -19,6 +19,7 @@
 
 package net.integration;
 
+import mockit.Delegate;
 import mockit.Mocked;
 import mockit.NonStrictExpectations;
 import mockit.Verifications;
@@ -30,6 +31,8 @@ import org.junit.runner.RunWith;
 
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+
+import static junit.framework.Assert.assertTrue;
 
 //import org.jmock.Expectations;
 //import org.jmock.Mockery;
@@ -56,7 +59,11 @@ public class JMockAtTest {
 
         new NonStrictExpectations() {
             {
-                pageContent.getNamespace(); result = parent;
+                pageContent.getNamespace(); result = new Delegate() {
+                    Namespace returnANamespace() {
+                        return parent;
+                    }
+                };
                 pageContent.getNamespaceToAdd(); result = Namespace.createFromString("net.tralfamadore.site");
             }
         };
@@ -68,7 +75,12 @@ public class JMockAtTest {
                 pageContent.getNamespace(); times = 1;
                 pageContent.setNamespaceToAdd(new Namespace(parent, "")); times = 1;
                 pageContent.getNamespaceToAdd(); times = 1;
-                pageContent.setAddingNamespace(true); times = 1;
+                pageContent.setAddingNamespace(anyBoolean); times = 1;
+                forEachInvocation = new Object() {
+                    void validate(boolean b) {
+                        assertTrue(b);
+                    }
+                };
             }
         };
     }

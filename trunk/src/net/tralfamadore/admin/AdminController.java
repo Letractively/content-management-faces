@@ -51,7 +51,7 @@ public class AdminController {
     @Inject
     private Toolbar editorToolbar;
     @Inject
-    private PageContent pageContent;
+    PageContent pageContent;
     @Inject
     private TheTree theTree;
     @Inject
@@ -489,7 +489,8 @@ public class AdminController {
         List<BaseContent> namespaceContents = pageContent.getNamespaceContents();
         ContentManager contentManager = theTree.getContentManager();
 
-        namespaceContents.addAll(contentManager.loadContent(namespace));
+        List<Content> contentList = contentManager.loadContent(namespace);
+        namespaceContents.addAll(contentList);
         namespaceContents.addAll(contentManager.loadStyle(namespace));
         namespaceContents.addAll(contentManager.loadChildNamespaces(namespace));
         if(contentManager.loadChildNamespaces(namespace).isEmpty() && namespace.getParent() == null)
@@ -506,7 +507,7 @@ public class AdminController {
         contentCss = contentCss.replace('\n', ' ');
     }
 
-    private List<GroupPermissions> newDefaultGroupPermissions() {
+    static List<GroupPermissions> newDefaultGroupPermissions() {
         List<GroupPermissions> defaultGroupPermissionsList = new Vector<GroupPermissions>();
         String group = CmfContext.getInstance().getCurrentUser();
         GroupPermissions groupPermissions = new GroupPermissions(group, true, true, true, true);

@@ -19,10 +19,7 @@
 
 package net.tralfamadore.persistence;
 
-import mockit.Cascading;
-import mockit.Mocked;
-import mockit.NonStrictExpectations;
-import mockit.Verifications;
+import mockit.*;
 import net.tralfamadore.cmf.JpaContentManager;
 import net.tralfamadore.config.CmfContext;
 import net.tralfamadore.config.ConfigFile;
@@ -64,7 +61,7 @@ public class JpaEntityManagerProviderTest {
     @Test
     public void testGetWithEntityManager() throws Exception {
         JpaEntityManagerProvider jpaEntityManagerProvider = new JpaEntityManagerProvider();
-        jpaEntityManagerProvider.em = jpaEntityManager;
+        Deencapsulation.setField(jpaEntityManagerProvider, "em", jpaEntityManager);
         assertEquals(jpaEntityManager, jpaEntityManagerProvider.get());
     }
 

@@ -31,6 +31,7 @@
       <root url="jar://$PROJECT_DIR$/lib/junit/easymock-3.0-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/junit/objenesis-1.2-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/junit/atunit-1.0.1.src.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/junit/jmockit.jar!/" />
     </SOURCES>
   </library>
 </component>
