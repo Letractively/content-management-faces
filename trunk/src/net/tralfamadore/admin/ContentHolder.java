@@ -25,6 +25,7 @@ import net.tralfamadore.cmf.Style;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
 
+import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
@@ -35,9 +36,13 @@ import java.util.Map;
  * Date: 2/28/11
  * Time: 6:15 AM
  */
+@SessionScoped
 public class ContentHolder implements Serializable {
     private final Map<ContentKey,TreeNode> allContent = new HashMap<ContentKey, TreeNode>();
     private TreeNode rootNode;
+
+    public ContentHolder() {
+    }
 
     public ContentHolder(TreeNode rootNode) {
         this.rootNode = rootNode;

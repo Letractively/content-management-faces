@@ -46,6 +46,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.PartialViewContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import java.io.File;
 import java.util.*;
@@ -380,6 +381,7 @@ public class AdminControllerTest {
                 e.getComponent(); result = c; c.getAttributes(); result = attributes;
                 attributes.get("group"); result = "testGroup"; times = 1;
                 pageContent.getBaseContentToAdd(); result = bc; times = 1;
+                pageContent.getBaseContent();
                 groupsDataTable.getClientId((FacesContext) any); result = "testClientId"; times = 1;
                 RequestContext.getCurrentInstance(); result = requestContext; times = 1;
                 requestContext.addPartialUpdateTarget("testClientId"); times = 1;
@@ -640,7 +642,7 @@ public class AdminControllerTest {
             List<BaseContent> namespaceContents;
             {
                 pageContent.getContentToRemove(); result = namespace;
-                theTree.getContentManager(); result = contentManager;
+                theTree.getContentManager(); result = contentManager; times = 2;
                 namespace.getNamespace(); result = namespace;
                 contentManager.loadChildNamespaces(namespace); result = Collections.emptyList();
                 contentManager.loadStyle(namespace); result = Collections.emptyList();
@@ -655,7 +657,7 @@ public class AdminControllerTest {
         adminController.removeBaseContent();
     }
 
-    @Test
+    @Test(expected = ValidatorException.class)
     public void testRemoveBaseContentNonEmptyNamespace() throws Exception {
         final List<Namespace> namespaceList = new Vector<Namespace>();
         namespaceList.add(new Namespace());
@@ -664,7 +666,7 @@ public class AdminControllerTest {
             List<BaseContent> namespaceContents;
             {
                 pageContent.getContentToRemove(); result = namespace;
-                theTree.getContentManager(); result = contentManager;
+                theTree.getContentManager(); result = contentManager; times = 2;
                 namespace.getNamespace(); result = namespace;
                 contentManager.loadChildNamespaces(namespace); result = namespaceList;
                 FacesContext.getCurrentInstance(); result = facesContext;

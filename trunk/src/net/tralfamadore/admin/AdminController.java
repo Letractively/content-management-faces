@@ -35,6 +35,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.File;
@@ -56,6 +57,10 @@ public class AdminController {
     private TheTree theTree;
     @Inject
     private FacesContext facesContext;
+    @Inject
+    private ContentHolder contentHolder;
+    @Inject
+    private ContentManager contentManager;
 
     /** true if we need to configure the embedded database */
     private boolean embeddedDbNeedsConfig = CmfContext.getInstance().isEmbeddedDbNeedsConfig();
@@ -80,21 +85,21 @@ public class AdminController {
     public void loadNamespace() {
         if(isAjaxRequest())
             return;
-        loadHelper("namespace");
+        loadPage("namespace");
         fetchNamespaceContents();
     }
 
     public void loadContent() {
         if(isAjaxRequest())
             return;
-        loadHelper("content");
+        loadPage("content");
         makeContentCss();
     }
 
     public void loadStyle() {
         if(isAjaxRequest())
             return;
-        loadHelper("style");
+        loadPage("style");
     }
 
     public void addNewTopLevelNamespace() {
@@ -139,8 +144,8 @@ public class AdminController {
         content.setNamespace(pageContent.getNamespace());
         content.setDateCreated(new Date());
         content.setDateModified(content.getDateCreated());
-        theTree.getContentHolder().add(content);
-        theTree.getContentManager().saveContent(content);
+        contentHolder.add(content);
+        contentManager.saveContent(content);
         pageContent.setAddingContent(false);
         pageContent.getNamespaceContents().add(content);
         theTree.createTreeModel();
@@ -152,8 +157,8 @@ public class AdminController {
         Style style = pageContent.getStyleToAdd();
         style.setName(newStyleName);
         style.setNamespace(pageContent.getNamespace());
-        theTree.getContentHolder().add(style);
-        theTree.getContentManager().saveStyle(style);
+        contentHolder.add(style);
+        contentManager.saveStyle(style);
         pageContent.setAddingStyle(false);
         pageContent.getNamespaceContents().add(style);
         theTree.createTreeModel();
@@ -165,39 +170,20 @@ public class AdminController {
         String groupName = (String) e.getComponent().getAttributes().get("group");
         BaseContent content = pageContent.getBaseContent();
 
-        for(Iterator<GroupPermissions> it = content.getGroupPermissionsList().iterator(); it.hasNext(); ) {
-            GroupPermissions groupPermissions = it.next();
-            if(groupPermissions.getGroup().equals(groupName)) {
-                it.remove();
-                break;
-            }
-        }
+        removeFromGroupPermissions(groupName, content);
         saveBaseContent();
 
-        String clientId = groupsDataTable.getClientId(facesContext);
-        RequestContext requestContext = RequestContext.getCurrentInstance();
-        if(clientId.matches(".*[0-9]+$"))
-            clientId = clientId.replaceAll(":[0-9]+$", "");
-        requestContext.addPartialUpdateTarget(clientId);
+        addGroupUpdateTarget(groupsDataTable.getClientId(facesContext));
     }
 
     public void removeGroupForNewContent(ActionEvent e) {
         String groupName = (String) e.getComponent().getAttributes().get("group");
         BaseContent content = pageContent.getBaseContentToAdd();
 
-        for(Iterator<GroupPermissions> it = content.getGroupPermissionsList().iterator(); it.hasNext(); ) {
-            GroupPermissions groupPermissions = it.next();
-            if(groupPermissions.getGroup().equals(groupName)) {
-                it.remove();
-                break;
-            }
-        }
+        removeFromGroupPermissions(groupName, content);
+        saveBaseContent();
 
-        String clientId = dialogGroupsDataTable.getClientId(facesContext);
-        RequestContext requestContext = RequestContext.getCurrentInstance();
-        if(clientId.matches(".*[0-9]+$"))
-            clientId = clientId.replaceAll(":[0-9]+$", "");
-        requestContext.addPartialUpdateTarget(clientId);
+        addGroupUpdateTarget(dialogGroupsDataTable.getClientId(facesContext));
     }
 
     public void permissionChanged() {
@@ -206,7 +192,7 @@ public class AdminController {
 
     public void saveNewNamespace() {
         pageContent.getNamespaceToAdd().setNodeName(newNamespace);
-        theTree.getContentManager().saveNamespace(pageContent.getNamespaceToAdd());
+        contentManager.saveNamespace(pageContent.getNamespaceToAdd());
         pageContent.getNamespaceContents().add(pageContent.getNamespaceToAdd());
         pageContent.setAddingNamespace(false);
         pageContent.setAddingTopLevelNamespace(false);
@@ -216,14 +202,14 @@ public class AdminController {
 
     public void saveContent() {
         Content content = pageContent.getContent();
-        theTree.getContentManager().saveContent(content);
+        contentManager.saveContent(content);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Content " + content.getName() + " saved successfully.", ""));
     }
 
     public void saveStyle() {
         Style style = pageContent.getStyle();
-        theTree.getContentManager().saveStyle(style);
+        contentManager.saveStyle(style);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Style " + style.getName() + " saved successfully.", ""));
     }
@@ -232,12 +218,12 @@ public class AdminController {
         Map<String,String> paramMap = facesContext.getExternalContext().getRequestParameterMap();
         String namespace = paramMap.get("styleNamespace");
         String styleName = paramMap.get("styleName");
-        Style style = theTree.getContentManager().loadStyle(new Namespace(namespace), styleName);
+        Style style = contentManager.loadStyle(new Namespace(namespace), styleName);
         Content content = pageContent.getContent();
 
         if(!content.getStyles().contains(style)) {
             content.getStyles().add(style);
-            theTree.getContentManager().saveContent(content);
+            contentManager.saveContent(content);
 
             RequestContext requestContext = RequestContext.getCurrentInstance();
             requestContext.addPartialUpdateTarget(event.getDropId());
@@ -253,49 +239,36 @@ public class AdminController {
         UIComponent component = (UIComponent) event.getSource();
         String namespace = (String) component.getAttributes().get("namespace");
         String name = (String) component.getAttributes().get("styleName");
-        Style style = (Style) theTree.getContentHolder().find(new ContentKey(name, namespace, "style")).getData();
+        Style style = (Style) contentHolder.find(new ContentKey(name, namespace, "style")).getData();
         Content content = pageContent.getContent();
 
         if(content.getStyles().contains(style)) {
             content.getStyles().remove(style);
-            theTree.getContentManager().saveContent(content);
+            contentManager.saveContent(content);
         }
+
         RequestContext requestContext = RequestContext.getCurrentInstance();
         requestContext.addPartialUpdateTarget(editor.getClientId(facesContext));
         requestContext.addPartialUpdateTarget(stylePanel.getClientId(facesContext));
         requestContext.addPartialUpdateTarget(dropper.getClientId(facesContext));
         requestContext.addPartialUpdateTarget(theTreeComponent.getClientId(facesContext));
+
         makeContentCss();
     }
 
     public void removeBaseContent() {
         BaseContent content = pageContent.getContentToRemove();
-        ContentManager contentManager = theTree.getContentManager();
 
         if(content instanceof Namespace) {
-            Namespace namespace = content.getNamespace();
-            if(contentManager.loadChildNamespaces(namespace).isEmpty()
-                    && contentManager.loadStyle(namespace).isEmpty()
-                    && contentManager.loadContent(namespace).isEmpty())
-            {
-                contentManager.deleteNamespace(namespace);
-                pageContent.getNamespaceContents().remove(namespace);
-                theTree.createTreeModel();
-            } else {
-                FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_ERROR, "You can only delete an empty namespace", null));
-            }
+            removeNamespace((Namespace) content);
         } else if(content instanceof Content) {
             contentManager.deleteContent((Content) content);
-            pageContent.getNamespaceContents().remove(content);
-            theTree.createTreeModel();
         } else if(content instanceof Style) {
             contentManager.deleteStyle((Style) content);
-            pageContent.getNamespaceContents().remove(content);
-            theTree.createTreeModel();
         }
+        pageContent.getNamespaceContents().remove(content);
+        theTree.createTreeModel();
     }
-
 
     /**
      * Action listener that creates the embedded database from the initial screen.
@@ -476,35 +449,49 @@ public class AdminController {
 
     private void saveBaseContent(BaseContent content) {
         if(content instanceof Content)
-            theTree.getContentManager().saveContent((Content)content);
+            contentManager.saveContent((Content) content);
         else if(content instanceof Style)
-            theTree.getContentManager().saveStyle((Style) content);
+            contentManager.saveStyle((Style) content);
         else if(content instanceof Namespace)
-            theTree.getContentManager().saveNamespace((Namespace) content);
+            contentManager.saveNamespace((Namespace) content);
     }
 
     private void fetchNamespaceContents() {
         Namespace namespace = pageContent.getNamespace();
-        pageContent.setNamespaceContents(new Vector<BaseContent>());
-        List<BaseContent> namespaceContents = pageContent.getNamespaceContents();
-        ContentManager contentManager = theTree.getContentManager();
+        pageContent.getNamespaceContents().clear();
 
+        addNamespaceContents(namespace);
+
+        if(isEmptyRootNamespace(namespace))
+            pageContent.getNamespaceContents().add(namespace);
+    }
+
+    private void addNamespaceContents(Namespace namespace) {
+        List<BaseContent> namespaceContents = pageContent.getNamespaceContents();
         List<Content> contentList = contentManager.loadContent(namespace);
         namespaceContents.addAll(contentList);
         namespaceContents.addAll(contentManager.loadStyle(namespace));
         namespaceContents.addAll(contentManager.loadChildNamespaces(namespace));
-        if(contentManager.loadChildNamespaces(namespace).isEmpty() && namespace.getParent() == null)
-            namespaceContents.add(namespace);
+    }
+
+    private boolean isEmptyRootNamespace(Namespace namespace) {
+        return contentManager.loadChildNamespaces(namespace).isEmpty() && namespace.getParent() == null;
     }
 
     private void makeContentCss() {
         contentCss = "";
-        if(pageContent.getContent() != null && pageContent.getContent().getStyles() != null) {
+
+        if(contentHasStyles()) {
             for(Style style : pageContent.getContent().getStyles())
                 contentCss =  contentCss + style.getStyle();
         }
+
         contentCss = contentCss.replace('\r', ' ');
         contentCss = contentCss.replace('\n', ' ');
+    }
+
+    private boolean contentHasStyles() {
+        return pageContent.getContent() != null && pageContent.getContent().getStyles() != null;
     }
 
     static List<GroupPermissions> newDefaultGroupPermissions() {
@@ -515,33 +502,68 @@ public class AdminController {
         return defaultGroupPermissionsList;
     }
 
-    private void loadHelper(String type) {
-        TreeNode newContent;
-        if("namespace".equals(type)) {
-            newContent = theTree.getContentHolder().find(new ContentKey(null, incomingNamespace, "namespace"));
-        } else {
-            newContent = theTree.getContentHolder().find(
-                    new ContentKey(incomingContentName, incomingNamespace, type));
-        }
+    private void loadPage(String type) {
         TreeNode selectedNode = theTree.getSelectedNode();
+        TreeNode newContent =  "namespace".equals(type) ?
+                contentHolder.find(new ContentKey(null, incomingNamespace, "namespace")) :
+                contentHolder.find(new ContentKey(incomingContentName, incomingNamespace, type));
 
-        if(newContent != null) {
-            newContent.setSelected(true);
-            if(selectedNode != null)
-                selectedNode.setSelected(false);
-        } else {
-            if("namespace".equals(type))
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                        "Namespace [" + incomingNamespace + "] not found.", null));
-            else
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                        "Style for namespace [" + incomingNamespace + "] and " + type + " name [" +
-                                incomingContentName + "] not found.", null));
+        if(newContent == null) {
+            showLoadError(type);
             return;
         }
+
+        newContent.setSelected(true);
+
+        if(selectedNode != null)
+            selectedNode.setSelected(false);
 
         theTree.setSelectedNode(newContent);
         pageContent.setTheContent((BaseContent) newContent.getData());
         theTree.createTreeModel();
+    }
+
+    private void showLoadError(String type) {
+        if("namespace".equals(type))
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Namespace [" + incomingNamespace + "] not found.", null));
+        else if("content".equals(type))
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Content for namespace [" + incomingNamespace + "] and " + type + " name [" +
+                            incomingContentName + "] not found.", null));
+        else
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Style for namespace [" + incomingNamespace + "] and " + type + " name [" +
+                            incomingContentName + "] not found.", null));
+    }
+
+    private void removeFromGroupPermissions(String groupName, BaseContent content) {
+        for(Iterator<GroupPermissions> it = content.getGroupPermissionsList().iterator(); it.hasNext(); ) {
+            GroupPermissions groupPermissions = it.next();
+            if(groupPermissions.getGroup().equals(groupName)) {
+                it.remove();
+                break;
+            }
+        }
+    }
+
+    private void addGroupUpdateTarget(String clientId) {
+        RequestContext requestContext = RequestContext.getCurrentInstance();
+        if(clientId.matches(".*[0-9]+$"))
+            clientId = clientId.replaceAll(":[0-9]+$", "");
+        requestContext.addPartialUpdateTarget(clientId);
+    }
+
+    private void removeNamespace(Namespace theNamespace) {
+        Namespace namespace = theNamespace.getNamespace();
+        if(contentManager.loadChildNamespaces(namespace).isEmpty()
+                && contentManager.loadStyle(namespace).isEmpty()
+                && contentManager.loadContent(namespace).isEmpty())
+        {
+            contentManager.deleteNamespace(namespace);
+        } else {
+            throw new ValidatorException(
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "You can only delete an empty namespace", null));
+        }
     }
 }

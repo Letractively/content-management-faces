@@ -43,17 +43,19 @@ import java.util.List;
 public class TheTree implements Serializable {
     @Inject
     private ContentManager contentManager;
+    @Inject
+    private ContentHolder contentHolder;
 
     private TreeNode root;
     private TreeNode selectedNode;
-    private ContentHolder contentHolder;
 
     public TheTree() {
         root = new DefaultTreeNode("Root", null);
-        contentHolder = new ContentHolder(root);
     }
+
     @PostConstruct
     private void init() {
+        contentHolder.setRootNode(root);
         createTreeModel();
     }
 
